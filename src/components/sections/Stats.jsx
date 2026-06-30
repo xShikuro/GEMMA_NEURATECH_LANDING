@@ -29,10 +29,6 @@ export default function Stats({ stats }) {
   const [values, setValues] = useState(initialValues)
 
   useEffect(() => {
-    setValues(initialValues)
-  }, [initialValues])
-
-  useEffect(() => {
     const intervalId = window.setInterval(() => {
       setValues((currentValues) => stats.map((stat, index) => getNextValue(stat, currentValues[index])))
     }, 1400)

@@ -15,10 +15,7 @@ function NeuralIcon() {
 export default function Solutions({ copy }) {
   return (
     <section className="section-block tech-frame reveal" id="solutions">
-      <SectionHead
-        title={copy.title}
-        actions={<SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />}
-      />
+      <SectionHead title={copy.title} />
 
       <div className="solution-grid" data-scroll-row>
         {copy.items.map((solution) => (
@@ -33,6 +30,8 @@ export default function Solutions({ copy }) {
           </article>
         ))}
       </div>
+
+      <SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />
     </section>
   )
 }

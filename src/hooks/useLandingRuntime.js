@@ -97,12 +97,30 @@ function initLandingPage() {
     body.classList.add('cursor-idle')
   }, { passive: true })
 
-  document
-    .querySelectorAll('a, button, input, textarea, .solution-card, .case-card, .tech-item')
-    .forEach((item) => {
-      addEvent(item, 'pointerenter', () => body.classList.add('cursor-hover'))
-      addEvent(item, 'pointerleave', () => body.classList.remove('cursor-hover'))
-    })
+  const hoverSelector = 'a, button, input, textarea, .solution-card, .case-card, .tech-item, .process-card, .lab-card'
+  let activeHoverTarget = null
+  const getHoverTarget = (target) => target instanceof Element ? target.closest(hoverSelector) : null
+
+  addEvent(document, 'pointerover', (event) => {
+    const target = getHoverTarget(event.target)
+    if (!target) return
+
+    activeHoverTarget = target
+    body.classList.add('cursor-hover')
+  })
+
+  addEvent(document, 'pointerout', (event) => {
+    const target = getHoverTarget(event.target)
+    if (!target || target !== activeHoverTarget) return
+
+    const relatedTarget = getHoverTarget(event.relatedTarget)
+    if (relatedTarget === activeHoverTarget) return
+
+    activeHoverTarget = relatedTarget
+    if (!activeHoverTarget) {
+      body.classList.remove('cursor-hover')
+    }
+  })
 
   const animateCursor = () => {
     cursorState.smoothX += (cursorState.x - cursorState.smoothX) * 0.13
@@ -247,7 +265,32 @@ function initLandingPage() {
       if (!row) return
 
       const direction = button.dataset.nudge === 'right' ? 1 : -1
-      row.scrollBy({ left: direction * 280, behavior: 'smooth' })
+      const items = Array.from(row.children)
+      const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth)
+
+      if (!items.length || maxScroll <= 0) return
+
+      if (direction > 0 && row.scrollLeft >= maxScroll - 4) {
+        row.scrollTo({ left: 0, behavior: 'smooth' })
+        return
+      }
+
+      if (direction < 0 && row.scrollLeft <= 4) {
+        row.scrollTo({ left: maxScroll, behavior: 'smooth' })
+        return
+      }
+
+      const rowRect = row.getBoundingClientRect()
+      const positions = items.map((item) => row.scrollLeft + item.getBoundingClientRect().left - rowRect.left)
+      const currentIndex = positions.reduce((closestIndex, position, index) => {
+        const closestDistance = Math.abs(positions[closestIndex] - row.scrollLeft)
+        const distance = Math.abs(position - row.scrollLeft)
+        return distance < closestDistance ? index : closestIndex
+      }, 0)
+      const nextIndex = (currentIndex + direction + items.length) % items.length
+      const targetLeft = Math.min(Math.max(positions[nextIndex], 0), maxScroll)
+
+      row.scrollTo({ left: targetLeft, behavior: 'smooth' })
     })
   })
 

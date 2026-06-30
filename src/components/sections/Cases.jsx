@@ -17,6 +17,16 @@ function CaseArt({ type }) {
     )
   }
 
+  if (['network', 'shield', 'cube'].includes(type)) {
+    const iconByType = {
+      network: 'i-network',
+      shield: 'i-shield',
+      cube: 'i-cube',
+    }
+
+    return <SvgIcon id={iconByType[type]} className={`case-art case-art--${type}`} />
+  }
+
   return (
     <div className="robot-art" aria-hidden="true">
       {Array.from({ length: 4 }, (_, index) => (
@@ -29,10 +39,7 @@ function CaseArt({ type }) {
 export default function Cases({ copy }) {
   return (
     <section className="section-block tech-frame reveal" id="cases">
-      <SectionHead
-        title={copy.title}
-        actions={<SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />}
-      />
+      <SectionHead title={copy.title} />
       <div className="case-grid" data-scroll-row>
         {copy.items.map((item) => (
           <article className="case-card" key={item.title}>
@@ -47,6 +54,7 @@ export default function Cases({ copy }) {
           </article>
         ))}
       </div>
+      <SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />
     </section>
   )
 }

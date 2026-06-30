@@ -45,15 +45,21 @@ const solutionMeta = [
   { icon: 'i-chip' },
   { icon: 'i-network' },
   { icon: 'i-lock' },
+  { icon: 'i-cube' },
+  { icon: 'i-layers' },
 ]
 
 const caseMeta = [
   { art: 'brain' },
   { art: 'chart' },
   { art: 'robot' },
+  { art: 'network' },
+  { art: 'shield' },
+  { art: 'cube' },
 ]
 
 const whyIcons = ['i-network', 'i-gear', 'i-users', 'i-shield']
+const processIcons = ['i-info', 'i-layers', 'i-chip', 'i-shield']
 
 function withMeta(items, meta) {
   return items.map((item, index) => ({ ...meta[index], ...item }))
@@ -66,7 +72,7 @@ export const content = {
       { href: '#tech', label: 'Технологии' },
       { href: '#solutions', label: 'Решения' },
       { href: '#cases', label: 'Кейсы' },
-      { href: '#news', label: 'Новости' },
+      { href: '#roadmap', label: 'Процесс' },
     ],
     header: {
       navLabel: 'Основная навигация',
@@ -75,7 +81,7 @@ export const content = {
     },
     hero: {
       title: ['Advanced', 'Neural', 'Architectures'],
-      text: 'Создаём интеллектуальные системы нового поколения на базе передовых нейронных архитектур',
+      text: 'Создаем интеллектуальные системы нового поколения на базе передовых нейронных архитектур',
       primary: 'Узнать больше',
       secondary: 'Связаться с нами',
     },
@@ -103,19 +109,27 @@ export const content = {
       items: withMeta([
         {
           title: 'Разработка нейронных сетей',
-          text: 'Проектирование и обучение нейронных сетей любой сложности под ваши задачи',
+          text: 'Проектирование и обучение нейронных сетей любой сложности под ваши задачи.',
         },
         {
           title: 'Edge AI и обработка в реальном времени',
-          text: 'Интеллектуальные алгоритмы для устройств с ограниченными ресурсами',
+          text: 'Интеллектуальные алгоритмы для устройств с ограниченными ресурсами.',
         },
         {
-          title: 'Распределённые вычисления',
-          text: 'Масштабируемые решения на базе кластеров и облачной инфраструктуры',
+          title: 'Распределенные вычисления',
+          text: 'Масштабируемые решения на базе кластеров, ускорителей и облачной инфраструктуры.',
         },
         {
           title: 'AI-безопасность и защита данных',
-          text: 'Обеспечение безопасности моделей, данных и процессов на всех уровнях',
+          text: 'Безопасность моделей, данных и процессов на всех уровнях AI-стека.',
+        },
+        {
+          title: 'Компьютерное зрение',
+          text: 'Детекция, сегментация и анализ видеопотоков для промышленных и городских систем.',
+        },
+        {
+          title: 'MLOps-инфраструктура',
+          text: 'Пайплайны обучения, мониторинг моделей и стабильные релизы AI-продуктов.',
         },
       ], solutionMeta),
     },
@@ -132,17 +146,32 @@ export const content = {
         {
           tag: 'Медицина',
           title: 'Система диагностики медицинских изображений',
-          text: 'ИИ-решение для автоматического анализа и диагностики снимков КТ и МРТ',
+          text: 'ИИ-решение для автоматического анализа и диагностики снимков КТ и МРТ.',
         },
         {
           tag: 'Fintech',
           title: 'Алгоритмическая торговая платформа',
-          text: 'Высокоскоростная AI-платформа для анализа рынка и принятия торговых решений',
+          text: 'Высокоскоростная AI-платформа для анализа рынка и принятия торговых решений.',
         },
         {
           tag: 'Industrial',
           title: 'Predictive Maintenance на производстве',
-          text: 'Система предиктивной аналитики для предотвращения сбоев оборудования',
+          text: 'Система предиктивной аналитики для предотвращения сбоев оборудования.',
+        },
+        {
+          tag: 'Retail',
+          title: 'Персонализация клиентских сценариев',
+          text: 'Модель рекомендаций, которая адаптирует витрины и офферы под поведение клиентов.',
+        },
+        {
+          tag: 'Security',
+          title: 'Мониторинг аномалий в инфраструктуре',
+          text: 'Потоковый анализ логов и сетевых событий для раннего обнаружения угроз.',
+        },
+        {
+          tag: 'Logistics',
+          title: 'Оптимизация маршрутов доставки',
+          text: 'Прогнозирование нагрузки и динамическое планирование маршрутов в реальном времени.',
         },
       ], caseMeta),
     },
@@ -151,21 +180,71 @@ export const content = {
       items: withMeta([
         {
           title: 'Экспертиза',
-          text: 'Команда ученых и инженеров с мировым опытом в AI и машинном обучении',
+          text: 'Команда ученых и инженеров с мировым опытом в AI и машинном обучении.',
         },
         {
           title: 'Индивидуальный подход',
-          text: 'Каждое решение создаётся под конкретные задачи и бизнес-цели',
+          text: 'Каждое решение создается под конкретные задачи и бизнес-цели.',
         },
         {
           title: 'Инновации',
-          text: 'Постоянные исследования и внедрение передовых технологий',
+          text: 'Постоянные исследования и внедрение передовых технологий.',
         },
         {
           title: 'Надежность',
-          text: 'Высокие стандарты качества, безопасности и поддержки на всех этапах',
+          text: 'Высокие стандарты качества, безопасности и поддержки на всех этапах.',
         },
       ], whyIcons.map((icon) => ({ icon }))),
+    },
+    process: {
+      title: 'Как мы запускаем проект',
+      eyebrow: 'Процесс',
+      text: 'Двигаемся от исследования к промышленному запуску без лишнего шума: короткие итерации, прозрачные метрики и понятные контрольные точки.',
+      items: withMeta([
+        {
+          step: '01',
+          title: 'Диагностика задачи',
+          text: 'Разбираем бизнес-цель, данные, ограничения и критерии успеха будущей системы.',
+        },
+        {
+          step: '02',
+          title: 'Прототипирование',
+          text: 'Быстро собираем проверяемую модель, тестируем гипотезы и выбираем архитектуру.',
+        },
+        {
+          step: '03',
+          title: 'Инженерный запуск',
+          text: 'Разворачиваем пайплайны, API, мониторинг и инфраструктуру для стабильной работы.',
+        },
+        {
+          step: '04',
+          title: 'Рост и поддержка',
+          text: 'Улучшаем качество модели, следим за метриками и развиваем продукт после релиза.',
+        },
+      ], processIcons.map((icon) => ({ icon }))),
+    },
+    lab: {
+      title: 'Инженерная база',
+      eyebrow: 'Лаборатория',
+      text: 'Собираем AI-системы как инженерные продукты: с версионированием данных, наблюдаемостью, безопасной доставкой и контролем качества.',
+      cards: [
+        {
+          title: 'Data foundation',
+          text: 'Схемы данных, очистка, валидация, датасеты и контроль дрейфа.',
+          icon: 'i-layers',
+        },
+        {
+          title: 'Model core',
+          text: 'Эксперименты, обучение, бенчмарки и оптимизация под продакшен.',
+          icon: 'i-brain',
+        },
+        {
+          title: 'Production loop',
+          text: 'CI/CD, мониторинг, алерты и регулярное улучшение моделей.',
+          icon: 'i-gear',
+        },
+      ],
+      metrics: ['Low latency', 'Secure pipelines', 'Observable AI'],
     },
     contact: {
       eyebrow: 'Контакт',
@@ -188,7 +267,7 @@ export const content = {
       technologiesTitle: 'Технологии',
       contactsTitle: 'Контакты',
       location: 'Лондон, Великобритания',
-      services: ['Разработка нейронных сетей', 'Edge AI', 'Распределённые вычисления', 'AI-безопасность'],
+      services: ['Разработка нейронных сетей', 'Edge AI', 'Распределенные вычисления', 'AI-безопасность'],
       technologies: ['Нейронные сети', 'Компьютерное зрение', 'Облачные вычисления', 'MLOps-пайплайны'],
       copyright: '© 2024 Gemma Neuratech. Все права защищены.',
       tagline: 'Advanced Neural Architectures',
@@ -200,7 +279,7 @@ export const content = {
       { href: '#tech', label: 'Technologies' },
       { href: '#solutions', label: 'Solutions' },
       { href: '#cases', label: 'Cases' },
-      { href: '#news', label: 'News' },
+      { href: '#roadmap', label: 'Process' },
     ],
     header: {
       navLabel: 'Primary navigation',
@@ -251,6 +330,14 @@ export const content = {
           title: 'AI security and data protection',
           text: 'Protecting models, data, and processes across every layer of the AI stack.',
         },
+        {
+          title: 'Computer vision',
+          text: 'Detection, segmentation, and video stream analytics for industry and smart cities.',
+        },
+        {
+          title: 'MLOps infrastructure',
+          text: 'Training pipelines, model monitoring, and reliable releases for AI products.',
+        },
       ], solutionMeta),
     },
     tech: {
@@ -278,6 +365,21 @@ export const content = {
           title: 'Predictive maintenance for production',
           text: 'Predictive analytics system for preventing equipment downtime.',
         },
+        {
+          tag: 'Retail',
+          title: 'Customer scenario personalization',
+          text: 'Recommendation models that adapt catalogs and offers to customer behavior.',
+        },
+        {
+          tag: 'Security',
+          title: 'Infrastructure anomaly monitoring',
+          text: 'Streaming analysis of logs and network events for early threat detection.',
+        },
+        {
+          tag: 'Logistics',
+          title: 'Delivery route optimization',
+          text: 'Load forecasting and dynamic route planning in real time.',
+        },
       ], caseMeta),
     },
     why: {
@@ -300,6 +402,56 @@ export const content = {
           text: 'High standards for quality, security, and support at every project stage.',
         },
       ], whyIcons.map((icon) => ({ icon }))),
+    },
+    process: {
+      title: 'How we launch a project',
+      eyebrow: 'Process',
+      text: 'We move from research to production launch through short iterations, transparent metrics, and clear checkpoints.',
+      items: withMeta([
+        {
+          step: '01',
+          title: 'Problem diagnostics',
+          text: 'We map the business goal, data, constraints, and success criteria for the future system.',
+        },
+        {
+          step: '02',
+          title: 'Prototyping',
+          text: 'We assemble a testable model, validate hypotheses, and choose the architecture.',
+        },
+        {
+          step: '03',
+          title: 'Engineering launch',
+          text: 'We deploy pipelines, APIs, monitoring, and infrastructure for stable operation.',
+        },
+        {
+          step: '04',
+          title: 'Growth and support',
+          text: 'We improve model quality, monitor metrics, and evolve the product after release.',
+        },
+      ], processIcons.map((icon) => ({ icon }))),
+    },
+    lab: {
+      title: 'Engineering foundation',
+      eyebrow: 'Lab',
+      text: 'We build AI systems as engineered products with data versioning, observability, safe delivery, and quality control.',
+      cards: [
+        {
+          title: 'Data foundation',
+          text: 'Schemas, cleaning, validation, datasets, and drift control.',
+          icon: 'i-layers',
+        },
+        {
+          title: 'Model core',
+          text: 'Experiments, training, benchmarks, and production optimization.',
+          icon: 'i-brain',
+        },
+        {
+          title: 'Production loop',
+          text: 'CI/CD, monitoring, alerts, and continuous model improvement.',
+          icon: 'i-gear',
+        },
+      ],
+      metrics: ['Low latency', 'Secure pipelines', 'Observable AI'],
     },
     contact: {
       eyebrow: 'Contact',

@@ -2245,175 +2245,82 @@ main {
     overflow: hidden;
     border: 1px solid rgba(52, 237, 240, 0.18);
     background:
-        radial-gradient(circle at 50% 48%, rgba(52, 237, 240, 0.2), transparent 28%),
-        radial-gradient(circle at 12px 12px, rgba(52, 237, 240, 0.2) 1px, transparent 1.8px) 0 0 / 26px 26px,
+        radial-gradient(circle at 50% 48%, rgba(52, 237, 240, 0.13), transparent 38%),
         linear-gradient(135deg, rgba(2, 17, 22, 0.92), rgba(2, 9, 13, 0.78));
     clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
 }
 
-.lab-visual::before {
+.lab-visual--vanta {
+    min-height: 330px;
+    background: #020b0f;
+}
+
+.lab-visual--vanta::before {
     content: "";
     position: absolute;
     inset: 18px;
-    z-index: 0;
+    z-index: 2;
+    pointer-events: none;
     border: 1px solid rgba(52, 237, 240, 0.18);
     background:
-        linear-gradient(90deg, transparent 0 19px, rgba(52, 237, 240, 0.12) 19px 20px, transparent 20px 48px) 0 16px / 96px 1px repeat-x,
-        linear-gradient(180deg, transparent 0 19px, rgba(52, 237, 240, 0.12) 19px 20px, transparent 20px 48px) 16px 0 / 1px 96px repeat-y;
-    opacity: 0.72;
+        linear-gradient(90deg, rgba(52, 237, 240, 0.4), transparent 34%) 0 0 / 46% 1px no-repeat,
+        linear-gradient(180deg, rgba(52, 237, 240, 0.3), transparent 40%) 0 0 / 1px 52% no-repeat,
+        linear-gradient(270deg, rgba(52, 237, 240, 0.26), transparent 42%) 100% 100% / 38% 1px no-repeat,
+        linear-gradient(0deg, rgba(52, 237, 240, 0.22), transparent 44%) 100% 100% / 1px 42% no-repeat;
+    opacity: 0.82;
     clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
 }
 
-.lab-visual::after {
+.lab-visual--vanta::after {
     content: "";
     position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 1;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent, rgba(52, 237, 240, 0.18), transparent 34%);
-    filter: blur(1px);
-    opacity: 0.75;
-    transform: translate(-50%, -50%);
-    animation: labRadar 8s linear infinite;
-}
-
-.lab-scan {
-    position: absolute;
-    inset: 0 auto 0 0;
     z-index: 2;
-    width: 28%;
-    background: linear-gradient(90deg, transparent, rgba(52, 237, 240, 0.12), transparent);
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 74% 26%, rgba(245, 255, 255, 0.18), transparent 18%),
+        linear-gradient(180deg, rgba(52, 237, 240, 0.08), transparent 30%, rgba(0, 0, 0, 0.14));
     mix-blend-mode: screen;
-    animation: labScan 5.6s ease-in-out infinite;
 }
 
-.lab-core {
+.lab-vanta {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 5;
+    inset: 0;
+    z-index: 1;
+    min-height: 100%;
+    background:
+        radial-gradient(circle at 72% 32%, rgba(52, 237, 240, 0.14), transparent 30%),
+        #020b0f;
+}
+
+.lab-vanta canvas {
+    display: block;
+}
+
+.lab-vanta__overlay {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    z-index: 3;
     display: grid;
-    place-items: center;
-    width: 86px;
-    height: 86px;
-    color: var(--cyan);
-    border: 1px solid rgba(52, 237, 240, 0.6);
-    background: rgba(4, 24, 30, 0.86);
-    box-shadow: 0 0 34px rgba(52, 237, 240, 0.32);
-    transform: translate(-50%, -50%) rotate(45deg);
-    animation: labCoreFloat 5s ease-in-out infinite;
+    gap: 4px;
+    pointer-events: none;
+    text-transform: uppercase;
 }
 
-.lab-core svg {
-    position: relative;
-    z-index: 2;
-    width: 44px;
-    height: 44px;
-    transform: rotate(-45deg);
+.lab-vanta__overlay span {
+    color: rgba(143, 252, 255, 0.74);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
 }
 
-.lab-core__ring {
-    position: absolute;
-    inset: -18px;
-    border: 1px solid rgba(52, 237, 240, 0.28);
-    opacity: 0.72;
-    animation: labRing 4.4s ease-in-out infinite;
+.lab-vanta__overlay strong {
+    color: #e9f9fb;
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.04em;
 }
-
-.lab-core__ring--inner {
-    inset: -8px;
-    border-color: rgba(127, 255, 255, 0.48);
-    animation-delay: -1.7s;
-}
-
-.lab-trace {
-    position: absolute;
-    z-index: 2;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(52, 237, 240, 0.65), transparent);
-    box-shadow: 0 0 12px rgba(52, 237, 240, 0.28);
-    opacity: 0.78;
-    transform-origin: 0 50%;
-}
-
-.lab-trace--1 { left: 4%; top: 26%; width: 42%; transform: rotate(0deg); }
-.lab-trace--2 { left: 6%; top: 42%; width: 32%; transform: rotate(18deg); }
-.lab-trace--3 { left: 8%; bottom: 24%; width: 42%; transform: rotate(-12deg); }
-.lab-trace--4 { right: 4%; top: 26%; width: 42%; transform: rotate(180deg); }
-.lab-trace--5 { right: 6%; top: 47%; width: 36%; transform: rotate(160deg); }
-.lab-trace--6 { right: 8%; bottom: 24%; width: 42%; transform: rotate(192deg); }
-.lab-trace--7 { left: 28%; top: 12%; width: 28%; transform: rotate(64deg); }
-.lab-trace--8 { left: 34%; bottom: 12%; width: 28%; transform: rotate(-64deg); }
-
-.lab-packet {
-    --dx: 180px;
-    --dy: 0px;
-    --speed: 3.2s;
-    position: absolute;
-    z-index: 4;
-    left: var(--x);
-    top: var(--y);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #9fffff;
-    box-shadow: 0 0 14px rgba(52, 237, 240, 0.95), 0 0 30px rgba(52, 237, 240, 0.42);
-    opacity: 0;
-    animation: labPacketMove var(--speed) linear infinite;
-}
-
-.lab-packet--1 { --x: 11%; --y: 26%; --dx: 32vw; --dy: 0px; --speed: 3.5s; }
-.lab-packet--2 { --x: 13%; --y: 40%; --dx: 24vw; --dy: 74px; --speed: 4.2s; animation-delay: -1.4s; }
-.lab-packet--3 { --x: 16%; --y: 72%; --dx: 27vw; --dy: -66px; --speed: 4.8s; animation-delay: -2.1s; }
-.lab-packet--4 { --x: 77%; --y: 28%; --dx: -29vw; --dy: 0px; --speed: 3.8s; animation-delay: -0.8s; }
-.lab-packet--5 { --x: 79%; --y: 48%; --dx: -23vw; --dy: 54px; --speed: 4.5s; animation-delay: -2.8s; }
-.lab-packet--6 { --x: 73%; --y: 74%; --dx: -26vw; --dy: -72px; --speed: 4.1s; animation-delay: -3.2s; }
-
-.lab-pulse {
-    position: absolute;
-    z-index: 4;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #7fffff;
-    box-shadow: 0 0 16px rgba(52, 237, 240, 0.9), 0 0 34px rgba(52, 237, 240, 0.42);
-    animation: labPulse 3.8s linear infinite;
-}
-
-.lab-pulse--a { left: 17%; top: 26%; }
-.lab-pulse--b { right: 21%; top: 47%; animation-delay: -1.2s; }
-.lab-pulse--c { left: 32%; bottom: 20%; animation-delay: -2.3s; }
-
-.lab-readout {
-    position: absolute;
-    left: 28px;
-    right: 28px;
-    bottom: 20px;
-    z-index: 4;
-    display: flex;
-    align-items: end;
-    gap: 7px;
-    height: 40px;
-    padding: 8px 10px;
-    border-top: 1px solid rgba(52, 237, 240, 0.18);
-    background: linear-gradient(90deg, rgba(2, 17, 22, 0.78), rgba(52, 237, 240, 0.08), rgba(2, 17, 22, 0.78));
-}
-
-.lab-readout span {
-    flex: 1;
-    min-width: 3px;
-    height: 30%;
-    background: linear-gradient(180deg, #8dffff, rgba(0, 150, 160, 0.26));
-    box-shadow: 0 0 10px rgba(52, 237, 240, 0.48);
-    animation: labReadout 1.8s ease-in-out infinite;
-}
-
-.lab-readout span:nth-child(2n) { animation-delay: -0.35s; }
-.lab-readout span:nth-child(3n) { animation-delay: -0.7s; }
-.lab-readout span:nth-child(4n) { animation-delay: -1.05s; }
 
 .lab-copy {
     display: flex;
@@ -3407,7 +3314,7 @@ textarea:focus {
     }
 
     .lab-visual {
-        min-height: 230px;
+        min-height: 260px;
     }
 
     .lab-card {

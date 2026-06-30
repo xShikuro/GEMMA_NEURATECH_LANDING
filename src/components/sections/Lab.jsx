@@ -1,36 +1,61 @@
+import { useEffect, useRef } from 'react'
 import SvgIcon from '../icons/SvgIcon'
 import SectionHead from '../ui/SectionHead'
 
-const traceLines = Array.from({ length: 8 }, (_, index) => index + 1)
-const signalPackets = Array.from({ length: 6 }, (_, index) => index + 1)
-const readoutBars = Array.from({ length: 12 }, (_, index) => index + 1)
-
 export default function Lab({ copy }) {
+  const vantaRef = useRef(null)
+
+  useEffect(() => {
+    if (!vantaRef.current) return undefined
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return undefined
+
+    let disposed = false
+    let effect
+
+    Promise.all([
+      import('three'),
+      import('vanta/dist/vanta.globe.min.js'),
+    ]).then(([THREE, globeModule]) => {
+      if (disposed || !vantaRef.current) return
+
+      const GLOBE = globeModule.default?.default || globeModule.default || window.VANTA?.GLOBE
+      if (typeof GLOBE !== 'function') return
+
+      effect = GLOBE({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 260,
+        minWidth: 260,
+        scale: 1,
+        scaleMobile: 1,
+        backgroundColor: 0x020b0f,
+        color: 0x34edf0,
+        color2: 0xf5ffff,
+        size: 0.95,
+      })
+    })
+
+    return () => {
+      disposed = true
+      effect?.destroy()
+    }
+  }, [])
+
   return (
     <section className="lab-section section-block tech-frame reveal" id="lab">
       <SectionHead title={copy.title} />
 
       <div className="lab-layout">
-        <div className="lab-visual" aria-hidden="true">
-          <span className="lab-scan"></span>
-          <div className="lab-core">
-            <span className="lab-core__ring lab-core__ring--outer"></span>
-            <span className="lab-core__ring lab-core__ring--inner"></span>
-            <SvgIcon id="i-chip" />
-          </div>
-          {traceLines.map((line) => (
-            <span key={line} className={`lab-trace lab-trace--${line}`}></span>
-          ))}
-          {signalPackets.map((packet) => (
-            <span key={packet} className={`lab-packet lab-packet--${packet}`}></span>
-          ))}
-          <span className="lab-pulse lab-pulse--a"></span>
-          <span className="lab-pulse lab-pulse--b"></span>
-          <span className="lab-pulse lab-pulse--c"></span>
-          <div className="lab-readout">
-            {readoutBars.map((bar) => (
-              <span key={bar}></span>
-            ))}
+        <div className="lab-visual lab-visual--vanta">
+          <div ref={vantaRef} className="lab-vanta" aria-hidden="true"></div>
+          <div className="lab-vanta__overlay" aria-hidden="true">
+            <span>Neural Globe</span>
+            <strong>Live Architecture Map</strong>
           </div>
         </div>
 

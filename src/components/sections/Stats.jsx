@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { stats } from '../../data/landingData'
 import SvgIcon from '../icons/SvgIcon'
 
 function getInitialValue(stat) {
@@ -25,9 +24,13 @@ function getNextValue(stat, currentValue) {
   return Math.round(value)
 }
 
-export default function Stats() {
-  const initialValues = useMemo(() => stats.map(getInitialValue), [])
+export default function Stats({ stats }) {
+  const initialValues = useMemo(() => stats.map(getInitialValue), [stats])
   const [values, setValues] = useState(initialValues)
+
+  useEffect(() => {
+    setValues(initialValues)
+  }, [initialValues])
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -35,7 +38,7 @@ export default function Stats() {
     }, 1400)
 
     return () => window.clearInterval(intervalId)
-  }, [])
+  }, [stats])
 
   return (
     <section className="stats tech-strip reveal">

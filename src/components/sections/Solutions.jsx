@@ -1,4 +1,3 @@
-import { solutions } from '../../data/landingData'
 import SvgIcon from '../icons/SvgIcon'
 import SectionHead from '../ui/SectionHead'
 import SliderButtons from '../ui/SliderButtons'
@@ -13,22 +12,22 @@ function NeuralIcon() {
   )
 }
 
-export default function Solutions() {
+export default function Solutions({ copy }) {
   return (
     <section className="section-block tech-frame reveal" id="solutions">
       <SectionHead
-        title="Наши решения"
-        actions={<SliderButtons previousLabel="Предыдущие решения" nextLabel="Следующие решения" />}
+        title={copy.title}
+        actions={<SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />}
       />
 
       <div className="solution-grid" data-scroll-row>
-        {solutions.map((solution) => (
+        {copy.items.map((solution) => (
           <article className="solution-card" key={solution.title}>
             {solution.neuralIcon ? <NeuralIcon /> : <SvgIcon id={solution.icon} className="card-svg" />}
             <h3>{solution.title}</h3>
             <p>{solution.text}</p>
             <a href="#contact">
-              Подробнее
+              {copy.details}
               <SvgIcon id="i-arrow" />
             </a>
           </article>

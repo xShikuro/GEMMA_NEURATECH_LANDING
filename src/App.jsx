@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import IconSprite from './components/icons/IconSprite'
 import BackgroundEffects from './components/layout/BackgroundEffects'
 import Footer from './components/layout/Footer'
@@ -11,10 +12,22 @@ import Stats from './components/sections/Stats'
 import TechStack from './components/sections/TechStack'
 import WelcomeScreen from './components/sections/WelcomeScreen'
 import Why from './components/sections/Why'
+import { content } from './data/landingData'
 import { useLandingRuntime } from './hooks/useLandingRuntime'
 
 function App() {
+  const [language, setLanguage] = useState('ru')
+  const copy = content[language]
+
   useLandingRuntime()
+
+  useEffect(() => {
+    document.documentElement.lang = language
+  }, [language])
+
+  const toggleLanguage = () => {
+    setLanguage((currentLanguage) => (currentLanguage === 'ru' ? 'en' : 'ru'))
+  }
 
   return (
     <>
@@ -23,18 +36,23 @@ function App() {
       <BackgroundEffects />
 
       <div className="site">
-        <Header />
+        <Header
+          copy={copy.header}
+          language={language}
+          navLinks={copy.navLinks}
+          onLanguageToggle={toggleLanguage}
+        />
         <main id="top">
-          <Hero />
-          <Stats />
-          <About />
-          <Solutions />
-          <TechStack />
-          <Cases />
-          <Why />
-          <Contact />
+          <Hero copy={copy.hero} />
+          <Stats stats={copy.stats} />
+          <About copy={copy.about} />
+          <Solutions copy={copy.solutions} />
+          <TechStack copy={copy.tech} />
+          <Cases copy={copy.cases} />
+          <Why copy={copy.why} />
+          <Contact copy={copy.contact} />
         </main>
-        <Footer />
+        <Footer copy={copy.footer} navLinks={copy.navLinks} />
       </div>
     </>
   )

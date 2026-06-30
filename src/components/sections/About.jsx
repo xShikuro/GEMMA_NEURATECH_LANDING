@@ -3,7 +3,7 @@ import SvgIcon from '../icons/SvgIcon'
 const roomLines = ['line-1', 'line-2', 'line-3']
 const floorLines = ['floor-1', 'floor-2', 'floor-3']
 
-export default function About() {
+export default function About({ copy }) {
   return (
     <section className="about section-grid reveal" id="about">
       <div className="lab-panel tech-frame">
@@ -26,12 +26,13 @@ export default function About() {
       </div>
 
       <div className="about-copy">
-        <span className="eyebrow">О нас</span>
-        <h2>Инновации, которые формируют <span>будущее</span></h2>
-        <p>Gemma Neuratech - международная IT-компания и исследовательский центр, специализирующийся на разработке передовых нейронных архитектур и интеллектуальных систем.</p>
-        <p>Мы объединяем науку, технологии и инженерное мастерство для решения самых сложных задач нашего времени.</p>
+        <span className="eyebrow">{copy.eyebrow}</span>
+        <h2>{copy.titleStart} <span>{copy.titleAccent}</span></h2>
+        {copy.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
         <a className="btn btn--outline" href="#contact">
-          Подробнее о компании
+          {copy.button}
           <SvgIcon id="i-arrow" />
         </a>
       </div>

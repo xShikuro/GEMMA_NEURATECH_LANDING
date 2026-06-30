@@ -1,4 +1,3 @@
-import { cases } from '../../data/landingData'
 import SvgIcon from '../icons/SvgIcon'
 import SectionHead from '../ui/SectionHead'
 import SliderButtons from '../ui/SliderButtons'
@@ -27,21 +26,21 @@ function CaseArt({ type }) {
   )
 }
 
-export default function Cases() {
+export default function Cases({ copy }) {
   return (
     <section className="section-block tech-frame reveal" id="cases">
       <SectionHead
-        title="Кейсы"
-        actions={<SliderButtons previousLabel="Предыдущие кейсы" nextLabel="Следующие кейсы" />}
+        title={copy.title}
+        actions={<SliderButtons previousLabel={copy.previous} nextLabel={copy.next} />}
       />
       <div className="case-grid" data-scroll-row>
-        {cases.map((item) => (
+        {copy.items.map((item) => (
           <article className="case-card" key={item.title}>
             <span className="case-tag">{item.tag}</span>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
             <a href="#contact">
-              Смотреть кейс
+              {copy.details}
               <SvgIcon id="i-arrow" />
             </a>
             <CaseArt type={item.art} />

@@ -476,7 +476,7 @@ function initLandingPage() {
       if (!button) return
 
       const originalText = button.textContent
-      button.textContent = 'Сообщение отправлено'
+      button.textContent = button.dataset.successText || 'Сообщение отправлено'
       setTimer(() => {
         button.textContent = originalText
         contactForm.reset()

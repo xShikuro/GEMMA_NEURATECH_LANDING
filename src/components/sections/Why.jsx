@@ -1,13 +1,12 @@
-import { whyItems } from '../../data/landingData'
 import SvgIcon from '../icons/SvgIcon'
 import SectionHead from '../ui/SectionHead'
 
-export default function Why() {
+export default function Why({ copy }) {
   return (
     <section className="why section-block tech-frame reveal" id="news">
-      <SectionHead title="Почему мы" />
+      <SectionHead title={copy.title} />
       <div className="why-grid">
-        {whyItems.map((item) => (
+        {copy.items.map((item) => (
           <article key={item.title}>
             <SvgIcon id={item.icon} />
             <div>

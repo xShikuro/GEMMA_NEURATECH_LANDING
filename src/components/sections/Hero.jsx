@@ -2,24 +2,24 @@ import SvgIcon from '../icons/SvgIcon'
 
 const visualItems = Array.from({ length: 6 }, (_, index) => index + 1)
 
-export default function Hero() {
+export default function Hero({ copy }) {
   return (
     <section className="hero tech-frame reveal">
       <canvas id="heroParticles" aria-hidden="true"></canvas>
       <span className="micro-dots micro-dots--hero" aria-hidden="true"></span>
       <div className="hero__copy">
         <h1>
-          <span>Advanced</span>
-          <span className="text-cyan">Neural</span>
-          <span>Architectures</span>
+          {copy.title.map((line, index) => (
+            <span key={line} className={index === 1 ? 'text-cyan' : undefined}>{line}</span>
+          ))}
         </h1>
-        <p>Создаём интеллектуальные системы нового поколения на базе передовых нейронных архитектур</p>
+        <p>{copy.text}</p>
         <div className="hero__actions">
           <a className="btn btn--primary" href="#about">
-            Узнать больше
+            {copy.primary}
             <SvgIcon id="i-arrow" />
           </a>
-          <a className="btn btn--ghost" href="#contact">Связаться с нами</a>
+          <a className="btn btn--ghost" href="#contact">{copy.secondary}</a>
         </div>
       </div>
 

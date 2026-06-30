@@ -4,11 +4,11 @@ import SectionHead from '../ui/SectionHead'
 
 const scrollingTechStack = [...techStack, ...techStack]
 
-export default function TechStack() {
+export default function TechStack({ copy }) {
   return (
     <section className="tech-stack section-block tech-frame reveal" id="tech">
-      <SectionHead title="Технологии" />
-      <div className="tech-list" aria-label="Технологии">
+      <SectionHead title={copy.title} />
+      <div className="tech-list" aria-label={copy.title}>
         <div className="tech-track">
           {scrollingTechStack.map((item, index) => (
             <article className="tech-item" key={`${item.name}-${index}`}>
@@ -18,7 +18,7 @@ export default function TechStack() {
           ))}
         </div>
       </div>
-      <a className="btn btn--center btn--outline" href="#contact">Все технологии</a>
+      <a className="btn btn--center btn--outline" href="#contact">{copy.all}</a>
     </section>
   )
 }

@@ -1,0 +1,53 @@
+<svg width="780" height="180" viewBox="0 0 780 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="metal" x1="0" y1="20" x2="0" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.22" stop-color="#C9D0D2"/>
+      <stop offset="0.48" stop-color="#70797D"/>
+      <stop offset="0.72" stop-color="#F0F3F4"/>
+      <stop offset="1" stop-color="#7C8588"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="130" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66FFFF"/>
+      <stop offset="1" stop-color="#00DDEB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(25 25)" filter="url(#glow)">
+    <circle cx="65" cy="65" r="58" stroke="url(#cyan)" stroke-width="4"/>
+    <circle cx="65" cy="65" r="42" stroke="#18F7FF" stroke-width="2.5" opacity="0.9"/>
+    <path d="M65 29V42" stroke="#18F7FF" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="65" cy="23" r="8" fill="#50FAFF"/>
+
+    <!-- stylized t/i mark -->
+    <path d="M53 55H78" stroke="#6BFFFF" stroke-width="7" stroke-linecap="round"/>
+    <path d="M65 45V89C65 101 72 107 83 105" stroke="#6BFFFF" stroke-width="7" stroke-linecap="round"/>
+    <path d="M52 81C43 76 39 67 42 56" stroke="#18F7FF" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    <path d="M87 50C98 57 102 69 97 82" stroke="#18F7FF" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- circuit dots/lines -->
+    <circle cx="29" cy="65" r="5" fill="#18F7FF"/>
+    <circle cx="101" cy="65" r="5" fill="#18F7FF"/>
+    <circle cx="42" cy="35" r="4" stroke="#18F7FF" stroke-width="2"/>
+    <circle cx="37" cy="92" r="4" stroke="#18F7FF" stroke-width="2"/>
+    <circle cx="93" cy="36" r="4" stroke="#18F7FF" stroke-width="2"/>
+    <circle cx="99" cy="93" r="4" stroke="#18F7FF" stroke-width="2"/>
+    <path d="M33 65H22M101 65H112M45 39L52 49M91 40L83 51M42 89L51 80M95 91L85 82" stroke="#18F7FF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(170 47)">
+    <text x="0" y="62" font-family="Orbitron, Eurostile, Arial Black, Arial, sans-serif" font-size="66" font-weight="900" letter-spacing="8" fill="url(#metal)" stroke="#09181C" stroke-width="1.5">GEMMA</text>
+    <text x="5" y="112" font-family="Orbitron, Eurostile, Arial, sans-serif" font-size="27" font-weight="600" letter-spacing="18" fill="#39F7FF" filter="url(#glow)">NEURATECH</text>
+    <line x1="0" y1="102" x2="110" y2="102" stroke="#19EAF4" stroke-width="2" opacity="0.8"/>
+    <line x1="445" y1="102" x2="555" y2="102" stroke="#19EAF4" stroke-width="2" opacity="0.8"/>
+  </g>
+</svg>

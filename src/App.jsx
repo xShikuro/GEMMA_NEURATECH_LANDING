@@ -1,25 +1,49 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import IconSprite from './components/icons/IconSprite'
 import BackgroundEffects from './components/layout/BackgroundEffects'
 import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
-import About from './components/sections/About'
-import Cases from './components/sections/Cases'
-import Contact from './components/sections/Contact'
-import Hero from './components/sections/Hero'
-import Lab from './components/sections/Lab'
-import Process from './components/sections/Process'
-import Solutions from './components/sections/Solutions'
-import Stats from './components/sections/Stats'
-import TechStack from './components/sections/TechStack'
 import WelcomeScreen from './components/sections/WelcomeScreen'
-import Why from './components/sections/Why'
 import { content } from './data/landingData'
+import { pageContent } from './data/pageData'
 import { useLandingRuntime } from './hooks/useLandingRuntime'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+import HomePage from './pages/HomePage'
+import NotFoundPage from './pages/NotFoundPage'
+import ServicesPage from './pages/ServicesPage'
 
-function App() {
+function RouteEffects({ language }) {
+  const location = useLocation()
+  const didInitialRoute = useRef(false)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+    const isInitialHome = !didInitialRoute.current && location.pathname === '/'
+    didInitialRoute.current = true
+
+    if (isInitialHome) {
+      return undefined
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      document.querySelectorAll('.reveal').forEach((item) => {
+        item.classList.add('is-visible')
+      })
+    })
+
+    return () => window.cancelAnimationFrame(frameId)
+  }, [location.pathname, language])
+
+  return null
+}
+
+function AppShell() {
   const [language, setLanguage] = useState('ru')
   const copy = content[language]
+  const pages = pageContent[language]
 
   useLandingRuntime()
 
@@ -33,6 +57,7 @@ function App() {
 
   return (
     <>
+      <RouteEffects language={language} />
       <IconSprite />
       <WelcomeScreen />
       <BackgroundEffects />
@@ -41,24 +66,29 @@ function App() {
         <Header
           copy={copy.header}
           language={language}
-          navLinks={copy.navLinks}
+          navLinks={pages.navLinks}
           onLanguageToggle={toggleLanguage}
         />
         <main id="top">
-          <Hero copy={copy.hero} />
-          <Stats stats={copy.stats} />
-          <About copy={copy.about} />
-          <Solutions copy={copy.solutions} />
-          <TechStack copy={copy.tech} />
-          <Cases copy={copy.cases} />
-          <Why copy={copy.why} />
-          <Process copy={copy.process} />
-          <Lab copy={copy.lab} />
-          <Contact copy={copy.contact} />
+          <Routes>
+            <Route path="/" element={<HomePage copy={copy} />} />
+            <Route path="/services" element={<ServicesPage copy={pages.servicesPage} />} />
+            <Route path="/about" element={<AboutPage copy={pages.aboutPage} />} />
+            <Route path="/contact" element={<ContactPage copy={pages.contactPage} />} />
+            <Route path="*" element={<NotFoundPage copy={pages.notFound} />} />
+          </Routes>
         </main>
-        <Footer copy={copy.footer} navLinks={copy.navLinks} />
+        <Footer copy={copy.footer} navLinks={pages.navLinks} />
       </div>
     </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   )
 }
 

@@ -511,21 +511,21 @@ function initLandingPage() {
     cursorPull: 0.0011,
   }))
 
-  const contactForm = document.querySelector('.contact-form')
-  if (contactForm) {
-    addEvent(contactForm, 'submit', (event) => {
-      event.preventDefault()
-      const button = contactForm.querySelector('button')
-      if (!button) return
+  addEvent(document, 'submit', (event) => {
+    const contactForm = event.target instanceof Element ? event.target.closest('.contact-form') : null
+    if (!contactForm) return
 
-      const originalText = button.textContent
-      button.textContent = button.dataset.successText || 'Сообщение отправлено'
-      setTimer(() => {
-        button.textContent = originalText
-        contactForm.reset()
-      }, 1400)
-    })
-  }
+    event.preventDefault()
+    const button = contactForm.querySelector('button')
+    if (!button) return
+
+    const originalText = button.textContent
+    button.textContent = button.dataset.successText || 'Сообщение отправлено'
+    setTimer(() => {
+      button.textContent = originalText
+      contactForm.reset()
+    }, 1400)
+  })
 
   return () => {
     disposed = true

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import SvgIcon from '../icons/SvgIcon'
 import Brand from './Brand'
 
@@ -8,12 +9,18 @@ export default function Header({ copy, language, navLinks, onLanguageToggle }) {
 
       <nav className="main-nav" aria-label={copy.navLabel}>
         {navLinks.map((link) => (
-          <a key={link.href} href={link.href}>{link.label}</a>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'is-active' : undefined)}
+            end={link.to === '/'}
+            key={link.to}
+            to={link.to}
+          >
+            {link.label}
+          </NavLink>
         ))}
       </nav>
 
       <div className="header-actions">
-        <a className="btn btn--ghost btn--small" href="#contact">{copy.contact}</a>
         <button
           className="lang-switch"
           type="button"

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import SvgIcon from '../icons/SvgIcon'
 import Brand from './Brand'
 
@@ -20,7 +21,7 @@ export default function Footer({ copy, navLinks }) {
 
           <div className="footer-cta">
             <span>{copy.cta}</span>
-            <a className="btn btn--outline btn--small" href="#contact">{copy.ctaButton}</a>
+            <Link className="btn btn--outline btn--small" to="/contact">{copy.ctaButton}</Link>
           </div>
         </div>
 
@@ -28,21 +29,21 @@ export default function Footer({ copy, navLinks }) {
           <div className="footer-col">
             <h3>{copy.navTitle}</h3>
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href}>{link.label}</a>
+              <Link key={link.to} to={link.to}>{link.label}</Link>
             ))}
           </div>
 
           <div className="footer-col">
             <h3>{copy.servicesTitle}</h3>
             {copy.services.map((service) => (
-              <a key={service} href="#solutions">{service}</a>
+              <Link key={service} to="/services">{service}</Link>
             ))}
           </div>
 
           <div className="footer-col">
             <h3>{copy.technologiesTitle}</h3>
             {copy.technologies.map((technology) => (
-              <a key={technology} href="#tech">{technology}</a>
+              <Link key={technology} to="/services">{technology}</Link>
             ))}
           </div>
 

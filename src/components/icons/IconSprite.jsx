@@ -7,9 +7,16 @@ export default function IconSprite() {
       <symbol id="i-chevron" viewBox="0 0 24 24">
         <path d="m8 10 4 4 4-4" />
       </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </symbol>
       <symbol id="i-info" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" />
         <path d="M12 11v6m0-10h.01" />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m4 7 8 6 8-6" />
       </symbol>
       <symbol id="i-crown" viewBox="0 0 24 24">
         <path d="m3 7 5 5 4-8 4 8 5-5-2 12H5L3 7Z" />

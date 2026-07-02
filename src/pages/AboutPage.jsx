@@ -1,5 +1,7 @@
 import SvgIcon from '../components/icons/SvgIcon'
+import CertificatePanel from '../components/sections/CertificatePanel'
 import SectionHead from '../components/ui/SectionHead'
+import itParkCertificate from '../assets/images/it-park-resident-certificate.jpg'
 
 export default function AboutPage({ copy }) {
   return (
@@ -18,6 +20,23 @@ export default function AboutPage({ copy }) {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section-block tech-frame reveal">
+        <SectionHead title={copy.legalTitle} />
+        <div className="legal-grid">
+          {copy.legalDetails.map((item) => (
+            <article className="legal-card" key={item.label}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block tech-frame reveal">
+        <SectionHead title={copy.certificate.title} />
+        <CertificatePanel copy={copy.certificate} image={itParkCertificate} />
       </section>
 
       <section className="section-block tech-frame reveal">

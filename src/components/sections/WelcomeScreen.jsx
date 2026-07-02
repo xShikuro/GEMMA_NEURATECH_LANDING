@@ -13,7 +13,7 @@ export default function WelcomeScreen() {
       </div>
       <div className="welcome-panel">
         <div className="welcome-brand">
-          <img className="welcome-brand__logo" src={logo} alt="Gemma Neuratech" />
+          <img className="welcome-brand__logo" src={logo} alt="Gemma Neuratech IT" />
         </div>
         <p className="welcome-kicker">Neural systems boot sequence</p>
         <h1>Initializing intelligence layer</h1>

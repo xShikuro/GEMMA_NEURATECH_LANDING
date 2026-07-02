@@ -47,7 +47,7 @@ function initLandingPage() {
   body.classList.remove('is-ready', 'cursor-ready', 'cursor-idle', 'cursor-hover', 'cursor-active')
 
   const titleFrames = [
-    'Gemma Neuratech',
+    'Gemma Neuratech IT',
     'Neural Systems',
     'AI Engineering',
     'Edge AI',

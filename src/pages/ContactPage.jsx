@@ -36,7 +36,7 @@ export default function ContactPage({ copy }) {
             </div>
           </div>
 
-          <form className="contact-form route-contact-form">
+          <form className="contact-form route-contact-form" id="contact-form">
             <h2>{copy.formTitle}</h2>
             <label>
               <span>{copy.name}</span>

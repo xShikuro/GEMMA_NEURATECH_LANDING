@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Contact({ copy }) {
   return (
     <section className="contact tech-frame reveal" id="contact">
@@ -5,7 +7,13 @@ export default function Contact({ copy }) {
         <span className="eyebrow">{copy.eyebrow}</span>
         <h2>{copy.title}</h2>
         <p>{copy.text}</p>
-        <a className="btn btn--primary" href="mailto:info@gemmaneuratech.com">{copy.link}</a>
+        <Link className="btn btn--primary" to={copy.linkHref || '/contact'}>{copy.link}</Link>
+        {copy.directEmail ? (
+          <a className="contact-direct" href={`mailto:${copy.directEmail}`}>
+            <span>{copy.directEmailLabel}</span>
+            <strong>{copy.directEmail}</strong>
+          </a>
+        ) : null}
       </div>
       <form className="contact-form">
         <div className="form-row">

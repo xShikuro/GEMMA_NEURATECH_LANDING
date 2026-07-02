@@ -49,8 +49,10 @@ export default function Footer({ copy, navLinks }) {
 
           <div className="footer-col footer-contacts">
             <h3>{copy.contactsTitle}</h3>
-            <a href="mailto:info@gemmaneuratech.com">info@gemmaneuratech.com</a>
-            <a href="tel:+15551234567">+1 (555) 123-45-67</a>
+            {copy.email ? <a href={`mailto:${copy.email}`}>{copy.email}</a> : null}
+            {copy.contactItems?.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
             <span>{copy.location}</span>
             <div className="socials">
               <a href="#" aria-label="LinkedIn"><SvgIcon id="i-linkedin" /></a>

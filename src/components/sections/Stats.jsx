@@ -13,6 +13,10 @@ function getNextValue(stat, currentValue) {
     return stat.values[(index + 1) % stat.values.length]
   }
 
+  if (!Number.isFinite(stat.min) && !Number.isFinite(stat.max)) {
+    return stat.value
+  }
+
   const min = stat.min ?? 0
   const max = stat.max ?? min
   const value = min + Math.random() * (max - min)

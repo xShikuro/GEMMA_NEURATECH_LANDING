@@ -71,20 +71,27 @@ function initLandingPage() {
   const cursorState = {
     x: window.innerWidth * 0.5,
     y: window.innerHeight * 0.38,
-    smoothX: window.innerWidth * 0.5,
-    smoothY: window.innerHeight * 0.38,
     lastMove: 0,
   }
 
-  rootStyle.setProperty('--pointer-x', `${cursorState.x}px`)
-  rootStyle.setProperty('--pointer-y', `${cursorState.y}px`)
+  const syncCursorVars = () => {
+    rootStyle.setProperty('--pointer-x', `${cursorState.x}px`)
+    rootStyle.setProperty('--pointer-y', `${cursorState.y}px`)
+    rootStyle.setProperty('--cursor-x', `${cursorState.x}px`)
+    rootStyle.setProperty('--cursor-y', `${cursorState.y}px`)
+    rootStyle.setProperty('--grid-x', `${cursorState.x * -0.026}px`)
+    rootStyle.setProperty('--grid-y', `${cursorState.y * -0.026}px`)
+    rootStyle.setProperty('--grid-x2', `${cursorState.x * 0.018}px`)
+    rootStyle.setProperty('--grid-y2', `${cursorState.y * 0.018}px`)
+  }
+
+  syncCursorVars()
 
   const updateCursorPosition = (event) => {
     cursorState.x = event.clientX
     cursorState.y = event.clientY
     cursorState.lastMove = performance.now()
-    rootStyle.setProperty('--pointer-x', `${cursorState.x}px`)
-    rootStyle.setProperty('--pointer-y', `${cursorState.y}px`)
+    syncCursorVars()
     body.classList.add('cursor-ready')
     body.classList.remove('cursor-idle')
   }
@@ -121,22 +128,6 @@ function initLandingPage() {
       body.classList.remove('cursor-hover')
     }
   })
-
-  const animateCursor = () => {
-    cursorState.smoothX += (cursorState.x - cursorState.smoothX) * 0.13
-    cursorState.smoothY += (cursorState.y - cursorState.smoothY) * 0.13
-
-    rootStyle.setProperty('--cursor-x', `${cursorState.smoothX}px`)
-    rootStyle.setProperty('--cursor-y', `${cursorState.smoothY}px`)
-    rootStyle.setProperty('--grid-x', `${cursorState.smoothX * -0.026}px`)
-    rootStyle.setProperty('--grid-y', `${cursorState.smoothY * -0.026}px`)
-    rootStyle.setProperty('--grid-x2', `${cursorState.smoothX * 0.018}px`)
-    rootStyle.setProperty('--grid-y2', `${cursorState.smoothY * 0.018}px`)
-
-    requestFrame(animateCursor)
-  }
-
-  requestFrame(animateCursor)
 
   const welcomeScreen = document.querySelector('.welcome-screen')
   if (welcomeScreen) {

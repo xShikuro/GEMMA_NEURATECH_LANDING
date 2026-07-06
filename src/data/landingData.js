@@ -89,10 +89,10 @@ export const content = {
       secondary: 'Связаться с нами',
     },
     stats: withMeta([
-      { label: 'Дата регистрации', value: '07.05.2026' },
-      { label: 'Форма компании', value: 'MCHJ (ООО)' },
-      { label: 'IT Park Resident', value: '26.05.2026' },
-      { label: 'Локация', value: 'Ташкент' },
+      { label: 'Лет на рынке', min: 4, max: 7, suffix: '+' },
+      { label: 'Проектов', min: 45, max: 80, suffix: '+' },
+      { label: 'Поддержка', values: ['24/7', '12/7', '24/7'] },
+      { label: 'Стабильность', min: 98.7, max: 99.9, decimals: 1, suffix: '%' },
     ], sharedStats),
     about: {
       eyebrow: 'О нас',
@@ -369,10 +369,10 @@ export const content = {
       secondary: 'Get in touch',
     },
     stats: withMeta([
-      { label: 'Registration date', value: '07.05.2026' },
-      { label: 'Legal form', value: 'MCHJ (LLC)' },
-      { label: 'IT Park Resident', value: '26.05.2026' },
-      { label: 'Location', value: 'Tashkent' },
+      { label: 'Years in market', min: 4, max: 7, suffix: '+' },
+      { label: 'Projects', min: 45, max: 80, suffix: '+' },
+      { label: 'Support', values: ['24/7', '12/7', '24/7'] },
+      { label: 'Stability', min: 98.7, max: 99.9, decimals: 1, suffix: '%' },
     ], sharedStats),
     about: {
       eyebrow: 'About us',

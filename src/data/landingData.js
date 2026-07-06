@@ -1,4 +1,5 @@
 const companyEmail = 'Gemmaneuratech@gmail.com'
+const companyPhone = '+998772827474'
 
 export const techStack = [
   { name: 'PyTorch', icon: 'siPytorch' },
@@ -273,6 +274,7 @@ export const content = {
       contactsTitle: 'Контакты',
       location: 'Узбекистан, г. Ташкент, Алмазарский район, МФЙ Чилтогон, ул. Тахтапул Дарвоза, дом 396-У',
       email: companyEmail,
+      phone: companyPhone,
       contactItems: ['"GEMMA NEURATECH IT" MCHJ (ООО)', 'Регистрация: 07.05.2026', 'IT Park Resident с 26.05.2026'],
       services: ['Разработка нейронных сетей', 'Edge AI', 'Распределенные вычисления', 'AI-безопасность'],
       technologies: ['Нейронные сети', 'Компьютерное зрение', 'Облачные вычисления', 'MLOps-пайплайны'],
@@ -485,6 +487,7 @@ export const content = {
       contactsTitle: 'Contacts',
       location: '396-U, Takhtapul Darvoza St., Chiltogon mahalla, Almazar district, Tashkent, Uzbekistan',
       email: companyEmail,
+      phone: companyPhone,
       contactItems: ['"GEMMA NEURATECH IT" MCHJ (LLC)', 'Registered: 07.05.2026', 'IT Park Resident since 26.05.2026'],
       services: ['Neural network development', 'Edge AI', 'Distributed computing', 'AI security'],
       technologies: ['Neural networks', 'Computer vision', 'Cloud computing', 'MLOps pipelines'],

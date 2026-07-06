@@ -50,6 +50,7 @@ export default function Footer({ copy, navLinks }) {
           <div className="footer-col footer-contacts">
             <h3>{copy.contactsTitle}</h3>
             {copy.email ? <a href={`mailto:${copy.email}`}>{copy.email}</a> : null}
+            {copy.phone ? <a href={`tel:${copy.phone}`}>{copy.phone}</a> : null}
             {copy.contactItems?.map((item) => (
               <span key={item}>{item}</span>
             ))}

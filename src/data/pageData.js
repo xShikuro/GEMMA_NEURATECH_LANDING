@@ -1,4 +1,5 @@
 const companyEmail = 'Gemmaneuratech@gmail.com'
+const companyPhone = '+998772827474'
 
 const legalDetailsRu = [
   { label: 'Компания', value: 'Gemma Neuratech IT' },
@@ -7,6 +8,7 @@ const legalDetailsRu = [
   { label: 'Дата регистрации', value: '07.05.2026' },
   { label: 'IT Park Resident', value: 'с 26.05.2026' },
   { label: 'Email', value: companyEmail },
+  { label: 'Телефон', value: companyPhone },
 ]
 
 const legalDetailsEn = [
@@ -16,6 +18,7 @@ const legalDetailsEn = [
   { label: 'Registration date', value: '07.05.2026' },
   { label: 'IT Park Resident', value: 'since 26.05.2026' },
   { label: 'Email', value: companyEmail },
+  { label: 'Phone', value: companyPhone },
 ]
 
 export const pageContent = {
@@ -104,6 +107,7 @@ export const pageContent = {
       text: 'Здесь собраны официальные данные компании и рабочая почта для заявок, консультаций и связи по проектам.',
       methods: [
         { title: 'Email', value: companyEmail, href: `mailto:${companyEmail}`, icon: 'i-mail' },
+        { title: 'Телефон', value: companyPhone, href: `tel:${companyPhone}`, icon: 'i-phone' },
         { title: 'Юридическое лицо', value: '"GEMMA NEURATECH IT" MCHJ (ООО)', href: '#contact-form', icon: 'i-info' },
         { title: 'Форма компании', value: 'MCHJ (ООО)', href: '#contact-form', icon: 'i-chip' },
         { title: 'IT Park Resident', value: 'с 26.05.2026', href: '#contact-form', icon: 'i-shield' },
@@ -210,6 +214,7 @@ export const pageContent = {
       text: 'This page contains the official company details and working email for requests, consultations, and project communication.',
       methods: [
         { title: 'Email', value: companyEmail, href: `mailto:${companyEmail}`, icon: 'i-mail' },
+        { title: 'Phone', value: companyPhone, href: `tel:${companyPhone}`, icon: 'i-phone' },
         { title: 'Legal entity', value: '"GEMMA NEURATECH IT" MCHJ (LLC)', href: '#contact-form', icon: 'i-info' },
         { title: 'Legal form', value: 'MCHJ (LLC)', href: '#contact-form', icon: 'i-chip' },
         { title: 'IT Park Resident', value: 'since 26.05.2026', href: '#contact-form', icon: 'i-shield' },

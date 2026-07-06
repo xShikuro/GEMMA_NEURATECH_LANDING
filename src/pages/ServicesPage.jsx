@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import SvgIcon from '../components/icons/SvgIcon'
+import { PricingCards } from '../components/sections/Pricing'
 import SectionHead from '../components/ui/SectionHead'
 
 export default function ServicesPage({ copy }) {
@@ -19,21 +20,12 @@ export default function ServicesPage({ copy }) {
 
       <section className="section-block tech-frame reveal">
         <SectionHead title={copy.pricingTitle} />
-        <div className="pricing-grid">
-          {copy.pricing.map((plan) => (
-            <article className="pricing-card" key={plan.name}>
-              <span>{plan.period}</span>
-              <h2>{plan.name}</h2>
-              <strong>{plan.price}</strong>
-              <p>{plan.text}</p>
-              <ul>
-                {plan.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+        <PricingCards
+          actionLabel={copy.pricingAction}
+          checkoutCopy={copy.checkout}
+          includedLabel={copy.includedLabel}
+          plans={copy.pricing}
+        />
         <p className="page-note">{copy.note}</p>
       </section>
 

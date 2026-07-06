@@ -1,3 +1,5 @@
+import { pricingNoteEn, pricingNoteRu, pricingPlansEn, pricingPlansRu } from './pricingPlans.js'
+
 const companyEmail = 'Gemmaneuratech@gmail.com'
 const companyPhone = '+998772827474'
 
@@ -140,7 +142,7 @@ export const content = {
       title: 'Пакеты услуг',
       includedLabel: 'Что входит',
       action: 'Купить пакет',
-      note: 'Цены указаны как стартовые ориентиры. Итоговая стоимость зависит от объема, сроков, интеграций и требований к инфраструктуре.',
+      note: pricingNoteRu,
       checkout: {
         eyebrow: 'Checkout',
         termsTitle: 'Подтвердите условия',
@@ -172,36 +174,7 @@ export const content = {
           cvc: 'CVC',
         },
       },
-      items: [
-        {
-          name: 'Start',
-          price: 'от 3 000 000 сум',
-          period: 'быстрый запуск',
-          text: 'Подходит для презентационного сайта, лендинга или первичной упаковки цифрового продукта.',
-          features: ['Структура и UX-блоки', 'Адаптивная React-страница', 'Форма заявки и контакты', 'Базовая SEO-подготовка'],
-        },
-        {
-          name: 'Business Web',
-          price: 'от 8 000 000 сум',
-          period: 'веб-платформа',
-          text: 'Многостраничный сайт или рабочий интерфейс для услуг, продукта, каталога или внутреннего сервиса.',
-          features: ['До 5 основных страниц', 'Роутинг и компоненты', 'Карточки услуг или каталога', 'Подготовка к API-интеграциям'],
-        },
-        {
-          name: 'AI Prototype',
-          price: 'от 15 000 000 сум',
-          period: 'AI / ML прототип',
-          text: 'Проверяем гипотезу и собираем демо-версию AI-решения перед полноценной разработкой.',
-          features: ['Анализ задачи и данных', 'Прототип модели или сценария', 'Демо-интерфейс', 'План внедрения'],
-        },
-        {
-          name: 'Enterprise',
-          price: 'индивидуально',
-          period: 'комплексный запуск',
-          text: 'Полный цикл разработки: архитектура, инфраструктура, интеграции, мониторинг и поддержка.',
-          features: ['Архитектура продукта', 'Интеграции и инфраструктура', 'MLOps / мониторинг', 'Техническая поддержка'],
-        },
-      ],
+      items: pricingPlansRu,
     },
     tech: {
       title: 'Технологии',
@@ -420,7 +393,7 @@ export const content = {
       title: 'Service packages',
       includedLabel: 'Included',
       action: 'Buy package',
-      note: 'Prices are starting estimates. Final cost depends on scope, timeline, integrations, and infrastructure requirements.',
+      note: pricingNoteEn,
       checkout: {
         eyebrow: 'Checkout',
         termsTitle: 'Confirm terms',
@@ -452,36 +425,7 @@ export const content = {
           cvc: 'CVC',
         },
       },
-      items: [
-        {
-          name: 'Start',
-          price: 'from 3,000,000 UZS',
-          period: 'quick launch',
-          text: 'For a presentation website, landing page, or initial packaging of a digital product.',
-          features: ['Structure and UX blocks', 'Responsive React page', 'Request form and contacts', 'Basic SEO setup'],
-        },
-        {
-          name: 'Business Web',
-          price: 'from 8,000,000 UZS',
-          period: 'web platform',
-          text: 'A multi-page website or working interface for services, products, catalogs, or internal tools.',
-          features: ['Up to 5 core pages', 'Routing and components', 'Service or catalog cards', 'API integration readiness'],
-        },
-        {
-          name: 'AI Prototype',
-          price: 'from 15,000,000 UZS',
-          period: 'AI / ML prototype',
-          text: 'We validate a hypothesis and assemble a demo version of an AI solution before full development.',
-          features: ['Task and data analysis', 'Model or scenario prototype', 'Demo interface', 'Implementation plan'],
-        },
-        {
-          name: 'Enterprise',
-          price: 'custom',
-          period: 'complex launch',
-          text: 'Full-cycle development: architecture, infrastructure, integrations, monitoring, and support.',
-          features: ['Product architecture', 'Integrations and infrastructure', 'MLOps / monitoring', 'Technical support'],
-        },
-      ],
+      items: pricingPlansEn,
     },
     tech: {
       title: 'Technologies',

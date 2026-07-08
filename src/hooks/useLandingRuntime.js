@@ -6,6 +6,8 @@ function initLandingPage() {
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isMobileLite = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches
+  const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
   const rootStyle = document.documentElement.style
   const body = document.body
   const cleanups = []
@@ -44,6 +46,7 @@ function initLandingPage() {
   }
 
   body.classList.add('is-loading')
+  body.classList.toggle('is-mobile-lite', isMobileLite)
   body.classList.remove('is-ready', 'cursor-ready', 'cursor-idle', 'cursor-hover', 'cursor-active')
 
   const titleFrames = [
@@ -58,15 +61,17 @@ function initLandingPage() {
   ]
   const originalTitle = document.title || titleFrames[0]
   let titleIndex = 0
-  document.title = titleFrames[titleIndex]
-  const titleIntervalId = window.setInterval(() => {
-    titleIndex = (titleIndex + 1) % titleFrames.length
+  if (!isMobileLite) {
     document.title = titleFrames[titleIndex]
-  }, 1700)
-  cleanups.push(() => {
-    window.clearInterval(titleIntervalId)
-    document.title = originalTitle
-  })
+    const titleIntervalId = window.setInterval(() => {
+      titleIndex = (titleIndex + 1) % titleFrames.length
+      document.title = titleFrames[titleIndex]
+    }, 1700)
+    cleanups.push(() => {
+      window.clearInterval(titleIntervalId)
+      document.title = originalTitle
+    })
+  }
 
   const cursorState = {
     x: window.innerWidth * 0.5,
@@ -96,38 +101,42 @@ function initLandingPage() {
     body.classList.remove('cursor-idle')
   }
 
-  addEvent(window, 'pointermove', updateCursorPosition, { passive: true })
-  addEvent(window, 'pointerdown', () => body.classList.add('cursor-active'), { passive: true })
-  addEvent(window, 'pointerup', () => body.classList.remove('cursor-active'), { passive: true })
-  addEvent(window, 'pointerleave', () => {
-    cursorState.lastMove = 0
-    body.classList.add('cursor-idle')
-  }, { passive: true })
+  if (supportsFinePointer) {
+    addEvent(window, 'pointermove', updateCursorPosition, { passive: true })
+    addEvent(window, 'pointerdown', () => body.classList.add('cursor-active'), { passive: true })
+    addEvent(window, 'pointerup', () => body.classList.remove('cursor-active'), { passive: true })
+    addEvent(window, 'pointerleave', () => {
+      cursorState.lastMove = 0
+      body.classList.add('cursor-idle')
+    }, { passive: true })
+  }
 
   const hoverSelector = 'a, button, input, textarea, .solution-card, .case-card, .tech-item, .process-card, .lab-card'
   let activeHoverTarget = null
   const getHoverTarget = (target) => target instanceof Element ? target.closest(hoverSelector) : null
 
-  addEvent(document, 'pointerover', (event) => {
-    const target = getHoverTarget(event.target)
-    if (!target) return
+  if (supportsFinePointer) {
+    addEvent(document, 'pointerover', (event) => {
+      const target = getHoverTarget(event.target)
+      if (!target) return
 
-    activeHoverTarget = target
-    body.classList.add('cursor-hover')
-  })
+      activeHoverTarget = target
+      body.classList.add('cursor-hover')
+    })
 
-  addEvent(document, 'pointerout', (event) => {
-    const target = getHoverTarget(event.target)
-    if (!target || target !== activeHoverTarget) return
+    addEvent(document, 'pointerout', (event) => {
+      const target = getHoverTarget(event.target)
+      if (!target || target !== activeHoverTarget) return
 
-    const relatedTarget = getHoverTarget(event.relatedTarget)
-    if (relatedTarget === activeHoverTarget) return
+      const relatedTarget = getHoverTarget(event.relatedTarget)
+      if (relatedTarget === activeHoverTarget) return
 
-    activeHoverTarget = relatedTarget
-    if (!activeHoverTarget) {
-      body.classList.remove('cursor-hover')
-    }
-  })
+      activeHoverTarget = relatedTarget
+      if (!activeHoverTarget) {
+        body.classList.remove('cursor-hover')
+      }
+    })
+  }
 
   const welcomeScreen = document.querySelector('.welcome-screen')
   if (welcomeScreen) {
@@ -137,7 +146,7 @@ function initLandingPage() {
     const progress = welcomeScreen.querySelector('.welcome-progress')
     const percent = welcomeScreen.querySelector('.welcome-percent')
     const status = welcomeScreen.querySelector('.welcome-status')
-    const duration = prefersReducedMotion ? 700 : 2600
+    const duration = prefersReducedMotion ? 700 : isMobileLite ? 900 : 2600
     const statuses = [
       'Loading neural modules',
       'Mapping signal routes',
@@ -177,7 +186,7 @@ function initLandingPage() {
       if (progressRatio < 1) {
         requestFrame(tickWelcome)
       } else {
-        setTimer(finishWelcome, prefersReducedMotion ? 80 : 260)
+        setTimer(finishWelcome, prefersReducedMotion || isMobileLite ? 80 : 260)
       }
     }
 
@@ -279,7 +288,9 @@ function initLandingPage() {
         return distance < closestDistance ? index : closestIndex
       }, 0)
       const nextIndex = (currentIndex + direction + items.length) % items.length
-      const targetLeft = Math.min(Math.max(positions[nextIndex], 0), maxScroll)
+      const isCenteredSlider = window.matchMedia('(max-width: 640px), (pointer: coarse)').matches
+      const centerOffset = isCenteredSlider ? (row.clientWidth - items[nextIndex].clientWidth) / 2 : 0
+      const targetLeft = Math.min(Math.max(positions[nextIndex] - centerOffset, 0), maxScroll)
 
       row.scrollTo({ left: targetLeft, behavior: 'smooth' })
     })
@@ -287,7 +298,7 @@ function initLandingPage() {
 
   const hero = document.querySelector('.hero')
   const parallax = document.querySelector('[data-parallax]')
-  if (hero && parallax && !prefersReducedMotion) {
+  if (hero && parallax && !prefersReducedMotion && !isMobileLite) {
     addEvent(hero, 'pointermove', (event) => {
       const rect = hero.getBoundingClientRect()
       const x = (event.clientX - rect.left) / rect.width - 0.5
@@ -476,31 +487,33 @@ function initLandingPage() {
     }
   }
 
-  cleanups.push(createParticleField(document.querySelector('#heroParticles'), {
-    count: 96,
-    speed: 0.18,
-    linkDistance: 120,
-    nodeSize: 1.8,
-    lineAlpha: 0.38,
-    drift: true,
-    cursorLinks: true,
-    cursorRadius: 220,
-    cursorAlpha: 0.82,
-    cursorPull: 0.0018,
-  }))
+  if (!isMobileLite) {
+    cleanups.push(createParticleField(document.querySelector('#heroParticles'), {
+      count: 96,
+      speed: 0.18,
+      linkDistance: 120,
+      nodeSize: 1.8,
+      lineAlpha: 0.38,
+      drift: true,
+      cursorLinks: true,
+      cursorRadius: 220,
+      cursorAlpha: 0.82,
+      cursorPull: 0.0018,
+    }))
 
-  cleanups.push(createParticleField(document.querySelector('#pageMatrix'), {
-    count: 190,
-    speed: 0.075,
-    linkDistance: 148,
-    nodeSize: 1.25,
-    lineAlpha: 0.18,
-    drift: false,
-    cursorLinks: true,
-    cursorRadius: 260,
-    cursorAlpha: 0.62,
-    cursorPull: 0.0011,
-  }))
+    cleanups.push(createParticleField(document.querySelector('#pageMatrix'), {
+      count: 190,
+      speed: 0.075,
+      linkDistance: 148,
+      nodeSize: 1.25,
+      lineAlpha: 0.18,
+      drift: false,
+      cursorLinks: true,
+      cursorRadius: 260,
+      cursorAlpha: 0.62,
+      cursorPull: 0.0011,
+    }))
+  }
 
   addEvent(document, 'submit', (event) => {
     const contactForm = event.target instanceof Element ? event.target.closest('.contact-form') : null
@@ -525,7 +538,7 @@ function initLandingPage() {
     timeoutIds.forEach((id) => window.clearTimeout(id))
     frameIds.clear()
     timeoutIds.clear()
-    body.classList.remove('is-loading', 'is-ready', 'cursor-ready', 'cursor-idle', 'cursor-hover', 'cursor-active')
+    body.classList.remove('is-loading', 'is-ready', 'is-mobile-lite', 'cursor-ready', 'cursor-idle', 'cursor-hover', 'cursor-active')
   }
 }
 

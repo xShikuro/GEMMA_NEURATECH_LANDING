@@ -28,11 +28,19 @@ function getNextValue(stat, currentValue) {
   return Math.round(value)
 }
 
+function shouldFreezeStats() {
+  if (typeof window === 'undefined') return false
+
+  return window.matchMedia('(prefers-reduced-motion: reduce), (max-width: 768px), (pointer: coarse)').matches
+}
+
 export default function Stats({ stats }) {
   const initialValues = useMemo(() => stats.map(getInitialValue), [stats])
   const [values, setValues] = useState(initialValues)
 
   useEffect(() => {
+    if (shouldFreezeStats()) return undefined
+
     const intervalId = window.setInterval(() => {
       setValues((currentValues) => stats.map((stat, index) => getNextValue(stat, currentValues[index])))
     }, 1400)

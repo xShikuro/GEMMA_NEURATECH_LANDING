@@ -2,6 +2,8 @@ export const pricingNoteRu = 'Цены указаны в USD как базовы
 
 export const pricingNoteEn = 'Prices are listed in USD as base packages. Final cost may be clarified after scope, timeline, integrations, and infrastructure requirements are approved.'
 
+export const pricingNoteUz = 'Narxlar USDda bazaviy paketlar sifatida ko‘rsatilgan. Yakuniy qiymat vazifa, muddat, integratsiyalar va infratuzilma talablari kelishilgandan so‘ng aniqlashtirilishi mumkin.'
+
 export const pricingPlansRu = [
   {
     name: 'Start',
@@ -190,6 +192,102 @@ export const pricingPlansEn = [
       'MLOps/DevOps preparation',
       'Production deployment',
       'Product growth roadmap',
+    ],
+  },
+]
+
+export const pricingPlansUz = [
+  {
+    name: 'Start',
+    price: '$1,000',
+    period: 'mahsulot bazasi',
+    text: 'G‘oyani birinchi murojaatlar uchun ixcham sayt yoki landingga aylantirish.',
+    features: [
+      'Bir sahifali landing',
+      'Desktop/mobile uchun moslashuvchan dizayn',
+      'Murojaat formasi va kontakt bloki',
+      'Bazaviy SEO-belgilash',
+      'Publikatsiyaga tayyorlash',
+    ],
+  },
+  {
+    name: 'Launch',
+    price: '$1,500',
+    period: 'saytni ishga tushirish',
+    text: 'Xizmatni ishonchliroq taqdim etish uchun ko‘proq tuzilma, vizual bloklar va ishonch elementlari.',
+    features: [
+      'Start paketidagi barcha imkoniyatlar',
+      '3 tagacha asosiy bo‘lim yoki sahifa',
+      'Xizmatlar yoki afzalliklar kartalari',
+      'Bloklarning paydo bo‘lish animatsiyalari',
+      'Bazaviy voqealar analitikasi',
+      'Favicon va meta-ma’lumotlarni sozlash',
+    ],
+  },
+  {
+    name: 'Growth',
+    price: '$2,000',
+    period: 'murojaatlar o‘sishi',
+    text: 'Kompaniya, xizmatlar, keyslar va kontakt ssenariylari uchun ko‘p sahifali asos.',
+    features: [
+      'Launch paketidagi barcha imkoniyatlar',
+      '5 tagacha sahifa',
+      'Xizmatlar, keyslar va kompaniya haqida bo‘limlar',
+      'RU/EN/UZ ko‘p tilli tuzilma',
+      'Kengaytirilgan murojaat formalari',
+      'Interfeys tezligini optimallashtirish',
+    ],
+  },
+  {
+    name: 'Automation',
+    price: '$3,000',
+    period: 'avtomatlashtirish',
+    text: 'Saytni ish jarayonlariga ulash: murojaatlar, bildirishnomalar, CRM va ichki panellar.',
+    features: [
+      'Growth paketidagi barcha imkoniyatlar',
+      'Komponentli dizayn tizimi',
+      'Xizmatlar yoki tariflar katalogi',
+      'Xarid yoki murojaat ssenariylari',
+      'CRM yoki jadval integratsiyasi',
+      'Email/Telegram bildirishnomalari',
+      'Murojaat statuslari',
+      'Formalarda bazaviy xatoliklardan himoya',
+      'Backend endpoint tayyorlash',
+    ],
+  },
+  {
+    name: 'AI Platform',
+    price: '$4,000',
+    period: 'AI platforma',
+    text: 'AI moduli, API, ma’lumotlar oqimi, rollar va kuzatuvchanlikka ega mahsulot asosi.',
+    features: [
+      'Automation paketidagi barcha imkoniyatlar',
+      'Vazifa uchun AI ssenariysi',
+      'Assistent yoki model prototipi',
+      'Bilimlar bazasi yoki dataset',
+      'API arxitekturasi',
+      'Foydalanuvchi rollari',
+      'Ma’lumotlarni qayta ishlash pipeline',
+      'Prompt-flow logikasi',
+      'Xatolar monitoringi',
+      'Cloud deployga tayyorlash',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    price: '$5,000',
+    period: 'to‘liq ishga tushirish',
+    text: 'Mahsulot uchun maksimal komplekt: to‘lov, infratuzilma, xavfsizlik va qo‘llab-quvvatlash.',
+    features: [
+      'AI Platform paketidagi barcha imkoniyatlar',
+      'Checkout va to‘lov ssenariysi',
+      'Shaxsiy yoki admin bo‘lim',
+      'Tashqi servislar bilan integratsiyalar',
+      'Harakatlar va voqealar jurnali',
+      'Formalarning kengaytirilgan xavfsizligi',
+      'MLOps/DevOps tayyorgarligi',
+      'Production deploy',
+      'Mahsulot rivojlanish roadmap',
     ],
   },
 ]

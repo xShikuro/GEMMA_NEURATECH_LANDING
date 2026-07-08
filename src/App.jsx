@@ -14,6 +14,8 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import ServicesPage from './pages/ServicesPage'
 
+const languages = ['ru', 'en', 'uz']
+
 function RouteEffects({ language }) {
   const location = useLocation()
   const didInitialRoute = useRef(false)
@@ -52,7 +54,10 @@ function AppShell() {
   }, [language])
 
   const toggleLanguage = () => {
-    setLanguage((currentLanguage) => (currentLanguage === 'ru' ? 'en' : 'ru'))
+    setLanguage((currentLanguage) => {
+      const currentIndex = languages.indexOf(currentLanguage)
+      return languages[(currentIndex + 1) % languages.length]
+    })
   }
 
   return (

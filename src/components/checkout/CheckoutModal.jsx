@@ -21,6 +21,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const [accepted, setAccepted] = useState(false)
   const titleId = useId()
   const closeButtonRef = useRef(null)
+  const agreement = copy.agreement
 
   useEffect(() => {
     const previousHtmlOverflow = document.documentElement.style.overflow
@@ -90,9 +91,34 @@ export default function CheckoutModal({ copy, onClose, plan }) {
         {step === 'terms' ? (
           <div className="checkout-terms">
             <div className="checkout-terms__panel">
-              {copy.terms.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
+              {agreement ? (
+                <div className="checkout-agreement">
+                  <div className="checkout-agreement__hero">
+                    <span>{copy.stepTerms}</span>
+                    <h3>{agreement.title}</h3>
+                    <p>{agreement.intro}</p>
+                  </div>
+
+                  <div className="checkout-agreement__grid">
+                    {agreement.sections.map((section) => (
+                      <section className="checkout-agreement__section" key={section.title}>
+                        <h4>{section.title}</h4>
+                        <ul>
+                          {section.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </section>
+                    ))}
+                  </div>
+
+                  <p className="checkout-agreement__notice">{agreement.notice}</p>
+                </div>
+              ) : (
+                copy.terms.map((item) => (
+                  <p key={item}>{item}</p>
+                ))
+              )}
             </div>
             <label className="checkout-accept">
               <input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} />

@@ -1817,11 +1817,6 @@ main {
     will-change: transform;
 }
 
-.tech-track--mobile,
-.tech-toggle {
-    display: none;
-}
-
 .tech-list:hover .tech-track {
     animation-play-state: paused;
 }
@@ -4663,6 +4658,26 @@ textarea:focus {
         padding: 24px 18px;
     }
 
+    .why {
+        margin-inline: auto;
+    }
+
+    .why-grid {
+        width: 100%;
+        max-width: 320px;
+        margin-inline: auto;
+        padding-inline: 0;
+    }
+
+    .why-grid article {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .why-grid p {
+        max-width: none;
+    }
+
     .section-head {
         align-items: flex-start;
         gap: 16px;
@@ -4689,24 +4704,41 @@ textarea:focus {
     }
 
     .section-block > .slider-buttons {
-        justify-content: center;
-        margin-top: 18px;
+        display: none;
+    }
+
+    .tech-stack {
+        display: none;
+    }
+
+    .about .lab-panel {
+        display: none;
+    }
+
+    .about.section-grid {
+        grid-template-columns: 1fr;
     }
 
     .solution-grid,
     .case-grid {
-        --mobile-slide-width: min(312px, calc(100% - 32px));
+        --mobile-slide-width: min(320px, 100%);
         display: flex;
         gap: 16px;
+        width: 100%;
+        max-width: 320px;
+        margin-inline: auto;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        scroll-padding-inline: calc((100% - var(--mobile-slide-width)) / 2);
-        padding: 2px calc((100% - var(--mobile-slide-width)) / 2) 8px;
+        scroll-padding-inline: 0;
+        padding: 2px 0 8px;
+        scrollbar-width: none;
     }
 
     .solution-card,
     .case-card {
-        flex: 0 0 var(--mobile-slide-width);
+        flex: 0 0 100%;
+        width: var(--mobile-slide-width);
+        max-width: 100%;
         min-width: 0;
         scroll-snap-align: center;
         scroll-snap-stop: always;
@@ -4817,26 +4849,37 @@ textarea:focus {
         width: 100%;
     }
 
+    .lab-section {
+        padding: 34px 18px;
+        background:
+            radial-gradient(circle at 20% 40%, rgba(52, 237, 240, 0.14), transparent 30%),
+            linear-gradient(135deg, rgba(5, 23, 30, 0.86), rgba(1, 9, 13, 0.92));
+    }
+
+    .lab-section .section-head {
+        margin-bottom: 22px;
+    }
+
     .lab-visual {
-        width: min(100%, 340px);
-        min-height: 250px;
-        margin-inline: auto;
+        display: none;
     }
 
     .lab-layout {
-        justify-items: center;
+        display: block;
     }
 
     .lab-copy {
-        width: min(100%, 520px);
+        width: 100%;
+        max-width: none;
     }
 
     .lab-metrics {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .lab-card {
-        flex-direction: column;
+        flex-direction: row;
+        width: 100%;
     }
 
     .contact {
@@ -4972,8 +5015,7 @@ textarea:focus {
     .hologram__shape,
     .welcome-grid,
     .welcome-scan,
-    .welcome-core__ring,
-    .tech-track {
+    .welcome-core__ring {
         animation: none;
     }
 
@@ -4988,41 +5030,6 @@ textarea:focus {
 
     .circuit-field {
         filter: none;
-    }
-
-    .tech-list {
-        width: min(100%, 352px);
-        margin-inline: auto;
-        overflow: visible;
-        mask-image: none;
-    }
-
-    .tech-track--desktop,
-    .tech-contact {
-        display: none;
-    }
-
-    .tech-toggle {
-        display: flex;
-    }
-
-    .tech-track--mobile {
-        display: flex;
-    }
-
-    .tech-track {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        transform: none;
-        will-change: auto;
-    }
-
-    .tech-item {
-        flex: 0 1 min(150px, calc(50% - 8px));
-        min-height: 52px;
-        padding: 10px 9px;
     }
 
     .lab-visual--static {
@@ -5057,6 +5064,26 @@ textarea:focus {
     .lab-visual__label {
         left: 20px;
         bottom: 18px;
+    }
+
+    .section-grid.reveal,
+    .section-block.reveal:nth-of-type(even),
+    .contact.reveal,
+    .reveal .hero__visual,
+    .reveal .about-copy,
+    .reveal .contact-form {
+        transform: translateY(24px) scale(0.99);
+    }
+
+    .reveal.is-visible,
+    .reveal:target,
+    .reveal.is-visible .hero__visual,
+    .reveal.is-visible .about-copy,
+    .reveal.is-visible .contact-form,
+    .reveal:target .hero__visual,
+    .reveal:target .about-copy,
+    .reveal:target .contact-form {
+        transform: translate(0, 0) scale(1);
     }
 
     .reveal,

@@ -1,7 +1,14 @@
 import SvgIcon from '../components/icons/SvgIcon'
 import CertificatePanel from '../components/sections/CertificatePanel'
 import SectionHead from '../components/ui/SectionHead'
+import egrpoDocument from '../assets/documents/gemma-egrpo-director-khurshidbek.pdf'
+import registrationDocument from '../assets/documents/gemma-registration-document.pdf'
 import itParkCertificate from '../assets/images/it-park-resident-certificate.jpg'
+
+const documentFiles = {
+  egrpo: egrpoDocument,
+  registration: registrationDocument,
+}
 
 export default function AboutPage({ copy }) {
   return (
@@ -35,8 +42,17 @@ export default function AboutPage({ copy }) {
       </section>
 
       <section className="section-block tech-frame reveal">
-        <SectionHead title={copy.certificate.title} />
-        <CertificatePanel copy={copy.certificate} image={itParkCertificate} />
+        <SectionHead title={copy.documentsTitle || copy.certificate.title} />
+        <div className="certificate-stack">
+          <CertificatePanel copy={copy.certificate} image={itParkCertificate} />
+          {copy.documents?.map((documentItem) => (
+            <CertificatePanel
+              key={documentItem.heading}
+              copy={documentItem}
+              file={documentFiles[documentItem.file]}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="section-block tech-frame reveal">

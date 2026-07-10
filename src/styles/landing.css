@@ -122,6 +122,16 @@ body.certificate-modal-open {
     overflow: hidden;
 }
 
+body.certificate-modal-open,
+body.certificate-modal-open * {
+    cursor: auto;
+}
+
+body.certificate-modal-open .cursor-glow,
+body.certificate-modal-open .site-cursor {
+    display: none;
+}
+
 .welcome-screen {
     position: fixed;
     inset: 0;
@@ -3196,6 +3206,11 @@ main {
     align-items: stretch;
 }
 
+.certificate-stack {
+    display: grid;
+    gap: 18px;
+}
+
 .certificate-panel__stamp {
     position: relative;
     display: grid;
@@ -3227,6 +3242,27 @@ main {
     opacity: 0.42;
     filter: saturate(0.75) contrast(1.18) brightness(0.9);
     mix-blend-mode: screen;
+}
+
+.certificate-panel__pdf-preview {
+    position: absolute;
+    inset: -12px;
+    z-index: 0;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    border: 0;
+    opacity: 0.34;
+    filter: grayscale(1) contrast(1.42) brightness(0.82);
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.certificate-panel--pdf .certificate-panel__stamp {
+    background:
+        linear-gradient(180deg, rgba(2, 12, 16, 0.08), rgba(2, 12, 16, 0.78)),
+        radial-gradient(circle at 50% 38%, rgba(52, 237, 240, 0.2), transparent 42%),
+        linear-gradient(135deg, rgba(7, 34, 42, 0.74), rgba(2, 12, 16, 0.82)),
+        rgba(2, 12, 16, 0.84);
 }
 
 .certificate-panel__stamp::before,
@@ -3330,9 +3366,15 @@ main {
     text-align: center;
 }
 
+.certificate-panel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .certificate-panel__copy .btn {
     width: fit-content;
-    min-width: 206px;
+    min-width: 190px;
 }
 
 .certificate-panel__button {
@@ -3344,6 +3386,14 @@ main {
     box-shadow:
         0 0 24px rgba(52, 237, 240, 0.16),
         inset 0 0 20px rgba(52, 237, 240, 0.12);
+}
+
+.certificate-panel__button--download {
+    min-width: 178px;
+    border-color: rgba(52, 237, 240, 0.4);
+    background:
+        linear-gradient(180deg, rgba(52, 237, 240, 0.08), rgba(3, 20, 26, 0.7)),
+        rgba(3, 23, 29, 0.52);
 }
 
 .certificate-modal {
@@ -3401,6 +3451,44 @@ main {
     margin-bottom: 18px;
 }
 
+.certificate-modal__actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.certificate-modal__download {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 9px;
+    padding: 0 14px;
+    color: #aaffff;
+    border: 1px solid rgba(52, 237, 240, 0.4);
+    border-radius: 5px;
+    background: rgba(3, 22, 28, 0.72);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 0 18px rgba(52, 237, 240, 0.12), inset 0 0 14px rgba(52, 237, 240, 0.07);
+    transition: transform 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.certificate-modal__download:hover {
+    transform: translateY(-1px);
+    color: #ffffff;
+    border-color: rgba(100, 255, 255, 0.82);
+    box-shadow: 0 0 24px rgba(52, 237, 240, 0.22), inset 0 0 16px rgba(52, 237, 240, 0.1);
+}
+
+.certificate-modal__download svg {
+    width: 15px;
+    height: 15px;
+    transform: rotate(90deg);
+}
+
 .certificate-modal__top h2 {
     margin: 8px 0 0;
     color: #edf7fa;
@@ -3452,6 +3540,15 @@ main {
     width: 100%;
     max-height: min(72vh, 760px);
     object-fit: contain;
+    background: #f4f6ef;
+}
+
+.certificate-modal__image iframe {
+    display: block;
+    width: 100%;
+    height: min(74vh, 820px);
+    min-height: 520px;
+    border: 0;
     background: #f4f6ef;
 }
 
@@ -4859,9 +4956,46 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 
+    .certificate-stack {
+        gap: 16px;
+    }
+
+    .certificate-panel__stamp {
+        width: 100%;
+        min-height: 214px;
+    }
+
     .certificate-panel__copy .btn,
     .contact-direct {
         width: 100%;
+    }
+
+    .certificate-modal__image iframe {
+        height: 64vh;
+        min-height: 360px;
+    }
+
+    .certificate-panel__actions {
+        width: 100%;
+    }
+
+    .certificate-panel__actions .btn {
+        width: 100%;
+    }
+
+    .certificate-modal__top {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .certificate-modal__actions {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .certificate-modal__download {
+        flex: 1 1 auto;
+        justify-content: center;
     }
 
     .lab-section {

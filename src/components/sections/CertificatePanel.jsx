@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import SvgIcon from '../icons/SvgIcon'
 
-export default function CertificatePanel({ copy, image }) {
+export default function CertificatePanel({ copy, image, file }) {
   const [isOpen, setIsOpen] = useState(false)
   const titleId = useId()
   const closeButtonRef = useRef(null)
@@ -40,6 +40,14 @@ export default function CertificatePanel({ copy, image }) {
 
   if (!copy) return null
 
+  const documentUrl = file || image
+  const isPdf = copy.type === 'pdf' || documentUrl?.toLowerCase().includes('.pdf')
+  const panelClassName = `certificate-panel${isPdf ? ' certificate-panel--pdf' : ''}`
+  const modalTitle = copy.alt || copy.heading || copy.title
+  const stampIcon = copy.stampIcon || 'i-shield'
+  const stampTitle = copy.stampTitle || 'IT Park'
+  const downloadLabel = copy.downloadLabel || 'Download file'
+
   const modal = isOpen && typeof document !== 'undefined'
     ? createPortal(
         <div
@@ -61,18 +69,28 @@ export default function CertificatePanel({ copy, image }) {
                 <span className="eyebrow">{copy.eyebrow}</span>
                 <h2 id={titleId}>{copy.title}</h2>
               </div>
-              <button
-                ref={closeButtonRef}
-                className="certificate-modal__close"
-                type="button"
-                onClick={() => setIsOpen(false)}
-                aria-label={copy.closeLabel}
-              >
-                <SvgIcon id="i-close" />
-              </button>
+              <div className="certificate-modal__actions">
+                <a className="certificate-modal__download" href={documentUrl} download={copy.downloadName || undefined}>
+                  <SvgIcon id="i-arrow" />
+                  {downloadLabel}
+                </a>
+                <button
+                  ref={closeButtonRef}
+                  className="certificate-modal__close"
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label={copy.closeLabel}
+                >
+                  <SvgIcon id="i-close" />
+                </button>
+              </div>
             </div>
             <div className="certificate-modal__image">
-              <img src={image} alt={copy.alt} />
+              {isPdf ? (
+                <iframe src={`${documentUrl}#toolbar=0&navpanes=0&view=FitH`} title={modalTitle}></iframe>
+              ) : (
+                <img src={documentUrl} alt={copy.alt} />
+              )}
             </div>
           </div>
         </div>,
@@ -81,11 +99,17 @@ export default function CertificatePanel({ copy, image }) {
     : null
 
   return (
-    <div className="certificate-panel">
+    <div className={panelClassName}>
       <div className="certificate-panel__stamp" aria-hidden="true">
-        {image ? <img className="certificate-panel__background" src={image} alt="" /> : null}
-        <SvgIcon id="i-shield" />
-        <strong>IT Park</strong>
+        {isPdf ? (
+          <object className="certificate-panel__pdf-preview" data={`${documentUrl}#toolbar=0&navpanes=0&view=FitH`} type="application/pdf">
+            <span>{copy.heading}</span>
+          </object>
+        ) : documentUrl ? (
+          <img className="certificate-panel__background" src={documentUrl} alt="" />
+        ) : null}
+        <SvgIcon id={stampIcon} />
+        <strong>{stampTitle}</strong>
         <span>{copy.meta[0]}</span>
       </div>
 
@@ -98,10 +122,16 @@ export default function CertificatePanel({ copy, image }) {
             <span key={item}>{item}</span>
           ))}
         </div>
-        <button className="btn btn--outline certificate-panel__button" type="button" onClick={() => setIsOpen(true)}>
-          <SvgIcon id="i-shield" />
-          {copy.button}
-        </button>
+        <div className="certificate-panel__actions">
+          <button className="btn btn--outline certificate-panel__button" type="button" onClick={() => setIsOpen(true)}>
+            <SvgIcon id={stampIcon} />
+            {copy.button}
+          </button>
+          <a className="btn btn--outline certificate-panel__button certificate-panel__button--download" href={documentUrl} download={copy.downloadName || undefined}>
+            <SvgIcon id="i-arrow" />
+            {downloadLabel}
+          </a>
+        </div>
       </div>
 
       {modal}

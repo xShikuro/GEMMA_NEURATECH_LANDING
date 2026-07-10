@@ -83,6 +83,7 @@ export default function CertificatePanel({ copy, image }) {
   return (
     <div className="certificate-panel">
       <div className="certificate-panel__stamp" aria-hidden="true">
+        {image ? <img className="certificate-panel__background" src={image} alt="" /> : null}
         <SvgIcon id="i-shield" />
         <strong>IT Park</strong>
         <span>{copy.meta[0]}</span>

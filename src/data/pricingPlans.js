@@ -1,13 +1,13 @@
-export const pricingNoteRu = 'Цены указаны в USD как базовые пакеты. Итоговая стоимость может уточняться после согласования задач, сроков, интеграций и требований к инфраструктуре.'
+export const pricingNoteRu = 'Цены указаны в сумах как базовые пакеты. Итоговая стоимость может уточняться после согласования задач, сроков, интеграций и требований к инфраструктуре.'
 
-export const pricingNoteEn = 'Prices are listed in USD as base packages. Final cost may be clarified after scope, timeline, integrations, and infrastructure requirements are approved.'
+export const pricingNoteEn = 'Prices are listed in Uzbekistani soums as base packages. Final cost may be clarified after scope, timeline, integrations, and infrastructure requirements are approved.'
 
-export const pricingNoteUz = 'Narxlar USDda bazaviy paketlar sifatida ko‘rsatilgan. Yakuniy qiymat vazifa, muddat, integratsiyalar va infratuzilma talablari kelishilgandan so‘ng aniqlashtirilishi mumkin.'
+export const pricingNoteUz = 'Narxlar so‘mda bazaviy paketlar sifatida ko‘rsatilgan. Yakuniy qiymat vazifa, muddat, integratsiyalar va infratuzilma talablari kelishilgandan so‘ng aniqlashtirilishi mumkin.'
 
 export const pricingPlansRu = [
   {
     name: 'Start',
-    price: '$1,000',
+    price: '12 000 000 сум',
     period: 'база продукта',
     text: 'Стартовая упаковка идеи в аккуратный сайт или лендинг для первых заявок.',
     features: [
@@ -20,7 +20,7 @@ export const pricingPlansRu = [
   },
   {
     name: 'Launch',
-    price: '$1,500',
+    price: '18 000 000 сум',
     period: 'запуск сайта',
     text: 'Больше структуры, визуальных блоков и доверия для полноценной презентации услуги.',
     features: [
@@ -34,7 +34,7 @@ export const pricingPlansRu = [
   },
   {
     name: 'Growth',
-    price: '$2,000',
+    price: '24 000 000 сум',
     period: 'рост заявок',
     text: 'Многостраничная основа для компании, услуг, кейсов и контактных сценариев.',
     features: [
@@ -48,7 +48,7 @@ export const pricingPlansRu = [
   },
   {
     name: 'Automation',
-    price: '$3,000',
+    price: '36 000 000 сум',
     period: 'автоматизация',
     text: 'Подключаем сайт к рабочим процессам: заявки, уведомления, CRM и внутренние панели.',
     features: [
@@ -65,7 +65,7 @@ export const pricingPlansRu = [
   },
   {
     name: 'AI Platform',
-    price: '$4,000',
+    price: '48 000 000 сум',
     period: 'AI-платформа',
     text: 'Основа продукта с AI-модулем, API, данными, ролями и наблюдаемостью.',
     features: [
@@ -83,7 +83,7 @@ export const pricingPlansRu = [
   },
   {
     name: 'Enterprise',
-    price: '$5,000',
+    price: '60 000 000 сум',
     period: 'полный запуск',
     text: 'Максимальная комплектация для продукта: оплата, инфраструктура, безопасность и поддержка.',
     features: [
@@ -103,7 +103,7 @@ export const pricingPlansRu = [
 export const pricingPlansEn = [
   {
     name: 'Start',
-    price: '$1,000',
+    price: '12 000 000 UZS',
     period: 'product base',
     text: 'Initial packaging of an idea into a clean website or landing page for first leads.',
     features: [
@@ -116,7 +116,7 @@ export const pricingPlansEn = [
   },
   {
     name: 'Launch',
-    price: '$1,500',
+    price: '18 000 000 UZS',
     period: 'site launch',
     text: 'More structure, visual blocks, and trust signals for a stronger service presentation.',
     features: [
@@ -130,7 +130,7 @@ export const pricingPlansEn = [
   },
   {
     name: 'Growth',
-    price: '$2,000',
+    price: '24 000 000 UZS',
     period: 'lead growth',
     text: 'A multi-page foundation for a company, services, cases, and contact flows.',
     features: [
@@ -144,7 +144,7 @@ export const pricingPlansEn = [
   },
   {
     name: 'Automation',
-    price: '$3,000',
+    price: '36 000 000 UZS',
     period: 'automation',
     text: 'Connect the site to workflows: requests, notifications, CRM, and internal panels.',
     features: [
@@ -161,7 +161,7 @@ export const pricingPlansEn = [
   },
   {
     name: 'AI Platform',
-    price: '$4,000',
+    price: '48 000 000 UZS',
     period: 'AI platform',
     text: 'Product foundation with an AI module, API, data workflows, roles, and observability.',
     features: [
@@ -179,7 +179,7 @@ export const pricingPlansEn = [
   },
   {
     name: 'Enterprise',
-    price: '$5,000',
+    price: '60 000 000 UZS',
     period: 'full launch',
     text: 'Maximum package for a product: payments, infrastructure, security, and launch support.',
     features: [
@@ -199,7 +199,7 @@ export const pricingPlansEn = [
 export const pricingPlansUz = [
   {
     name: 'Start',
-    price: '$1,000',
+    price: '12 000 000 so‘m',
     period: 'mahsulot bazasi',
     text: 'G‘oyani birinchi murojaatlar uchun ixcham sayt yoki landingga aylantirish.',
     features: [
@@ -212,7 +212,7 @@ export const pricingPlansUz = [
   },
   {
     name: 'Launch',
-    price: '$1,500',
+    price: '18 000 000 so‘m',
     period: 'saytni ishga tushirish',
     text: 'Xizmatni ishonchliroq taqdim etish uchun ko‘proq tuzilma, vizual bloklar va ishonch elementlari.',
     features: [
@@ -226,7 +226,7 @@ export const pricingPlansUz = [
   },
   {
     name: 'Growth',
-    price: '$2,000',
+    price: '24 000 000 so‘m',
     period: 'murojaatlar o‘sishi',
     text: 'Kompaniya, xizmatlar, keyslar va kontakt ssenariylari uchun ko‘p sahifali asos.',
     features: [
@@ -240,7 +240,7 @@ export const pricingPlansUz = [
   },
   {
     name: 'Automation',
-    price: '$3,000',
+    price: '36 000 000 so‘m',
     period: 'avtomatlashtirish',
     text: 'Saytni ish jarayonlariga ulash: murojaatlar, bildirishnomalar, CRM va ichki panellar.',
     features: [
@@ -257,7 +257,7 @@ export const pricingPlansUz = [
   },
   {
     name: 'AI Platform',
-    price: '$4,000',
+    price: '48 000 000 so‘m',
     period: 'AI platforma',
     text: 'AI moduli, API, ma’lumotlar oqimi, rollar va kuzatuvchanlikka ega mahsulot asosi.',
     features: [
@@ -275,7 +275,7 @@ export const pricingPlansUz = [
   },
   {
     name: 'Enterprise',
-    price: '$5,000',
+    price: '60 000 000 so‘m',
     period: 'to‘liq ishga tushirish',
     text: 'Mahsulot uchun maksimal komplekt: to‘lov, infratuzilma, xavfsizlik va qo‘llab-quvvatlash.',
     features: [

@@ -5250,6 +5250,23 @@ textarea:focus {
     }
 }
 
+@media (hover: hover) and (pointer: fine) {
+    body:not(.certificate-modal-open),
+    body:not(.certificate-modal-open) * {
+        cursor: none !important;
+    }
+
+    body.certificate-modal-open,
+    body.certificate-modal-open * {
+        cursor: auto !important;
+    }
+
+    body.certificate-modal-open a,
+    body.certificate-modal-open button {
+        cursor: pointer !important;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .circuit-pulse,
     .circuit-node,

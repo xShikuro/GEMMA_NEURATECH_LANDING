@@ -21,8 +21,8 @@
     --line: rgba(52, 237, 240, 0.24);
     --line-strong: rgba(52, 237, 240, 0.58);
     --shadow: 0 0 26px rgba(0, 214, 230, 0.24);
-    --font-display: "Exo 2", "Inter", system-ui, sans-serif;
-    --font-body: "Inter", system-ui, sans-serif;
+    --font-display: "Eurostile Extended", "Eurostile Extd", "Microgramma D Extended", "Microgramma", "Exo 2", "Inter", system-ui, sans-serif;
+    --font-body: "Microgramma", "Eurostile", "Inter", system-ui, sans-serif;
 }
 
 * {

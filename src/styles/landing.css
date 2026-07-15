@@ -473,7 +473,7 @@ body.is-ready .site {
     opacity: 0.9;
     transform: translate(-50%, -50%);
     mix-blend-mode: screen;
-    transition: opacity 220ms ease;
+    transition: left 55ms linear, top 55ms linear, opacity 120ms ease;
 }
 
 .cursor-idle .cursor-glow {
@@ -492,7 +492,7 @@ body.is-ready .site {
     transform: translate(-50%, -50%);
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 10px rgba(105, 255, 255, 0.85));
-    transition: opacity 160ms ease;
+    transition: left 38ms linear, top 38ms linear, opacity 90ms ease;
 }
 
 .cursor-ready .site-cursor {
@@ -515,7 +515,7 @@ body.is-ready .site {
         0 0 18px rgba(116, 255, 255, 0.95),
         0 0 36px rgba(52, 237, 240, 0.68);
     transform: translate(-50%, -50%);
-    transition: width 150ms ease, height 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    transition: width 70ms ease, height 70ms ease, box-shadow 70ms ease, background 70ms ease;
 }
 
 .site-cursor__dot::after {
@@ -527,7 +527,7 @@ body.is-ready .site {
     box-shadow: 0 0 16px rgba(52, 237, 240, 0.34);
     opacity: 0.76;
     transform: scale(1);
-    transition: opacity 150ms ease, transform 150ms ease;
+    transition: opacity 70ms ease, transform 70ms ease;
 }
 
 .cursor-hover .site-cursor__dot {

@@ -93,8 +93,11 @@ function initLandingPage() {
   syncCursorVars()
 
   const updateCursorPosition = (event) => {
-    cursorState.x = event.clientX
-    cursorState.y = event.clientY
+    const events = typeof event.getCoalescedEvents === 'function' ? event.getCoalescedEvents() : null
+    const point = events?.length ? events[events.length - 1] : event
+
+    cursorState.x = point.clientX
+    cursorState.y = point.clientY
     cursorState.lastMove = performance.now()
     syncCursorVars()
     body.classList.add('cursor-ready')
@@ -383,7 +386,7 @@ function initLandingPage() {
       const cursorY = cursorState.y - rect.top
       const cursorAge = cursorState.lastMove ? time - cursorState.lastMove : Infinity
       const cursorPower = config.cursorLinks && !prefersReducedMotion
-        ? Math.max(0, 1 - cursorAge / 900)
+        ? Math.max(0, 1 - cursorAge / 180)
         : 0
 
       particles.forEach((particle) => {

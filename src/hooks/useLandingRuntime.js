@@ -285,9 +285,11 @@ function initLandingPage() {
 
       const rowRect = row.getBoundingClientRect()
       const positions = items.map((item) => row.scrollLeft + item.getBoundingClientRect().left - rowRect.left)
-      const currentIndex = positions.reduce((closestIndex, position, index) => {
-        const closestDistance = Math.abs(positions[closestIndex] - row.scrollLeft)
-        const distance = Math.abs(position - row.scrollLeft)
+      const currentCenter = row.scrollLeft + row.clientWidth / 2
+      const centers = positions.map((position, index) => position + items[index].clientWidth / 2)
+      const currentIndex = centers.reduce((closestIndex, center, index) => {
+        const closestDistance = Math.abs(centers[closestIndex] - currentCenter)
+        const distance = Math.abs(center - currentCenter)
         return distance < closestDistance ? index : closestIndex
       }, 0)
       const nextIndex = (currentIndex + direction + items.length) % items.length

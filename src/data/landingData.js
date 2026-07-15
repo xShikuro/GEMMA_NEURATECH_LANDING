@@ -53,6 +53,14 @@ const solutionMeta = [
   { icon: 'i-lock' },
   { icon: 'i-cube' },
   { icon: 'i-layers' },
+  { icon: 'i-gear' },
+  { icon: 'i-users' },
+  { icon: 'i-shield' },
+  { icon: 'i-info' },
+  { icon: 'i-brain' },
+  { icon: 'i-crown' },
+  { icon: 'i-chip' },
+  { icon: 'i-network' },
 ]
 
 const caseMeta = [
@@ -62,6 +70,10 @@ const caseMeta = [
   { art: 'network' },
   { art: 'shield' },
   { art: 'cube' },
+  { art: 'brain' },
+  { art: 'chart' },
+  { art: 'robot' },
+  { art: 'network' },
 ]
 
 const whyIcons = ['i-network', 'i-gear', 'i-users', 'i-shield']
@@ -136,6 +148,38 @@ export const content = {
         {
           title: 'MLOps-инфраструктура',
           text: 'Пайплайны обучения, мониторинг моделей и стабильные релизы AI-продуктов.',
+        },
+        {
+          title: 'AI-консалтинг и аудит',
+          text: 'Оценка идей, данных, рисков и архитектуры перед запуском AI-проекта.',
+        },
+        {
+          title: 'Интеграция AI в бизнес-процессы',
+          text: 'Встраиваем модели, ассистентов и автоматизацию в рабочие сценарии компании.',
+        },
+        {
+          title: 'Data engineering',
+          text: 'Собираем, очищаем и структурируем данные для аналитики, обучения и эксплуатации моделей.',
+        },
+        {
+          title: 'Корпоративные AI-ассистенты',
+          text: 'Проектируем ассистентов для поддержки, продаж, внутренних знаний и операционных команд.',
+        },
+        {
+          title: 'Прогнозная аналитика',
+          text: 'Строим модели прогнозирования спроса, нагрузки, рисков и ключевых бизнес-показателей.',
+        },
+        {
+          title: 'Интеллектуальная автоматизация',
+          text: 'Создаем сценарии, где AI сокращает ручные операции и ускоряет принятие решений.',
+        },
+        {
+          title: 'Обработка естественного языка',
+          text: 'Классификация, поиск, анализ документов и текстовые ассистенты для внутренних процессов.',
+        },
+        {
+          title: 'AI-интеграции через API',
+          text: 'Подключаем интеллектуальные сервисы к сайтам, CRM, кабинетам и внутренним системам.',
         },
       ], solutionMeta),
     },
@@ -217,6 +261,26 @@ export const content = {
           tag: 'Logistics',
           title: 'Оптимизация маршрутов доставки',
           text: 'Прогнозирование нагрузки и динамическое планирование маршрутов в реальном времени.',
+        },
+        {
+          tag: 'Telecom',
+          title: 'Прогнозирование нагрузки сети',
+          text: 'Модели для предсказания пикового трафика и оптимизации сетевых ресурсов.',
+        },
+        {
+          tag: 'EdTech',
+          title: 'Персональный AI-тьютор',
+          text: 'Ассистент для адаптивного обучения, проверки заданий и подсказок по материалам.',
+        },
+        {
+          tag: 'Finance',
+          title: 'Скоринг и оценка рисков',
+          text: 'ML-система для оценки заявок, сегментации клиентов и раннего выявления рисков.',
+        },
+        {
+          tag: 'Operations',
+          title: 'Автоматизация службы поддержки',
+          text: 'AI-помощник для обработки обращений, поиска ответов и маршрутизации заявок.',
         },
       ], caseMeta),
     },
@@ -389,6 +453,38 @@ export const content = {
           title: 'MLOps infrastructure',
           text: 'Training pipelines, model monitoring, and reliable releases for AI products.',
         },
+        {
+          title: 'AI consulting and audit',
+          text: 'Assessing ideas, data, risks, and architecture before an AI project launch.',
+        },
+        {
+          title: 'AI business integration',
+          text: 'Embedding models, assistants, and automation into company workflows.',
+        },
+        {
+          title: 'Data engineering',
+          text: 'Collecting, cleaning, and structuring data for analytics, training, and model operations.',
+        },
+        {
+          title: 'Enterprise AI assistants',
+          text: 'Designing assistants for support, sales, internal knowledge, and operations teams.',
+        },
+        {
+          title: 'Predictive analytics',
+          text: 'Building models for demand, workload, risk, and key business metric forecasting.',
+        },
+        {
+          title: 'Intelligent automation',
+          text: 'Creating workflows where AI reduces manual operations and speeds up decisions.',
+        },
+        {
+          title: 'Natural language processing',
+          text: 'Classification, search, document analysis, and text assistants for internal processes.',
+        },
+        {
+          title: 'AI API integrations',
+          text: 'Connecting intelligent services to websites, CRMs, portals, and internal systems.',
+        },
       ], solutionMeta),
     },
     pricing: {
@@ -469,6 +565,26 @@ export const content = {
           tag: 'Logistics',
           title: 'Delivery route optimization',
           text: 'Load forecasting and dynamic route planning in real time.',
+        },
+        {
+          tag: 'Telecom',
+          title: 'Network load forecasting',
+          text: 'Models for predicting traffic peaks and optimizing network resources.',
+        },
+        {
+          tag: 'EdTech',
+          title: 'Personal AI tutor',
+          text: 'Assistant for adaptive learning, assignment checks, and contextual hints.',
+        },
+        {
+          tag: 'Finance',
+          title: 'Scoring and risk assessment',
+          text: 'ML system for application scoring, customer segmentation, and early risk detection.',
+        },
+        {
+          tag: 'Operations',
+          title: 'Support desk automation',
+          text: 'AI assistant for request processing, answer search, and ticket routing.',
         },
       ], caseMeta),
     },
@@ -643,6 +759,38 @@ content.uz = {
         title: 'Analitika va dashboardlar',
         text: 'Ma’lumotlarni ko‘rish, metrikalar, hisobotlar va biznes monitoring.',
       },
+      {
+        title: 'AI-konsalting va audit',
+        text: 'AI-loyiha boshlanishidan oldin g‘oya, ma’lumotlar, xavflar va arxitekturani baholash.',
+      },
+      {
+        title: 'AI-ni biznes jarayonlarga ulash',
+        text: 'Modellar, assistentlar va avtomatlashtirishni kompaniya ish jarayonlariga integratsiya qilish.',
+      },
+      {
+        title: 'Data engineering',
+        text: 'Analitika, o‘qitish va model ekspluatatsiyasi uchun ma’lumotlarni yig‘ish va tartiblash.',
+      },
+      {
+        title: 'Korporativ AI-assistentlar',
+        text: 'Qo‘llab-quvvatlash, savdo, ichki bilimlar va operatsion jamoalar uchun assistentlar.',
+      },
+      {
+        title: 'Prognoz analitikasi',
+        text: 'Talab, yuklama, xavflar va asosiy biznes ko‘rsatkichlarini prognoz qilish modellari.',
+      },
+      {
+        title: 'Intellektual avtomatlashtirish',
+        text: 'AI qo‘l mehnatini kamaytiradigan va qaror qabul qilishni tezlashtiradigan ssenariylar.',
+      },
+      {
+        title: 'Tabiiy tilni qayta ishlash',
+        text: 'Klassifikatsiya, qidiruv, hujjat tahlili va ichki jarayonlar uchun matnli assistentlar.',
+      },
+      {
+        title: 'AI API integratsiyalari',
+        text: 'Intellektual servislarni saytlar, CRM, kabinetlar va ichki tizimlarga ulash.',
+      },
     ], solutionMeta),
   },
   pricing: {
@@ -695,6 +843,10 @@ content.uz = {
       { tag: 'Retail', title: 'Talabni prognozlash', text: 'Ombor, sotuv va marketing ssenariylarini rejalashtirish uchun ML-model.' },
       { tag: 'Security', title: 'Xavfsizlik monitoringi', text: 'Anomaliyalar va xavfli hodisalarni aniqlash uchun real vaqtli nazorat.' },
       { tag: 'Cloud', title: 'AI infratuzilma', text: 'Bulutli servislar, pipeline va kuzatuvchanlikka ega AI-mahsulot arxitekturasi.' },
+      { tag: 'Telecom', title: 'Tarmoq yuklamasini prognozlash', text: 'Trafik cho‘qqilarini oldindan ko‘rish va tarmoq resurslarini optimallashtirish modellari.' },
+      { tag: 'EdTech', title: 'Shaxsiy AI-tyutor', text: 'Moslashuvchan ta’lim, topshiriqlarni tekshirish va kontekstli maslahatlar uchun assistent.' },
+      { tag: 'Finance', title: 'Skoring va risk baholash', text: 'Arizalarni baholash, mijozlarni segmentlash va xavflarni erta aniqlash uchun ML-tizim.' },
+      { tag: 'Operations', title: 'Support xizmatini avtomatlashtirish', text: 'Murojaatlarni qayta ishlash, javob topish va ticket yo‘naltirish uchun AI-yordamchi.' },
     ], caseMeta),
   },
   why: {

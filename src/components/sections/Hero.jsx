@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import SvgIcon from '../icons/SvgIcon'
 
 const visualItems = Array.from({ length: 6 }, (_, index) => index + 1)
@@ -15,10 +16,10 @@ export default function Hero({ copy }) {
         </h1>
         <p>{copy.text}</p>
         <div className="hero__actions">
-          <a className="btn btn--primary" href="#about">
+          <Link className="btn btn--primary" to="/about">
             {copy.primary}
             <SvgIcon id="i-arrow" />
-          </a>
+          </Link>
           <a className="btn btn--ghost" href="#contact">{copy.secondary}</a>
         </div>
       </div>

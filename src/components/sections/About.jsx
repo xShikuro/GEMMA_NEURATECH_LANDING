@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import SvgIcon from '../icons/SvgIcon'
 
 const roomLines = ['line-1', 'line-2', 'line-3']
@@ -31,10 +32,10 @@ export default function About({ copy }) {
         {copy.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
-        <a className="btn btn--outline" href="#contact">
+        <Link className="btn btn--outline" to="/about">
           {copy.button}
           <SvgIcon id="i-arrow" />
-        </a>
+        </Link>
       </div>
     </section>
   )

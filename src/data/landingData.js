@@ -83,6 +83,222 @@ function withMeta(items, meta) {
   return items.map((item, index) => ({ ...meta[index], ...item }))
 }
 
+const techModalContent = {
+  ru: {
+    eyebrow: 'Технологический стек',
+    title: 'Стек Gemma Neuratech',
+    intro: 'Собираем технологии под задачу: от прототипа модели до production-инфраструктуры, мониторинга и безопасной интеграции.',
+    closeLabel: 'Закрыть стек технологий',
+    cta: 'Обсудить проект',
+    ctaText: 'Подбираем стек под бизнес-задачу, данные, сроки и требования к надежности.',
+    categories: [
+      {
+        title: 'AI / Machine Learning',
+        text: 'Модели, компьютерное зрение, NLP, RAG-системы и интеллектуальные ассистенты.',
+        technologies: ['PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'LangChain'],
+      },
+      {
+        title: 'Backend',
+        text: 'API, личные кабинеты, админ-панели, интеграции и серверная логика продукта.',
+        technologies: ['Python', 'FastAPI', 'Django', 'Node.js', 'GraphQL'],
+      },
+      {
+        title: 'Frontend',
+        text: 'Интерфейсы, dashboards, клиентские порталы и интерактивные веб-приложения.',
+        technologies: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Vite'],
+      },
+      {
+        title: 'Data',
+        text: 'Хранение, подготовка, потоковая обработка и аналитическая основа для моделей.',
+        technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'Airflow'],
+      },
+      {
+        title: 'Cloud / Infrastructure',
+        text: 'Деплой, масштабирование, GPU-инфраструктура и отказоустойчивые окружения.',
+        technologies: ['Docker', 'Kubernetes', 'NVIDIA CUDA', 'Yandex Cloud', 'Google Cloud', 'Cloudflare'],
+      },
+      {
+        title: 'DevOps / MLOps',
+        text: 'CI/CD, мониторинг, наблюдаемость, релизы моделей и контроль качества.',
+        technologies: ['Prometheus', 'Grafana', 'Terraform', 'Ansible', 'Ray'],
+      },
+      {
+        title: 'Security',
+        text: 'Контроль доступа, безопасные API, резервное копирование и защита данных.',
+        technologies: ['Cloudflare', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
+      },
+    ],
+  },
+  en: {
+    eyebrow: 'Technology stack',
+    title: 'Gemma Neuratech stack',
+    intro: 'We select technologies around the task: from model prototypes to production infrastructure, monitoring, and secure integration.',
+    closeLabel: 'Close technology stack',
+    cta: 'Discuss a project',
+    ctaText: 'We choose the stack around business goals, data, timeline, and reliability requirements.',
+    categories: [
+      {
+        title: 'AI / Machine Learning',
+        text: 'Models, computer vision, NLP, RAG systems, and intelligent assistants.',
+        technologies: ['PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'LangChain'],
+      },
+      {
+        title: 'Backend',
+        text: 'APIs, user portals, admin panels, integrations, and product server logic.',
+        technologies: ['Python', 'FastAPI', 'Django', 'Node.js', 'GraphQL'],
+      },
+      {
+        title: 'Frontend',
+        text: 'Interfaces, dashboards, client portals, and interactive web applications.',
+        technologies: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Vite'],
+      },
+      {
+        title: 'Data',
+        text: 'Storage, preparation, streaming, and analytical foundations for models.',
+        technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'Airflow'],
+      },
+      {
+        title: 'Cloud / Infrastructure',
+        text: 'Deployment, scaling, GPU infrastructure, and resilient environments.',
+        technologies: ['Docker', 'Kubernetes', 'NVIDIA CUDA', 'Yandex Cloud', 'Google Cloud', 'Cloudflare'],
+      },
+      {
+        title: 'DevOps / MLOps',
+        text: 'CI/CD, monitoring, observability, model releases, and quality control.',
+        technologies: ['Prometheus', 'Grafana', 'Terraform', 'Ansible', 'Ray'],
+      },
+      {
+        title: 'Security',
+        text: 'Access control, secure APIs, backups, and data protection.',
+        technologies: ['Cloudflare', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
+      },
+    ],
+  },
+  uz: {
+    eyebrow: 'Texnologik stack',
+    title: 'Gemma Neuratech stacki',
+    intro: 'Texnologiyalarni vazifaga mos tanlaymiz: model prototipidan production infratuzilma, monitoring va xavfsiz integratsiyagacha.',
+    closeLabel: 'Texnologiyalar oynasini yopish',
+    cta: 'Loyihani muhokama qilish',
+    ctaText: 'Stack biznes maqsad, maʼlumotlar, muddat va ishonchlilik talablariga qarab tanlanadi.',
+    categories: [
+      {
+        title: 'AI / Machine Learning',
+        text: 'Modellar, kompyuter ko‘rishi, NLP, RAG tizimlari va intellektual assistentlar.',
+        technologies: ['PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'LangChain'],
+      },
+      {
+        title: 'Backend',
+        text: 'API, shaxsiy kabinetlar, admin panellar, integratsiyalar va server logikasi.',
+        technologies: ['Python', 'FastAPI', 'Django', 'Node.js', 'GraphQL'],
+      },
+      {
+        title: 'Frontend',
+        text: 'Interfeyslar, dashboardlar, mijoz portallari va interaktiv web-ilovalar.',
+        technologies: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Vite'],
+      },
+      {
+        title: 'Data',
+        text: 'Saqlash, tayyorlash, oqimli qayta ishlash va modellar uchun analitik asos.',
+        technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Kafka', 'Airflow'],
+      },
+      {
+        title: 'Cloud / Infrastructure',
+        text: 'Deploy, masshtablash, GPU infratuzilma va barqaror muhitlar.',
+        technologies: ['Docker', 'Kubernetes', 'NVIDIA CUDA', 'Yandex Cloud', 'Google Cloud', 'Cloudflare'],
+      },
+      {
+        title: 'DevOps / MLOps',
+        text: 'CI/CD, monitoring, kuzatuvchanlik, model relizlari va sifat nazorati.',
+        technologies: ['Prometheus', 'Grafana', 'Terraform', 'Ansible', 'Ray'],
+      },
+      {
+        title: 'Security',
+        text: 'Kirish nazorati, xavfsiz API, zaxira nusxalar va maʼlumotlarni himoya qilish.',
+        technologies: ['Cloudflare', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
+      },
+    ],
+  },
+}
+
+const solutionModalContent = {
+  ru: {
+    eyebrow: 'Детали решения',
+    closeLabel: 'Закрыть описание решения',
+    scopeTitle: 'Что входит',
+    scopeItems: [
+      'Анализ задачи, данных, ограничений и критериев успешного запуска.',
+      'Проектирование архитектуры, модели, API и пользовательского сценария.',
+      'Подготовка прототипа, тестирование качества и план production-внедрения.',
+    ],
+    workflowTitle: 'Как внедряем',
+    workflowItems: [
+      'Проводим техническую диагностику и фиксируем измеримые цели.',
+      'Собираем MVP или пилот, проверяем гипотезы на реальных данных.',
+      'Интегрируем решение в инфраструктуру, добавляем мониторинг и документацию.',
+    ],
+    resultTitle: 'Результат',
+    resultItems: [
+      'Рабочий AI-модуль или цифровой сервис под конкретный бизнес-процесс.',
+      'Понятная архитектура, документация и сценарий дальнейшего развития.',
+      'Поддержка, улучшение качества и подготовка к масштабированию.',
+    ],
+    ctaTitle: 'Хотите разобрать задачу?',
+    ctaText: 'Расскажите нам о проекте, и мы предложим подходящий формат пилота или внедрения.',
+    cta: 'Связаться с нами',
+  },
+  en: {
+    eyebrow: 'Solution details',
+    closeLabel: 'Close solution details',
+    scopeTitle: 'Included',
+    scopeItems: [
+      'Analysis of the task, data, constraints, and launch success criteria.',
+      'Architecture, model, API, and user workflow design.',
+      'Prototype preparation, quality testing, and production rollout planning.',
+    ],
+    workflowTitle: 'Implementation flow',
+    workflowItems: [
+      'We run technical diagnostics and define measurable goals.',
+      'We build an MVP or pilot and validate hypotheses on real data.',
+      'We integrate the solution into infrastructure, monitoring, and documentation.',
+    ],
+    resultTitle: 'Result',
+    resultItems: [
+      'A working AI module or digital service for a specific business process.',
+      'Clear architecture, documentation, and a roadmap for further development.',
+      'Support, quality improvement, and preparation for scaling.',
+    ],
+    ctaTitle: 'Want to review a task?',
+    ctaText: 'Tell us about the project, and we will suggest the right pilot or implementation format.',
+    cta: 'Contact us',
+  },
+  uz: {
+    eyebrow: 'Yechim tafsilotlari',
+    closeLabel: 'Yechim tafsilotlarini yopish',
+    scopeTitle: 'Nimalar kiradi',
+    scopeItems: [
+      'Vazifa, maʼlumotlar, cheklovlar va ishga tushirish mezonlarini tahlil qilish.',
+      'Arxitektura, model, API va foydalanuvchi ssenariysini loyihalash.',
+      'Prototip tayyorlash, sifatni tekshirish va production joriy etish rejasini tuzish.',
+    ],
+    workflowTitle: 'Qanday joriy qilamiz',
+    workflowItems: [
+      'Texnik diagnostika o‘tkazamiz va o‘lchanadigan maqsadlarni belgilaymiz.',
+      'MVP yoki pilot yig‘amiz, gipotezalarni real maʼlumotlarda tekshiramiz.',
+      'Yechimni infratuzilmaga ulaymiz, monitoring va hujjatlarni qo‘shamiz.',
+    ],
+    resultTitle: 'Natija',
+    resultItems: [
+      'Aniq biznes jarayon uchun ishlaydigan AI-modul yoki raqamli servis.',
+      'Tushunarli arxitektura, hujjatlar va keyingi rivojlanish yo‘l xaritasi.',
+      'Qo‘llab-quvvatlash, sifatni oshirish va masshtablashga tayyorgarlik.',
+    ],
+    ctaTitle: 'Vazifani muhokama qilamizmi?',
+    ctaText: 'Loyiha haqida yozing, biz mos pilot yoki joriy etish formatini taklif qilamiz.',
+    cta: 'Bog‘lanish',
+  },
+}
+
 export const content = {
   ru: {
     navLinks: [
@@ -124,6 +340,7 @@ export const content = {
       previous: 'Предыдущие решения',
       next: 'Следующие решения',
       details: 'Подробнее',
+      modal: solutionModalContent.ru,
       items: withMeta([
         {
           title: 'Разработка нейронных сетей',
@@ -225,6 +442,7 @@ export const content = {
     tech: {
       title: 'Технологии',
       all: 'Все технологии',
+      modal: techModalContent.ru,
     },
     cases: {
       title: 'Кейсы',
@@ -428,6 +646,7 @@ export const content = {
       previous: 'Previous solutions',
       next: 'Next solutions',
       details: 'Details',
+      modal: solutionModalContent.en,
       items: withMeta([
         {
           title: 'Neural network development',
@@ -529,6 +748,7 @@ export const content = {
     tech: {
       title: 'Technologies',
       all: 'All technologies',
+      modal: techModalContent.en,
     },
     cases: {
       title: 'Cases',
@@ -734,6 +954,7 @@ content.uz = {
     details: 'Batafsil',
     previous: 'Oldingi yechim',
     next: 'Keyingi yechim',
+    modal: solutionModalContent.uz,
     items: withMeta([
       {
         title: 'Neyron tarmoqlar',
@@ -830,6 +1051,7 @@ content.uz = {
   tech: {
     title: 'Texnologiyalar',
     all: 'Barchasini ko‘rsatish',
+    modal: techModalContent.uz,
   },
   cases: {
     title: 'Keyslar',

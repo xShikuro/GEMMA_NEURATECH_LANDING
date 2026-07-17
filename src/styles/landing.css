@@ -1748,6 +1748,7 @@ main {
 
 .solution-card a,
 .solution-card__link,
+.case-card__link,
 .case-card a {
     display: inline-flex;
     align-items: center;
@@ -1766,6 +1767,7 @@ main {
 
 .solution-card a svg,
 .solution-card__link svg,
+.case-card__link svg,
 .case-card a svg {
     width: 15px;
     height: 15px;
@@ -3170,6 +3172,10 @@ main {
     width: min(1020px, 100%);
 }
 
+.info-modal__dialog--case {
+    width: min(1040px, 100%);
+}
+
 .info-modal__dialog::before {
     content: "";
     position: absolute;
@@ -3246,6 +3252,8 @@ main {
 
 .tech-modal-card,
 .solution-modal-visual,
+.case-modal-visual,
+.case-modal-content section,
 .solution-modal-content section {
     border: 1px solid rgba(52, 237, 240, 0.24);
     background:
@@ -3262,6 +3270,8 @@ main {
 .tech-modal-card h3,
 .solution-modal-content h3,
 .solution-modal-visual h3,
+.case-modal-content h3,
+.case-modal-visual h3,
 .info-modal-cta h3 {
     margin: 0;
     color: #edf7fa;
@@ -3272,6 +3282,8 @@ main {
 
 .tech-modal-card p,
 .solution-modal-visual p,
+.case-modal-visual p,
+.case-modal-content p,
 .info-modal-cta p {
     margin: 10px 0 14px;
     color: #9eb2ba;
@@ -3304,13 +3316,15 @@ main {
     filter: drop-shadow(0 0 10px currentColor);
 }
 
-.solution-modal-layout {
+.solution-modal-layout,
+.case-modal-layout {
     display: grid;
     grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
     gap: 16px;
 }
 
-.solution-modal-visual {
+.solution-modal-visual,
+.case-modal-visual {
     display: grid;
     align-content: start;
     gap: 16px;
@@ -3325,17 +3339,28 @@ main {
     height: 78px;
 }
 
-.solution-modal-content {
+.case-modal-icon {
+    width: 78px;
+    height: 78px;
+    color: var(--cyan);
+    filter: drop-shadow(0 0 18px rgba(52, 237, 240, 0.48));
+}
+
+.solution-modal-content,
+.case-modal-content {
     display: grid;
     gap: 12px;
 }
 
-.solution-modal-content section {
+.solution-modal-content section,
+.case-modal-content section {
     padding: 18px 20px;
 }
 
 .solution-modal-content ul,
-.solution-modal-content ol {
+.solution-modal-content ol,
+.case-modal-content ul,
+.case-modal-content ol {
     display: grid;
     gap: 9px;
     margin: 12px 0 0;
@@ -3346,6 +3371,10 @@ main {
 }
 
 .solution-modal-content li::marker {
+    color: var(--cyan);
+}
+
+.case-modal-content li::marker {
     color: var(--cyan);
 }
 
@@ -4876,7 +4905,8 @@ textarea:focus {
     }
 
     .tech-modal-grid,
-    .solution-modal-layout {
+    .solution-modal-layout,
+    .case-modal-layout {
         grid-template-columns: 1fr;
     }
 
@@ -5333,6 +5363,8 @@ textarea:focus {
 
     .tech-modal-card,
     .solution-modal-visual,
+    .case-modal-visual,
+    .case-modal-content section,
     .solution-modal-content section {
         padding: 16px;
     }
@@ -5347,7 +5379,8 @@ textarea:focus {
     }
 
     .solution-modal-visual .card-svg,
-    .solution-modal-visual .neural-icon {
+    .solution-modal-visual .neural-icon,
+    .case-modal-icon {
         width: 64px;
         height: 64px;
     }

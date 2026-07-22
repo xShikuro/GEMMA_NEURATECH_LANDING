@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 
+function formatLetters(value) {
+  return value.replace(/[^\p{L}\s]/gu, '').replace(/\s{2,}/g, ' ').trimStart()
+}
+
 export default function Contact({ copy }) {
   return (
     <section className="contact tech-frame reveal" id="contact">
@@ -19,7 +23,14 @@ export default function Contact({ copy }) {
         <div className="form-row">
           <label>
             <span>{copy.name}</span>
-            <input type="text" name="name" placeholder={copy.name} />
+            <input
+              type="text"
+              name="name"
+              placeholder={copy.name}
+              onInput={(event) => {
+                event.currentTarget.value = formatLetters(event.currentTarget.value)
+              }}
+            />
           </label>
           <label>
             <span>{copy.email}</span>

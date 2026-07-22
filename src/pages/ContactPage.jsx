@@ -1,6 +1,10 @@
 import SvgIcon from '../components/icons/SvgIcon'
 import SectionHead from '../components/ui/SectionHead'
 
+function formatLetters(value) {
+  return value.replace(/[^\p{L}\s]/gu, '').replace(/\s{2,}/g, ' ').trimStart()
+}
+
 export default function ContactPage({ copy }) {
   return (
     <div className="route-page">
@@ -40,7 +44,14 @@ export default function ContactPage({ copy }) {
             <h2>{copy.formTitle}</h2>
             <label>
               <span>{copy.name}</span>
-              <input type="text" name="name" placeholder={copy.name} />
+              <input
+                type="text"
+                name="name"
+                placeholder={copy.name}
+                onInput={(event) => {
+                  event.currentTarget.value = formatLetters(event.currentTarget.value)
+                }}
+              />
             </label>
             <label>
               <span>{copy.email}</span>

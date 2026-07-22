@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
     --cursor-x: 50vw;
@@ -2863,14 +2863,18 @@ main {
 
 .checkout-steps {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 14px;
 }
 
 .checkout-steps span {
     display: inline-flex;
+    flex: 1 1 120px;
+    justify-content: center;
     min-height: 28px;
     align-items: center;
+    gap: 7px;
     padding: 0 11px;
     color: #7b929a;
     border: 1px solid rgba(52, 237, 240, 0.18);
@@ -2880,11 +2884,41 @@ main {
     text-transform: uppercase;
 }
 
+.checkout-steps b {
+    display: inline-grid;
+    place-items: center;
+    min-width: 21px;
+    height: 21px;
+    color: rgba(52, 237, 240, 0.78);
+    border: 1px solid rgba(52, 237, 240, 0.24);
+    border-radius: 3px;
+    font-size: 9px;
+    line-height: 1;
+}
+
+.checkout-steps em {
+    font-style: normal;
+    overflow-wrap: anywhere;
+}
+
 .checkout-steps span.is-active {
     color: #aaffff;
     border-color: rgba(52, 237, 240, 0.42);
     background: rgba(52, 237, 240, 0.12);
     box-shadow: 0 0 16px rgba(52, 237, 240, 0.1);
+}
+
+.checkout-steps span.is-complete {
+    color: rgba(170, 255, 255, 0.72);
+    border-color: rgba(52, 237, 240, 0.3);
+    background: rgba(52, 237, 240, 0.08);
+}
+
+.checkout-steps span.is-active b,
+.checkout-steps span.is-complete b {
+    color: #001014;
+    border-color: rgba(52, 237, 240, 0.75);
+    background: rgba(52, 237, 240, 0.82);
 }
 
 .checkout-summary {
@@ -3035,6 +3069,7 @@ main {
 
 .checkout-terms__panel p,
 .checkout-secure,
+.checkout-step-note,
 .checkout-success p {
     margin: 0;
     color: #9fb2b9;
@@ -3078,7 +3113,9 @@ main {
     text-transform: uppercase;
 }
 
-.checkout-form input {
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea {
     width: 100%;
     min-height: 44px;
     padding: 0 13px;
@@ -3090,7 +3127,23 @@ main {
     transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.checkout-form input:focus {
+.checkout-form select {
+    appearance: none;
+    background:
+        linear-gradient(45deg, transparent 50%, rgba(52, 237, 240, 0.82) 50%) calc(100% - 18px) 18px / 7px 7px no-repeat,
+        linear-gradient(135deg, rgba(52, 237, 240, 0.82) 50%, transparent 50%) calc(100% - 13px) 18px / 7px 7px no-repeat,
+        rgba(0, 8, 12, 0.64);
+}
+
+.checkout-form textarea {
+    min-height: 104px;
+    padding-top: 12px;
+    resize: vertical;
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus,
+.checkout-form textarea:focus {
     border-color: rgba(52, 237, 240, 0.68);
     box-shadow: 0 0 16px rgba(52, 237, 240, 0.14);
 }
@@ -3103,6 +3156,54 @@ main {
     padding: 12px 14px;
     border: 1px solid rgba(52, 237, 240, 0.16);
     background: rgba(52, 237, 240, 0.06);
+}
+
+.checkout-confirm-panel {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid rgba(52, 237, 240, 0.24);
+    background:
+        radial-gradient(circle at 10% 20%, rgba(52, 237, 240, 0.16), transparent 42%),
+        rgba(3, 22, 28, 0.62);
+}
+
+.checkout-confirm-panel svg {
+    width: 52px;
+    height: 52px;
+    color: var(--cyan);
+    filter: drop-shadow(0 0 16px rgba(52, 237, 240, 0.5));
+}
+
+.checkout-confirm-panel h3 {
+    margin: 0 0 8px;
+    color: #edf7fa;
+    font-family: var(--font-display);
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.checkout-confirm-panel p {
+    margin: 0;
+    color: #9fb2b9;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.checkout-confirm-panel strong {
+    display: inline-flex;
+    margin-top: 10px;
+    color: #aaffff;
+    font-size: 12px;
+}
+
+.checkout-code-input {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-align: center;
 }
 
 .checkout-actions {
@@ -5405,6 +5506,12 @@ textarea:focus {
     .checkout-summary,
     .form-row--compact {
         grid-template-columns: 1fr;
+    }
+
+    .checkout-confirm-panel {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
     }
 
     .checkout-summary em {

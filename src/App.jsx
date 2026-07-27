@@ -67,13 +67,13 @@ function AppShell() {
       <WelcomeScreen />
       <BackgroundEffects />
 
+      <Header
+        copy={copy.header}
+        language={language}
+        navLinks={pages.navLinks}
+        onLanguageToggle={toggleLanguage}
+      />
       <div className="site">
-        <Header
-          copy={copy.header}
-          language={language}
-          navLinks={pages.navLinks}
-          onLanguageToggle={toggleLanguage}
-        />
         <main id="top">
           <Routes>
             <Route path="/" element={<HomePage copy={copy} />} />

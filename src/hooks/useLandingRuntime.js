@@ -7,8 +7,6 @@ function initLandingPage() {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const isMobileLite = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches
-  const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-  const rootStyle = document.documentElement.style
   const body = document.body
   const cleanups = []
   const frameIds = new Set()
@@ -77,68 +75,6 @@ function initLandingPage() {
     x: window.innerWidth * 0.5,
     y: window.innerHeight * 0.38,
     lastMove: 0,
-  }
-
-  const syncCursorVars = () => {
-    rootStyle.setProperty('--pointer-x', `${cursorState.x}px`)
-    rootStyle.setProperty('--pointer-y', `${cursorState.y}px`)
-    rootStyle.setProperty('--cursor-x', `${cursorState.x}px`)
-    rootStyle.setProperty('--cursor-y', `${cursorState.y}px`)
-    rootStyle.setProperty('--grid-x', `${cursorState.x * -0.026}px`)
-    rootStyle.setProperty('--grid-y', `${cursorState.y * -0.026}px`)
-    rootStyle.setProperty('--grid-x2', `${cursorState.x * 0.018}px`)
-    rootStyle.setProperty('--grid-y2', `${cursorState.y * 0.018}px`)
-  }
-
-  syncCursorVars()
-
-  const updateCursorPosition = (event) => {
-    const events = typeof event.getCoalescedEvents === 'function' ? event.getCoalescedEvents() : null
-    const point = events?.length ? events[events.length - 1] : event
-
-    cursorState.x = point.clientX
-    cursorState.y = point.clientY
-    cursorState.lastMove = performance.now()
-    syncCursorVars()
-    body.classList.add('cursor-ready')
-    body.classList.remove('cursor-idle')
-  }
-
-  if (supportsFinePointer) {
-    addEvent(window, 'pointermove', updateCursorPosition, { passive: true })
-    addEvent(window, 'pointerdown', () => body.classList.add('cursor-active'), { passive: true })
-    addEvent(window, 'pointerup', () => body.classList.remove('cursor-active'), { passive: true })
-    addEvent(window, 'pointerleave', () => {
-      cursorState.lastMove = 0
-      body.classList.add('cursor-idle')
-    }, { passive: true })
-  }
-
-  const hoverSelector = 'a, button, input, textarea, .solution-card, .case-card, .tech-item, .process-card, .lab-card'
-  let activeHoverTarget = null
-  const getHoverTarget = (target) => target instanceof Element ? target.closest(hoverSelector) : null
-
-  if (supportsFinePointer) {
-    addEvent(document, 'pointerover', (event) => {
-      const target = getHoverTarget(event.target)
-      if (!target) return
-
-      activeHoverTarget = target
-      body.classList.add('cursor-hover')
-    })
-
-    addEvent(document, 'pointerout', (event) => {
-      const target = getHoverTarget(event.target)
-      if (!target || target !== activeHoverTarget) return
-
-      const relatedTarget = getHoverTarget(event.relatedTarget)
-      if (relatedTarget === activeHoverTarget) return
-
-      activeHoverTarget = relatedTarget
-      if (!activeHoverTarget) {
-        body.classList.remove('cursor-hover')
-      }
-    })
   }
 
   const welcomeScreen = document.querySelector('.welcome-screen')
@@ -494,26 +430,26 @@ function initLandingPage() {
 
   if (!isMobileLite) {
     cleanups.push(createParticleField(document.querySelector('#heroParticles'), {
-      count: 96,
+      count: 62,
       speed: 0.18,
       linkDistance: 120,
       nodeSize: 1.8,
       lineAlpha: 0.38,
       drift: true,
-      cursorLinks: true,
+      cursorLinks: false,
       cursorRadius: 220,
       cursorAlpha: 0.82,
       cursorPull: 0.0018,
     }))
 
     cleanups.push(createParticleField(document.querySelector('#pageMatrix'), {
-      count: 190,
+      count: 96,
       speed: 0.075,
       linkDistance: 148,
       nodeSize: 1.25,
       lineAlpha: 0.18,
       drift: false,
-      cursorLinks: true,
+      cursorLinks: false,
       cursorRadius: 260,
       cursorAlpha: 0.62,
       cursorPull: 0.0011,

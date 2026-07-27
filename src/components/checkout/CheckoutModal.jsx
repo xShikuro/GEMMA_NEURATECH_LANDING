@@ -24,7 +24,14 @@ function formatLetters(value) {
   return value.replace(/[^\p{L}\s]/gu, '').replace(/\s{2,}/g, ' ').trimStart()
 }
 
-const checkoutSteps = ['terms', 'details', 'payment', 'confirm']
+const fallbackBanks = [
+  { id: 'hamkor', name: 'Hamkor Bank', shortName: 'HB', acquiringId: 'hamkor-bank-acquiring' },
+  { id: 'orient-finans', name: 'Orient Finans Bank', shortName: 'OF', acquiringId: 'orient-finans-bank-acquiring' },
+  { id: 'kapital', name: 'Kapital Bank', shortName: 'KB', acquiringId: 'kapital-bank-acquiring' },
+  { id: 'sqb', name: 'SQB', shortName: 'SQB', acquiringId: 'sqb-acquiring' },
+]
+
+const checkoutSteps = ['terms', 'details', 'bank', 'payment', 'confirm']
 
 export default function CheckoutModal({ copy, onClose, plan }) {
   const [step, setStep] = useState('terms')
@@ -34,9 +41,11 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const closeButtonRef = useRef(null)
   const agreement = copy.agreement
   const fields = copy.fields || {}
+  const banks = Array.isArray(copy.banks) && copy.banks.length ? copy.banks : fallbackBanks
   const steps = [
     { id: 'terms', label: copy.stepTerms || 'Условия' },
     { id: 'details', label: copy.stepDetails || 'Заявка' },
+    { id: 'bank', label: copy.stepBank || 'Банк' },
     { id: 'payment', label: copy.stepPayment || 'Карта' },
     { id: 'confirm', label: copy.stepConfirm || 'SMS' },
   ]
@@ -44,6 +53,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const stepTitle = {
     terms: copy.termsTitle,
     details: copy.detailsTitle || copy.stepDetails || 'Данные заявки',
+    bank: copy.bankTitle || copy.stepBank || 'Выбор банка',
     payment: copy.paymentTitle,
     confirm: copy.confirmTitle || copy.stepConfirm || 'SMS-подтверждение',
     success: copy.successTitle,
@@ -83,7 +93,22 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const handleDetailsSubmit = (event) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    setDraft(Object.fromEntries(formData.entries()))
+    setDraft((currentDraft) => ({ ...currentDraft, ...Object.fromEntries(formData.entries()) }))
+    setStep('bank')
+  }
+
+  const handleBankSubmit = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    const bankId = formData.get('bankId')
+    const selectedBank = banks.find((bank) => bank.id === bankId)
+
+    setDraft((currentDraft) => ({
+      ...currentDraft,
+      bankId,
+      bankName: selectedBank?.name || '',
+      acquiringId: selectedBank?.acquiringId || '',
+    }))
     setStep('payment')
   }
 
@@ -113,7 +138,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
 
         <div className="checkout-steps" aria-hidden="true">
           {steps.map((item, index) => {
-            const currentIndex = checkoutSteps.indexOf(step)
+            const currentIndex = step === 'success' ? checkoutSteps.length : checkoutSteps.indexOf(step)
             const itemIndex = checkoutSteps.indexOf(item.id)
             const className = [
               step === item.id ? 'is-active' : '',
@@ -246,8 +271,52 @@ export default function CheckoutModal({ copy, onClose, plan }) {
           </form>
         ) : null}
 
+        {step === 'bank' ? (
+          <form className="checkout-form checkout-form--bank" onSubmit={handleBankSubmit}>
+            <div className="checkout-bank-panel">
+              <div className="checkout-bank-panel__top">
+                <div>
+                  <span>{copy.bankAcquiringLabel || 'Acquiring'}</span>
+                  {copy.bankIntro ? <p>{copy.bankIntro}</p> : null}
+                </div>
+                <strong>{banks.length}</strong>
+              </div>
+
+              <div className="checkout-bank-grid">
+                {banks.map((bank) => (
+                  <label className="checkout-bank-card" key={bank.id}>
+                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId === bank.id} />
+                    <div className="checkout-bank-card__mark">{bank.shortName || bank.name.slice(0, 2)}</div>
+                    <div className="checkout-bank-card__content">
+                      <strong>{bank.name}</strong>
+                      <small>{copy.bankNote}</small>
+                    </div>
+                    <div className="checkout-bank-card__check" aria-hidden="true"></div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="checkout-actions">
+              <button className="btn btn--outline" type="button" onClick={() => setStep('details')}>
+                {copy.backLabel}
+              </button>
+              <button className="btn btn--primary" type="submit">
+                {copy.bankContinueLabel || copy.detailsContinueLabel}
+              </button>
+            </div>
+          </form>
+        ) : null}
+
         {step === 'payment' ? (
           <form className="checkout-form" onSubmit={handlePaymentSubmit}>
+            {draft.bankName ? (
+              <aside className="checkout-bank-summary">
+                <span>{copy.bankSelectedLabel || 'Selected bank'}</span>
+                <strong>{draft.bankName}</strong>
+                <em>{draft.acquiringId}</em>
+              </aside>
+            ) : null}
             {copy.paymentIntro ? <p className="checkout-step-note">{copy.paymentIntro}</p> : null}
 
             <label>
@@ -314,7 +383,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
             <p className="checkout-secure">{copy.secureText}</p>
 
             <div className="checkout-actions">
-              <button className="btn btn--outline" type="button" onClick={() => setStep('details')}>
+              <button className="btn btn--outline" type="button" onClick={() => setStep('bank')}>
                 {copy.backLabel}
               </button>
               <button className="btn btn--primary" type="submit">
@@ -331,6 +400,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
               <div>
                 <h3>{copy.confirmTitle}</h3>
                 <p>{copy.confirmText}</p>
+                {draft.bankName ? <strong>{draft.bankName} · {draft.acquiringId}</strong> : null}
                 {draft.phone ? <strong>{draft.phone}</strong> : null}
               </div>
             </div>

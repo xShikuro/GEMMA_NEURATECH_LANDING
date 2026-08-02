@@ -5,6 +5,9 @@ function formatLetters(value) {
 }
 
 export default function Contact({ copy }) {
+  const corporateEmails = copy.corporateEmails ?? []
+  const hasEmails = Boolean(copy.directEmail || corporateEmails.length)
+
   return (
     <section className="contact tech-frame reveal" id="contact">
       <div className="contact-copy">
@@ -12,11 +15,23 @@ export default function Contact({ copy }) {
         <h2>{copy.title}</h2>
         <p>{copy.text}</p>
         <Link className="btn btn--primary" to={copy.linkHref || '/contact'}>{copy.link}</Link>
-        {copy.directEmail ? (
-          <a className="contact-direct" href={`mailto:${copy.directEmail}`}>
-            <span>{copy.directEmailLabel}</span>
-            <strong>{copy.directEmail}</strong>
-          </a>
+        {hasEmails ? (
+          <div className="contact-email-stack">
+            {copy.corporateEmailsTitle ? <span className="contact-email-stack__title">{copy.corporateEmailsTitle}</span> : null}
+            {copy.directEmail ? (
+              <a className="contact-direct" href={`mailto:${copy.directEmail}`}>
+                <span>{copy.directEmailLabel}</span>
+                <strong>{copy.directEmail}</strong>
+              </a>
+            ) : null}
+            {corporateEmails.map((item) => (
+              <a className="contact-direct" href={`mailto:${item.value}`} key={item.value}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                {item.note ? <em>{item.note}</em> : null}
+              </a>
+            ))}
+          </div>
         ) : null}
       </div>
       <form className="contact-form">

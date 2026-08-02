@@ -4,6 +4,28 @@ import { pricingNoteEn, pricingNoteRu, pricingNoteUz, pricingPlansEn, pricingPla
 
 const companyEmail = 'Gemmaneuratech@gmail.com'
 const companyPhone = '+998772827474'
+const corporateInfoEmail = 'info@gemmaneuratech.uz'
+const corporateSupportEmail = 'support@gemmaneuratech.uz'
+const corporateDevEmail = 'dev@gemmaneuratech.uz'
+const footerCorporateEmails = [
+  { label: 'Info', value: corporateInfoEmail },
+  { label: 'Support', value: corporateSupportEmail },
+]
+const contactCorporateEmailsRu = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Официальные запросы и документы' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Техподдержка и сопровождение' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Разработка и технические вопросы' },
+]
+const contactCorporateEmailsEn = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Official requests and documents' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Technical support and maintenance' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Development and technical questions' },
+]
+const contactCorporateEmailsUz = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Rasmiy so‘rovlar va hujjatlar' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Texnik yordam va qo‘llab-quvvatlash' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Dasturlash va texnik savollar' },
+]
 
 export const techStack = [
   { name: 'PyTorch', icon: 'siPytorch' },
@@ -869,6 +891,8 @@ export const content = {
       linkHref: '/contact',
       directEmailLabel: 'Почта для связи',
       directEmail: companyEmail,
+      corporateEmailsTitle: 'Корпоративные почты',
+      corporateEmails: contactCorporateEmailsRu,
       name: 'Ваше имя',
       email: 'Email',
       message: 'Сообщение',
@@ -887,6 +911,7 @@ export const content = {
       location: 'Узбекистан, г. Ташкент, Алмазарский район, МФЙ Чилтогон, ул. Тахтапул Дарвоза, дом 396-У',
       email: companyEmail,
       phone: companyPhone,
+      corporateEmails: footerCorporateEmails,
       contactItems: ['"GEMMA NEURATECH IT" MCHJ (ООО)', 'Регистрация: 07.05.2026', 'IT Park Resident с 26.05.2026'],
       services: ['Разработка нейронных сетей', 'Edge AI', 'Распределенные вычисления', 'AI-безопасность'],
       technologies: ['Нейронные сети', 'Компьютерное зрение', 'Облачные вычисления', 'MLOps-пайплайны'],
@@ -1147,6 +1172,8 @@ export const content = {
       linkHref: '/contact',
       directEmailLabel: 'Contact email',
       directEmail: companyEmail,
+      corporateEmailsTitle: 'Corporate emails',
+      corporateEmails: contactCorporateEmailsEn,
       name: 'Your name',
       email: 'Email',
       message: 'Message',
@@ -1165,6 +1192,7 @@ export const content = {
       location: '396-U, Takhtapul Darvoza St., Chiltogon mahalla, Almazar district, Tashkent, Uzbekistan',
       email: companyEmail,
       phone: companyPhone,
+      corporateEmails: footerCorporateEmails,
       contactItems: ['"GEMMA NEURATECH IT" MCHJ (LLC)', 'Registered: 07.05.2026', 'IT Park Resident since 26.05.2026'],
       services: ['Neural network development', 'Edge AI', 'Distributed computing', 'AI security'],
       technologies: ['Neural networks', 'Computer vision', 'Cloud computing', 'MLOps pipelines'],
@@ -1382,6 +1410,8 @@ content.uz = {
     linkHref: '/contact',
     directEmailLabel: 'Aloqa pochtasi',
     directEmail: companyEmail,
+    corporateEmailsTitle: 'Korporativ pochtalar',
+    corporateEmails: contactCorporateEmailsUz,
     name: 'Ismingiz',
     email: 'Email',
     message: 'Xabar',
@@ -1400,6 +1430,7 @@ content.uz = {
     location: 'O‘zbekiston, Toshkent sh., Olmazor tumani, Chig‘atoy Oqtepa MFY, Taxtapul Darvoza ko‘chasi, 396-uy',
     email: companyEmail,
     phone: companyPhone,
+    corporateEmails: footerCorporateEmails,
     contactItems: ['"GEMMA NEURATECH IT" MCHJ', 'Ro‘yxatdan o‘tgan: 07.05.2026', 'IT Park rezidenti: 26.05.2026 dan'],
     services: ['Neyron tarmoqlar ishlab chiqish', 'Edge AI', 'Taqsimlangan hisoblash', 'AI xavfsizligi'],
     technologies: ['Neyron tarmoqlar', 'Kompyuter ko‘rishi', 'Bulutli hisoblash', 'MLOps pipeline'],

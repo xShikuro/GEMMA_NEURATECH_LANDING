@@ -1,4 +1,4 @@
-import logo from '../../assets/images/gemma_neuratech_logo.svg'
+import LogoLockup from '../layout/LogoLockup'
 
 export default function WelcomeScreen() {
   return (
@@ -12,8 +12,8 @@ export default function WelcomeScreen() {
         <span className="welcome-core__chip"></span>
       </div>
       <div className="welcome-panel">
-        <div className="welcome-brand">
-          <img className="welcome-brand__logo" src={logo} alt="Gemma Neuratech IT" />
+        <div className="welcome-brand" aria-label="Gemma Neuratech IT">
+          <LogoLockup className="welcome-brand__logo" />
         </div>
         <p className="welcome-kicker">Neural systems boot sequence</p>
         <h1>Initializing intelligence layer</h1>

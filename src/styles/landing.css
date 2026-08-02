@@ -269,10 +269,23 @@ body.info-modal-open {
 }
 
 .welcome-brand__logo {
-    display: block;
-    width: min(100%, 280px);
-    height: auto;
-    filter: drop-shadow(0 0 14px rgba(52, 237, 240, 0.42));
+    display: inline-flex;
+    width: min(100%, 320px);
+}
+
+.welcome-brand__logo .logo-lockup__emblem {
+    flex-basis: 68px;
+    width: 68px;
+    height: 68px;
+}
+
+.welcome-brand__logo .logo-lockup__wordmark strong {
+    font-size: 28px;
+}
+
+.welcome-brand__logo .logo-lockup__wordmark em {
+    font-size: 11px;
+    letter-spacing: 5.9px;
 }
 
 .welcome-kicker {
@@ -519,54 +532,79 @@ main {
     width: min(100%, 310px);
 }
 
-.brand__logo {
+.logo-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    min-width: 0;
+    filter: drop-shadow(0 0 14px rgba(52, 237, 240, 0.34));
+}
+
+.logo-lockup__emblem {
+    position: relative;
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #020b0f;
+    box-shadow:
+        0 0 12px rgba(52, 237, 240, 0.42),
+        0 0 26px rgba(52, 237, 240, 0.2);
+    isolation: isolate;
+}
+
+.logo-lockup__emblem::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border: 1px solid rgba(142, 255, 255, 0.56);
+    border-radius: inherit;
+    box-shadow: inset 0 0 10px rgba(52, 237, 240, 0.2);
+    pointer-events: none;
+}
+
+.logo-lockup__emblem img {
     display: block;
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.08);
     filter:
-        brightness(1.18)
-        contrast(1.12)
-        saturate(1.12)
-        drop-shadow(0 0 8px rgba(52, 237, 240, 0.5))
-        drop-shadow(0 0 20px rgba(52, 237, 240, 0.22));
+        brightness(1.08)
+        contrast(1.08)
+        saturate(1.12);
 }
 
-.brand__mark {
+.logo-lockup__wordmark {
     display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    color: var(--cyan);
-    border: 1px solid var(--line-strong);
-    border-radius: 50%;
-    box-shadow: 0 0 18px rgba(52, 237, 240, 0.22), inset 0 0 12px rgba(52, 237, 240, 0.12);
-}
-
-.brand__mark svg {
-    width: 22px;
-    height: 22px;
-}
-
-.brand__text {
-    display: grid;
-    gap: 0;
+    gap: 2px;
+    min-width: 0;
     font-family: var(--font-display);
     line-height: 1;
-    letter-spacing: 2px;
 }
 
-.brand__text strong {
-    color: #edf8fb;
-    font-size: 18px;
+.logo-lockup__wordmark strong {
+    color: transparent;
+    background: linear-gradient(180deg, #ffffff 0%, #dce5e8 25%, #7f898e 50%, #f8fbfc 72%, #a7b2b7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 25px;
     font-weight: 800;
+    letter-spacing: 7px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.16);
 }
 
-.brand__text em {
-    color: #8fa7ae;
-    font-size: 13px;
+.logo-lockup__wordmark em {
+    color: var(--cyan);
+    font-size: 10px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 900;
+    letter-spacing: 5.3px;
+    text-shadow: 0 0 10px rgba(52, 237, 240, 0.72);
+    text-transform: uppercase;
 }
 
 .main-nav {
@@ -2494,7 +2532,8 @@ main {
 .page-card-grid,
 .presentation-grid,
 .review-grid,
-.contact-page-grid {
+.contact-page-grid,
+.contact-form-layout {
     position: relative;
     z-index: 2;
 }
@@ -2512,6 +2551,7 @@ main {
 .legal-card,
 .contact-method,
 .location-panel,
+.contact-form-info,
 .route-contact-form {
     position: relative;
     overflow: hidden;
@@ -2529,6 +2569,7 @@ main {
 .legal-card::before,
 .contact-method::before,
 .location-panel::before,
+.contact-form-info::before,
 .route-contact-form::before {
     content: "";
     position: absolute;
@@ -2555,6 +2596,7 @@ main {
 .legal-card > *,
 .contact-method > *,
 .location-panel > *,
+.contact-form-info > *,
 .route-contact-form > * {
     position: relative;
     z-index: 1;
@@ -2578,6 +2620,7 @@ main {
 .page-card h2,
 .presentation-card h2,
 .location-panel h2,
+.contact-form-info h3,
 .route-contact-form h2 {
     margin: 0 0 12px;
     color: #edf7fa;
@@ -2600,7 +2643,8 @@ main {
 .page-card p,
 .presentation-card p,
 .review-card p,
-.location-panel p {
+.location-panel p,
+.contact-form-info p {
     margin: 0;
     color: #9aacb3;
     font-size: 12px;
@@ -3695,6 +3739,88 @@ main {
     line-height: 1.45;
 }
 
+.corporate-email-panel {
+    position: relative;
+    z-index: 2;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(52, 237, 240, 0.18);
+}
+
+.corporate-email-panel h3 {
+    margin: 0 0 14px;
+    color: #dcebef;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.corporate-email-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.corporate-email-card {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    min-height: 116px;
+    padding: 18px;
+    overflow: hidden;
+    color: inherit;
+    border: 1px solid rgba(52, 237, 240, 0.22);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(52, 237, 240, 0.14), transparent 38%),
+        linear-gradient(135deg, rgba(4, 24, 30, 0.78), rgba(1, 10, 14, 0.7));
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.corporate-email-card::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(52, 237, 240, 0.64), transparent);
+    pointer-events: none;
+}
+
+.corporate-email-card:hover,
+.corporate-email-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(52, 237, 240, 0.52);
+    box-shadow: 0 0 22px rgba(52, 237, 240, 0.14), inset 0 0 18px rgba(52, 237, 240, 0.06);
+}
+
+.corporate-email-card span {
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.corporate-email-card strong {
+    color: #edf8fb;
+    font-family: var(--font-display);
+    font-size: 14px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.corporate-email-card em {
+    color: #8fa3aa;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
 .certificate-panel {
     position: relative;
     z-index: 2;
@@ -4095,8 +4221,15 @@ main {
 
 .contact-page-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.contact-detail-stack {
+    display: grid;
+    gap: 16px;
+    align-content: start;
 }
 
 .contact-methods {
@@ -4135,6 +4268,16 @@ main {
     overflow-wrap: anywhere;
 }
 
+.contact-email-panel {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.contact-email-panel .corporate-email-grid {
+    grid-template-columns: 1fr;
+}
+
 .support-tags {
     display: flex;
     flex-wrap: wrap;
@@ -4158,16 +4301,87 @@ main {
     padding: 20px;
 }
 
+.contact-form-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 0.98fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.contact-form-info {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    min-height: 100%;
+    padding: 28px;
+}
+
+.contact-form-info > span {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-form-info ul {
+    display: grid;
+    gap: 11px;
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-form-info li {
+    position: relative;
+    min-height: 30px;
+    padding-left: 24px;
+    color: #c8dade;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.contact-form-info li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--cyan);
+    background: rgba(52, 237, 240, 0.22);
+    box-shadow: 0 0 12px rgba(52, 237, 240, 0.46);
+    transform: rotate(45deg);
+}
+
 .route-contact-form {
-    padding: 26px;
+    display: grid;
+    width: min(100%, 760px);
+    justify-self: end;
+    margin: 0;
+    padding: 28px;
+    gap: 14px;
+    align-content: start;
 }
 
 .route-contact-form textarea {
-    min-height: 124px;
+    min-height: 150px;
 }
 
 .route-contact-form .btn {
-    width: 100%;
+    width: auto;
+    min-width: 220px;
+    justify-self: start;
+}
+
+.contact-form-section {
+    display: grid;
+    gap: 18px;
+}
+
+.contact-form-section .section-head {
+    margin-bottom: 0;
 }
 
 .contact {
@@ -4204,6 +4418,22 @@ main {
     font-size: 12px;
 }
 
+.contact-email-stack {
+    display: grid;
+    gap: 10px;
+    width: min(100%, 360px);
+    margin-top: 16px;
+}
+
+.contact-email-stack__title {
+    color: var(--cyan);
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
 .contact-direct {
     display: grid;
     width: fit-content;
@@ -4228,6 +4458,20 @@ main {
     color: #e4f5f8;
     font-size: 13px;
     word-break: break-word;
+}
+
+.contact-direct em {
+    margin-top: 4px;
+    color: #8fa3aa;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.contact-email-stack .contact-direct {
+    width: 100%;
+    margin-top: 0;
 }
 
 .contact-form {
@@ -4342,6 +4586,21 @@ textarea:focus {
     width: min(100%, 330px);
 }
 
+.brand--footer .logo-lockup__emblem {
+    flex-basis: 70px;
+    width: 70px;
+    height: 70px;
+}
+
+.brand--footer .logo-lockup__wordmark strong {
+    font-size: 29px;
+}
+
+.brand--footer .logo-lockup__wordmark em {
+    font-size: 11px;
+    letter-spacing: 6px;
+}
+
 .footer-brand p {
     width: min(100%, 540px);
     margin: 0;
@@ -4424,6 +4683,35 @@ textarea:focus {
 
 .footer-col a:hover {
     color: var(--cyan);
+}
+
+.footer-mail-list {
+    display: grid;
+    gap: 7px;
+    margin: 2px 0 4px;
+}
+
+.footer-mail-list a {
+    display: grid;
+    gap: 2px;
+    padding: 8px 10px;
+    border: 1px solid rgba(52, 237, 240, 0.16);
+    border-radius: 5px;
+    background: rgba(52, 237, 240, 0.045);
+}
+
+.footer-mail-list a:hover {
+    border-color: rgba(52, 237, 240, 0.36);
+    background: rgba(52, 237, 240, 0.08);
+}
+
+.footer-mail-list span {
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .socials {
@@ -5136,8 +5424,14 @@ textarea:focus {
     .page-hero,
     .page-hero--split,
     .contact-page-grid,
+    .contact-form-layout,
     .certificate-panel {
         grid-template-columns: 1fr;
+    }
+
+    .route-contact-form {
+        justify-self: stretch;
+        width: 100%;
     }
 
     .tech-modal-grid,
@@ -5149,6 +5443,7 @@ textarea:focus {
     .pricing-grid,
     .page-card-grid,
     .legal-grid,
+    .corporate-email-grid,
     .presentation-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -5200,6 +5495,26 @@ textarea:focus {
 
     .brand--image {
         width: min(218px, calc(100vw - 130px));
+    }
+
+    .logo-lockup {
+        gap: 10px;
+    }
+
+    .logo-lockup__emblem {
+        flex-basis: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-lockup__wordmark strong {
+        font-size: 20px;
+        letter-spacing: 5px;
+    }
+
+    .logo-lockup__wordmark em {
+        font-size: 8px;
+        letter-spacing: 3.8px;
     }
 
     .main-nav {
@@ -5441,9 +5756,11 @@ textarea:focus {
     .pricing-grid,
     .page-card-grid,
     .legal-grid,
+    .corporate-email-grid,
     .presentation-grid,
     .review-grid,
     .contact-page-grid,
+    .contact-form-layout,
     .certificate-panel {
         grid-template-columns: 1fr;
         width: 100%;
@@ -5457,6 +5774,7 @@ textarea:focus {
     .review-card,
     .contact-method,
     .location-panel,
+    .contact-form-info,
     .route-contact-form {
         width: 100%;
         max-width: 360px;

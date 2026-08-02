@@ -5,6 +5,9 @@ import Brand from './Brand'
 const footerStats = ['AI Research', 'MLOps', 'Edge AI', 'Secure Data']
 
 export default function Footer({ copy, navLinks }) {
+  const footerEmails = copy.corporateEmails ?? []
+  const hasFooterEmails = Boolean(copy.email || footerEmails.length)
+
   return (
     <footer className="site-footer">
       <div className="footer-inner">
@@ -49,7 +52,22 @@ export default function Footer({ copy, navLinks }) {
 
           <div className="footer-col footer-contacts">
             <h3>{copy.contactsTitle}</h3>
-            {copy.email ? <a href={`mailto:${copy.email}`}>{copy.email}</a> : null}
+            {hasFooterEmails ? (
+              <div className="footer-mail-list">
+                {copy.email ? (
+                  <a href={`mailto:${copy.email}`}>
+                    <span>Email</span>
+                    {copy.email}
+                  </a>
+                ) : null}
+                {footerEmails.map((item) => (
+                  <a href={`mailto:${item.value}`} key={item.value}>
+                    <span>{item.label}</span>
+                    {item.value}
+                  </a>
+                ))}
+              </div>
+            ) : null}
             {copy.phone ? <a href={`tel:${copy.phone}`}>{copy.phone}</a> : null}
             {copy.contactItems?.map((item) => (
               <span key={item}>{item}</span>

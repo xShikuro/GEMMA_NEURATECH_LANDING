@@ -4,6 +4,27 @@ import { pricingNoteEn, pricingNoteRu, pricingNoteUz, pricingPlansEn, pricingPla
 
 const companyEmail = 'Gemmaneuratech@gmail.com'
 const companyPhone = '+998772827474'
+const corporateInfoEmail = 'info@gemmaneuratech.uz'
+const corporateSupportEmail = 'support@gemmaneuratech.uz'
+const corporateDevEmail = 'dev@gemmaneuratech.uz'
+
+const corporateEmailsRu = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Официальные запросы и документы' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Техподдержка и сопровождение' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Разработка и технические вопросы' },
+]
+
+const corporateEmailsEn = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Official requests and documents' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Technical support and maintenance' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Development and technical questions' },
+]
+
+const corporateEmailsUz = [
+  { label: 'Info', value: corporateInfoEmail, note: 'Rasmiy so‘rovlar va hujjatlar' },
+  { label: 'Support', value: corporateSupportEmail, note: 'Texnik yordam va qo‘llab-quvvatlash' },
+  { label: 'Dev', value: corporateDevEmail, note: 'Dasturlash va texnik savollar' },
+]
 
 const legalDetailsRu = [
   { label: 'Компания', value: 'Gemma Neuratech IT' },
@@ -187,11 +208,16 @@ export const pageContent = {
         { title: 'Форма компании', value: 'MCHJ (ООО)', href: '#contact-form', icon: 'i-chip' },
         { title: 'IT Park Resident', value: 'с 26.05.2026', href: '#contact-form', icon: 'i-shield' },
       ],
+      corporateEmailsTitle: 'Корпоративные почты',
+      corporateEmails: corporateEmailsRu,
       supportTitle: 'Данные компании',
       support: ['Регистрация: 07.05.2026', 'IT Park Resident', 'Ташкент, Узбекистан', 'ООО / MCHJ'],
       locationTitle: 'Адрес',
       location: 'Узбекистан, г. Ташкент, Алмазарский район, МФЙ Чилтогон, ул. Тахтапул Дарвоза, дом 396-У.',
       formTitle: 'Оставить заявку',
+      formInfoTitle: 'Что будет после отправки',
+      formInfoText: 'Мы разберём задачу и свяжемся с вами, чтобы уточнить детали проекта, сроки и подходящий формат работы.',
+      formInfoItems: ['Ответим на указанную почту', 'Уточним цель, объём и приоритеты', 'Подготовим следующий шаг или предложение'],
       name: 'Ваше имя',
       email: 'Email',
       message: 'Опишите задачу',
@@ -365,11 +391,16 @@ export const pageContent = {
         { title: 'Legal form', value: 'MCHJ (LLC)', href: '#contact-form', icon: 'i-chip' },
         { title: 'IT Park Resident', value: 'since 26.05.2026', href: '#contact-form', icon: 'i-shield' },
       ],
+      corporateEmailsTitle: 'Corporate emails',
+      corporateEmails: corporateEmailsEn,
       supportTitle: 'Company details',
       support: ['Registered: 07.05.2026', 'IT Park Resident', 'Tashkent, Uzbekistan', 'LLC / MCHJ'],
       locationTitle: 'Address',
       location: '396-U, Takhtapul Darvoza St., Chiltogon mahalla, Almazar district, Tashkent, Uzbekistan.',
       formTitle: 'Send a request',
+      formInfoTitle: 'What happens next',
+      formInfoText: 'We will review the request and contact you to clarify the project details, timeline, and the right working format.',
+      formInfoItems: ['Reply to the email you provide', 'Clarify goals, scope, and priorities', 'Prepare the next step or proposal'],
       name: 'Your name',
       email: 'Email',
       message: 'Describe the task',
@@ -548,11 +579,16 @@ pageContent.uz = {
       { title: 'Kompaniya shakli', value: 'MCHJ', href: '#contact-form', icon: 'i-chip' },
       { title: 'IT Park Resident', value: '26.05.2026 dan', href: '#contact-form', icon: 'i-shield' },
     ],
+    corporateEmailsTitle: 'Korporativ pochtalar',
+    corporateEmails: corporateEmailsUz,
     supportTitle: 'Kompaniya ma’lumotlari',
     support: ['Ro‘yxatdan o‘tgan: 07.05.2026', 'IT Park rezidenti', 'Toshkent, O‘zbekiston', 'MCHJ'],
     locationTitle: 'Manzil',
     location: 'O‘zbekiston, Toshkent sh., Olmazor tumani, Chig‘atoy Oqtepa MFY, Taxtapul Darvoza ko‘chasi, 396-uy.',
     formTitle: 'So‘rov yuborish',
+    formInfoTitle: 'Yuborgandan keyin nima bo‘ladi',
+    formInfoText: 'Biz so‘rovni ko‘rib chiqamiz va loyiha tafsilotlari, muddatlar hamda ish formatini aniqlash uchun siz bilan bog‘lanamiz.',
+    formInfoItems: ['Ko‘rsatilgan pochtaga javob beramiz', 'Maqsad, hajm va ustuvorliklarni aniqlaymiz', 'Keyingi qadam yoki taklif tayyorlaymiz'],
     name: 'Ismingiz',
     email: 'Email',
     message: 'Vazifani tasvirlang',

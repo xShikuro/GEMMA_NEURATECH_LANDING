@@ -37,11 +37,22 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const [step, setStep] = useState('terms')
   const [accepted, setAccepted] = useState(false)
   const [draft, setDraft] = useState({})
+  const [paymentStatus, setPaymentStatus] = useState('success')
   const titleId = useId()
   const closeButtonRef = useRef(null)
   const agreement = copy.agreement
   const fields = copy.fields || {}
   const banks = Array.isArray(copy.banks) && copy.banks.length ? copy.banks : fallbackBanks
+  const paymentStatuses = copy.paymentStatuses || {}
+  const activeStatus = paymentStatuses[paymentStatus] || {
+    tone: 'success',
+    icon: 'i-shield',
+    eyebrow: copy.eyebrow,
+    title: copy.successTitle,
+    text: copy.successText,
+    primaryLabel: copy.doneLabel,
+    action: 'close',
+  }
   const steps = [
     { id: 'terms', label: copy.stepTerms || 'Условия' },
     { id: 'details', label: copy.stepDetails || 'Заявка' },
@@ -56,7 +67,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
     bank: copy.bankTitle || copy.stepBank || 'Выбор банка',
     payment: copy.paymentTitle,
     confirm: copy.confirmTitle || copy.stepConfirm || 'SMS-подтверждение',
-    success: copy.successTitle,
+    result: activeStatus.title || copy.successTitle,
   }[step]
 
   useEffect(() => {
@@ -120,7 +131,18 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const handleConfirmSubmit = (event) => {
     event.preventDefault()
     event.currentTarget.reset()
-    setStep('success')
+    // Temporary placeholder until the acquiring response is wired.
+    setPaymentStatus(copy.demoPaymentStatus || 'success')
+    setStep('result')
+  }
+
+  const handleStatusPrimaryAction = () => {
+    if (activeStatus.action === 'retry') {
+      setStep('payment')
+      return
+    }
+
+    onClose()
   }
 
   const modal = (
@@ -138,7 +160,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
 
         <div className="checkout-steps" aria-hidden="true">
           {steps.map((item, index) => {
-            const currentIndex = step === 'success' ? checkoutSteps.length : checkoutSteps.indexOf(step)
+            const currentIndex = step === 'result' ? checkoutSteps.length : checkoutSteps.indexOf(step)
             const itemIndex = checkoutSteps.indexOf(item.id)
             const className = [
               step === item.id ? 'is-active' : '',
@@ -435,13 +457,56 @@ export default function CheckoutModal({ copy, onClose, plan }) {
           </form>
         ) : null}
 
-        {step === 'success' ? (
-          <div className="checkout-success">
-            <SvgIcon id="i-shield" />
-            <p>{copy.successText}</p>
-            <button className="btn btn--primary" type="button" onClick={onClose}>
-              {copy.doneLabel}
-            </button>
+        {step === 'result' ? (
+          <div className={`checkout-status checkout-status--${activeStatus.tone || paymentStatus}`}>
+            <div className="checkout-status__signal" aria-hidden="true">
+              <SvgIcon id={activeStatus.icon || 'i-shield'} />
+            </div>
+            <div className="checkout-status__content">
+              {activeStatus.eyebrow ? <span className="checkout-status__eyebrow">{activeStatus.eyebrow}</span> : null}
+              <h3>{activeStatus.title}</h3>
+              <p>{activeStatus.text}</p>
+
+              {activeStatus.details?.length ? (
+                <ul className="checkout-status__details">
+                  {activeStatus.details.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
+
+              <div className="checkout-status__meta">
+                <span>
+                  <em>{copy.summaryLabel}</em>
+                  <strong>{plan.name}</strong>
+                  <small>{plan.price}</small>
+                </span>
+                {draft.bankName ? (
+                  <span>
+                    <em>{copy.bankSelectedLabel}</em>
+                    <strong>{draft.bankName}</strong>
+                    <small>{draft.acquiringId}</small>
+                  </span>
+                ) : null}
+                {draft.email ? (
+                  <span>
+                    <em>{fields.email}</em>
+                    <strong>{draft.email}</strong>
+                  </span>
+                ) : null}
+              </div>
+
+              <div className="checkout-actions checkout-status__actions">
+                {activeStatus.secondaryLabel ? (
+                  <button className="btn btn--outline" type="button" onClick={onClose}>
+                    {activeStatus.secondaryLabel}
+                  </button>
+                ) : null}
+                <button className="btn btn--primary" type="button" onClick={handleStatusPrimaryAction}>
+                  {activeStatus.primaryLabel || copy.doneLabel}
+                </button>
+              </div>
+            </div>
           </div>
         ) : null}
       </div>

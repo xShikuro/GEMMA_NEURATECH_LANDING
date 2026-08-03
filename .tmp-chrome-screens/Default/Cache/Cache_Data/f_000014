@@ -1,0 +1,271 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/sections/Solutions.jsx");const useState = __vite__cjsImport0_react["useState"];const _jsxDEV = __vite__cjsImport5_react_jsxDevRuntime["jsxDEV"];import __vite__cjsImport0_react from "/node_modules/.vite/deps/react.js?v=86c74243";
+import SvgIcon from "/src/components/icons/SvgIcon.jsx";
+import SectionHead from "/src/components/ui/SectionHead.jsx";
+import InfoModal from "/src/components/ui/InfoModal.jsx";
+import SliderButtons from "/src/components/ui/SliderButtons.jsx";
+var _jsxFileName = "C:/Users/user/Desktop/GEMMA_NEURATECH/GEMMA_NEURATECH_LANDING/GEMMA_NEURATECH-app/src/components/sections/Solutions.jsx";
+import __vite__cjsImport5_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=86c74243";
+var _s = $RefreshSig$();
+function NeuralIcon() {
+	return /* @__PURE__ */ _jsxDEV("div", {
+		className: "solution-icon neural-icon",
+		"aria-hidden": "true",
+		children: Array.from({ length: 6 }, (_, index) => /* @__PURE__ */ _jsxDEV("span", {}, index, false, {
+			fileName: _jsxFileName,
+			lineNumber: 11,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
+}
+_c = NeuralIcon;
+export default function Solutions({ copy }) {
+	_s();
+	const [activeSolution, setActiveSolution] = useState(null);
+	const modal = copy.modal;
+	return /* @__PURE__ */ _jsxDEV("section", {
+		className: "section-block tech-frame reveal",
+		id: "solutions",
+		children: [
+			/* @__PURE__ */ _jsxDEV(SectionHead, { title: copy.title }, void 0, false, {
+				fileName: _jsxFileName,
+				lineNumber: 23,
+				columnNumber: 7
+			}, this),
+			/* @__PURE__ */ _jsxDEV("div", {
+				className: "solution-grid",
+				"data-scroll-row": true,
+				children: copy.items.map((solution) => /* @__PURE__ */ _jsxDEV("article", {
+					className: "solution-card",
+					children: [
+						solution.neuralIcon ? /* @__PURE__ */ _jsxDEV(NeuralIcon, {}, void 0, false, {
+							fileName: _jsxFileName,
+							lineNumber: 28,
+							columnNumber: 36
+						}, this) : /* @__PURE__ */ _jsxDEV(SvgIcon, {
+							id: solution.icon,
+							className: "card-svg"
+						}, void 0, false, {
+							fileName: _jsxFileName,
+							lineNumber: 28,
+							columnNumber: 53
+						}, this),
+						/* @__PURE__ */ _jsxDEV("h3", { children: solution.title }, void 0, false, {
+							fileName: _jsxFileName,
+							lineNumber: 29,
+							columnNumber: 13
+						}, this),
+						/* @__PURE__ */ _jsxDEV("p", { children: solution.text }, void 0, false, {
+							fileName: _jsxFileName,
+							lineNumber: 30,
+							columnNumber: 13
+						}, this),
+						/* @__PURE__ */ _jsxDEV("button", {
+							className: "solution-card__link",
+							type: "button",
+							onClick: () => setActiveSolution(solution),
+							children: [copy.details, /* @__PURE__ */ _jsxDEV(SvgIcon, { id: "i-arrow" }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 33,
+								columnNumber: 15
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName,
+							lineNumber: 31,
+							columnNumber: 13
+						}, this)
+					]
+				}, solution.title, true, {
+					fileName: _jsxFileName,
+					lineNumber: 27,
+					columnNumber: 11
+				}, this))
+			}, void 0, false, {
+				fileName: _jsxFileName,
+				lineNumber: 25,
+				columnNumber: 7
+			}, this),
+			/* @__PURE__ */ _jsxDEV(SliderButtons, {
+				previousLabel: copy.previous,
+				nextLabel: copy.next
+			}, void 0, false, {
+				fileName: _jsxFileName,
+				lineNumber: 39,
+				columnNumber: 7
+			}, this),
+			activeSolution && modal ? /* @__PURE__ */ _jsxDEV(InfoModal, {
+				className: "info-modal__dialog--solution",
+				closeLabel: modal.closeLabel,
+				eyebrow: modal.eyebrow,
+				intro: activeSolution.text,
+				onClose: () => setActiveSolution(null),
+				title: activeSolution.title,
+				children: [/* @__PURE__ */ _jsxDEV("div", {
+					className: "solution-modal-layout",
+					children: [/* @__PURE__ */ _jsxDEV("aside", {
+						className: "solution-modal-visual",
+						children: [
+							activeSolution.neuralIcon ? /* @__PURE__ */ _jsxDEV(NeuralIcon, {}, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 52,
+								columnNumber: 44
+							}, this) : /* @__PURE__ */ _jsxDEV(SvgIcon, {
+								id: activeSolution.icon,
+								className: "card-svg"
+							}, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 52,
+								columnNumber: 61
+							}, this),
+							/* @__PURE__ */ _jsxDEV("h3", { children: activeSolution.title }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 53,
+								columnNumber: 15
+							}, this),
+							/* @__PURE__ */ _jsxDEV("p", { children: activeSolution.text }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 54,
+								columnNumber: 15
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName,
+						lineNumber: 51,
+						columnNumber: 13
+					}, this), /* @__PURE__ */ _jsxDEV("div", {
+						className: "solution-modal-content",
+						children: [
+							/* @__PURE__ */ _jsxDEV("section", { children: [/* @__PURE__ */ _jsxDEV("h3", { children: modal.scopeTitle }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 59,
+								columnNumber: 17
+							}, this), /* @__PURE__ */ _jsxDEV("ul", { children: modal.scopeItems.map((item) => /* @__PURE__ */ _jsxDEV("li", { children: item }, item, false, {
+								fileName: _jsxFileName,
+								lineNumber: 62,
+								columnNumber: 21
+							}, this)) }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 60,
+								columnNumber: 17
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName,
+								lineNumber: 58,
+								columnNumber: 15
+							}, this),
+							/* @__PURE__ */ _jsxDEV("section", { children: [/* @__PURE__ */ _jsxDEV("h3", { children: modal.workflowTitle }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 68,
+								columnNumber: 17
+							}, this), /* @__PURE__ */ _jsxDEV("ol", { children: modal.workflowItems.map((item) => /* @__PURE__ */ _jsxDEV("li", { children: item }, item, false, {
+								fileName: _jsxFileName,
+								lineNumber: 71,
+								columnNumber: 21
+							}, this)) }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 69,
+								columnNumber: 17
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName,
+								lineNumber: 67,
+								columnNumber: 15
+							}, this),
+							/* @__PURE__ */ _jsxDEV("section", { children: [/* @__PURE__ */ _jsxDEV("h3", { children: modal.resultTitle }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 77,
+								columnNumber: 17
+							}, this), /* @__PURE__ */ _jsxDEV("ul", { children: modal.resultItems.map((item) => /* @__PURE__ */ _jsxDEV("li", { children: item }, item, false, {
+								fileName: _jsxFileName,
+								lineNumber: 80,
+								columnNumber: 21
+							}, this)) }, void 0, false, {
+								fileName: _jsxFileName,
+								lineNumber: 78,
+								columnNumber: 17
+							}, this)] }, void 0, true, {
+								fileName: _jsxFileName,
+								lineNumber: 76,
+								columnNumber: 15
+							}, this)
+						]
+					}, void 0, true, {
+						fileName: _jsxFileName,
+						lineNumber: 57,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName,
+					lineNumber: 50,
+					columnNumber: 11
+				}, this), /* @__PURE__ */ _jsxDEV("div", {
+					className: "info-modal-cta",
+					children: [/* @__PURE__ */ _jsxDEV("div", { children: [/* @__PURE__ */ _jsxDEV("h3", { children: modal.ctaTitle }, void 0, false, {
+						fileName: _jsxFileName,
+						lineNumber: 89,
+						columnNumber: 15
+					}, this), /* @__PURE__ */ _jsxDEV("p", { children: modal.ctaText }, void 0, false, {
+						fileName: _jsxFileName,
+						lineNumber: 90,
+						columnNumber: 15
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName,
+						lineNumber: 88,
+						columnNumber: 13
+					}, this), /* @__PURE__ */ _jsxDEV("a", {
+						className: "btn btn--primary",
+						href: "#contact",
+						onClick: () => setActiveSolution(null),
+						children: modal.cta
+					}, void 0, false, {
+						fileName: _jsxFileName,
+						lineNumber: 92,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName,
+					lineNumber: 87,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName,
+				lineNumber: 42,
+				columnNumber: 9
+			}, this) : null
+		]
+	}, void 0, true, {
+		fileName: _jsxFileName,
+		lineNumber: 22,
+		columnNumber: 5
+	}, this);
+}
+_s(Solutions, "s1ZB4cjj/MySEwuUFDbjmSacQuY=");
+_c2 = Solutions;
+var _c, _c2;
+$RefreshReg$(_c, "NeuralIcon");
+$RefreshReg$(_c2, "Solutions");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+import * as __vite_react_currentExports from "/src/components/sections/Solutions.jsx";
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+
+  const currentExports = __vite_react_currentExports;
+  queueMicrotask(() => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/user/Desktop/GEMMA_NEURATECH/GEMMA_NEURATECH_LANDING/GEMMA_NEURATECH-app/src/components/sections/Solutions.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/user/Desktop/GEMMA_NEURATECH/GEMMA_NEURATECH_LANDING/GEMMA_NEURATECH-app/src/components/sections/Solutions.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) { return RefreshRuntime.register(type, "C:/Users/user/Desktop/GEMMA_NEURATECH/GEMMA_NEURATECH_LANDING/GEMMA_NEURATECH-app/src/components/sections/Solutions.jsx" + ' ' + id); }
+function $RefreshSig$() { return RefreshRuntime.createSignatureFunctionForTransform(); }
+
+//# sourceMappingURL=data:application/json;base64,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ZUFBZixDQUNFLHdCQUFDLE9BQUQsYUFDRSx3QkFBQyxNQUFELFlBQUssTUFBTSxTQUFhOzs7O2VBQ3hCLHdCQUFDLEtBQUQsWUFBSSxNQUFNLFFBQVc7Ozs7YUFDbEI7Ozs7ZUFDTCx3QkFBQyxLQUFEO01BQUcsV0FBVTtNQUFtQixNQUFLO01BQVcsZUFBZSxrQkFBa0IsSUFBSTtnQkFDbEYsTUFBTTtLQUNOOzs7O2FBQ0E7Ozs7O1lBQ0k7Ozs7O2NBQ1Q7RUFDRzs7Ozs7O0FBRWIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiU29sdXRpb25zLmpzeCJdLCJ2ZXJzaW9uIjozLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0J1xuaW1wb3J0IFN2Z0ljb24gZnJvbSAnLi4vaWNvbnMvU3ZnSWNvbidcbmltcG9ydCBTZWN0aW9uSGVhZCBmcm9tICcuLi91aS9TZWN0aW9uSGVhZCdcbmltcG9ydCBJbmZvTW9kYWwgZnJvbSAnLi4vdWkvSW5mb01vZGFsJ1xuaW1wb3J0IFNsaWRlckJ1dHRvbnMgZnJvbSAnLi4vdWkvU2xpZGVyQnV0dG9ucydcblxuZnVuY3Rpb24gTmV1cmFsSWNvbigpIHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInNvbHV0aW9uLWljb24gbmV1cmFsLWljb25cIiBhcmlhLWhpZGRlbj1cInRydWVcIj5cbiAgICAgIHtBcnJheS5mcm9tKHsgbGVuZ3RoOiA2IH0sIChfLCBpbmRleCkgPT4gKFxuICAgICAgICA8c3BhbiBrZXk9e2luZGV4fT48L3NwYW4+XG4gICAgICApKX1cbiAgICA8L2Rpdj5cbiAgKVxufVxuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBTb2x1dGlvbnMoeyBjb3B5IH0pIHtcbiAgY29uc3QgW2FjdGl2ZVNvbHV0aW9uLCBzZXRBY3RpdmVTb2x1dGlvbl0gPSB1c2VTdGF0ZShudWxsKVxuICBjb25zdCBtb2RhbCA9IGNvcHkubW9kYWxcblxuICByZXR1cm4gKFxuICAgIDxzZWN0aW9uIGNsYXNzTmFtZT1cInNlY3Rpb24tYmxvY2sgdGVjaC1mcmFtZSByZXZlYWxcIiBpZD1cInNvbHV0aW9uc1wiPlxuICAgICAgPFNlY3Rpb25IZWFkIHRpdGxlPXtjb3B5LnRpdGxlfSAvPlxuXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInNvbHV0aW9uLWdyaWRcIiBkYXRhLXNjcm9sbC1yb3c+XG4gICAgICAgIHtjb3B5Lml0ZW1zLm1hcCgoc29sdXRpb24pID0+IChcbiAgICAgICAgICA8YXJ0aWNsZSBjbGFzc05hbWU9XCJzb2x1dGlvbi1jYXJkXCIga2V5PXtzb2x1dGlvbi50aXRsZX0+XG4gICAgICAgICAgICB7c29sdXRpb24ubmV1cmFsSWNvbiA/IDxOZXVyYWxJY29uIC8+IDogPFN2Z0ljb24gaWQ9e3NvbHV0aW9uLmljb259IGNsYXNzTmFtZT1cImNhcmQtc3ZnXCIgLz59XG4gICAgICAgICAgICA8aDM+e3NvbHV0aW9uLnRpdGxlfTwvaDM+XG4gICAgICAgICAgICA8cD57c29sdXRpb24udGV4dH08L3A+XG4gICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cInNvbHV0aW9uLWNhcmRfX2xpbmtcIiB0eXBlPVwiYnV0dG9uXCIgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlU29sdXRpb24oc29sdXRpb24pfT5cbiAgICAgICAgICAgICAge2NvcHkuZGV0YWlsc31cbiAgICAgICAgICAgICAgPFN2Z0ljb24gaWQ9XCJpLWFycm93XCIgLz5cbiAgICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgIDwvYXJ0aWNsZT5cbiAgICAgICAgKSl9XG4gICAgICA8L2Rpdj5cblxuICAgICAgPFNsaWRlckJ1dHRvbnMgcHJldmlvdXNMYWJlbD17Y29weS5wcmV2aW91c30gbmV4dExhYmVsPXtjb3B5Lm5leHR9IC8+XG5cbiAgICAgIHthY3RpdmVTb2x1dGlvbiAmJiBtb2RhbCA/IChcbiAgICAgICAgPEluZm9Nb2RhbFxuICAgICAgICAgIGNsYXNzTmFtZT1cImluZm8tbW9kYWxfX2RpYWxvZy0tc29sdXRpb25cIlxuICAgICAgICAgIGNsb3NlTGFiZWw9e21vZGFsLmNsb3NlTGFiZWx9XG4gICAgICAgICAgZXllYnJvdz17bW9kYWwuZXllYnJvd31cbiAgICAgICAgICBpbnRybz17YWN0aXZlU29sdXRpb24udGV4dH1cbiAgICAgICAgICBvbkNsb3NlPXsoKSA9PiBzZXRBY3RpdmVTb2x1dGlvbihudWxsKX1cbiAgICAgICAgICB0aXRsZT17YWN0aXZlU29sdXRpb24udGl0bGV9XG4gICAgICAgID5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNvbHV0aW9uLW1vZGFsLWxheW91dFwiPlxuICAgICAgICAgICAgPGFzaWRlIGNsYXNzTmFtZT1cInNvbHV0aW9uLW1vZGFsLXZpc3VhbFwiPlxuICAgICAgICAgICAgICB7YWN0aXZlU29sdXRpb24ubmV1cmFsSWNvbiA/IDxOZXVyYWxJY29uIC8+IDogPFN2Z0ljb24gaWQ9e2FjdGl2ZVNvbHV0aW9uLmljb259IGNsYXNzTmFtZT1cImNhcmQtc3ZnXCIgLz59XG4gICAgICAgICAgICAgIDxoMz57YWN0aXZlU29sdXRpb24udGl0bGV9PC9oMz5cbiAgICAgICAgICAgICAgPHA+e2FjdGl2ZVNvbHV0aW9uLnRleHR9PC9wPlxuICAgICAgICAgICAgPC9hc2lkZT5cblxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzb2x1dGlvbi1tb2RhbC1jb250ZW50XCI+XG4gICAgICAgICAgICAgIDxzZWN0aW9uPlxuICAgICAgICAgICAgICAgIDxoMz57bW9kYWwuc2NvcGVUaXRsZX08L2gzPlxuICAgICAgICAgICAgICAgIDx1bD5cbiAgICAgICAgICAgICAgICAgIHttb2RhbC5zY29wZUl0ZW1zLm1hcCgoaXRlbSkgPT4gKFxuICAgICAgICAgICAgICAgICAgICA8bGkga2V5PXtpdGVtfT57aXRlbX08L2xpPlxuICAgICAgICAgICAgICAgICAgKSl9XG4gICAgICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgICAgPC9zZWN0aW9uPlxuXG4gICAgICAgICAgICAgIDxzZWN0aW9uPlxuICAgICAgICAgICAgICAgIDxoMz57bW9kYWwud29ya2Zsb3dUaXRsZX08L2gzPlxuICAgICAgICAgICAgICAgIDxvbD5cbiAgICAgICAgICAgICAgICAgIHttb2RhbC53b3JrZmxvd0l0ZW1zLm1hcCgoaXRlbSkgPT4gKFxuICAgICAgICAgICAgICAgICAgICA8bGkga2V5PXtpdGVtfT57aXRlbX08L2xpPlxuICAgICAgICAgICAgICAgICAgKSl9XG4gICAgICAgICAgICAgICAgPC9vbD5cbiAgICAgICAgICAgICAgPC9zZWN0aW9uPlxuXG4gICAgICAgICAgICAgIDxzZWN0aW9uPlxuICAgICAgICAgICAgICAgIDxoMz57bW9kYWwucmVzdWx0VGl0bGV9PC9oMz5cbiAgICAgICAgICAgICAgICA8dWw+XG4gICAgICAgICAgICAgICAgICB7bW9kYWwucmVzdWx0SXRlbXMubWFwKChpdGVtKSA9PiAoXG4gICAgICAgICAgICAgICAgICAgIDxsaSBrZXk9e2l0ZW19PntpdGVtfTwvbGk+XG4gICAgICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgICA8L3VsPlxuICAgICAgICAgICAgICA8L3NlY3Rpb24+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaW5mby1tb2RhbC1jdGFcIj5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxoMz57bW9kYWwuY3RhVGl0bGV9PC9oMz5cbiAgICAgICAgICAgICAgPHA+e21vZGFsLmN0YVRleHR9PC9wPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8YSBjbGFzc05hbWU9XCJidG4gYnRuLS1wcmltYXJ5XCIgaHJlZj1cIiNjb250YWN0XCIgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlU29sdXRpb24obnVsbCl9PlxuICAgICAgICAgICAgICB7bW9kYWwuY3RhfVxuICAgICAgICAgICAgPC9hPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L0luZm9Nb2RhbD5cbiAgICAgICkgOiBudWxsfVxuICAgIDwvc2VjdGlvbj5cbiAgKVxufVxuIl19

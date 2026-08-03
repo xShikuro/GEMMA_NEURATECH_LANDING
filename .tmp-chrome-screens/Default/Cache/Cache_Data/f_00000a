@@ -1,0 +1,985 @@
+import { checkoutOfferEn, checkoutOfferRu, checkoutOfferUz } from "/src/data/offerTerms.js";
+import { checkoutBanks } from "/src/data/checkoutBanks.js";
+import { paymentStatusesEn, paymentStatusesRu, paymentStatusesUz } from "/src/data/paymentStatuses.js";
+import { pricingNoteEn, pricingNoteRu, pricingNoteUz, pricingPlansEn, pricingPlansRu, pricingPlansUz } from "/src/data/pricingPlans.js";
+const companyEmail = "Gemmaneuratech@gmail.com";
+const companyPhone = "+998772827474";
+const corporateInfoEmail = "info@gemmaneuratech.uz";
+const corporateSupportEmail = "support@gemmaneuratech.uz";
+const corporateDevEmail = "dev@gemmaneuratech.uz";
+const corporateEmailsRu = [
+	{
+		label: "Info",
+		value: corporateInfoEmail,
+		note: "Официальные запросы и документы"
+	},
+	{
+		label: "Support",
+		value: corporateSupportEmail,
+		note: "Техподдержка и сопровождение"
+	},
+	{
+		label: "Dev",
+		value: corporateDevEmail,
+		note: "Разработка и технические вопросы"
+	}
+];
+const corporateEmailsEn = [
+	{
+		label: "Info",
+		value: corporateInfoEmail,
+		note: "Official requests and documents"
+	},
+	{
+		label: "Support",
+		value: corporateSupportEmail,
+		note: "Technical support and maintenance"
+	},
+	{
+		label: "Dev",
+		value: corporateDevEmail,
+		note: "Development and technical questions"
+	}
+];
+const corporateEmailsUz = [
+	{
+		label: "Info",
+		value: corporateInfoEmail,
+		note: "Rasmiy so‘rovlar va hujjatlar"
+	},
+	{
+		label: "Support",
+		value: corporateSupportEmail,
+		note: "Texnik yordam va qo‘llab-quvvatlash"
+	},
+	{
+		label: "Dev",
+		value: corporateDevEmail,
+		note: "Dasturlash va texnik savollar"
+	}
+];
+const legalDetailsRu = [
+	{
+		label: "Компания",
+		value: "Gemma Neuratech IT"
+	},
+	{
+		label: "Полное название",
+		value: "\"GEMMA NEURATECH IT\" MCHJ (ООО)"
+	},
+	{
+		label: "Адрес",
+		value: "Узбекистан, г. Ташкент, Алмазарский район, МФЙ Чилтогон, ул. Тахтапул Дарвоза, дом 396-У."
+	},
+	{
+		label: "Дата регистрации",
+		value: "07.05.2026"
+	},
+	{
+		label: "IT Park Resident",
+		value: "с 26.05.2026"
+	},
+	{
+		label: "Email",
+		value: companyEmail
+	},
+	{
+		label: "Телефон",
+		value: companyPhone
+	}
+];
+const legalDetailsEn = [
+	{
+		label: "Company",
+		value: "Gemma Neuratech IT"
+	},
+	{
+		label: "Full legal name",
+		value: "\"GEMMA NEURATECH IT\" MCHJ (LLC)"
+	},
+	{
+		label: "Address",
+		value: "396-U, Takhtapul Darvoza St., Chiltogon mahalla, Almazar district, Tashkent, Uzbekistan."
+	},
+	{
+		label: "Registration date",
+		value: "07.05.2026"
+	},
+	{
+		label: "IT Park Resident",
+		value: "since 26.05.2026"
+	},
+	{
+		label: "Email",
+		value: companyEmail
+	},
+	{
+		label: "Phone",
+		value: companyPhone
+	}
+];
+export const pageContent = {
+	ru: {
+		navLinks: [
+			{
+				to: "/",
+				label: "Главная"
+			},
+			{
+				to: "/services",
+				label: "Услуги и цены"
+			},
+			{
+				to: "/about",
+				label: "О нас"
+			},
+			{
+				to: "/contact",
+				label: "Связь"
+			}
+		],
+		servicesPage: {
+			eyebrow: "Услуги",
+			title: "IT-решения, AI-системы и инженерная инфраструктура",
+			text: "Gemma Neuratech IT готовит цифровые продукты, интеллектуальные решения и техническую основу для AI-проектов. Стоимость услуг фиксируется после уточнения задачи и объема работ.",
+			cta: "Оставить заявку",
+			pricingTitle: "Пакеты услуг и цены",
+			includedLabel: "Что входит",
+			pricingAction: "Купить пакет",
+			checkout: {
+				eyebrow: "Checkout",
+				termsTitle: "Подтвердите условия",
+				detailsTitle: "Данные заявки",
+				bankTitle: "Выбор банка",
+				paymentTitle: "Данные карты",
+				confirmTitle: "SMS-подтверждение",
+				successTitle: "Заявка на оплату подготовлена",
+				stepTerms: "Условия",
+				stepDetails: "Заявка",
+				stepBank: "Банк",
+				stepPayment: "Карта",
+				stepConfirm: "SMS",
+				summaryLabel: "Выбранный пакет",
+				agreement: checkoutOfferRu,
+				terms: [
+					"Стоимость пакета является стартовой и может уточняться после согласования технического задания.",
+					"Работы начинаются после подтверждения заказа, оплаты и согласования объема услуг.",
+					"Данные карты в текущей версии не сохраняются и будут передаваться только платежному провайдеру после подключения платежного шлюза."
+				],
+				acceptText: "Я ознакомился с публичной офертой GEMMA NEURATECH IT и принимаю условия оказания услуг, обработки данных, оплаты и возвратов.",
+				continueLabel: "Перейти к заявке",
+				detailsIntro: "Заполните контактные данные и коротко опишите, какой сайт, платформу или цифровой продукт нужно подготовить.",
+				detailsContinueLabel: "Выбрать банк",
+				bankIntro: "Выберите банк, через эквайринг которого будет проводиться оплата после подключения платежного шлюза.",
+				bankContinueLabel: "Перейти к данным карты",
+				bankAcquiringLabel: "Эквайринг",
+				bankSelectedLabel: "Выбранный банк",
+				bankNote: "Будет подключен отдельный банковский эквайринг.",
+				paymentIntro: "Введите платежные данные. Карта будет передаваться в выбранный банковский эквайринг без хранения на сайте.",
+				cardContinueLabel: "Отправить SMS-код",
+				confirmText: "После подключения платежного шлюза одноразовый код будет отправляться на телефон, указанный в заявке.",
+				smsHint: "Поле подготовлено под будущую интеграцию SMS/3-D Secure. Сейчас код используется как демонстрационный шаг сценария.",
+				backLabel: "Назад",
+				payLabel: "Подтвердить оплату",
+				doneLabel: "Готово",
+				closeLabel: "Закрыть checkout",
+				secureText: "Платежная форма подготовлена под будущую токенизацию через платежный провайдер.",
+				successText: "Сценарий покупки готов. После подключения backend и платежного шлюза здесь будет создаваться реальный платеж.",
+				paymentStatuses: paymentStatusesRu,
+				banks: checkoutBanks,
+				fields: {
+					name: "Имя и фамилия",
+					email: "Email",
+					phone: "Телефон",
+					projectName: "Название проекта или компании",
+					projectType: "Тип сайта или платформы",
+					description: "Краткое описание задачи",
+					cardName: "Имя на карте",
+					cardNumber: "Номер карты",
+					expiry: "Срок",
+					cvc: "CVC",
+					smsCode: "SMS-код подтверждения"
+				}
+			},
+			pricing: pricingPlansRu,
+			servicesTitle: "Направления работ",
+			services: [
+				{
+					title: "AI и нейронные сети",
+					text: "Разработка интеллектуальных систем, моделей и прототипов под бизнес-задачи.",
+					icon: "i-brain"
+				},
+				{
+					title: "Веб и платформы",
+					text: "Проектирование интерфейсов, веб-приложений и цифровых сервисов.",
+					icon: "i-layers"
+				},
+				{
+					title: "Инфраструктура",
+					text: "API, пайплайны, облачные сервисы и техническая база для продукта.",
+					icon: "i-chip"
+				},
+				{
+					title: "Безопасность данных",
+					text: "Аккуратная работа с данными, доступами и инженерными процессами.",
+					icon: "i-shield"
+				}
+			],
+			note: pricingNoteRu
+		},
+		aboutPage: {
+			eyebrow: "Компания",
+			title: "Gemma Neuratech IT развивает цифровые и AI-решения",
+			text: "Компания зарегистрирована в Узбекистане и является резидентом IT Park. Мы строим технологичную основу для разработки интеллектуальных систем, программных продуктов и инфраструктурных решений.",
+			stats: [
+				{
+					value: "07.05.2026",
+					label: "дата регистрации"
+				},
+				{
+					value: "MCHJ (ООО)",
+					label: "форма компании"
+				},
+				{
+					value: "26.05.2026",
+					label: "IT Park Resident"
+				}
+			],
+			legalTitle: "Регистрационные данные",
+			legalDetails: legalDetailsRu,
+			documentsTitle: "Официальные документы",
+			certificate: {
+				title: "Свидетельство IT Park",
+				eyebrow: "Официальный статус",
+				heading: "Резидент технологического парка",
+				text: "Gemma Neuratech IT внесена в Единый реестр резидентов IT Park Uzbekistan 26 мая 2026 года.",
+				meta: [
+					"№ 6150",
+					"В реестре с 26.05.2026",
+					"\"GEMMA NEURATECH IT\" MCHJ"
+				],
+				button: "Открыть свидетельство",
+				downloadLabel: "Скачать файл",
+				downloadName: "it-park-resident-certificate-gemma-neuratech-it.jpg",
+				closeLabel: "Закрыть свидетельство",
+				alt: "Свидетельство резидента IT Park Uzbekistan для GEMMA NEURATECH IT",
+				openLabel: "Открыть свидетельство IT Park"
+			},
+			documents: [{
+				type: "pdf",
+				file: "registration",
+				title: "Регистрационный документ",
+				eyebrow: "Официальный PDF",
+				heading: "Документ о регистрации компании",
+				text: "Официальный документ, подтверждающий регистрационные сведения GEMMA NEURATECH IT.",
+				meta: [
+					"PDF",
+					"Регистрационные данные",
+					"\"GEMMA NEURATECH IT\" MCHJ"
+				],
+				button: "Открыть документ",
+				downloadLabel: "Скачать файл",
+				downloadName: "gemma-neuratech-it-registration-document.pdf",
+				closeLabel: "Закрыть документ",
+				alt: "Регистрационный документ GEMMA NEURATECH IT",
+				stampTitle: "REG DOC",
+				stampIcon: "i-info"
+			}, {
+				type: "pdf",
+				file: "egrpo",
+				title: "Справка ЕГРПО",
+				eyebrow: "Реестр компании",
+				heading: "ЕГРПО и данные директора",
+				text: "Документ с регистрационными данными компании и сведениями о директоре.",
+				meta: [
+					"ЕГРПО",
+					"Директор: Хуршидбек",
+					"PDF-документ"
+				],
+				button: "Открыть ЕГРПО",
+				downloadLabel: "Скачать файл",
+				downloadName: "gemma-neuratech-it-egrpo-director-khurshidbek.pdf",
+				closeLabel: "Закрыть ЕГРПО",
+				alt: "Справка ЕГРПО GEMMA NEURATECH IT директор Хуршидбек",
+				stampTitle: "EGRPO",
+				stampIcon: "i-info"
+			}],
+			presentationsTitle: "Презентации проектов",
+			presentations: [
+				{
+					title: "AI Solutions",
+					tag: "Direction",
+					text: "Презентация направления интеллектуальных решений и AI-разработки."
+				},
+				{
+					title: "Digital Platforms",
+					tag: "Direction",
+					text: "Презентация веб-платформ, сервисов и продуктовой разработки."
+				},
+				{
+					title: "Engineering Base",
+					tag: "Direction",
+					text: "Презентация инфраструктуры, MLOps-подхода и технической архитектуры."
+				}
+			],
+			reviewsTitle: "Отзывы",
+			reviews: [{
+				quote: "Раздел отзывов будет заполнен после согласования публикации клиентских отзывов и кейсов.",
+				author: "Gemma Neuratech IT"
+			}, {
+				quote: "Публичные презентации проектов будут добавляться по мере готовности материалов.",
+				author: "Project office"
+			}]
+		},
+		contactPage: {
+			eyebrow: "Связь",
+			title: "Контакты и регистрационные данные Gemma Neuratech IT",
+			text: "Здесь собраны официальные данные компании и рабочая почта для заявок, консультаций и связи по проектам.",
+			methods: [
+				{
+					title: "Email",
+					value: companyEmail,
+					href: `mailto:${companyEmail}`,
+					icon: "i-mail"
+				},
+				{
+					title: "Телефон",
+					value: companyPhone,
+					href: `tel:${companyPhone}`,
+					icon: "i-phone"
+				},
+				{
+					title: "Юридическое лицо",
+					value: "\"GEMMA NEURATECH IT\" MCHJ (ООО)",
+					href: "#contact-form",
+					icon: "i-info"
+				},
+				{
+					title: "Форма компании",
+					value: "MCHJ (ООО)",
+					href: "#contact-form",
+					icon: "i-chip"
+				},
+				{
+					title: "IT Park Resident",
+					value: "с 26.05.2026",
+					href: "#contact-form",
+					icon: "i-shield"
+				}
+			],
+			corporateEmailsTitle: "Корпоративные почты",
+			corporateEmails: corporateEmailsRu,
+			supportTitle: "Данные компании",
+			support: [
+				"Регистрация: 07.05.2026",
+				"IT Park Resident",
+				"Ташкент, Узбекистан",
+				"ООО / MCHJ"
+			],
+			locationTitle: "Адрес",
+			location: "Узбекистан, г. Ташкент, Алмазарский район, МФЙ Чилтогон, ул. Тахтапул Дарвоза, дом 396-У.",
+			formTitle: "Оставить заявку",
+			formInfoTitle: "Что будет после отправки",
+			formInfoText: "Мы разберём задачу и свяжемся с вами, чтобы уточнить детали проекта, сроки и подходящий формат работы.",
+			formInfoItems: [
+				"Ответим на указанную почту",
+				"Уточним цель, объём и приоритеты",
+				"Подготовим следующий шаг или предложение"
+			],
+			name: "Ваше имя",
+			email: "Email",
+			message: "Опишите задачу",
+			submit: "Отправить запрос",
+			success: "Запрос отправлен"
+		},
+		notFound: {
+			title: "Страница не найдена",
+			text: "Такого маршрута пока нет. Вернитесь на главную или выберите раздел в верхнем меню.",
+			action: "На главную"
+		}
+	},
+	en: {
+		navLinks: [
+			{
+				to: "/",
+				label: "Home"
+			},
+			{
+				to: "/services",
+				label: "Services & Pricing"
+			},
+			{
+				to: "/about",
+				label: "About"
+			},
+			{
+				to: "/contact",
+				label: "Contact"
+			}
+		],
+		servicesPage: {
+			eyebrow: "Services",
+			title: "IT solutions, AI systems, and engineering infrastructure",
+			text: "Gemma Neuratech IT prepares digital products, intelligent solutions, and technical foundations for AI projects. Service pricing is defined after the scope and requirements are clarified.",
+			cta: "Send request",
+			pricingTitle: "Service packages and pricing",
+			includedLabel: "Included",
+			pricingAction: "Buy package",
+			checkout: {
+				eyebrow: "Checkout",
+				termsTitle: "Confirm terms",
+				detailsTitle: "Request details",
+				bankTitle: "Bank selection",
+				paymentTitle: "Card details",
+				confirmTitle: "SMS confirmation",
+				successTitle: "Payment request prepared",
+				stepTerms: "Terms",
+				stepDetails: "Request",
+				stepBank: "Bank",
+				stepPayment: "Card",
+				stepConfirm: "SMS",
+				summaryLabel: "Selected package",
+				agreement: checkoutOfferEn,
+				terms: [
+					"The package price is a starting estimate and may be clarified after the technical scope is approved.",
+					"Work starts after the order, payment, and scope of services are confirmed.",
+					"Card data is not stored in the current version and will be passed only to a payment provider after the payment gateway is connected."
+				],
+				acceptText: "I have read the GEMMA NEURATECH IT public offer and accept the service, data processing, payment, and refund terms.",
+				continueLabel: "Continue to request",
+				detailsIntro: "Fill in your contact details and briefly describe the website, platform, or digital product you need.",
+				detailsContinueLabel: "Choose bank",
+				bankIntro: "Choose the bank whose acquiring connection will process the payment after the payment gateway is connected.",
+				bankContinueLabel: "Continue to card details",
+				bankAcquiringLabel: "Acquiring",
+				bankSelectedLabel: "Selected bank",
+				bankNote: "A dedicated bank acquiring integration will be connected.",
+				paymentIntro: "Enter payment details. The card will be passed to the selected bank acquiring flow without being stored on the website.",
+				cardContinueLabel: "Send SMS code",
+				confirmText: "After the payment gateway is connected, a one-time code will be sent to the phone number from the request.",
+				smsHint: "This field is prepared for future SMS/3-D Secure integration. For now, it works as a demo step of the payment flow.",
+				backLabel: "Back",
+				payLabel: "Confirm payment",
+				doneLabel: "Done",
+				closeLabel: "Close checkout",
+				secureText: "The payment form is prepared for future tokenization through a payment provider.",
+				successText: "The purchase flow is ready. After backend and payment gateway integration, this step will create a real payment.",
+				paymentStatuses: paymentStatusesEn,
+				banks: checkoutBanks,
+				fields: {
+					name: "Full name",
+					email: "Email",
+					phone: "Phone",
+					projectName: "Project or company name",
+					projectType: "Website or platform type",
+					description: "Brief task description",
+					cardName: "Name on card",
+					cardNumber: "Card number",
+					expiry: "Expiry",
+					cvc: "CVC",
+					smsCode: "SMS confirmation code"
+				}
+			},
+			pricing: pricingPlansEn,
+			servicesTitle: "Work areas",
+			services: [
+				{
+					title: "AI and neural networks",
+					text: "Development of intelligent systems, models, and prototypes for business tasks.",
+					icon: "i-brain"
+				},
+				{
+					title: "Web and platforms",
+					text: "Interface design, web applications, and digital services.",
+					icon: "i-layers"
+				},
+				{
+					title: "Infrastructure",
+					text: "APIs, pipelines, cloud services, and technical product foundations.",
+					icon: "i-chip"
+				},
+				{
+					title: "Data security",
+					text: "Careful work with data, access, and engineering processes.",
+					icon: "i-shield"
+				}
+			],
+			note: pricingNoteEn
+		},
+		aboutPage: {
+			eyebrow: "Company",
+			title: "Gemma Neuratech IT develops digital and AI solutions",
+			text: "The company is registered in Uzbekistan and is an IT Park Resident. We build a technological foundation for intelligent systems, software products, and infrastructure solutions.",
+			stats: [
+				{
+					value: "07.05.2026",
+					label: "registration date"
+				},
+				{
+					value: "MCHJ (LLC)",
+					label: "legal form"
+				},
+				{
+					value: "26.05.2026",
+					label: "IT Park Resident"
+				}
+			],
+			legalTitle: "Registration details",
+			legalDetails: legalDetailsEn,
+			documentsTitle: "Official documents",
+			certificate: {
+				title: "IT Park Certificate",
+				eyebrow: "Official status",
+				heading: "Technology park resident",
+				text: "Gemma Neuratech IT was entered into the Unified Register of IT Park Uzbekistan residents on May 26, 2026.",
+				meta: [
+					"No. 6150",
+					"Resident since 26.05.2026",
+					"\"GEMMA NEURATECH IT\" MCHJ"
+				],
+				button: "Open certificate",
+				downloadLabel: "Download file",
+				downloadName: "it-park-resident-certificate-gemma-neuratech-it.jpg",
+				closeLabel: "Close certificate",
+				alt: "IT Park Uzbekistan resident certificate for GEMMA NEURATECH IT",
+				openLabel: "Open IT Park certificate"
+			},
+			documents: [{
+				type: "pdf",
+				file: "registration",
+				title: "Registration document",
+				eyebrow: "Official PDF",
+				heading: "Company registration document",
+				text: "Official document confirming the registration details of GEMMA NEURATECH IT.",
+				meta: [
+					"PDF",
+					"Registration details",
+					"\"GEMMA NEURATECH IT\" MCHJ"
+				],
+				button: "Open document",
+				downloadLabel: "Download file",
+				downloadName: "gemma-neuratech-it-registration-document.pdf",
+				closeLabel: "Close document",
+				alt: "GEMMA NEURATECH IT registration document",
+				stampTitle: "REG DOC",
+				stampIcon: "i-info"
+			}, {
+				type: "pdf",
+				file: "egrpo",
+				title: "EGRPO extract",
+				eyebrow: "Company register",
+				heading: "EGRPO and director details",
+				text: "Document with company registration details and director information.",
+				meta: [
+					"EGRPO",
+					"Director: Khurshidbek",
+					"PDF document"
+				],
+				button: "Open EGRPO",
+				downloadLabel: "Download file",
+				downloadName: "gemma-neuratech-it-egrpo-director-khurshidbek.pdf",
+				closeLabel: "Close EGRPO",
+				alt: "GEMMA NEURATECH IT EGRPO extract director Khurshidbek",
+				stampTitle: "EGRPO",
+				stampIcon: "i-info"
+			}],
+			presentationsTitle: "Project presentations",
+			presentations: [
+				{
+					title: "AI Solutions",
+					tag: "Direction",
+					text: "Presentation of intelligent solutions and AI development direction."
+				},
+				{
+					title: "Digital Platforms",
+					tag: "Direction",
+					text: "Presentation of web platforms, services, and product development."
+				},
+				{
+					title: "Engineering Base",
+					tag: "Direction",
+					text: "Presentation of infrastructure, MLOps approach, and technical architecture."
+				}
+			],
+			reviewsTitle: "Reviews",
+			reviews: [{
+				quote: "The reviews section will be filled after client testimonials and cases are approved for publication.",
+				author: "Gemma Neuratech IT"
+			}, {
+				quote: "Public project presentations will be added as materials become ready.",
+				author: "Project office"
+			}]
+		},
+		contactPage: {
+			eyebrow: "Contact",
+			title: "Contacts and registration details of Gemma Neuratech IT",
+			text: "This page contains the official company details and working email for requests, consultations, and project communication.",
+			methods: [
+				{
+					title: "Email",
+					value: companyEmail,
+					href: `mailto:${companyEmail}`,
+					icon: "i-mail"
+				},
+				{
+					title: "Phone",
+					value: companyPhone,
+					href: `tel:${companyPhone}`,
+					icon: "i-phone"
+				},
+				{
+					title: "Legal entity",
+					value: "\"GEMMA NEURATECH IT\" MCHJ (LLC)",
+					href: "#contact-form",
+					icon: "i-info"
+				},
+				{
+					title: "Legal form",
+					value: "MCHJ (LLC)",
+					href: "#contact-form",
+					icon: "i-chip"
+				},
+				{
+					title: "IT Park Resident",
+					value: "since 26.05.2026",
+					href: "#contact-form",
+					icon: "i-shield"
+				}
+			],
+			corporateEmailsTitle: "Corporate emails",
+			corporateEmails: corporateEmailsEn,
+			supportTitle: "Company details",
+			support: [
+				"Registered: 07.05.2026",
+				"IT Park Resident",
+				"Tashkent, Uzbekistan",
+				"LLC / MCHJ"
+			],
+			locationTitle: "Address",
+			location: "396-U, Takhtapul Darvoza St., Chiltogon mahalla, Almazar district, Tashkent, Uzbekistan.",
+			formTitle: "Send a request",
+			formInfoTitle: "What happens next",
+			formInfoText: "We will review the request and contact you to clarify the project details, timeline, and the right working format.",
+			formInfoItems: [
+				"Reply to the email you provide",
+				"Clarify goals, scope, and priorities",
+				"Prepare the next step or proposal"
+			],
+			name: "Your name",
+			email: "Email",
+			message: "Describe the task",
+			submit: "Send request",
+			success: "Request sent"
+		},
+		notFound: {
+			title: "Page not found",
+			text: "This route does not exist yet. Return home or choose a section in the top menu.",
+			action: "Go home"
+		}
+	}
+};
+pageContent.uz = {
+	navLinks: [
+		{
+			to: "/",
+			label: "Bosh sahifa"
+		},
+		{
+			to: "/services",
+			label: "Xizmatlar va narxlar"
+		},
+		{
+			to: "/about",
+			label: "Biz haqimizda"
+		},
+		{
+			to: "/contact",
+			label: "Aloqa"
+		}
+	],
+	servicesPage: {
+		eyebrow: "Xizmatlar",
+		title: "IT-yechimlar, AI-tizimlar va muhandislik infratuzilmasi",
+		text: "Gemma Neuratech IT raqamli mahsulotlar, intellektual yechimlar va AI-loyihalar uchun texnik asos tayyorlaydi. Xizmat narxi vazifa va ish hajmi aniqlashtirilgandan so‘ng belgilanadi.",
+		cta: "So‘rov yuborish",
+		pricingTitle: "Xizmat paketlari va narxlar",
+		includedLabel: "Nimalar kiradi",
+		pricingAction: "Paketni sotib olish",
+		checkout: {
+			eyebrow: "Checkout",
+			termsTitle: "Shartlarni tasdiqlang",
+			detailsTitle: "So‘rov maʼlumotlari",
+			bankTitle: "Bankni tanlash",
+			paymentTitle: "Karta maʼlumotlari",
+			confirmTitle: "SMS tasdiqlash",
+			successTitle: "To‘lov so‘rovi tayyor",
+			stepTerms: "Shartlar",
+			stepDetails: "So‘rov",
+			stepBank: "Bank",
+			stepPayment: "Karta",
+			stepConfirm: "SMS",
+			summaryLabel: "Tanlangan paket",
+			agreement: checkoutOfferUz,
+			acceptText: "Men GEMMA NEURATECH IT ommaviy ofertasi bilan tanishdim va xizmat, ma’lumotlarga ishlov berish, to‘lov hamda qaytarish shartlarini qabul qilaman.",
+			continueLabel: "So‘rovga o‘tish",
+			detailsIntro: "Kontakt maʼlumotlarini kiriting va qanday sayt, platforma yoki raqamli mahsulot kerakligini qisqacha yozing.",
+			detailsContinueLabel: "Bankni tanlash",
+			bankIntro: "To‘lov shlyuzi ulangandan so‘ng to‘lov qaysi bank ekvayringi orqali o‘tishini tanlang.",
+			bankContinueLabel: "Karta maʼlumotlariga o‘tish",
+			bankAcquiringLabel: "Ekvayring",
+			bankSelectedLabel: "Tanlangan bank",
+			bankNote: "Alohida bank ekvayring integratsiyasi ulanadi.",
+			paymentIntro: "To‘lov maʼlumotlarini kiriting. Karta saytda saqlanmasdan tanlangan bank ekvayringiga uzatiladi.",
+			cardContinueLabel: "SMS kod yuborish",
+			confirmText: "To‘lov shlyuzi ulangandan so‘ng bir martalik kod so‘rovdagi telefon raqamiga yuboriladi.",
+			smsHint: "Bu maydon kelajakdagi SMS/3-D Secure integratsiyasi uchun tayyorlangan. Hozircha u to‘lov ssenariysining demo bosqichi sifatida ishlaydi.",
+			backLabel: "Ortga",
+			payLabel: "To‘lovni tasdiqlash",
+			doneLabel: "Tayyor",
+			closeLabel: "Checkoutni yopish",
+			secureText: "To‘lov formasi kelajakda to‘lov provayderi orqali tokenizatsiya qilish uchun tayyorlangan.",
+			successText: "Xarid ssenariysi tayyor. Backend va to‘lov shlyuzi ulangandan so‘ng bu bosqich real to‘lov yaratadi.",
+			paymentStatuses: paymentStatusesUz,
+			banks: checkoutBanks,
+			fields: {
+				name: "Ism va familiya",
+				email: "Email",
+				phone: "Telefon",
+				projectName: "Loyiha yoki kompaniya nomi",
+				projectType: "Sayt yoki platforma turi",
+				description: "Vazifaning qisqa tavsifi",
+				cardName: "Kartadagi ism",
+				cardNumber: "Karta raqami",
+				expiry: "Muddat",
+				cvc: "CVC",
+				smsCode: "SMS tasdiqlash kodi"
+			}
+		},
+		pricing: pricingPlansUz,
+		servicesTitle: "Ish yo‘nalishlari",
+		services: [
+			{
+				title: "AI va neyron tarmoqlar",
+				text: "Biznes vazifalari uchun intellektual tizimlar, modellar va prototiplar ishlab chiqish.",
+				icon: "i-brain"
+			},
+			{
+				title: "Web va platformalar",
+				text: "Interfeyslar, web-ilovalar va raqamli servislarni loyihalash.",
+				icon: "i-layers"
+			},
+			{
+				title: "Infratuzilma",
+				text: "API, pipeline, bulutli servislar va mahsulot uchun texnik asos.",
+				icon: "i-chip"
+			},
+			{
+				title: "Ma’lumotlar xavfsizligi",
+				text: "Ma’lumotlar, ruxsatlar va muhandislik jarayonlari bilan ehtiyotkor ishlash.",
+				icon: "i-shield"
+			}
+		],
+		note: pricingNoteUz
+	},
+	aboutPage: {
+		eyebrow: "Kompaniya",
+		title: "Gemma Neuratech IT raqamli va AI-yechimlarni rivojlantiradi",
+		text: "Kompaniya O‘zbekistonda ro‘yxatdan o‘tgan va IT Park rezidenti hisoblanadi. Biz intellektual tizimlar, dasturiy mahsulotlar va infratuzilma yechimlari uchun texnologik asos quramiz.",
+		stats: [
+			{
+				value: "07.05.2026",
+				label: "ro‘yxatdan o‘tgan sana"
+			},
+			{
+				value: "MCHJ",
+				label: "kompaniya shakli"
+			},
+			{
+				value: "26.05.2026",
+				label: "IT Park rezidenti"
+			}
+		],
+		legalTitle: "Ro‘yxatdan o‘tish ma’lumotlari",
+		legalDetails: [
+			{
+				label: "Kompaniya",
+				value: "Gemma Neuratech IT"
+			},
+			{
+				label: "To‘liq nomi",
+				value: "\"GEMMA NEURATECH IT\" MCHJ"
+			},
+			{
+				label: "Manzil",
+				value: "O‘zbekiston, Toshkent sh., Olmazor tumani, Chig‘atoy Oqtepa MFY, Taxtapul Darvoza ko‘chasi, 396-uy."
+			},
+			{
+				label: "Ro‘yxatdan o‘tgan sana",
+				value: "07.05.2026"
+			},
+			{
+				label: "IT Park Resident",
+				value: "26.05.2026 dan"
+			},
+			{
+				label: "Email",
+				value: companyEmail
+			},
+			{
+				label: "Telefon",
+				value: companyPhone
+			}
+		],
+		documentsTitle: "Rasmiy hujjatlar",
+		certificate: {
+			title: "IT Park guvohnomasi",
+			eyebrow: "Rasmiy maqom",
+			heading: "Texnologik park rezidenti",
+			text: "Gemma Neuratech IT 2026-yil 26-may kuni IT Park Uzbekistan rezidentlari yagona reestriga kiritilgan.",
+			meta: [
+				"№ 6150",
+				"Reestrda 26.05.2026 dan",
+				"\"GEMMA NEURATECH IT\" MCHJ"
+			],
+			button: "Guvohnomani ochish",
+			downloadLabel: "Faylni yuklab olish",
+			downloadName: "it-park-resident-certificate-gemma-neuratech-it.jpg",
+			closeLabel: "Guvohnomani yopish",
+			alt: "GEMMA NEURATECH IT uchun IT Park Uzbekistan rezidenti guvohnomasi",
+			openLabel: "IT Park guvohnomasini ochish"
+		},
+		documents: [{
+			type: "pdf",
+			file: "registration",
+			title: "Ro‘yxatdan o‘tish hujjati",
+			eyebrow: "Rasmiy PDF",
+			heading: "Kompaniya ro‘yxatdan o‘tganligi hujjati",
+			text: "GEMMA NEURATECH IT ro‘yxatdan o‘tganligi haqidagi rasmiy ma’lumotlarni tasdiqlovchi hujjat.",
+			meta: [
+				"PDF",
+				"Ro‘yxat ma’lumotlari",
+				"\"GEMMA NEURATECH IT\" MCHJ"
+			],
+			button: "Hujjatni ochish",
+			downloadLabel: "Faylni yuklab olish",
+			downloadName: "gemma-neuratech-it-registration-document.pdf",
+			closeLabel: "Hujjatni yopish",
+			alt: "GEMMA NEURATECH IT ro‘yxatdan o‘tish hujjati",
+			stampTitle: "REG DOC",
+			stampIcon: "i-info"
+		}, {
+			type: "pdf",
+			file: "egrpo",
+			title: "EGRPO ma’lumotnomasi",
+			eyebrow: "Kompaniya reestri",
+			heading: "EGRPO va direktor ma’lumotlari",
+			text: "Kompaniya ro‘yxat ma’lumotlari va direktor haqidagi ma’lumotlarni o‘z ichiga olgan hujjat.",
+			meta: [
+				"EGRPO",
+				"Direktor: Xurshidbek",
+				"PDF hujjat"
+			],
+			button: "EGRPOni ochish",
+			downloadLabel: "Faylni yuklab olish",
+			downloadName: "gemma-neuratech-it-egrpo-director-khurshidbek.pdf",
+			closeLabel: "EGRPOni yopish",
+			alt: "GEMMA NEURATECH IT EGRPO ma’lumotnomasi direktor Xurshidbek",
+			stampTitle: "EGRPO",
+			stampIcon: "i-info"
+		}],
+		presentationsTitle: "Loyiha prezentatsiyalari",
+		presentations: [
+			{
+				title: "AI Solutions",
+				tag: "Direction",
+				text: "Intellektual yechimlar va AI-ishlab chiqish yo‘nalishi prezentatsiyasi."
+			},
+			{
+				title: "Digital Platforms",
+				tag: "Direction",
+				text: "Web-platformalar, servislar va mahsulot ishlab chiqish prezentatsiyasi."
+			},
+			{
+				title: "Engineering Base",
+				tag: "Direction",
+				text: "Infratuzilma, MLOps yondashuvi va texnik arxitektura prezentatsiyasi."
+			}
+		],
+		reviewsTitle: "Sharhlar",
+		reviews: [{
+			quote: "Sharhlar bo‘limi mijoz fikrlari va keyslar publikatsiyasi kelishilgandan so‘ng to‘ldiriladi.",
+			author: "Gemma Neuratech IT"
+		}, {
+			quote: "Ochiq loyiha prezentatsiyalari materiallar tayyor bo‘lishi bilan qo‘shib boriladi.",
+			author: "Project office"
+		}]
+	},
+	contactPage: {
+		eyebrow: "Aloqa",
+		title: "Gemma Neuratech IT kontaktlari va ro‘yxat ma’lumotlari",
+		text: "Bu sahifada kompaniyaning rasmiy ma’lumotlari, so‘rovlar, konsultatsiyalar va loyiha bo‘yicha aloqa uchun ishchi pochta ko‘rsatilgan.",
+		methods: [
+			{
+				title: "Email",
+				value: companyEmail,
+				href: `mailto:${companyEmail}`,
+				icon: "i-mail"
+			},
+			{
+				title: "Telefon",
+				value: companyPhone,
+				href: `tel:${companyPhone}`,
+				icon: "i-phone"
+			},
+			{
+				title: "Yuridik shaxs",
+				value: "\"GEMMA NEURATECH IT\" MCHJ",
+				href: "#contact-form",
+				icon: "i-info"
+			},
+			{
+				title: "Kompaniya shakli",
+				value: "MCHJ",
+				href: "#contact-form",
+				icon: "i-chip"
+			},
+			{
+				title: "IT Park Resident",
+				value: "26.05.2026 dan",
+				href: "#contact-form",
+				icon: "i-shield"
+			}
+		],
+		corporateEmailsTitle: "Korporativ pochtalar",
+		corporateEmails: corporateEmailsUz,
+		supportTitle: "Kompaniya ma’lumotlari",
+		support: [
+			"Ro‘yxatdan o‘tgan: 07.05.2026",
+			"IT Park rezidenti",
+			"Toshkent, O‘zbekiston",
+			"MCHJ"
+		],
+		locationTitle: "Manzil",
+		location: "O‘zbekiston, Toshkent sh., Olmazor tumani, Chig‘atoy Oqtepa MFY, Taxtapul Darvoza ko‘chasi, 396-uy.",
+		formTitle: "So‘rov yuborish",
+		formInfoTitle: "Yuborgandan keyin nima bo‘ladi",
+		formInfoText: "Biz so‘rovni ko‘rib chiqamiz va loyiha tafsilotlari, muddatlar hamda ish formatini aniqlash uchun siz bilan bog‘lanamiz.",
+		formInfoItems: [
+			"Ko‘rsatilgan pochtaga javob beramiz",
+			"Maqsad, hajm va ustuvorliklarni aniqlaymiz",
+			"Keyingi qadam yoki taklif tayyorlaymiz"
+		],
+		name: "Ismingiz",
+		email: "Email",
+		message: "Vazifani tasvirlang",
+		submit: "So‘rov yuborish",
+		success: "So‘rov yuborildi"
+	},
+	notFound: {
+		title: "Sahifa topilmadi",
+		text: "Bunday yo‘nalish hozircha mavjud emas. Bosh sahifaga qayting yoki yuqori menyudan bo‘lim tanlang.",
+		action: "Bosh sahifaga"
+	}
+};
+
+//# sourceMappingURL=data:application/json;base64,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OltdLCJzb3VyY2VzIjpbInBhZ2VEYXRhLmpzIl0sInZlcnNpb24iOjMsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGNoZWNrb3V0T2ZmZXJFbiwgY2hlY2tvdXRPZmZlclJ1LCBjaGVja291dE9mZmVyVXogfSBmcm9tICcuL29mZmVyVGVybXMuanMnXG5pbXBvcnQgeyBjaGVja291dEJhbmtzIH0gZnJvbSAnLi9jaGVja291dEJhbmtzLmpzJ1xuaW1wb3J0IHsgcGF5bWVudFN0YXR1c2VzRW4sIHBheW1lbnRTdGF0dXNlc1J1LCBwYXltZW50U3RhdHVzZXNVeiB9IGZyb20gJy4vcGF5bWVudFN0YXR1c2VzLmpzJ1xuaW1wb3J0IHsgcHJpY2luZ05vdGVFbiwgcHJpY2luZ05vdGVSdSwgcHJpY2luZ05vdGVVeiwgcHJpY2luZ1BsYW5zRW4sIHByaWNpbmdQbGFuc1J1LCBwcmljaW5nUGxhbnNVeiB9IGZyb20gJy4vcHJpY2luZ1BsYW5zLmpzJ1xuXG5jb25zdCBjb21wYW55RW1haWwgPSAnR2VtbWFuZXVyYXRlY2hAZ21haWwuY29tJ1xuY29uc3QgY29tcGFueVBob25lID0gJys5OTg3NzI4Mjc0NzQnXG5jb25zdCBjb3Jwb3JhdGVJbmZvRW1haWwgPSAnaW5mb0BnZW1tYW5ldXJhdGVjaC51eidcbmNvbnN0IGNvcnBvcmF0ZVN1cHBvcnRFbWFpbCA9ICdzdXBwb3J0QGdlbW1hbmV1cmF0ZWNoLnV6J1xuY29uc3QgY29ycG9yYXRlRGV2RW1haWwgPSAnZGV2QGdlbW1hbmV1cmF0ZWNoLnV6J1xuXG5jb25zdCBjb3Jwb3JhdGVFbWFpbHNSdSA9IFtcbiAgeyBsYWJlbDogJ0luZm8nLCB2YWx1ZTogY29ycG9yYXRlSW5mb0VtYWlsLCBub3RlOiAn0J7RhNC40YbQuNCw0LvRjNC90YvQtSDQt9Cw0L/RgNC+0YHRiyDQuCDQtNC+0LrRg9C80LXQvdGC0YsnIH0sXG4gIHsgbGFiZWw6ICdTdXBwb3J0JywgdmFsdWU6IGNvcnBvcmF0ZVN1cHBvcnRFbWFpbCwgbm90ZTogJ9Ci0LXRhdC/0L7QtNC00LXRgNC20LrQsCDQuCDRgdC+0L/RgNC+0LLQvtC20LTQtdC90LjQtScgfSxcbiAgeyBsYWJlbDogJ0RldicsIHZhbHVlOiBjb3Jwb3JhdGVEZXZFbWFpbCwgbm90ZTogJ9Cg0LDQt9GA0LDQsdC+0YLQutCwINC4INGC0LXRhdC90LjRh9C10YHQutC40LUg0LLQvtC/0YDQvtGB0YsnIH0sXG5dXG5cbmNvbnN0IGNvcnBvcmF0ZUVtYWlsc0VuID0gW1xuICB7IGxhYmVsOiAnSW5mbycsIHZhbHVlOiBjb3Jwb3JhdGVJbmZvRW1haWwsIG5vdGU6ICdPZmZpY2lhbCByZXF1ZXN0cyBhbmQgZG9jdW1lbnRzJyB9LFxuICB7IGxhYmVsOiAnU3VwcG9ydCcsIHZhbHVlOiBjb3Jwb3JhdGVTdXBwb3J0RW1haWwsIG5vdGU6ICdUZWNobmljYWwgc3VwcG9ydCBhbmQgbWFpbnRlbmFuY2UnIH0sXG4gIHsgbGFiZWw6ICdEZXYnLCB2YWx1ZTogY29ycG9yYXRlRGV2RW1haWwsIG5vdGU6ICdEZXZlbG9wbWVudCBhbmQgdGVjaG5pY2FsIHF1ZXN0aW9ucycgfSxcbl1cblxuY29uc3QgY29ycG9yYXRlRW1haWxzVXogPSBbXG4gIHsgbGFiZWw6ICdJbmZvJywgdmFsdWU6IGNvcnBvcmF0ZUluZm9FbWFpbCwgbm90ZTogJ1Jhc21peSBzb+KAmHJvdmxhciB2YSBodWpqYXRsYXInIH0sXG4gIHsgbGFiZWw6ICdTdXBwb3J0JywgdmFsdWU6IGNvcnBvcmF0ZVN1cHBvcnRFbWFpbCwgbm90ZTogJ1RleG5payB5b3JkYW0gdmEgcW/igJhsbGFiLXF1dnZhdGxhc2gnIH0sXG4gIHsgbGFiZWw6ICdEZXYnLCB2YWx1ZTogY29ycG9yYXRlRGV2RW1haWwsIG5vdGU6ICdEYXN0dXJsYXNoIHZhIHRleG5payBzYXZvbGxhcicgfSxcbl1cblxuY29uc3QgbGVnYWxEZXRhaWxzUnUgPSBbXG4gIHsgbGFiZWw6ICfQmtC+0LzQv9Cw0L3QuNGPJywgdmFsdWU6ICdHZW1tYSBOZXVyYXRlY2ggSVQnIH0sXG4gIHsgbGFiZWw6ICfQn9C+0LvQvdC+0LUg0L3QsNC30LLQsNC90LjQtScsIHZhbHVlOiAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKICjQntCe0J4pJyB9LFxuICB7IGxhYmVsOiAn0JDQtNGA0LXRgScsIHZhbHVlOiAn0KPQt9Cx0LXQutC40YHRgtCw0L0sINCzLiDQotCw0YjQutC10L3Rgiwg0JDQu9C80LDQt9Cw0YDRgdC60LjQuSDRgNCw0LnQvtC9LCDQnNCk0Jkg0KfQuNC70YLQvtCz0L7QvSwg0YPQuy4g0KLQsNGF0YLQsNC/0YPQuyDQlNCw0YDQstC+0LfQsCwg0LTQvtC8IDM5Ni3Qoy4nIH0sXG4gIHsgbGFiZWw6ICfQlNCw0YLQsCDRgNC10LPQuNGB0YLRgNCw0YbQuNC4JywgdmFsdWU6ICcwNy4wNS4yMDI2JyB9LFxuICB7IGxhYmVsOiAnSVQgUGFyayBSZXNpZGVudCcsIHZhbHVlOiAn0YEgMjYuMDUuMjAyNicgfSxcbiAgeyBsYWJlbDogJ0VtYWlsJywgdmFsdWU6IGNvbXBhbnlFbWFpbCB9LFxuICB7IGxhYmVsOiAn0KLQtdC70LXRhNC+0L0nLCB2YWx1ZTogY29tcGFueVBob25lIH0sXG5dXG5cbmNvbnN0IGxlZ2FsRGV0YWlsc0VuID0gW1xuICB7IGxhYmVsOiAnQ29tcGFueScsIHZhbHVlOiAnR2VtbWEgTmV1cmF0ZWNoIElUJyB9LFxuICB7IGxhYmVsOiAnRnVsbCBsZWdhbCBuYW1lJywgdmFsdWU6ICdcIkdFTU1BIE5FVVJBVEVDSCBJVFwiIE1DSEogKExMQyknIH0sXG4gIHsgbGFiZWw6ICdBZGRyZXNzJywgdmFsdWU6ICczOTYtVSwgVGFraHRhcHVsIERhcnZvemEgU3QuLCBDaGlsdG9nb24gbWFoYWxsYSwgQWxtYXphciBkaXN0cmljdCwgVGFzaGtlbnQsIFV6YmVraXN0YW4uJyB9LFxuICB7IGxhYmVsOiAnUmVnaXN0cmF0aW9uIGRhdGUnLCB2YWx1ZTogJzA3LjA1LjIwMjYnIH0sXG4gIHsgbGFiZWw6ICdJVCBQYXJrIFJlc2lkZW50JywgdmFsdWU6ICdzaW5jZSAyNi4wNS4yMDI2JyB9LFxuICB7IGxhYmVsOiAnRW1haWwnLCB2YWx1ZTogY29tcGFueUVtYWlsIH0sXG4gIHsgbGFiZWw6ICdQaG9uZScsIHZhbHVlOiBjb21wYW55UGhvbmUgfSxcbl1cblxuZXhwb3J0IGNvbnN0IHBhZ2VDb250ZW50ID0ge1xuICBydToge1xuICAgIG5hdkxpbmtzOiBbXG4gICAgICB7IHRvOiAnLycsIGxhYmVsOiAn0JPQu9Cw0LLQvdCw0Y8nIH0sXG4gICAgICB7IHRvOiAnL3NlcnZpY2VzJywgbGFiZWw6ICfQo9GB0LvRg9Cz0Lgg0Lgg0YbQtdC90YsnIH0sXG4gICAgICB7IHRvOiAnL2Fib3V0JywgbGFiZWw6ICfQniDQvdCw0YEnIH0sXG4gICAgICB7IHRvOiAnL2NvbnRhY3QnLCBsYWJlbDogJ9Ch0LLRj9C30YwnIH0sXG4gICAgXSxcbiAgICBzZXJ2aWNlc1BhZ2U6IHtcbiAgICAgIGV5ZWJyb3c6ICfQo9GB0LvRg9Cz0LgnLFxuICAgICAgdGl0bGU6ICdJVC3RgNC10YjQtdC90LjRjywgQUkt0YHQuNGB0YLQtdC80Ysg0Lgg0LjQvdC20LXQvdC10YDQvdCw0Y8g0LjQvdGE0YDQsNGB0YLRgNGD0LrRgtGD0YDQsCcsXG4gICAgICB0ZXh0OiAnR2VtbWEgTmV1cmF0ZWNoIElUINCz0L7RgtC+0LLQuNGCINGG0LjRhNGA0L7QstGL0LUg0L/RgNC+0LTRg9C60YLRiywg0LjQvdGC0LXQu9C70LXQutGC0YPQsNC70YzQvdGL0LUg0YDQtdGI0LXQvdC40Y8g0Lgg0YLQtdGF0L3QuNGH0LXRgdC60YPRjiDQvtGB0L3QvtCy0YMg0LTQu9GPIEFJLdC/0YDQvtC10LrRgtC+0LIuINCh0YLQvtC40LzQvtGB0YLRjCDRg9GB0LvRg9CzINGE0LjQutGB0LjRgNGD0LXRgtGB0Y8g0L/QvtGB0LvQtSDRg9GC0L7Rh9C90LXQvdC40Y8g0LfQsNC00LDRh9C4INC4INC+0LHRitC10LzQsCDRgNCw0LHQvtGCLicsXG4gICAgICBjdGE6ICfQntGB0YLQsNCy0LjRgtGMINC30LDRj9Cy0LrRgycsXG4gICAgICBwcmljaW5nVGl0bGU6ICfQn9Cw0LrQtdGC0Ysg0YPRgdC70YPQsyDQuCDRhtC10L3RiycsXG4gICAgICBpbmNsdWRlZExhYmVsOiAn0KfRgtC+INCy0YXQvtC00LjRgicsXG4gICAgICBwcmljaW5nQWN0aW9uOiAn0JrRg9C/0LjRgtGMINC/0LDQutC10YInLFxuICAgICAgY2hlY2tvdXQ6IHtcbiAgICAgICAgZXllYnJvdzogJ0NoZWNrb3V0JyxcbiAgICAgICAgdGVybXNUaXRsZTogJ9Cf0L7QtNGC0LLQtdGA0LTQuNGC0LUg0YPRgdC70L7QstC40Y8nLFxuICAgICAgICBkZXRhaWxzVGl0bGU6ICfQlNCw0L3QvdGL0LUg0LfQsNGP0LLQutC4JyxcbiAgICAgICAgYmFua1RpdGxlOiAn0JLRi9Cx0L7RgCDQsdCw0L3QutCwJyxcbiAgICAgICAgcGF5bWVudFRpdGxlOiAn0JTQsNC90L3Ri9C1INC60LDRgNGC0YsnLFxuICAgICAgICBjb25maXJtVGl0bGU6ICdTTVMt0L/QvtC00YLQstC10YDQttC00LXQvdC40LUnLFxuICAgICAgICBzdWNjZXNzVGl0bGU6ICfQl9Cw0Y/QstC60LAg0L3QsCDQvtC/0LvQsNGC0YMg0L/QvtC00LPQvtGC0L7QstC70LXQvdCwJyxcbiAgICAgICAgc3RlcFRlcm1zOiAn0KPRgdC70L7QstC40Y8nLFxuICAgICAgICBzdGVwRGV0YWlsczogJ9CX0LDRj9Cy0LrQsCcsXG4gICAgICAgIHN0ZXBCYW5rOiAn0JHQsNC90LonLFxuICAgICAgICBzdGVwUGF5bWVudDogJ9Ca0LDRgNGC0LAnLFxuICAgICAgICBzdGVwQ29uZmlybTogJ1NNUycsXG4gICAgICAgIHN1bW1hcnlMYWJlbDogJ9CS0YvQsdGA0LDQvdC90YvQuSDQv9Cw0LrQtdGCJyxcbiAgICAgICAgYWdyZWVtZW50OiBjaGVja291dE9mZmVyUnUsXG4gICAgICAgIHRlcm1zOiBbXG4gICAgICAgICAgJ9Ch0YLQvtC40LzQvtGB0YLRjCDQv9Cw0LrQtdGC0LAg0Y/QstC70Y/QtdGC0YHRjyDRgdGC0LDRgNGC0L7QstC+0Lkg0Lgg0LzQvtC20LXRgiDRg9GC0L7Rh9C90Y/RgtGM0YHRjyDQv9C+0YHQu9C1INGB0L7Qs9C70LDRgdC+0LLQsNC90LjRjyDRgtC10YXQvdC40YfQtdGB0LrQvtCz0L4g0LfQsNC00LDQvdC40Y8uJyxcbiAgICAgICAgICAn0KDQsNCx0L7RgtGLINC90LDRh9C40L3QsNGO0YLRgdGPINC/0L7RgdC70LUg0L/QvtC00YLQstC10YDQttC00LXQvdC40Y8g0LfQsNC60LDQt9CwLCDQvtC/0LvQsNGC0Ysg0Lgg0YHQvtCz0LvQsNGB0L7QstCw0L3QuNGPINC+0LHRitC10LzQsCDRg9GB0LvRg9CzLicsXG4gICAgICAgICAgJ9CU0LDQvdC90YvQtSDQutCw0YDRgtGLINCyINGC0LXQutGD0YnQtdC5INCy0LXRgNGB0LjQuCDQvdC1INGB0L7RhdGA0LDQvdGP0Y7RgtGB0Y8g0Lgg0LHRg9C00YPRgiDQv9C10YDQtdC00LDQstCw0YLRjNGB0Y8g0YLQvtC70YzQutC+INC/0LvQsNGC0LXQttC90L7QvNGDINC/0YDQvtCy0LDQudC00LXRgNGDINC/0L7RgdC70LUg0L/QvtC00LrQu9GO0YfQtdC90LjRjyDQv9C70LDRgtC10LbQvdC+0LPQviDRiNC70Y7Qt9CwLicsXG4gICAgICAgIF0sXG4gICAgICAgIGFjY2VwdFRleHQ6ICfQryDQvtC30L3QsNC60L7QvNC40LvRgdGPINGBINC/0YPQsdC70LjRh9C90L7QuSDQvtGE0LXRgNGC0L7QuSBHRU1NQSBORVVSQVRFQ0ggSVQg0Lgg0L/RgNC40L3QuNC80LDRjiDRg9GB0LvQvtCy0LjRjyDQvtC60LDQt9Cw0L3QuNGPINGD0YHQu9GD0LMsINC+0LHRgNCw0LHQvtGC0LrQuCDQtNCw0L3QvdGL0YUsINC+0L/Qu9Cw0YLRiyDQuCDQstC+0LfQstGA0LDRgtC+0LIuJyxcbiAgICAgICAgY29udGludWVMYWJlbDogJ9Cf0LXRgNC10LnRgtC4INC6INC30LDRj9Cy0LrQtScsXG4gICAgICAgIGRldGFpbHNJbnRybzogJ9CX0LDQv9C+0LvQvdC40YLQtSDQutC+0L3RgtCw0LrRgtC90YvQtSDQtNCw0L3QvdGL0LUg0Lgg0LrQvtGA0L7RgtC60L4g0L7Qv9C40YjQuNGC0LUsINC60LDQutC+0Lkg0YHQsNC50YIsINC/0LvQsNGC0YTQvtGA0LzRgyDQuNC70Lgg0YbQuNGE0YDQvtCy0L7QuSDQv9GA0L7QtNGD0LrRgiDQvdGD0LbQvdC+INC/0L7QtNCz0L7RgtC+0LLQuNGC0YwuJyxcbiAgICAgICAgZGV0YWlsc0NvbnRpbnVlTGFiZWw6ICfQktGL0LHRgNCw0YLRjCDQsdCw0L3QuicsXG4gICAgICAgIGJhbmtJbnRybzogJ9CS0YvQsdC10YDQuNGC0LUg0LHQsNC90LosINGH0LXRgNC10Lcg0Y3QutCy0LDQudGA0LjQvdCzINC60L7RgtC+0YDQvtCz0L4g0LHRg9C00LXRgiDQv9GA0L7QstC+0LTQuNGC0YzRgdGPINC+0L/Qu9Cw0YLQsCDQv9C+0YHQu9C1INC/0L7QtNC60LvRjtGH0LXQvdC40Y8g0L/Qu9Cw0YLQtdC20L3QvtCz0L4g0YjQu9GO0LfQsC4nLFxuICAgICAgICBiYW5rQ29udGludWVMYWJlbDogJ9Cf0LXRgNC10LnRgtC4INC6INC00LDQvdC90YvQvCDQutCw0YDRgtGLJyxcbiAgICAgICAgYmFua0FjcXVpcmluZ0xhYmVsOiAn0K3QutCy0LDQudGA0LjQvdCzJyxcbiAgICAgICAgYmFua1NlbGVjdGVkTGFiZWw6ICfQktGL0LHRgNCw0L3QvdGL0Lkg0LHQsNC90LonLFxuICAgICAgICBiYW5rTm90ZTogJ9CR0YPQtNC10YIg0L/QvtC00LrQu9GO0YfQtdC9INC+0YLQtNC10LvRjNC90YvQuSDQsdCw0L3QutC+0LLRgdC60LjQuSDRjdC60LLQsNC50YDQuNC90LMuJyxcbiAgICAgICAgcGF5bWVudEludHJvOiAn0JLQstC10LTQuNGC0LUg0L/Qu9Cw0YLQtdC20L3Ri9C1INC00LDQvdC90YvQtS4g0JrQsNGA0YLQsCDQsdGD0LTQtdGCINC/0LXRgNC10LTQsNCy0LDRgtGM0YHRjyDQsiDQstGL0LHRgNCw0L3QvdGL0Lkg0LHQsNC90LrQvtCy0YHQutC40Lkg0Y3QutCy0LDQudGA0LjQvdCzINCx0LXQtyDRhdGA0LDQvdC10L3QuNGPINC90LAg0YHQsNC50YLQtS4nLFxuICAgICAgICBjYXJkQ29udGludWVMYWJlbDogJ9Ce0YLQv9GA0LDQstC40YLRjCBTTVMt0LrQvtC0JyxcbiAgICAgICAgY29uZmlybVRleHQ6ICfQn9C+0YHQu9C1INC/0L7QtNC60LvRjtGH0LXQvdC40Y8g0L/Qu9Cw0YLQtdC20L3QvtCz0L4g0YjQu9GO0LfQsCDQvtC00L3QvtGA0LDQt9C+0LLRi9C5INC60L7QtCDQsdGD0LTQtdGCINC+0YLQv9GA0LDQstC70Y/RgtGM0YHRjyDQvdCwINGC0LXQu9C10YTQvtC9LCDRg9C60LDQt9Cw0L3QvdGL0Lkg0LIg0LfQsNGP0LLQutC1LicsXG4gICAgICAgIHNtc0hpbnQ6ICfQn9C+0LvQtSDQv9C+0LTQs9C+0YLQvtCy0LvQtdC90L4g0L/QvtC0INCx0YPQtNGD0YnRg9GOINC40L3RgtC10LPRgNCw0YbQuNGOIFNNUy8zLUQgU2VjdXJlLiDQodC10LnRh9Cw0YEg0LrQvtC0INC40YHQv9C+0LvRjNC30YPQtdGC0YHRjyDQutCw0Log0LTQtdC80L7QvdGB0YLRgNCw0YbQuNC+0L3QvdGL0Lkg0YjQsNCzINGB0YbQtdC90LDRgNC40Y8uJyxcbiAgICAgICAgYmFja0xhYmVsOiAn0J3QsNC30LDQtCcsXG4gICAgICAgIHBheUxhYmVsOiAn0J/QvtC00YLQstC10YDQtNC40YLRjCDQvtC/0LvQsNGC0YMnLFxuICAgICAgICBkb25lTGFiZWw6ICfQk9C+0YLQvtCy0L4nLFxuICAgICAgICBjbG9zZUxhYmVsOiAn0JfQsNC60YDRi9GC0YwgY2hlY2tvdXQnLFxuICAgICAgICBzZWN1cmVUZXh0OiAn0J/Qu9Cw0YLQtdC20L3QsNGPINGE0L7RgNC80LAg0L/QvtC00LPQvtGC0L7QstC70LXQvdCwINC/0L7QtCDQsdGD0LTRg9GJ0YPRjiDRgtC+0LrQtdC90LjQt9Cw0YbQuNGOINGH0LXRgNC10Lcg0L/Qu9Cw0YLQtdC20L3Ri9C5INC/0YDQvtCy0LDQudC00LXRgC4nLFxuICAgICAgICBzdWNjZXNzVGV4dDogJ9Ch0YbQtdC90LDRgNC40Lkg0L/QvtC60YPQv9C60Lgg0LPQvtGC0L7Qsi4g0J/QvtGB0LvQtSDQv9C+0LTQutC70Y7Rh9C10L3QuNGPIGJhY2tlbmQg0Lgg0L/Qu9Cw0YLQtdC20L3QvtCz0L4g0YjQu9GO0LfQsCDQt9C00LXRgdGMINCx0YPQtNC10YIg0YHQvtC30LTQsNCy0LDRgtGM0YHRjyDRgNC10LDQu9GM0L3Ri9C5INC/0LvQsNGC0LXQti4nLFxuICAgICAgICBwYXltZW50U3RhdHVzZXM6IHBheW1lbnRTdGF0dXNlc1J1LFxuICAgICAgICBiYW5rczogY2hlY2tvdXRCYW5rcyxcbiAgICAgICAgZmllbGRzOiB7XG4gICAgICAgICAgbmFtZTogJ9CY0LzRjyDQuCDRhNCw0LzQuNC70LjRjycsXG4gICAgICAgICAgZW1haWw6ICdFbWFpbCcsXG4gICAgICAgICAgcGhvbmU6ICfQotC10LvQtdGE0L7QvScsXG4gICAgICAgICAgcHJvamVjdE5hbWU6ICfQndCw0LfQstCw0L3QuNC1INC/0YDQvtC10LrRgtCwINC40LvQuCDQutC+0LzQv9Cw0L3QuNC4JyxcbiAgICAgICAgICBwcm9qZWN0VHlwZTogJ9Ci0LjQvyDRgdCw0LnRgtCwINC40LvQuCDQv9C70LDRgtGE0L7RgNC80YsnLFxuICAgICAgICAgIGRlc2NyaXB0aW9uOiAn0JrRgNCw0YLQutC+0LUg0L7Qv9C40YHQsNC90LjQtSDQt9Cw0LTQsNGH0LgnLFxuICAgICAgICAgIGNhcmROYW1lOiAn0JjQvNGPINC90LAg0LrQsNGA0YLQtScsXG4gICAgICAgICAgY2FyZE51bWJlcjogJ9Cd0L7QvNC10YAg0LrQsNGA0YLRiycsXG4gICAgICAgICAgZXhwaXJ5OiAn0KHRgNC+0LonLFxuICAgICAgICAgIGN2YzogJ0NWQycsXG4gICAgICAgICAgc21zQ29kZTogJ1NNUy3QutC+0LQg0L/QvtC00YLQstC10YDQttC00LXQvdC40Y8nLFxuICAgICAgICB9LFxuICAgICAgfSxcbiAgICAgIHByaWNpbmc6IHByaWNpbmdQbGFuc1J1LFxuICAgICAgc2VydmljZXNUaXRsZTogJ9Cd0LDQv9GA0LDQstC70LXQvdC40Y8g0YDQsNCx0L7RgicsXG4gICAgICBzZXJ2aWNlczogW1xuICAgICAgICB7IHRpdGxlOiAnQUkg0Lgg0L3QtdC50YDQvtC90L3Ri9C1INGB0LXRgtC4JywgdGV4dDogJ9Cg0LDQt9GA0LDQsdC+0YLQutCwINC40L3RgtC10LvQu9C10LrRgtGD0LDQu9GM0L3Ri9GFINGB0LjRgdGC0LXQvCwg0LzQvtC00LXQu9C10Lkg0Lgg0L/RgNC+0YLQvtGC0LjQv9C+0LIg0L/QvtC0INCx0LjQt9C90LXRgS3Qt9Cw0LTQsNGH0LguJywgaWNvbjogJ2ktYnJhaW4nIH0sXG4gICAgICAgIHsgdGl0bGU6ICfQktC10LEg0Lgg0L/Qu9Cw0YLRhNC+0YDQvNGLJywgdGV4dDogJ9Cf0YDQvtC10LrRgtC40YDQvtCy0LDQvdC40LUg0LjQvdGC0LXRgNGE0LXQudGB0L7Qsiwg0LLQtdCxLdC/0YDQuNC70L7QttC10L3QuNC5INC4INGG0LjRhNGA0L7QstGL0YUg0YHQtdGA0LLQuNGB0L7Qsi4nLCBpY29uOiAnaS1sYXllcnMnIH0sXG4gICAgICAgIHsgdGl0bGU6ICfQmNC90YTRgNCw0YHRgtGA0YPQutGC0YPRgNCwJywgdGV4dDogJ0FQSSwg0L/QsNC50L/Qu9Cw0LnQvdGLLCDQvtCx0LvQsNGH0L3Ri9C1INGB0LXRgNCy0LjRgdGLINC4INGC0LXRhdC90LjRh9C10YHQutCw0Y8g0LHQsNC30LAg0LTQu9GPINC/0YDQvtC00YPQutGC0LAuJywgaWNvbjogJ2ktY2hpcCcgfSxcbiAgICAgICAgeyB0aXRsZTogJ9CR0LXQt9C+0L/QsNGB0L3QvtGB0YLRjCDQtNCw0L3QvdGL0YUnLCB0ZXh0OiAn0JDQutC60YPRgNCw0YLQvdCw0Y8g0YDQsNCx0L7RgtCwINGBINC00LDQvdC90YvQvNC4LCDQtNC+0YHRgtGD0L/QsNC80Lgg0Lgg0LjQvdC20LXQvdC10YDQvdGL0LzQuCDQv9GA0L7RhtC10YHRgdCw0LzQuC4nLCBpY29uOiAnaS1zaGllbGQnIH0sXG4gICAgICBdLFxuICAgICAgbm90ZTogcHJpY2luZ05vdGVSdSxcbiAgICB9LFxuICAgIGFib3V0UGFnZToge1xuICAgICAgZXllYnJvdzogJ9Ca0L7QvNC/0LDQvdC40Y8nLFxuICAgICAgdGl0bGU6ICdHZW1tYSBOZXVyYXRlY2ggSVQg0YDQsNC30LLQuNCy0LDQtdGCINGG0LjRhNGA0L7QstGL0LUg0LggQUkt0YDQtdGI0LXQvdC40Y8nLFxuICAgICAgdGV4dDogJ9Ca0L7QvNC/0LDQvdC40Y8g0LfQsNGA0LXQs9C40YHRgtGA0LjRgNC+0LLQsNC90LAg0LIg0KPQt9Cx0LXQutC40YHRgtCw0L3QtSDQuCDRj9Cy0LvRj9C10YLRgdGPINGA0LXQt9C40LTQtdC90YLQvtC8IElUIFBhcmsuINCc0Ysg0YHRgtGA0L7QuNC8INGC0LXRhdC90L7Qu9C+0LPQuNGH0L3Rg9GOINC+0YHQvdC+0LLRgyDQtNC70Y8g0YDQsNC30YDQsNCx0L7RgtC60Lgg0LjQvdGC0LXQu9C70LXQutGC0YPQsNC70YzQvdGL0YUg0YHQuNGB0YLQtdC8LCDQv9GA0L7Qs9GA0LDQvNC80L3Ri9GFINC/0YDQvtC00YPQutGC0L7QsiDQuCDQuNC90YTRgNCw0YHRgtGA0YPQutGC0YPRgNC90YvRhSDRgNC10YjQtdC90LjQuS4nLFxuICAgICAgc3RhdHM6IFtcbiAgICAgICAgeyB2YWx1ZTogJzA3LjA1LjIwMjYnLCBsYWJlbDogJ9C00LDRgtCwINGA0LXQs9C40YHRgtGA0LDRhtC40LgnIH0sXG4gICAgICAgIHsgdmFsdWU6ICdNQ0hKICjQntCe0J4pJywgbGFiZWw6ICfRhNC+0YDQvNCwINC60L7QvNC/0LDQvdC40LgnIH0sXG4gICAgICAgIHsgdmFsdWU6ICcyNi4wNS4yMDI2JywgbGFiZWw6ICdJVCBQYXJrIFJlc2lkZW50JyB9LFxuICAgICAgXSxcbiAgICAgIGxlZ2FsVGl0bGU6ICfQoNC10LPQuNGB0YLRgNCw0YbQuNC+0L3QvdGL0LUg0LTQsNC90L3Ri9C1JyxcbiAgICAgIGxlZ2FsRGV0YWlsczogbGVnYWxEZXRhaWxzUnUsXG4gICAgICBkb2N1bWVudHNUaXRsZTogJ9Ce0YTQuNGG0LjQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLJyxcbiAgICAgIGNlcnRpZmljYXRlOiB7XG4gICAgICAgIHRpdGxlOiAn0KHQstC40LTQtdGC0LXQu9GM0YHRgtCy0L4gSVQgUGFyaycsXG4gICAgICAgIGV5ZWJyb3c6ICfQntGE0LjRhtC40LDQu9GM0L3Ri9C5INGB0YLQsNGC0YPRgScsXG4gICAgICAgIGhlYWRpbmc6ICfQoNC10LfQuNC00LXQvdGCINGC0LXRhdC90L7Qu9C+0LPQuNGH0LXRgdC60L7Qs9C+INC/0LDRgNC60LAnLFxuICAgICAgICB0ZXh0OiAnR2VtbWEgTmV1cmF0ZWNoIElUINCy0L3QtdGB0LXQvdCwINCyINCV0LTQuNC90YvQuSDRgNC10LXRgdGC0YAg0YDQtdC30LjQtNC10L3RgtC+0LIgSVQgUGFyayBVemJla2lzdGFuIDI2INC80LDRjyAyMDI2INCz0L7QtNCwLicsXG4gICAgICAgIG1ldGE6IFsn4oSWIDYxNTAnLCAn0JIg0YDQtdC10YHRgtGA0LUg0YEgMjYuMDUuMjAyNicsICdcIkdFTU1BIE5FVVJBVEVDSCBJVFwiIE1DSEonXSxcbiAgICAgICAgYnV0dG9uOiAn0J7RgtC60YDRi9GC0Ywg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0L4nLFxuICAgICAgICBkb3dubG9hZExhYmVsOiAn0KHQutCw0YfQsNGC0Ywg0YTQsNC50LsnLFxuICAgICAgICBkb3dubG9hZE5hbWU6ICdpdC1wYXJrLXJlc2lkZW50LWNlcnRpZmljYXRlLWdlbW1hLW5ldXJhdGVjaC1pdC5qcGcnLFxuICAgICAgICBjbG9zZUxhYmVsOiAn0JfQsNC60YDRi9GC0Ywg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0L4nLFxuICAgICAgICBhbHQ6ICfQodCy0LjQtNC10YLQtdC70YzRgdGC0LLQviDRgNC10LfQuNC00LXQvdGC0LAgSVQgUGFyayBVemJla2lzdGFuINC00LvRjyBHRU1NQSBORVVSQVRFQ0ggSVQnLFxuICAgICAgICBvcGVuTGFiZWw6ICfQntGC0LrRgNGL0YLRjCDRgdCy0LjQtNC10YLQtdC70YzRgdGC0LLQviBJVCBQYXJrJyxcbiAgICAgIH0sXG4gICAgICBkb2N1bWVudHM6IFtcbiAgICAgICAge1xuICAgICAgICAgIHR5cGU6ICdwZGYnLFxuICAgICAgICAgIGZpbGU6ICdyZWdpc3RyYXRpb24nLFxuICAgICAgICAgIHRpdGxlOiAn0KDQtdCz0LjRgdGC0YDQsNGG0LjQvtC90L3Ri9C5INC00L7QutGD0LzQtdC90YInLFxuICAgICAgICAgIGV5ZWJyb3c6ICfQntGE0LjRhtC40LDQu9GM0L3Ri9C5IFBERicsXG4gICAgICAgICAgaGVhZGluZzogJ9CU0L7QutGD0LzQtdC90YIg0L4g0YDQtdCz0LjRgdGC0YDQsNGG0LjQuCDQutC+0LzQv9Cw0L3QuNC4JyxcbiAgICAgICAgICB0ZXh0OiAn0J7RhNC40YbQuNCw0LvRjNC90YvQuSDQtNC+0LrRg9C80LXQvdGCLCDQv9C+0LTRgtCy0LXRgNC20LTQsNGO0YnQuNC5INGA0LXQs9C40YHRgtGA0LDRhtC40L7QvdC90YvQtSDRgdCy0LXQtNC10L3QuNGPIEdFTU1BIE5FVVJBVEVDSCBJVC4nLFxuICAgICAgICAgIG1ldGE6IFsnUERGJywgJ9Cg0LXQs9C40YHRgtGA0LDRhtC40L7QvdC90YvQtSDQtNCw0L3QvdGL0LUnLCAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKJ10sXG4gICAgICAgICAgYnV0dG9uOiAn0J7RgtC60YDRi9GC0Ywg0LTQvtC60YPQvNC10L3RgicsXG4gICAgICAgICAgZG93bmxvYWRMYWJlbDogJ9Ch0LrQsNGH0LDRgtGMINGE0LDQudC7JyxcbiAgICAgICAgICBkb3dubG9hZE5hbWU6ICdnZW1tYS1uZXVyYXRlY2gtaXQtcmVnaXN0cmF0aW9uLWRvY3VtZW50LnBkZicsXG4gICAgICAgICAgY2xvc2VMYWJlbDogJ9CX0LDQutGA0YvRgtGMINC00L7QutGD0LzQtdC90YInLFxuICAgICAgICAgIGFsdDogJ9Cg0LXQs9C40YHRgtGA0LDRhtC40L7QvdC90YvQuSDQtNC+0LrRg9C80LXQvdGCIEdFTU1BIE5FVVJBVEVDSCBJVCcsXG4gICAgICAgICAgc3RhbXBUaXRsZTogJ1JFRyBET0MnLFxuICAgICAgICAgIHN0YW1wSWNvbjogJ2ktaW5mbycsXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICB0eXBlOiAncGRmJyxcbiAgICAgICAgICBmaWxlOiAnZWdycG8nLFxuICAgICAgICAgIHRpdGxlOiAn0KHQv9GA0LDQstC60LAg0JXQk9Cg0J/QnicsXG4gICAgICAgICAgZXllYnJvdzogJ9Cg0LXQtdGB0YLRgCDQutC+0LzQv9Cw0L3QuNC4JyxcbiAgICAgICAgICBoZWFkaW5nOiAn0JXQk9Cg0J/QniDQuCDQtNCw0L3QvdGL0LUg0LTQuNGA0LXQutGC0L7RgNCwJyxcbiAgICAgICAgICB0ZXh0OiAn0JTQvtC60YPQvNC10L3RgiDRgSDRgNC10LPQuNGB0YLRgNCw0YbQuNC+0L3QvdGL0LzQuCDQtNCw0L3QvdGL0LzQuCDQutC+0LzQv9Cw0L3QuNC4INC4INGB0LLQtdC00LXQvdC40Y/QvNC4INC+INC00LjRgNC10LrRgtC+0YDQtS4nLFxuICAgICAgICAgIG1ldGE6IFsn0JXQk9Cg0J/QnicsICfQlNC40YDQtdC60YLQvtGAOiDQpdGD0YDRiNC40LTQsdC10LonLCAnUERGLdC00L7QutGD0LzQtdC90YInXSxcbiAgICAgICAgICBidXR0b246ICfQntGC0LrRgNGL0YLRjCDQldCT0KDQn9CeJyxcbiAgICAgICAgICBkb3dubG9hZExhYmVsOiAn0KHQutCw0YfQsNGC0Ywg0YTQsNC50LsnLFxuICAgICAgICAgIGRvd25sb2FkTmFtZTogJ2dlbW1hLW5ldXJhdGVjaC1pdC1lZ3Jwby1kaXJlY3Rvci1raHVyc2hpZGJlay5wZGYnLFxuICAgICAgICAgIGNsb3NlTGFiZWw6ICfQl9Cw0LrRgNGL0YLRjCDQldCT0KDQn9CeJyxcbiAgICAgICAgICBhbHQ6ICfQodC/0YDQsNCy0LrQsCDQldCT0KDQn9CeIEdFTU1BIE5FVVJBVEVDSCBJVCDQtNC40YDQtdC60YLQvtGAINCl0YPRgNGI0LjQtNCx0LXQuicsXG4gICAgICAgICAgc3RhbXBUaXRsZTogJ0VHUlBPJyxcbiAgICAgICAgICBzdGFtcEljb246ICdpLWluZm8nLFxuICAgICAgICB9LFxuICAgICAgXSxcbiAgICAgIHByZXNlbnRhdGlvbnNUaXRsZTogJ9Cf0YDQtdC30LXQvdGC0LDRhtC40Lgg0L/RgNC+0LXQutGC0L7QsicsXG4gICAgICBwcmVzZW50YXRpb25zOiBbXG4gICAgICAgIHsgdGl0bGU6ICdBSSBTb2x1dGlvbnMnLCB0YWc6ICdEaXJlY3Rpb24nLCB0ZXh0OiAn0J/RgNC10LfQtdC90YLQsNGG0LjRjyDQvdCw0L/RgNCw0LLQu9C10L3QuNGPINC40L3RgtC10LvQu9C10LrRgtGD0LDQu9GM0L3Ri9GFINGA0LXRiNC10L3QuNC5INC4IEFJLdGA0LDQt9GA0LDQsdC+0YLQutC4LicgfSxcbiAgICAgICAgeyB0aXRsZTogJ0RpZ2l0YWwgUGxhdGZvcm1zJywgdGFnOiAnRGlyZWN0aW9uJywgdGV4dDogJ9Cf0YDQtdC30LXQvdGC0LDRhtC40Y8g0LLQtdCxLdC/0LvQsNGC0YTQvtGA0LwsINGB0LXRgNCy0LjRgdC+0LIg0Lgg0L/RgNC+0LTRg9C60YLQvtCy0L7QuSDRgNCw0LfRgNCw0LHQvtGC0LrQuC4nIH0sXG4gICAgICAgIHsgdGl0bGU6ICdFbmdpbmVlcmluZyBCYXNlJywgdGFnOiAnRGlyZWN0aW9uJywgdGV4dDogJ9Cf0YDQtdC30LXQvdGC0LDRhtC40Y8g0LjQvdGE0YDQsNGB0YLRgNGD0LrRgtGD0YDRiywgTUxPcHMt0L/QvtC00YXQvtC00LAg0Lgg0YLQtdGF0L3QuNGH0LXRgdC60L7QuSDQsNGA0YXQuNGC0LXQutGC0YPRgNGLLicgfSxcbiAgICAgIF0sXG4gICAgICByZXZpZXdzVGl0bGU6ICfQntGC0LfRi9Cy0YsnLFxuICAgICAgcmV2aWV3czogW1xuICAgICAgICB7IHF1b3RlOiAn0KDQsNC30LTQtdC7INC+0YLQt9GL0LLQvtCyINCx0YPQtNC10YIg0LfQsNC/0L7Qu9C90LXQvSDQv9C+0YHQu9C1INGB0L7Qs9C70LDRgdC+0LLQsNC90LjRjyDQv9GD0LHQu9C40LrQsNGG0LjQuCDQutC70LjQtdC90YLRgdC60LjRhSDQvtGC0LfRi9Cy0L7QsiDQuCDQutC10LnRgdC+0LIuJywgYXV0aG9yOiAnR2VtbWEgTmV1cmF0ZWNoIElUJyB9LFxuICAgICAgICB7IHF1b3RlOiAn0J/Rg9Cx0LvQuNGH0L3Ri9C1INC/0YDQtdC30LXQvdGC0LDRhtC40Lgg0L/RgNC+0LXQutGC0L7QsiDQsdGD0LTRg9GCINC00L7QsdCw0LLQu9GP0YLRjNGB0Y8g0L/QviDQvNC10YDQtSDQs9C+0YLQvtCy0L3QvtGB0YLQuCDQvNCw0YLQtdGA0LjQsNC70L7Qsi4nLCBhdXRob3I6ICdQcm9qZWN0IG9mZmljZScgfSxcbiAgICAgIF0sXG4gICAgfSxcbiAgICBjb250YWN0UGFnZToge1xuICAgICAgZXllYnJvdzogJ9Ch0LLRj9C30YwnLFxuICAgICAgdGl0bGU6ICfQmtC+0L3RgtCw0LrRgtGLINC4INGA0LXQs9C40YHRgtGA0LDRhtC40L7QvdC90YvQtSDQtNCw0L3QvdGL0LUgR2VtbWEgTmV1cmF0ZWNoIElUJyxcbiAgICAgIHRleHQ6ICfQl9C00LXRgdGMINGB0L7QsdGA0LDQvdGLINC+0YTQuNGG0LjQsNC70YzQvdGL0LUg0LTQsNC90L3Ri9C1INC60L7QvNC/0LDQvdC40Lgg0Lgg0YDQsNCx0L7Rh9Cw0Y8g0L/QvtGH0YLQsCDQtNC70Y8g0LfQsNGP0LLQvtC6LCDQutC+0L3RgdGD0LvRjNGC0LDRhtC40Lkg0Lgg0YHQstGP0LfQuCDQv9C+INC/0YDQvtC10LrRgtCw0LwuJyxcbiAgICAgIG1ldGhvZHM6IFtcbiAgICAgICAgeyB0aXRsZTogJ0VtYWlsJywgdmFsdWU6IGNvbXBhbnlFbWFpbCwgaHJlZjogYG1haWx0bzoke2NvbXBhbnlFbWFpbH1gLCBpY29uOiAnaS1tYWlsJyB9LFxuICAgICAgICB7IHRpdGxlOiAn0KLQtdC70LXRhNC+0L0nLCB2YWx1ZTogY29tcGFueVBob25lLCBocmVmOiBgdGVsOiR7Y29tcGFueVBob25lfWAsIGljb246ICdpLXBob25lJyB9LFxuICAgICAgICB7IHRpdGxlOiAn0K7RgNC40LTQuNGH0LXRgdC60L7QtSDQu9C40YbQvicsIHZhbHVlOiAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKICjQntCe0J4pJywgaHJlZjogJyNjb250YWN0LWZvcm0nLCBpY29uOiAnaS1pbmZvJyB9LFxuICAgICAgICB7IHRpdGxlOiAn0KTQvtGA0LzQsCDQutC+0LzQv9Cw0L3QuNC4JywgdmFsdWU6ICdNQ0hKICjQntCe0J4pJywgaHJlZjogJyNjb250YWN0LWZvcm0nLCBpY29uOiAnaS1jaGlwJyB9LFxuICAgICAgICB7IHRpdGxlOiAnSVQgUGFyayBSZXNpZGVudCcsIHZhbHVlOiAn0YEgMjYuMDUuMjAyNicsIGhyZWY6ICcjY29udGFjdC1mb3JtJywgaWNvbjogJ2ktc2hpZWxkJyB9LFxuICAgICAgXSxcbiAgICAgIGNvcnBvcmF0ZUVtYWlsc1RpdGxlOiAn0JrQvtGA0L/QvtGA0LDRgtC40LLQvdGL0LUg0L/QvtGH0YLRiycsXG4gICAgICBjb3Jwb3JhdGVFbWFpbHM6IGNvcnBvcmF0ZUVtYWlsc1J1LFxuICAgICAgc3VwcG9ydFRpdGxlOiAn0JTQsNC90L3Ri9C1INC60L7QvNC/0LDQvdC40LgnLFxuICAgICAgc3VwcG9ydDogWyfQoNC10LPQuNGB0YLRgNCw0YbQuNGPOiAwNy4wNS4yMDI2JywgJ0lUIFBhcmsgUmVzaWRlbnQnLCAn0KLQsNGI0LrQtdC90YIsINCj0LfQsdC10LrQuNGB0YLQsNC9JywgJ9Ce0J7QniAvIE1DSEonXSxcbiAgICAgIGxvY2F0aW9uVGl0bGU6ICfQkNC00YDQtdGBJyxcbiAgICAgIGxvY2F0aW9uOiAn0KPQt9Cx0LXQutC40YHRgtCw0L0sINCzLiDQotCw0YjQutC10L3Rgiwg0JDQu9C80LDQt9Cw0YDRgdC60LjQuSDRgNCw0LnQvtC9LCDQnNCk0Jkg0KfQuNC70YLQvtCz0L7QvSwg0YPQuy4g0KLQsNGF0YLQsNC/0YPQuyDQlNCw0YDQstC+0LfQsCwg0LTQvtC8IDM5Ni3Qoy4nLFxuICAgICAgZm9ybVRpdGxlOiAn0J7RgdGC0LDQstC40YLRjCDQt9Cw0Y/QstC60YMnLFxuICAgICAgZm9ybUluZm9UaXRsZTogJ9Cn0YLQviDQsdGD0LTQtdGCINC/0L7RgdC70LUg0L7RgtC/0YDQsNCy0LrQuCcsXG4gICAgICBmb3JtSW5mb1RleHQ6ICfQnNGLINGA0LDQt9Cx0LXRgNGR0Lwg0LfQsNC00LDRh9GDINC4INGB0LLRj9C20LXQvNGB0Y8g0YEg0LLQsNC80LgsINGH0YLQvtCx0Ysg0YPRgtC+0YfQvdC40YLRjCDQtNC10YLQsNC70Lgg0L/RgNC+0LXQutGC0LAsINGB0YDQvtC60Lgg0Lgg0L/QvtC00YXQvtC00Y/RidC40Lkg0YTQvtGA0LzQsNGCINGA0LDQsdC+0YLRiy4nLFxuICAgICAgZm9ybUluZm9JdGVtczogWyfQntGC0LLQtdGC0LjQvCDQvdCwINGD0LrQsNC30LDQvdC90YPRjiDQv9C+0YfRgtGDJywgJ9Cj0YLQvtGH0L3QuNC8INGG0LXQu9GMLCDQvtCx0YrRkdC8INC4INC/0YDQuNC+0YDQuNGC0LXRgtGLJywgJ9Cf0L7QtNCz0L7RgtC+0LLQuNC8INGB0LvQtdC00YPRjtGJ0LjQuSDRiNCw0LMg0LjQu9C4INC/0YDQtdC00LvQvtC20LXQvdC40LUnXSxcbiAgICAgIG5hbWU6ICfQktCw0YjQtSDQuNC80Y8nLFxuICAgICAgZW1haWw6ICdFbWFpbCcsXG4gICAgICBtZXNzYWdlOiAn0J7Qv9C40YjQuNGC0LUg0LfQsNC00LDRh9GDJyxcbiAgICAgIHN1Ym1pdDogJ9Ce0YLQv9GA0LDQstC40YLRjCDQt9Cw0L/RgNC+0YEnLFxuICAgICAgc3VjY2VzczogJ9CX0LDQv9GA0L7RgSDQvtGC0L/RgNCw0LLQu9C10L0nLFxuICAgIH0sXG4gICAgbm90Rm91bmQ6IHtcbiAgICAgIHRpdGxlOiAn0KHRgtGA0LDQvdC40YbQsCDQvdC1INC90LDQudC00LXQvdCwJyxcbiAgICAgIHRleHQ6ICfQotCw0LrQvtCz0L4g0LzQsNGA0YjRgNGD0YLQsCDQv9C+0LrQsCDQvdC10YIuINCS0LXRgNC90LjRgtC10YHRjCDQvdCwINCz0LvQsNCy0L3Rg9GOINC40LvQuCDQstGL0LHQtdGA0LjRgtC1INGA0LDQt9C00LXQuyDQsiDQstC10YDRhdC90LXQvCDQvNC10L3Rji4nLFxuICAgICAgYWN0aW9uOiAn0J3QsCDQs9C70LDQstC90YPRjicsXG4gICAgfSxcbiAgfSxcbiAgZW46IHtcbiAgICBuYXZMaW5rczogW1xuICAgICAgeyB0bzogJy8nLCBsYWJlbDogJ0hvbWUnIH0sXG4gICAgICB7IHRvOiAnL3NlcnZpY2VzJywgbGFiZWw6ICdTZXJ2aWNlcyAmIFByaWNpbmcnIH0sXG4gICAgICB7IHRvOiAnL2Fib3V0JywgbGFiZWw6ICdBYm91dCcgfSxcbiAgICAgIHsgdG86ICcvY29udGFjdCcsIGxhYmVsOiAnQ29udGFjdCcgfSxcbiAgICBdLFxuICAgIHNlcnZpY2VzUGFnZToge1xuICAgICAgZXllYnJvdzogJ1NlcnZpY2VzJyxcbiAgICAgIHRpdGxlOiAnSVQgc29sdXRpb25zLCBBSSBzeXN0ZW1zLCBhbmQgZW5naW5lZXJpbmcgaW5mcmFzdHJ1Y3R1cmUnLFxuICAgICAgdGV4dDogJ0dlbW1hIE5ldXJhdGVjaCBJVCBwcmVwYXJlcyBkaWdpdGFsIHByb2R1Y3RzLCBpbnRlbGxpZ2VudCBzb2x1dGlvbnMsIGFuZCB0ZWNobmljYWwgZm91bmRhdGlvbnMgZm9yIEFJIHByb2plY3RzLiBTZXJ2aWNlIHByaWNpbmcgaXMgZGVmaW5lZCBhZnRlciB0aGUgc2NvcGUgYW5kIHJlcXVpcmVtZW50cyBhcmUgY2xhcmlmaWVkLicsXG4gICAgICBjdGE6ICdTZW5kIHJlcXVlc3QnLFxuICAgICAgcHJpY2luZ1RpdGxlOiAnU2VydmljZSBwYWNrYWdlcyBhbmQgcHJpY2luZycsXG4gICAgICBpbmNsdWRlZExhYmVsOiAnSW5jbHVkZWQnLFxuICAgICAgcHJpY2luZ0FjdGlvbjogJ0J1eSBwYWNrYWdlJyxcbiAgICAgIGNoZWNrb3V0OiB7XG4gICAgICAgIGV5ZWJyb3c6ICdDaGVja291dCcsXG4gICAgICAgIHRlcm1zVGl0bGU6ICdDb25maXJtIHRlcm1zJyxcbiAgICAgICAgZGV0YWlsc1RpdGxlOiAnUmVxdWVzdCBkZXRhaWxzJyxcbiAgICAgICAgYmFua1RpdGxlOiAnQmFuayBzZWxlY3Rpb24nLFxuICAgICAgICBwYXltZW50VGl0bGU6ICdDYXJkIGRldGFpbHMnLFxuICAgICAgICBjb25maXJtVGl0bGU6ICdTTVMgY29uZmlybWF0aW9uJyxcbiAgICAgICAgc3VjY2Vzc1RpdGxlOiAnUGF5bWVudCByZXF1ZXN0IHByZXBhcmVkJyxcbiAgICAgICAgc3RlcFRlcm1zOiAnVGVybXMnLFxuICAgICAgICBzdGVwRGV0YWlsczogJ1JlcXVlc3QnLFxuICAgICAgICBzdGVwQmFuazogJ0JhbmsnLFxuICAgICAgICBzdGVwUGF5bWVudDogJ0NhcmQnLFxuICAgICAgICBzdGVwQ29uZmlybTogJ1NNUycsXG4gICAgICAgIHN1bW1hcnlMYWJlbDogJ1NlbGVjdGVkIHBhY2thZ2UnLFxuICAgICAgICBhZ3JlZW1lbnQ6IGNoZWNrb3V0T2ZmZXJFbixcbiAgICAgICAgdGVybXM6IFtcbiAgICAgICAgICAnVGhlIHBhY2thZ2UgcHJpY2UgaXMgYSBzdGFydGluZyBlc3RpbWF0ZSBhbmQgbWF5IGJlIGNsYXJpZmllZCBhZnRlciB0aGUgdGVjaG5pY2FsIHNjb3BlIGlzIGFwcHJvdmVkLicsXG4gICAgICAgICAgJ1dvcmsgc3RhcnRzIGFmdGVyIHRoZSBvcmRlciwgcGF5bWVudCwgYW5kIHNjb3BlIG9mIHNlcnZpY2VzIGFyZSBjb25maXJtZWQuJyxcbiAgICAgICAgICAnQ2FyZCBkYXRhIGlzIG5vdCBzdG9yZWQgaW4gdGhlIGN1cnJlbnQgdmVyc2lvbiBhbmQgd2lsbCBiZSBwYXNzZWQgb25seSB0byBhIHBheW1lbnQgcHJvdmlkZXIgYWZ0ZXIgdGhlIHBheW1lbnQgZ2F0ZXdheSBpcyBjb25uZWN0ZWQuJyxcbiAgICAgICAgXSxcbiAgICAgICAgYWNjZXB0VGV4dDogJ0kgaGF2ZSByZWFkIHRoZSBHRU1NQSBORVVSQVRFQ0ggSVQgcHVibGljIG9mZmVyIGFuZCBhY2NlcHQgdGhlIHNlcnZpY2UsIGRhdGEgcHJvY2Vzc2luZywgcGF5bWVudCwgYW5kIHJlZnVuZCB0ZXJtcy4nLFxuICAgICAgICBjb250aW51ZUxhYmVsOiAnQ29udGludWUgdG8gcmVxdWVzdCcsXG4gICAgICAgIGRldGFpbHNJbnRybzogJ0ZpbGwgaW4geW91ciBjb250YWN0IGRldGFpbHMgYW5kIGJyaWVmbHkgZGVzY3JpYmUgdGhlIHdlYnNpdGUsIHBsYXRmb3JtLCBvciBkaWdpdGFsIHByb2R1Y3QgeW91IG5lZWQuJyxcbiAgICAgICAgZGV0YWlsc0NvbnRpbnVlTGFiZWw6ICdDaG9vc2UgYmFuaycsXG4gICAgICAgIGJhbmtJbnRybzogJ0Nob29zZSB0aGUgYmFuayB3aG9zZSBhY3F1aXJpbmcgY29ubmVjdGlvbiB3aWxsIHByb2Nlc3MgdGhlIHBheW1lbnQgYWZ0ZXIgdGhlIHBheW1lbnQgZ2F0ZXdheSBpcyBjb25uZWN0ZWQuJyxcbiAgICAgICAgYmFua0NvbnRpbnVlTGFiZWw6ICdDb250aW51ZSB0byBjYXJkIGRldGFpbHMnLFxuICAgICAgICBiYW5rQWNxdWlyaW5nTGFiZWw6ICdBY3F1aXJpbmcnLFxuICAgICAgICBiYW5rU2VsZWN0ZWRMYWJlbDogJ1NlbGVjdGVkIGJhbmsnLFxuICAgICAgICBiYW5rTm90ZTogJ0EgZGVkaWNhdGVkIGJhbmsgYWNxdWlyaW5nIGludGVncmF0aW9uIHdpbGwgYmUgY29ubmVjdGVkLicsXG4gICAgICAgIHBheW1lbnRJbnRybzogJ0VudGVyIHBheW1lbnQgZGV0YWlscy4gVGhlIGNhcmQgd2lsbCBiZSBwYXNzZWQgdG8gdGhlIHNlbGVjdGVkIGJhbmsgYWNxdWlyaW5nIGZsb3cgd2l0aG91dCBiZWluZyBzdG9yZWQgb24gdGhlIHdlYnNpdGUuJyxcbiAgICAgICAgY2FyZENvbnRpbnVlTGFiZWw6ICdTZW5kIFNNUyBjb2RlJyxcbiAgICAgICAgY29uZmlybVRleHQ6ICdBZnRlciB0aGUgcGF5bWVudCBnYXRld2F5IGlzIGNvbm5lY3RlZCwgYSBvbmUtdGltZSBjb2RlIHdpbGwgYmUgc2VudCB0byB0aGUgcGhvbmUgbnVtYmVyIGZyb20gdGhlIHJlcXVlc3QuJyxcbiAgICAgICAgc21zSGludDogJ1RoaXMgZmllbGQgaXMgcHJlcGFyZWQgZm9yIGZ1dHVyZSBTTVMvMy1EIFNlY3VyZSBpbnRlZ3JhdGlvbi4gRm9yIG5vdywgaXQgd29ya3MgYXMgYSBkZW1vIHN0ZXAgb2YgdGhlIHBheW1lbnQgZmxvdy4nLFxuICAgICAgICBiYWNrTGFiZWw6ICdCYWNrJyxcbiAgICAgICAgcGF5TGFiZWw6ICdDb25maXJtIHBheW1lbnQnLFxuICAgICAgICBkb25lTGFiZWw6ICdEb25lJyxcbiAgICAgICAgY2xvc2VMYWJlbDogJ0Nsb3NlIGNoZWNrb3V0JyxcbiAgICAgICAgc2VjdXJlVGV4dDogJ1RoZSBwYXltZW50IGZvcm0gaXMgcHJlcGFyZWQgZm9yIGZ1dHVyZSB0b2tlbml6YXRpb24gdGhyb3VnaCBhIHBheW1lbnQgcHJvdmlkZXIuJyxcbiAgICAgICAgc3VjY2Vzc1RleHQ6ICdUaGUgcHVyY2hhc2UgZmxvdyBpcyByZWFkeS4gQWZ0ZXIgYmFja2VuZCBhbmQgcGF5bWVudCBnYXRld2F5IGludGVncmF0aW9uLCB0aGlzIHN0ZXAgd2lsbCBjcmVhdGUgYSByZWFsIHBheW1lbnQuJyxcbiAgICAgICAgcGF5bWVudFN0YXR1c2VzOiBwYXltZW50U3RhdHVzZXNFbixcbiAgICAgICAgYmFua3M6IGNoZWNrb3V0QmFua3MsXG4gICAgICAgIGZpZWxkczoge1xuICAgICAgICAgIG5hbWU6ICdGdWxsIG5hbWUnLFxuICAgICAgICAgIGVtYWlsOiAnRW1haWwnLFxuICAgICAgICAgIHBob25lOiAnUGhvbmUnLFxuICAgICAgICAgIHByb2plY3ROYW1lOiAnUHJvamVjdCBvciBjb21wYW55IG5hbWUnLFxuICAgICAgICAgIHByb2plY3RUeXBlOiAnV2Vic2l0ZSBvciBwbGF0Zm9ybSB0eXBlJyxcbiAgICAgICAgICBkZXNjcmlwdGlvbjogJ0JyaWVmIHRhc2sgZGVzY3JpcHRpb24nLFxuICAgICAgICAgIGNhcmROYW1lOiAnTmFtZSBvbiBjYXJkJyxcbiAgICAgICAgICBjYXJkTnVtYmVyOiAnQ2FyZCBudW1iZXInLFxuICAgICAgICAgIGV4cGlyeTogJ0V4cGlyeScsXG4gICAgICAgICAgY3ZjOiAnQ1ZDJyxcbiAgICAgICAgICBzbXNDb2RlOiAnU01TIGNvbmZpcm1hdGlvbiBjb2RlJyxcbiAgICAgICAgfSxcbiAgICAgIH0sXG4gICAgICBwcmljaW5nOiBwcmljaW5nUGxhbnNFbixcbiAgICAgIHNlcnZpY2VzVGl0bGU6ICdXb3JrIGFyZWFzJyxcbiAgICAgIHNlcnZpY2VzOiBbXG4gICAgICAgIHsgdGl0bGU6ICdBSSBhbmQgbmV1cmFsIG5ldHdvcmtzJywgdGV4dDogJ0RldmVsb3BtZW50IG9mIGludGVsbGlnZW50IHN5c3RlbXMsIG1vZGVscywgYW5kIHByb3RvdHlwZXMgZm9yIGJ1c2luZXNzIHRhc2tzLicsIGljb246ICdpLWJyYWluJyB9LFxuICAgICAgICB7IHRpdGxlOiAnV2ViIGFuZCBwbGF0Zm9ybXMnLCB0ZXh0OiAnSW50ZXJmYWNlIGRlc2lnbiwgd2ViIGFwcGxpY2F0aW9ucywgYW5kIGRpZ2l0YWwgc2VydmljZXMuJywgaWNvbjogJ2ktbGF5ZXJzJyB9LFxuICAgICAgICB7IHRpdGxlOiAnSW5mcmFzdHJ1Y3R1cmUnLCB0ZXh0OiAnQVBJcywgcGlwZWxpbmVzLCBjbG91ZCBzZXJ2aWNlcywgYW5kIHRlY2huaWNhbCBwcm9kdWN0IGZvdW5kYXRpb25zLicsIGljb246ICdpLWNoaXAnIH0sXG4gICAgICAgIHsgdGl0bGU6ICdEYXRhIHNlY3VyaXR5JywgdGV4dDogJ0NhcmVmdWwgd29yayB3aXRoIGRhdGEsIGFjY2VzcywgYW5kIGVuZ2luZWVyaW5nIHByb2Nlc3Nlcy4nLCBpY29uOiAnaS1zaGllbGQnIH0sXG4gICAgICBdLFxuICAgICAgbm90ZTogcHJpY2luZ05vdGVFbixcbiAgICB9LFxuICAgIGFib3V0UGFnZToge1xuICAgICAgZXllYnJvdzogJ0NvbXBhbnknLFxuICAgICAgdGl0bGU6ICdHZW1tYSBOZXVyYXRlY2ggSVQgZGV2ZWxvcHMgZGlnaXRhbCBhbmQgQUkgc29sdXRpb25zJyxcbiAgICAgIHRleHQ6ICdUaGUgY29tcGFueSBpcyByZWdpc3RlcmVkIGluIFV6YmVraXN0YW4gYW5kIGlzIGFuIElUIFBhcmsgUmVzaWRlbnQuIFdlIGJ1aWxkIGEgdGVjaG5vbG9naWNhbCBmb3VuZGF0aW9uIGZvciBpbnRlbGxpZ2VudCBzeXN0ZW1zLCBzb2Z0d2FyZSBwcm9kdWN0cywgYW5kIGluZnJhc3RydWN0dXJlIHNvbHV0aW9ucy4nLFxuICAgICAgc3RhdHM6IFtcbiAgICAgICAgeyB2YWx1ZTogJzA3LjA1LjIwMjYnLCBsYWJlbDogJ3JlZ2lzdHJhdGlvbiBkYXRlJyB9LFxuICAgICAgICB7IHZhbHVlOiAnTUNISiAoTExDKScsIGxhYmVsOiAnbGVnYWwgZm9ybScgfSxcbiAgICAgICAgeyB2YWx1ZTogJzI2LjA1LjIwMjYnLCBsYWJlbDogJ0lUIFBhcmsgUmVzaWRlbnQnIH0sXG4gICAgICBdLFxuICAgICAgbGVnYWxUaXRsZTogJ1JlZ2lzdHJhdGlvbiBkZXRhaWxzJyxcbiAgICAgIGxlZ2FsRGV0YWlsczogbGVnYWxEZXRhaWxzRW4sXG4gICAgICBkb2N1bWVudHNUaXRsZTogJ09mZmljaWFsIGRvY3VtZW50cycsXG4gICAgICBjZXJ0aWZpY2F0ZToge1xuICAgICAgICB0aXRsZTogJ0lUIFBhcmsgQ2VydGlmaWNhdGUnLFxuICAgICAgICBleWVicm93OiAnT2ZmaWNpYWwgc3RhdHVzJyxcbiAgICAgICAgaGVhZGluZzogJ1RlY2hub2xvZ3kgcGFyayByZXNpZGVudCcsXG4gICAgICAgIHRleHQ6ICdHZW1tYSBOZXVyYXRlY2ggSVQgd2FzIGVudGVyZWQgaW50byB0aGUgVW5pZmllZCBSZWdpc3RlciBvZiBJVCBQYXJrIFV6YmVraXN0YW4gcmVzaWRlbnRzIG9uIE1heSAyNiwgMjAyNi4nLFxuICAgICAgICBtZXRhOiBbJ05vLiA2MTUwJywgJ1Jlc2lkZW50IHNpbmNlIDI2LjA1LjIwMjYnLCAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKJ10sXG4gICAgICAgIGJ1dHRvbjogJ09wZW4gY2VydGlmaWNhdGUnLFxuICAgICAgICBkb3dubG9hZExhYmVsOiAnRG93bmxvYWQgZmlsZScsXG4gICAgICAgIGRvd25sb2FkTmFtZTogJ2l0LXBhcmstcmVzaWRlbnQtY2VydGlmaWNhdGUtZ2VtbWEtbmV1cmF0ZWNoLWl0LmpwZycsXG4gICAgICAgIGNsb3NlTGFiZWw6ICdDbG9zZSBjZXJ0aWZpY2F0ZScsXG4gICAgICAgIGFsdDogJ0lUIFBhcmsgVXpiZWtpc3RhbiByZXNpZGVudCBjZXJ0aWZpY2F0ZSBmb3IgR0VNTUEgTkVVUkFURUNIIElUJyxcbiAgICAgICAgb3BlbkxhYmVsOiAnT3BlbiBJVCBQYXJrIGNlcnRpZmljYXRlJyxcbiAgICAgIH0sXG4gICAgICBkb2N1bWVudHM6IFtcbiAgICAgICAge1xuICAgICAgICAgIHR5cGU6ICdwZGYnLFxuICAgICAgICAgIGZpbGU6ICdyZWdpc3RyYXRpb24nLFxuICAgICAgICAgIHRpdGxlOiAnUmVnaXN0cmF0aW9uIGRvY3VtZW50JyxcbiAgICAgICAgICBleWVicm93OiAnT2ZmaWNpYWwgUERGJyxcbiAgICAgICAgICBoZWFkaW5nOiAnQ29tcGFueSByZWdpc3RyYXRpb24gZG9jdW1lbnQnLFxuICAgICAgICAgIHRleHQ6ICdPZmZpY2lhbCBkb2N1bWVudCBjb25maXJtaW5nIHRoZSByZWdpc3RyYXRpb24gZGV0YWlscyBvZiBHRU1NQSBORVVSQVRFQ0ggSVQuJyxcbiAgICAgICAgICBtZXRhOiBbJ1BERicsICdSZWdpc3RyYXRpb24gZGV0YWlscycsICdcIkdFTU1BIE5FVVJBVEVDSCBJVFwiIE1DSEonXSxcbiAgICAgICAgICBidXR0b246ICdPcGVuIGRvY3VtZW50JyxcbiAgICAgICAgICBkb3dubG9hZExhYmVsOiAnRG93bmxvYWQgZmlsZScsXG4gICAgICAgICAgZG93bmxvYWROYW1lOiAnZ2VtbWEtbmV1cmF0ZWNoLWl0LXJlZ2lzdHJhdGlvbi1kb2N1bWVudC5wZGYnLFxuICAgICAgICAgIGNsb3NlTGFiZWw6ICdDbG9zZSBkb2N1bWVudCcsXG4gICAgICAgICAgYWx0OiAnR0VNTUEgTkVVUkFURUNIIElUIHJlZ2lzdHJhdGlvbiBkb2N1bWVudCcsXG4gICAgICAgICAgc3RhbXBUaXRsZTogJ1JFRyBET0MnLFxuICAgICAgICAgIHN0YW1wSWNvbjogJ2ktaW5mbycsXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICB0eXBlOiAncGRmJyxcbiAgICAgICAgICBmaWxlOiAnZWdycG8nLFxuICAgICAgICAgIHRpdGxlOiAnRUdSUE8gZXh0cmFjdCcsXG4gICAgICAgICAgZXllYnJvdzogJ0NvbXBhbnkgcmVnaXN0ZXInLFxuICAgICAgICAgIGhlYWRpbmc6ICdFR1JQTyBhbmQgZGlyZWN0b3IgZGV0YWlscycsXG4gICAgICAgICAgdGV4dDogJ0RvY3VtZW50IHdpdGggY29tcGFueSByZWdpc3RyYXRpb24gZGV0YWlscyBhbmQgZGlyZWN0b3IgaW5mb3JtYXRpb24uJyxcbiAgICAgICAgICBtZXRhOiBbJ0VHUlBPJywgJ0RpcmVjdG9yOiBLaHVyc2hpZGJlaycsICdQREYgZG9jdW1lbnQnXSxcbiAgICAgICAgICBidXR0b246ICdPcGVuIEVHUlBPJyxcbiAgICAgICAgICBkb3dubG9hZExhYmVsOiAnRG93bmxvYWQgZmlsZScsXG4gICAgICAgICAgZG93bmxvYWROYW1lOiAnZ2VtbWEtbmV1cmF0ZWNoLWl0LWVncnBvLWRpcmVjdG9yLWtodXJzaGlkYmVrLnBkZicsXG4gICAgICAgICAgY2xvc2VMYWJlbDogJ0Nsb3NlIEVHUlBPJyxcbiAgICAgICAgICBhbHQ6ICdHRU1NQSBORVVSQVRFQ0ggSVQgRUdSUE8gZXh0cmFjdCBkaXJlY3RvciBLaHVyc2hpZGJlaycsXG4gICAgICAgICAgc3RhbXBUaXRsZTogJ0VHUlBPJyxcbiAgICAgICAgICBzdGFtcEljb246ICdpLWluZm8nLFxuICAgICAgICB9LFxuICAgICAgXSxcbiAgICAgIHByZXNlbnRhdGlvbnNUaXRsZTogJ1Byb2plY3QgcHJlc2VudGF0aW9ucycsXG4gICAgICBwcmVzZW50YXRpb25zOiBbXG4gICAgICAgIHsgdGl0bGU6ICdBSSBTb2x1dGlvbnMnLCB0YWc6ICdEaXJlY3Rpb24nLCB0ZXh0OiAnUHJlc2VudGF0aW9uIG9mIGludGVsbGlnZW50IHNvbHV0aW9ucyBhbmQgQUkgZGV2ZWxvcG1lbnQgZGlyZWN0aW9uLicgfSxcbiAgICAgICAgeyB0aXRsZTogJ0RpZ2l0YWwgUGxhdGZvcm1zJywgdGFnOiAnRGlyZWN0aW9uJywgdGV4dDogJ1ByZXNlbnRhdGlvbiBvZiB3ZWIgcGxhdGZvcm1zLCBzZXJ2aWNlcywgYW5kIHByb2R1Y3QgZGV2ZWxvcG1lbnQuJyB9LFxuICAgICAgICB7IHRpdGxlOiAnRW5naW5lZXJpbmcgQmFzZScsIHRhZzogJ0RpcmVjdGlvbicsIHRleHQ6ICdQcmVzZW50YXRpb24gb2YgaW5mcmFzdHJ1Y3R1cmUsIE1MT3BzIGFwcHJvYWNoLCBhbmQgdGVjaG5pY2FsIGFyY2hpdGVjdHVyZS4nIH0sXG4gICAgICBdLFxuICAgICAgcmV2aWV3c1RpdGxlOiAnUmV2aWV3cycsXG4gICAgICByZXZpZXdzOiBbXG4gICAgICAgIHsgcXVvdGU6ICdUaGUgcmV2aWV3cyBzZWN0aW9uIHdpbGwgYmUgZmlsbGVkIGFmdGVyIGNsaWVudCB0ZXN0aW1vbmlhbHMgYW5kIGNhc2VzIGFyZSBhcHByb3ZlZCBmb3IgcHVibGljYXRpb24uJywgYXV0aG9yOiAnR2VtbWEgTmV1cmF0ZWNoIElUJyB9LFxuICAgICAgICB7IHF1b3RlOiAnUHVibGljIHByb2plY3QgcHJlc2VudGF0aW9ucyB3aWxsIGJlIGFkZGVkIGFzIG1hdGVyaWFscyBiZWNvbWUgcmVhZHkuJywgYXV0aG9yOiAnUHJvamVjdCBvZmZpY2UnIH0sXG4gICAgICBdLFxuICAgIH0sXG4gICAgY29udGFjdFBhZ2U6IHtcbiAgICAgIGV5ZWJyb3c6ICdDb250YWN0JyxcbiAgICAgIHRpdGxlOiAnQ29udGFjdHMgYW5kIHJlZ2lzdHJhdGlvbiBkZXRhaWxzIG9mIEdlbW1hIE5ldXJhdGVjaCBJVCcsXG4gICAgICB0ZXh0OiAnVGhpcyBwYWdlIGNvbnRhaW5zIHRoZSBvZmZpY2lhbCBjb21wYW55IGRldGFpbHMgYW5kIHdvcmtpbmcgZW1haWwgZm9yIHJlcXVlc3RzLCBjb25zdWx0YXRpb25zLCBhbmQgcHJvamVjdCBjb21tdW5pY2F0aW9uLicsXG4gICAgICBtZXRob2RzOiBbXG4gICAgICAgIHsgdGl0bGU6ICdFbWFpbCcsIHZhbHVlOiBjb21wYW55RW1haWwsIGhyZWY6IGBtYWlsdG86JHtjb21wYW55RW1haWx9YCwgaWNvbjogJ2ktbWFpbCcgfSxcbiAgICAgICAgeyB0aXRsZTogJ1Bob25lJywgdmFsdWU6IGNvbXBhbnlQaG9uZSwgaHJlZjogYHRlbDoke2NvbXBhbnlQaG9uZX1gLCBpY29uOiAnaS1waG9uZScgfSxcbiAgICAgICAgeyB0aXRsZTogJ0xlZ2FsIGVudGl0eScsIHZhbHVlOiAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKIChMTEMpJywgaHJlZjogJyNjb250YWN0LWZvcm0nLCBpY29uOiAnaS1pbmZvJyB9LFxuICAgICAgICB7IHRpdGxlOiAnTGVnYWwgZm9ybScsIHZhbHVlOiAnTUNISiAoTExDKScsIGhyZWY6ICcjY29udGFjdC1mb3JtJywgaWNvbjogJ2ktY2hpcCcgfSxcbiAgICAgICAgeyB0aXRsZTogJ0lUIFBhcmsgUmVzaWRlbnQnLCB2YWx1ZTogJ3NpbmNlIDI2LjA1LjIwMjYnLCBocmVmOiAnI2NvbnRhY3QtZm9ybScsIGljb246ICdpLXNoaWVsZCcgfSxcbiAgICAgIF0sXG4gICAgICBjb3Jwb3JhdGVFbWFpbHNUaXRsZTogJ0NvcnBvcmF0ZSBlbWFpbHMnLFxuICAgICAgY29ycG9yYXRlRW1haWxzOiBjb3Jwb3JhdGVFbWFpbHNFbixcbiAgICAgIHN1cHBvcnRUaXRsZTogJ0NvbXBhbnkgZGV0YWlscycsXG4gICAgICBzdXBwb3J0OiBbJ1JlZ2lzdGVyZWQ6IDA3LjA1LjIwMjYnLCAnSVQgUGFyayBSZXNpZGVudCcsICdUYXNoa2VudCwgVXpiZWtpc3RhbicsICdMTEMgLyBNQ0hKJ10sXG4gICAgICBsb2NhdGlvblRpdGxlOiAnQWRkcmVzcycsXG4gICAgICBsb2NhdGlvbjogJzM5Ni1VLCBUYWtodGFwdWwgRGFydm96YSBTdC4sIENoaWx0b2dvbiBtYWhhbGxhLCBBbG1hemFyIGRpc3RyaWN0LCBUYXNoa2VudCwgVXpiZWtpc3Rhbi4nLFxuICAgICAgZm9ybVRpdGxlOiAnU2VuZCBhIHJlcXVlc3QnLFxuICAgICAgZm9ybUluZm9UaXRsZTogJ1doYXQgaGFwcGVucyBuZXh0JyxcbiAgICAgIGZvcm1JbmZvVGV4dDogJ1dlIHdpbGwgcmV2aWV3IHRoZSByZXF1ZXN0IGFuZCBjb250YWN0IHlvdSB0byBjbGFyaWZ5IHRoZSBwcm9qZWN0IGRldGFpbHMsIHRpbWVsaW5lLCBhbmQgdGhlIHJpZ2h0IHdvcmtpbmcgZm9ybWF0LicsXG4gICAgICBmb3JtSW5mb0l0ZW1zOiBbJ1JlcGx5IHRvIHRoZSBlbWFpbCB5b3UgcHJvdmlkZScsICdDbGFyaWZ5IGdvYWxzLCBzY29wZSwgYW5kIHByaW9yaXRpZXMnLCAnUHJlcGFyZSB0aGUgbmV4dCBzdGVwIG9yIHByb3Bvc2FsJ10sXG4gICAgICBuYW1lOiAnWW91ciBuYW1lJyxcbiAgICAgIGVtYWlsOiAnRW1haWwnLFxuICAgICAgbWVzc2FnZTogJ0Rlc2NyaWJlIHRoZSB0YXNrJyxcbiAgICAgIHN1Ym1pdDogJ1NlbmQgcmVxdWVzdCcsXG4gICAgICBzdWNjZXNzOiAnUmVxdWVzdCBzZW50JyxcbiAgICB9LFxuICAgIG5vdEZvdW5kOiB7XG4gICAgICB0aXRsZTogJ1BhZ2Ugbm90IGZvdW5kJyxcbiAgICAgIHRleHQ6ICdUaGlzIHJvdXRlIGRvZXMgbm90IGV4aXN0IHlldC4gUmV0dXJuIGhvbWUgb3IgY2hvb3NlIGEgc2VjdGlvbiBpbiB0aGUgdG9wIG1lbnUuJyxcbiAgICAgIGFjdGlvbjogJ0dvIGhvbWUnLFxuICAgIH0sXG4gIH0sXG59XG5cbnBhZ2VDb250ZW50LnV6ID0ge1xuICBuYXZMaW5rczogW1xuICAgIHsgdG86ICcvJywgbGFiZWw6ICdCb3NoIHNhaGlmYScgfSxcbiAgICB7IHRvOiAnL3NlcnZpY2VzJywgbGFiZWw6ICdYaXptYXRsYXIgdmEgbmFyeGxhcicgfSxcbiAgICB7IHRvOiAnL2Fib3V0JywgbGFiZWw6ICdCaXogaGFxaW1pemRhJyB9LFxuICAgIHsgdG86ICcvY29udGFjdCcsIGxhYmVsOiAnQWxvcWEnIH0sXG4gIF0sXG4gIHNlcnZpY2VzUGFnZToge1xuICAgIGV5ZWJyb3c6ICdYaXptYXRsYXInLFxuICAgIHRpdGxlOiAnSVQteWVjaGltbGFyLCBBSS10aXppbWxhciB2YSBtdWhhbmRpc2xpayBpbmZyYXR1emlsbWFzaScsXG4gICAgdGV4dDogJ0dlbW1hIE5ldXJhdGVjaCBJVCByYXFhbWxpIG1haHN1bG90bGFyLCBpbnRlbGxla3R1YWwgeWVjaGltbGFyIHZhIEFJLWxveWloYWxhciB1Y2h1biB0ZXhuaWsgYXNvcyB0YXl5b3JsYXlkaS4gWGl6bWF0IG5hcnhpIHZhemlmYSB2YSBpc2ggaGFqbWkgYW5pcWxhc2h0aXJpbGdhbmRhbiBzb+KAmG5nIGJlbGdpbGFuYWRpLicsXG4gICAgY3RhOiAnU2/igJhyb3YgeXVib3Jpc2gnLFxuICAgIHByaWNpbmdUaXRsZTogJ1hpem1hdCBwYWtldGxhcmkgdmEgbmFyeGxhcicsXG4gICAgaW5jbHVkZWRMYWJlbDogJ05pbWFsYXIga2lyYWRpJyxcbiAgICBwcmljaW5nQWN0aW9uOiAnUGFrZXRuaSBzb3RpYiBvbGlzaCcsXG4gICAgY2hlY2tvdXQ6IHtcbiAgICAgIGV5ZWJyb3c6ICdDaGVja291dCcsXG4gICAgICB0ZXJtc1RpdGxlOiAnU2hhcnRsYXJuaSB0YXNkaXFsYW5nJyxcbiAgICAgIGRldGFpbHNUaXRsZTogJ1Nv4oCYcm92IG1hyrxsdW1vdGxhcmknLFxuICAgICAgYmFua1RpdGxlOiAnQmFua25pIHRhbmxhc2gnLFxuICAgICAgcGF5bWVudFRpdGxlOiAnS2FydGEgbWHKvGx1bW90bGFyaScsXG4gICAgICBjb25maXJtVGl0bGU6ICdTTVMgdGFzZGlxbGFzaCcsXG4gICAgICBzdWNjZXNzVGl0bGU6ICdUb+KAmGxvdiBzb+KAmHJvdmkgdGF5eW9yJyxcbiAgICAgIHN0ZXBUZXJtczogJ1NoYXJ0bGFyJyxcbiAgICAgIHN0ZXBEZXRhaWxzOiAnU2/igJhyb3YnLFxuICAgICAgc3RlcEJhbms6ICdCYW5rJyxcbiAgICAgIHN0ZXBQYXltZW50OiAnS2FydGEnLFxuICAgICAgc3RlcENvbmZpcm06ICdTTVMnLFxuICAgICAgc3VtbWFyeUxhYmVsOiAnVGFubGFuZ2FuIHBha2V0JyxcbiAgICAgIGFncmVlbWVudDogY2hlY2tvdXRPZmZlclV6LFxuICAgICAgYWNjZXB0VGV4dDogJ01lbiBHRU1NQSBORVVSQVRFQ0ggSVQgb21tYXZpeSBvZmVydGFzaSBiaWxhbiB0YW5pc2hkaW0gdmEgeGl6bWF0LCBtYeKAmWx1bW90bGFyZ2EgaXNobG92IGJlcmlzaCwgdG/igJhsb3YgaGFtZGEgcWF5dGFyaXNoIHNoYXJ0bGFyaW5pIHFhYnVsIHFpbGFtYW4uJyxcbiAgICAgIGNvbnRpbnVlTGFiZWw6ICdTb+KAmHJvdmdhIG/igJh0aXNoJyxcbiAgICAgIGRldGFpbHNJbnRybzogJ0tvbnRha3QgbWHKvGx1bW90bGFyaW5pIGtpcml0aW5nIHZhIHFhbmRheSBzYXl0LCBwbGF0Zm9ybWEgeW9raSByYXFhbWxpIG1haHN1bG90IGtlcmFrbGlnaW5pIHFpc3FhY2hhIHlvemluZy4nLFxuICAgICAgZGV0YWlsc0NvbnRpbnVlTGFiZWw6ICdCYW5rbmkgdGFubGFzaCcsXG4gICAgICBiYW5rSW50cm86ICdUb+KAmGxvdiBzaGx5dXppIHVsYW5nYW5kYW4gc2/igJhuZyB0b+KAmGxvdiBxYXlzaSBiYW5rIGVrdmF5cmluZ2kgb3JxYWxpIG/igJh0aXNoaW5pIHRhbmxhbmcuJyxcbiAgICAgIGJhbmtDb250aW51ZUxhYmVsOiAnS2FydGEgbWHKvGx1bW90bGFyaWdhIG/igJh0aXNoJyxcbiAgICAgIGJhbmtBY3F1aXJpbmdMYWJlbDogJ0VrdmF5cmluZycsXG4gICAgICBiYW5rU2VsZWN0ZWRMYWJlbDogJ1RhbmxhbmdhbiBiYW5rJyxcbiAgICAgIGJhbmtOb3RlOiAnQWxvaGlkYSBiYW5rIGVrdmF5cmluZyBpbnRlZ3JhdHNpeWFzaSB1bGFuYWRpLicsXG4gICAgICBwYXltZW50SW50cm86ICdUb+KAmGxvdiBtYcq8bHVtb3RsYXJpbmkga2lyaXRpbmcuIEthcnRhIHNheXRkYSBzYXFsYW5tYXNkYW4gdGFubGFuZ2FuIGJhbmsgZWt2YXlyaW5naWdhIHV6YXRpbGFkaS4nLFxuICAgICAgY2FyZENvbnRpbnVlTGFiZWw6ICdTTVMga29kIHl1Ym9yaXNoJyxcbiAgICAgIGNvbmZpcm1UZXh0OiAnVG/igJhsb3Ygc2hseXV6aSB1bGFuZ2FuZGFuIHNv4oCYbmcgYmlyIG1hcnRhbGlrIGtvZCBzb+KAmHJvdmRhZ2kgdGVsZWZvbiByYXFhbWlnYSB5dWJvcmlsYWRpLicsXG4gICAgICBzbXNIaW50OiAnQnUgbWF5ZG9uIGtlbGFqYWtkYWdpIFNNUy8zLUQgU2VjdXJlIGludGVncmF0c2l5YXNpIHVjaHVuIHRheXlvcmxhbmdhbi4gSG96aXJjaGEgdSB0b+KAmGxvdiBzc2VuYXJpeXNpbmluZyBkZW1vIGJvc3FpY2hpIHNpZmF0aWRhIGlzaGxheWRpLicsXG4gICAgICBiYWNrTGFiZWw6ICdPcnRnYScsXG4gICAgICBwYXlMYWJlbDogJ1Rv4oCYbG92bmkgdGFzZGlxbGFzaCcsXG4gICAgICBkb25lTGFiZWw6ICdUYXl5b3InLFxuICAgICAgY2xvc2VMYWJlbDogJ0NoZWNrb3V0bmkgeW9waXNoJyxcbiAgICAgIHNlY3VyZVRleHQ6ICdUb+KAmGxvdiBmb3JtYXNpIGtlbGFqYWtkYSB0b+KAmGxvdiBwcm92YXlkZXJpIG9ycWFsaSB0b2tlbml6YXRzaXlhIHFpbGlzaCB1Y2h1biB0YXl5b3JsYW5nYW4uJyxcbiAgICAgIHN1Y2Nlc3NUZXh0OiAnWGFyaWQgc3NlbmFyaXlzaSB0YXl5b3IuIEJhY2tlbmQgdmEgdG/igJhsb3Ygc2hseXV6aSB1bGFuZ2FuZGFuIHNv4oCYbmcgYnUgYm9zcWljaCByZWFsIHRv4oCYbG92IHlhcmF0YWRpLicsXG4gICAgICBwYXltZW50U3RhdHVzZXM6IHBheW1lbnRTdGF0dXNlc1V6LFxuICAgICAgYmFua3M6IGNoZWNrb3V0QmFua3MsXG4gICAgICBmaWVsZHM6IHtcbiAgICAgICAgbmFtZTogJ0lzbSB2YSBmYW1pbGl5YScsXG4gICAgICAgIGVtYWlsOiAnRW1haWwnLFxuICAgICAgICBwaG9uZTogJ1RlbGVmb24nLFxuICAgICAgICBwcm9qZWN0TmFtZTogJ0xveWloYSB5b2tpIGtvbXBhbml5YSBub21pJyxcbiAgICAgICAgcHJvamVjdFR5cGU6ICdTYXl0IHlva2kgcGxhdGZvcm1hIHR1cmknLFxuICAgICAgICBkZXNjcmlwdGlvbjogJ1ZhemlmYW5pbmcgcWlzcWEgdGF2c2lmaScsXG4gICAgICAgIGNhcmROYW1lOiAnS2FydGFkYWdpIGlzbScsXG4gICAgICAgIGNhcmROdW1iZXI6ICdLYXJ0YSByYXFhbWknLFxuICAgICAgICBleHBpcnk6ICdNdWRkYXQnLFxuICAgICAgICBjdmM6ICdDVkMnLFxuICAgICAgICBzbXNDb2RlOiAnU01TIHRhc2RpcWxhc2gga29kaScsXG4gICAgICB9LFxuICAgIH0sXG4gICAgcHJpY2luZzogcHJpY2luZ1BsYW5zVXosXG4gICAgc2VydmljZXNUaXRsZTogJ0lzaCB5b+KAmG5hbGlzaGxhcmknLFxuICAgIHNlcnZpY2VzOiBbXG4gICAgICB7IHRpdGxlOiAnQUkgdmEgbmV5cm9uIHRhcm1vcWxhcicsIHRleHQ6ICdCaXpuZXMgdmF6aWZhbGFyaSB1Y2h1biBpbnRlbGxla3R1YWwgdGl6aW1sYXIsIG1vZGVsbGFyIHZhIHByb3RvdGlwbGFyIGlzaGxhYiBjaGlxaXNoLicsIGljb246ICdpLWJyYWluJyB9LFxuICAgICAgeyB0aXRsZTogJ1dlYiB2YSBwbGF0Zm9ybWFsYXInLCB0ZXh0OiAnSW50ZXJmZXlzbGFyLCB3ZWItaWxvdmFsYXIgdmEgcmFxYW1saSBzZXJ2aXNsYXJuaSBsb3lpaGFsYXNoLicsIGljb246ICdpLWxheWVycycgfSxcbiAgICAgIHsgdGl0bGU6ICdJbmZyYXR1emlsbWEnLCB0ZXh0OiAnQVBJLCBwaXBlbGluZSwgYnVsdXRsaSBzZXJ2aXNsYXIgdmEgbWFoc3Vsb3QgdWNodW4gdGV4bmlrIGFzb3MuJywgaWNvbjogJ2ktY2hpcCcgfSxcbiAgICAgIHsgdGl0bGU6ICdNYeKAmWx1bW90bGFyIHhhdmZzaXpsaWdpJywgdGV4dDogJ01h4oCZbHVtb3RsYXIsIHJ1eHNhdGxhciB2YSBtdWhhbmRpc2xpayBqYXJheW9ubGFyaSBiaWxhbiBlaHRpeW90a29yIGlzaGxhc2guJywgaWNvbjogJ2ktc2hpZWxkJyB9LFxuICAgIF0sXG4gICAgbm90ZTogcHJpY2luZ05vdGVVeixcbiAgfSxcbiAgYWJvdXRQYWdlOiB7XG4gICAgZXllYnJvdzogJ0tvbXBhbml5YScsXG4gICAgdGl0bGU6ICdHZW1tYSBOZXVyYXRlY2ggSVQgcmFxYW1saSB2YSBBSS15ZWNoaW1sYXJuaSByaXZvamxhbnRpcmFkaScsXG4gICAgdGV4dDogJ0tvbXBhbml5YSBP4oCYemJla2lzdG9uZGEgcm/igJh5eGF0ZGFuIG/igJh0Z2FuIHZhIElUIFBhcmsgcmV6aWRlbnRpIGhpc29ibGFuYWRpLiBCaXogaW50ZWxsZWt0dWFsIHRpemltbGFyLCBkYXN0dXJpeSBtYWhzdWxvdGxhciB2YSBpbmZyYXR1emlsbWEgeWVjaGltbGFyaSB1Y2h1biB0ZXhub2xvZ2lrIGFzb3MgcXVyYW1pei4nLFxuICAgIHN0YXRzOiBbXG4gICAgICB7IHZhbHVlOiAnMDcuMDUuMjAyNicsIGxhYmVsOiAncm/igJh5eGF0ZGFuIG/igJh0Z2FuIHNhbmEnIH0sXG4gICAgICB7IHZhbHVlOiAnTUNISicsIGxhYmVsOiAna29tcGFuaXlhIHNoYWtsaScgfSxcbiAgICAgIHsgdmFsdWU6ICcyNi4wNS4yMDI2JywgbGFiZWw6ICdJVCBQYXJrIHJlemlkZW50aScgfSxcbiAgICBdLFxuICAgIGxlZ2FsVGl0bGU6ICdSb+KAmHl4YXRkYW4gb+KAmHRpc2ggbWHigJlsdW1vdGxhcmknLFxuICAgIGxlZ2FsRGV0YWlsczogW1xuICAgICAgeyBsYWJlbDogJ0tvbXBhbml5YScsIHZhbHVlOiAnR2VtbWEgTmV1cmF0ZWNoIElUJyB9LFxuICAgICAgeyBsYWJlbDogJ1Rv4oCYbGlxIG5vbWknLCB2YWx1ZTogJ1wiR0VNTUEgTkVVUkFURUNIIElUXCIgTUNISicgfSxcbiAgICAgIHsgbGFiZWw6ICdNYW56aWwnLCB2YWx1ZTogJ0/igJh6YmVraXN0b24sIFRvc2hrZW50IHNoLiwgT2xtYXpvciB0dW1hbmksIENoaWfigJhhdG95IE9xdGVwYSBNRlksIFRheHRhcHVsIERhcnZvemEga2/igJhjaGFzaSwgMzk2LXV5LicgfSxcbiAgICAgIHsgbGFiZWw6ICdSb+KAmHl4YXRkYW4gb+KAmHRnYW4gc2FuYScsIHZhbHVlOiAnMDcuMDUuMjAyNicgfSxcbiAgICAgIHsgbGFiZWw6ICdJVCBQYXJrIFJlc2lkZW50JywgdmFsdWU6ICcyNi4wNS4yMDI2IGRhbicgfSxcbiAgICAgIHsgbGFiZWw6ICdFbWFpbCcsIHZhbHVlOiBjb21wYW55RW1haWwgfSxcbiAgICAgIHsgbGFiZWw6ICdUZWxlZm9uJywgdmFsdWU6IGNvbXBhbnlQaG9uZSB9LFxuICAgIF0sXG4gICAgZG9jdW1lbnRzVGl0bGU6ICdSYXNtaXkgaHVqamF0bGFyJyxcbiAgICBjZXJ0aWZpY2F0ZToge1xuICAgICAgdGl0bGU6ICdJVCBQYXJrIGd1dm9obm9tYXNpJyxcbiAgICAgIGV5ZWJyb3c6ICdSYXNtaXkgbWFxb20nLFxuICAgICAgaGVhZGluZzogJ1RleG5vbG9naWsgcGFyayByZXppZGVudGknLFxuICAgICAgdGV4dDogJ0dlbW1hIE5ldXJhdGVjaCBJVCAyMDI2LXlpbCAyNi1tYXkga3VuaSBJVCBQYXJrIFV6YmVraXN0YW4gcmV6aWRlbnRsYXJpIHlhZ29uYSByZWVzdHJpZ2Ega2lyaXRpbGdhbi4nLFxuICAgICAgbWV0YTogWyfihJYgNjE1MCcsICdSZWVzdHJkYSAyNi4wNS4yMDI2IGRhbicsICdcIkdFTU1BIE5FVVJBVEVDSCBJVFwiIE1DSEonXSxcbiAgICAgIGJ1dHRvbjogJ0d1dm9obm9tYW5pIG9jaGlzaCcsXG4gICAgICBkb3dubG9hZExhYmVsOiAnRmF5bG5pIHl1a2xhYiBvbGlzaCcsXG4gICAgICBkb3dubG9hZE5hbWU6ICdpdC1wYXJrLXJlc2lkZW50LWNlcnRpZmljYXRlLWdlbW1hLW5ldXJhdGVjaC1pdC5qcGcnLFxuICAgICAgY2xvc2VMYWJlbDogJ0d1dm9obm9tYW5pIHlvcGlzaCcsXG4gICAgICBhbHQ6ICdHRU1NQSBORVVSQVRFQ0ggSVQgdWNodW4gSVQgUGFyayBVemJla2lzdGFuIHJlemlkZW50aSBndXZvaG5vbWFzaScsXG4gICAgICBvcGVuTGFiZWw6ICdJVCBQYXJrIGd1dm9obm9tYXNpbmkgb2NoaXNoJyxcbiAgICB9LFxuICAgIGRvY3VtZW50czogW1xuICAgICAge1xuICAgICAgICB0eXBlOiAncGRmJyxcbiAgICAgICAgZmlsZTogJ3JlZ2lzdHJhdGlvbicsXG4gICAgICAgIHRpdGxlOiAnUm/igJh5eGF0ZGFuIG/igJh0aXNoIGh1amphdGknLFxuICAgICAgICBleWVicm93OiAnUmFzbWl5IFBERicsXG4gICAgICAgIGhlYWRpbmc6ICdLb21wYW5peWEgcm/igJh5eGF0ZGFuIG/igJh0Z2FubGlnaSBodWpqYXRpJyxcbiAgICAgICAgdGV4dDogJ0dFTU1BIE5FVVJBVEVDSCBJVCByb+KAmHl4YXRkYW4gb+KAmHRnYW5saWdpIGhhcWlkYWdpIHJhc21peSBtYeKAmWx1bW90bGFybmkgdGFzZGlxbG92Y2hpIGh1amphdC4nLFxuICAgICAgICBtZXRhOiBbJ1BERicsICdSb+KAmHl4YXQgbWHigJlsdW1vdGxhcmknLCAnXCJHRU1NQSBORVVSQVRFQ0ggSVRcIiBNQ0hKJ10sXG4gICAgICAgIGJ1dHRvbjogJ0h1amphdG5pIG9jaGlzaCcsXG4gICAgICAgIGRvd25sb2FkTGFiZWw6ICdGYXlsbmkgeXVrbGFiIG9saXNoJyxcbiAgICAgICAgZG93bmxvYWROYW1lOiAnZ2VtbWEtbmV1cmF0ZWNoLWl0LXJlZ2lzdHJhdGlvbi1kb2N1bWVudC5wZGYnLFxuICAgICAgICBjbG9zZUxhYmVsOiAnSHVqamF0bmkgeW9waXNoJyxcbiAgICAgICAgYWx0OiAnR0VNTUEgTkVVUkFURUNIIElUIHJv4oCYeXhhdGRhbiBv4oCYdGlzaCBodWpqYXRpJyxcbiAgICAgICAgc3RhbXBUaXRsZTogJ1JFRyBET0MnLFxuICAgICAgICBzdGFtcEljb246ICdpLWluZm8nLFxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgdHlwZTogJ3BkZicsXG4gICAgICAgIGZpbGU6ICdlZ3JwbycsXG4gICAgICAgIHRpdGxlOiAnRUdSUE8gbWHigJlsdW1vdG5vbWFzaScsXG4gICAgICAgIGV5ZWJyb3c6ICdLb21wYW5peWEgcmVlc3RyaScsXG4gICAgICAgIGhlYWRpbmc6ICdFR1JQTyB2YSBkaXJla3RvciBtYeKAmWx1bW90bGFyaScsXG4gICAgICAgIHRleHQ6ICdLb21wYW5peWEgcm/igJh5eGF0IG1h4oCZbHVtb3RsYXJpIHZhIGRpcmVrdG9yIGhhcWlkYWdpIG1h4oCZbHVtb3RsYXJuaSBv4oCYeiBpY2hpZ2Egb2xnYW4gaHVqamF0LicsXG4gICAgICAgIG1ldGE6IFsnRUdSUE8nLCAnRGlyZWt0b3I6IFh1cnNoaWRiZWsnLCAnUERGIGh1amphdCddLFxuICAgICAgICBidXR0b246ICdFR1JQT25pIG9jaGlzaCcsXG4gICAgICAgIGRvd25sb2FkTGFiZWw6ICdGYXlsbmkgeXVrbGFiIG9saXNoJyxcbiAgICAgICAgZG93bmxvYWROYW1lOiAnZ2VtbWEtbmV1cmF0ZWNoLWl0LWVncnBvLWRpcmVjdG9yLWtodXJzaGlkYmVrLnBkZicsXG4gICAgICAgIGNsb3NlTGFiZWw6ICdFR1JQT25pIHlvcGlzaCcsXG4gICAgICAgIGFsdDogJ0dFTU1BIE5FVVJBVEVDSCBJVCBFR1JQTyBtYeKAmWx1bW90bm9tYXNpIGRpcmVrdG9yIFh1cnNoaWRiZWsnLFxuICAgICAgICBzdGFtcFRpdGxlOiAnRUdSUE8nLFxuICAgICAgICBzdGFtcEljb246ICdpLWluZm8nLFxuICAgICAgfSxcbiAgICBdLFxuICAgIHByZXNlbnRhdGlvbnNUaXRsZTogJ0xveWloYSBwcmV6ZW50YXRzaXlhbGFyaScsXG4gICAgcHJlc2VudGF0aW9uczogW1xuICAgICAgeyB0aXRsZTogJ0FJIFNvbHV0aW9ucycsIHRhZzogJ0RpcmVjdGlvbicsIHRleHQ6ICdJbnRlbGxla3R1YWwgeWVjaGltbGFyIHZhIEFJLWlzaGxhYiBjaGlxaXNoIHlv4oCYbmFsaXNoaSBwcmV6ZW50YXRzaXlhc2kuJyB9LFxuICAgICAgeyB0aXRsZTogJ0RpZ2l0YWwgUGxhdGZvcm1zJywgdGFnOiAnRGlyZWN0aW9uJywgdGV4dDogJ1dlYi1wbGF0Zm9ybWFsYXIsIHNlcnZpc2xhciB2YSBtYWhzdWxvdCBpc2hsYWIgY2hpcWlzaCBwcmV6ZW50YXRzaXlhc2kuJyB9LFxuICAgICAgeyB0aXRsZTogJ0VuZ2luZWVyaW5nIEJhc2UnLCB0YWc6ICdEaXJlY3Rpb24nLCB0ZXh0OiAnSW5mcmF0dXppbG1hLCBNTE9wcyB5b25kYXNodXZpIHZhIHRleG5payBhcnhpdGVrdHVyYSBwcmV6ZW50YXRzaXlhc2kuJyB9LFxuICAgIF0sXG4gICAgcmV2aWV3c1RpdGxlOiAnU2hhcmhsYXInLFxuICAgIHJldmlld3M6IFtcbiAgICAgIHsgcXVvdGU6ICdTaGFyaGxhciBib+KAmGxpbWkgbWlqb3ogZmlrcmxhcmkgdmEga2V5c2xhciBwdWJsaWthdHNpeWFzaSBrZWxpc2hpbGdhbmRhbiBzb+KAmG5nIHRv4oCYbGRpcmlsYWRpLicsIGF1dGhvcjogJ0dlbW1hIE5ldXJhdGVjaCBJVCcgfSxcbiAgICAgIHsgcXVvdGU6ICdPY2hpcSBsb3lpaGEgcHJlemVudGF0c2l5YWxhcmkgbWF0ZXJpYWxsYXIgdGF5eW9yIGJv4oCYbGlzaGkgYmlsYW4gcW/igJhzaGliIGJvcmlsYWRpLicsIGF1dGhvcjogJ1Byb2plY3Qgb2ZmaWNlJyB9LFxuICAgIF0sXG4gIH0sXG4gIGNvbnRhY3RQYWdlOiB7XG4gICAgZXllYnJvdzogJ0Fsb3FhJyxcbiAgICB0aXRsZTogJ0dlbW1hIE5ldXJhdGVjaCBJVCBrb250YWt0bGFyaSB2YSByb+KAmHl4YXQgbWHigJlsdW1vdGxhcmknLFxuICAgIHRleHQ6ICdCdSBzYWhpZmFkYSBrb21wYW5peWFuaW5nIHJhc21peSBtYeKAmWx1bW90bGFyaSwgc2/igJhyb3ZsYXIsIGtvbnN1bHRhdHNpeWFsYXIgdmEgbG95aWhhIGJv4oCYeWljaGEgYWxvcWEgdWNodW4gaXNoY2hpIHBvY2h0YSBrb+KAmHJzYXRpbGdhbi4nLFxuICAgIG1ldGhvZHM6IFtcbiAgICAgIHsgdGl0bGU6ICdFbWFpbCcsIHZhbHVlOiBjb21wYW55RW1haWwsIGhyZWY6IGBtYWlsdG86JHtjb21wYW55RW1haWx9YCwgaWNvbjogJ2ktbWFpbCcgfSxcbiAgICAgIHsgdGl0bGU6ICdUZWxlZm9uJywgdmFsdWU6IGNvbXBhbnlQaG9uZSwgaHJlZjogYHRlbDoke2NvbXBhbnlQaG9uZX1gLCBpY29uOiAnaS1waG9uZScgfSxcbiAgICAgIHsgdGl0bGU6ICdZdXJpZGlrIHNoYXhzJywgdmFsdWU6ICdcIkdFTU1BIE5FVVJBVEVDSCBJVFwiIE1DSEonLCBocmVmOiAnI2NvbnRhY3QtZm9ybScsIGljb246ICdpLWluZm8nIH0sXG4gICAgICB7IHRpdGxlOiAnS29tcGFuaXlhIHNoYWtsaScsIHZhbHVlOiAnTUNISicsIGhyZWY6ICcjY29udGFjdC1mb3JtJywgaWNvbjogJ2ktY2hpcCcgfSxcbiAgICAgIHsgdGl0bGU6ICdJVCBQYXJrIFJlc2lkZW50JywgdmFsdWU6ICcyNi4wNS4yMDI2IGRhbicsIGhyZWY6ICcjY29udGFjdC1mb3JtJywgaWNvbjogJ2ktc2hpZWxkJyB9LFxuICAgIF0sXG4gICAgY29ycG9yYXRlRW1haWxzVGl0bGU6ICdLb3Jwb3JhdGl2IHBvY2h0YWxhcicsXG4gICAgY29ycG9yYXRlRW1haWxzOiBjb3Jwb3JhdGVFbWFpbHNVeixcbiAgICBzdXBwb3J0VGl0bGU6ICdLb21wYW5peWEgbWHigJlsdW1vdGxhcmknLFxuICAgIHN1cHBvcnQ6IFsnUm/igJh5eGF0ZGFuIG/igJh0Z2FuOiAwNy4wNS4yMDI2JywgJ0lUIFBhcmsgcmV6aWRlbnRpJywgJ1Rvc2hrZW50LCBP4oCYemJla2lzdG9uJywgJ01DSEonXSxcbiAgICBsb2NhdGlvblRpdGxlOiAnTWFuemlsJyxcbiAgICBsb2NhdGlvbjogJ0/igJh6YmVraXN0b24sIFRvc2hrZW50IHNoLiwgT2xtYXpvciB0dW1hbmksIENoaWfigJhhdG95IE9xdGVwYSBNRlksIFRheHRhcHVsIERhcnZvemEga2/igJhjaGFzaSwgMzk2LXV5LicsXG4gICAgZm9ybVRpdGxlOiAnU2/igJhyb3YgeXVib3Jpc2gnLFxuICAgIGZvcm1JbmZvVGl0bGU6ICdZdWJvcmdhbmRhbiBrZXlpbiBuaW1hIGJv4oCYbGFkaScsXG4gICAgZm9ybUluZm9UZXh0OiAnQml6IHNv4oCYcm92bmkga2/igJhyaWIgY2hpcWFtaXogdmEgbG95aWhhIHRhZnNpbG90bGFyaSwgbXVkZGF0bGFyIGhhbWRhIGlzaCBmb3JtYXRpbmkgYW5pcWxhc2ggdWNodW4gc2l6IGJpbGFuIGJvZ+KAmGxhbmFtaXouJyxcbiAgICBmb3JtSW5mb0l0ZW1zOiBbJ0tv4oCYcnNhdGlsZ2FuIHBvY2h0YWdhIGphdm9iIGJlcmFtaXonLCAnTWFxc2FkLCBoYWptIHZhIHVzdHV2b3JsaWtsYXJuaSBhbmlxbGF5bWl6JywgJ0tleWluZ2kgcWFkYW0geW9raSB0YWtsaWYgdGF5eW9ybGF5bWl6J10sXG4gICAgbmFtZTogJ0lzbWluZ2l6JyxcbiAgICBlbWFpbDogJ0VtYWlsJyxcbiAgICBtZXNzYWdlOiAnVmF6aWZhbmkgdGFzdmlybGFuZycsXG4gICAgc3VibWl0OiAnU2/igJhyb3YgeXVib3Jpc2gnLFxuICAgIHN1Y2Nlc3M6ICdTb+KAmHJvdiB5dWJvcmlsZGknLFxuICB9LFxuICBub3RGb3VuZDoge1xuICAgIHRpdGxlOiAnU2FoaWZhIHRvcGlsbWFkaScsXG4gICAgdGV4dDogJ0J1bmRheSB5b+KAmG5hbGlzaCBob3ppcmNoYSBtYXZqdWQgZW1hcy4gQm9zaCBzYWhpZmFnYSBxYXl0aW5nIHlva2kgeXVxb3JpIG1lbnl1ZGFuIGJv4oCYbGltIHRhbmxhbmcuJyxcbiAgICBhY3Rpb246ICdCb3NoIHNhaGlmYWdhJyxcbiAgfSxcbn1cbiJdfQ==

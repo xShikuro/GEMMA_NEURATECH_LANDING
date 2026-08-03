@@ -1,0 +1,290 @@
+export const pricingNoteRu = "Цены указаны в сумах как базовые пакеты. Итоговая стоимость может уточняться после согласования задач, сроков, интеграций и требований к инфраструктуре.";
+export const pricingNoteEn = "Prices are listed in Uzbekistani soums as base packages. Final cost may be clarified after scope, timeline, integrations, and infrastructure requirements are approved.";
+export const pricingNoteUz = "Narxlar so‘mda bazaviy paketlar sifatida ko‘rsatilgan. Yakuniy qiymat vazifa, muddat, integratsiyalar va infratuzilma talablari kelishilgandan so‘ng aniqlashtirilishi mumkin.";
+export const pricingPlansRu = [
+	{
+		name: "Start",
+		price: "12 000 000 сум",
+		period: "база продукта",
+		text: "Стартовая упаковка идеи в аккуратный сайт или лендинг для первых заявок.",
+		features: [
+			"Одностраничный лендинг",
+			"Адаптивная верстка под desktop/mobile",
+			"Форма заявки и контактный блок",
+			"Базовая SEO-разметка",
+			"Подготовка к публикации"
+		]
+	},
+	{
+		name: "Launch",
+		price: "18 000 000 сум",
+		period: "запуск сайта",
+		text: "Больше структуры, визуальных блоков и доверия для полноценной презентации услуги.",
+		features: [
+			"Все из пакета Start",
+			"До 3 основных секций или страниц",
+			"Карточки услуг или преимуществ",
+			"Анимации появления блоков",
+			"Базовая аналитика событий",
+			"Подготовка favicon и мета-данных"
+		]
+	},
+	{
+		name: "Growth",
+		price: "24 000 000 сум",
+		period: "рост заявок",
+		text: "Многостраничная основа для компании, услуг, кейсов и контактных сценариев.",
+		features: [
+			"Все из пакета Launch",
+			"До 5 страниц",
+			"Разделы услуг, кейсов и о компании",
+			"Двуязычная структура RU/EN",
+			"Расширенные формы заявок",
+			"Оптимизация скорости интерфейса"
+		]
+	},
+	{
+		name: "Automation",
+		price: "36 000 000 сум",
+		period: "автоматизация",
+		text: "Подключаем сайт к рабочим процессам: заявки, уведомления, CRM и внутренние панели.",
+		features: [
+			"Все из пакета Growth",
+			"Компонентная дизайн-система",
+			"Каталог услуг или тарифов",
+			"Сценарии покупки или заявки",
+			"Интеграция с CRM или таблицами",
+			"Email/Telegram-уведомления",
+			"Статусы заявок",
+			"Базовая защита форм от ошибок",
+			"Подготовка backend-endpoints"
+		]
+	},
+	{
+		name: "AI Platform",
+		price: "48 000 000 сум",
+		period: "AI-платформа",
+		text: "Основа продукта с AI-модулем, API, данными, ролями и наблюдаемостью.",
+		features: [
+			"Все из пакета Automation",
+			"AI-сценарий под задачу",
+			"Прототип ассистента или модели",
+			"База знаний или датасет",
+			"Архитектура API",
+			"Роли пользователей",
+			"Пайплайн обработки данных",
+			"Логика prompt-flow",
+			"Мониторинг ошибок",
+			"Подготовка к cloud-деплою"
+		]
+	},
+	{
+		name: "Enterprise",
+		price: "60 000 000 сум",
+		period: "полный запуск",
+		text: "Максимальная комплектация для продукта: оплата, инфраструктура, безопасность и поддержка.",
+		features: [
+			"Все из пакета AI Platform",
+			"Checkout и платежный сценарий",
+			"Личный или админ-раздел",
+			"Интеграции с внешними сервисами",
+			"Журнал действий и событий",
+			"Расширенная безопасность форм",
+			"MLOps/DevOps-подготовка",
+			"Production-деплой",
+			"Roadmap развития продукта"
+		]
+	}
+];
+export const pricingPlansEn = [
+	{
+		name: "Start",
+		price: "12 000 000 UZS",
+		period: "product base",
+		text: "Initial packaging of an idea into a clean website or landing page for first leads.",
+		features: [
+			"One-page landing",
+			"Responsive desktop/mobile layout",
+			"Request form and contact block",
+			"Basic SEO markup",
+			"Publication preparation"
+		]
+	},
+	{
+		name: "Launch",
+		price: "18 000 000 UZS",
+		period: "site launch",
+		text: "More structure, visual blocks, and trust signals for a stronger service presentation.",
+		features: [
+			"Everything in Start",
+			"Up to 3 core sections or pages",
+			"Service or benefit cards",
+			"Block reveal animations",
+			"Basic event analytics",
+			"Favicon and metadata setup"
+		]
+	},
+	{
+		name: "Growth",
+		price: "24 000 000 UZS",
+		period: "lead growth",
+		text: "A multi-page foundation for a company, services, cases, and contact flows.",
+		features: [
+			"Everything in Launch",
+			"Up to 5 pages",
+			"Services, cases, and about sections",
+			"RU/EN bilingual structure",
+			"Extended request forms",
+			"Interface speed optimization"
+		]
+	},
+	{
+		name: "Automation",
+		price: "36 000 000 UZS",
+		period: "automation",
+		text: "Connect the site to workflows: requests, notifications, CRM, and internal panels.",
+		features: [
+			"Everything in Growth",
+			"Component design system",
+			"Service or pricing catalog",
+			"Purchase or request flows",
+			"CRM or spreadsheet integration",
+			"Email/Telegram notifications",
+			"Request statuses",
+			"Basic form error protection",
+			"Backend endpoint preparation"
+		]
+	},
+	{
+		name: "AI Platform",
+		price: "48 000 000 UZS",
+		period: "AI platform",
+		text: "Product foundation with an AI module, API, data workflows, roles, and observability.",
+		features: [
+			"Everything in Automation",
+			"AI scenario for the task",
+			"Assistant or model prototype",
+			"Knowledge base or dataset",
+			"API architecture",
+			"User roles",
+			"Data processing pipeline",
+			"Prompt-flow logic",
+			"Error monitoring",
+			"Cloud deployment readiness"
+		]
+	},
+	{
+		name: "Enterprise",
+		price: "60 000 000 UZS",
+		period: "full launch",
+		text: "Maximum package for a product: payments, infrastructure, security, and launch support.",
+		features: [
+			"Everything in AI Platform",
+			"Checkout and payment flow",
+			"User or admin area",
+			"External service integrations",
+			"Action and event log",
+			"Advanced form security",
+			"MLOps/DevOps preparation",
+			"Production deployment",
+			"Product growth roadmap"
+		]
+	}
+];
+export const pricingPlansUz = [
+	{
+		name: "Start",
+		price: "12 000 000 so‘m",
+		period: "mahsulot bazasi",
+		text: "G‘oyani birinchi murojaatlar uchun ixcham sayt yoki landingga aylantirish.",
+		features: [
+			"Bir sahifali landing",
+			"Desktop/mobile uchun moslashuvchan dizayn",
+			"Murojaat formasi va kontakt bloki",
+			"Bazaviy SEO-belgilash",
+			"Publikatsiyaga tayyorlash"
+		]
+	},
+	{
+		name: "Launch",
+		price: "18 000 000 so‘m",
+		period: "saytni ishga tushirish",
+		text: "Xizmatni ishonchliroq taqdim etish uchun ko‘proq tuzilma, vizual bloklar va ishonch elementlari.",
+		features: [
+			"Start paketidagi barcha imkoniyatlar",
+			"3 tagacha asosiy bo‘lim yoki sahifa",
+			"Xizmatlar yoki afzalliklar kartalari",
+			"Bloklarning paydo bo‘lish animatsiyalari",
+			"Bazaviy voqealar analitikasi",
+			"Favicon va meta-ma’lumotlarni sozlash"
+		]
+	},
+	{
+		name: "Growth",
+		price: "24 000 000 so‘m",
+		period: "murojaatlar o‘sishi",
+		text: "Kompaniya, xizmatlar, keyslar va kontakt ssenariylari uchun ko‘p sahifali asos.",
+		features: [
+			"Launch paketidagi barcha imkoniyatlar",
+			"5 tagacha sahifa",
+			"Xizmatlar, keyslar va kompaniya haqida bo‘limlar",
+			"RU/EN/UZ ko‘p tilli tuzilma",
+			"Kengaytirilgan murojaat formalari",
+			"Interfeys tezligini optimallashtirish"
+		]
+	},
+	{
+		name: "Automation",
+		price: "36 000 000 so‘m",
+		period: "avtomatlashtirish",
+		text: "Saytni ish jarayonlariga ulash: murojaatlar, bildirishnomalar, CRM va ichki panellar.",
+		features: [
+			"Growth paketidagi barcha imkoniyatlar",
+			"Komponentli dizayn tizimi",
+			"Xizmatlar yoki tariflar katalogi",
+			"Xarid yoki murojaat ssenariylari",
+			"CRM yoki jadval integratsiyasi",
+			"Email/Telegram bildirishnomalari",
+			"Murojaat statuslari",
+			"Formalarda bazaviy xatoliklardan himoya",
+			"Backend endpoint tayyorlash"
+		]
+	},
+	{
+		name: "AI Platform",
+		price: "48 000 000 so‘m",
+		period: "AI platforma",
+		text: "AI moduli, API, ma’lumotlar oqimi, rollar va kuzatuvchanlikka ega mahsulot asosi.",
+		features: [
+			"Automation paketidagi barcha imkoniyatlar",
+			"Vazifa uchun AI ssenariysi",
+			"Assistent yoki model prototipi",
+			"Bilimlar bazasi yoki dataset",
+			"API arxitekturasi",
+			"Foydalanuvchi rollari",
+			"Ma’lumotlarni qayta ishlash pipeline",
+			"Prompt-flow logikasi",
+			"Xatolar monitoringi",
+			"Cloud deployga tayyorlash"
+		]
+	},
+	{
+		name: "Enterprise",
+		price: "60 000 000 so‘m",
+		period: "to‘liq ishga tushirish",
+		text: "Mahsulot uchun maksimal komplekt: to‘lov, infratuzilma, xavfsizlik va qo‘llab-quvvatlash.",
+		features: [
+			"AI Platform paketidagi barcha imkoniyatlar",
+			"Checkout va to‘lov ssenariysi",
+			"Shaxsiy yoki admin bo‘lim",
+			"Tashqi servislar bilan integratsiyalar",
+			"Harakatlar va voqealar jurnali",
+			"Formalarning kengaytirilgan xavfsizligi",
+			"MLOps/DevOps tayyorgarligi",
+			"Production deploy",
+			"Mahsulot rivojlanish roadmap"
+		]
+	}
+];
+
+//# sourceMappingURL=data:application/json;base64,eyJtYXBwaW5ncyI6IkFBQUEsT0FBTyxNQUFNLGdCQUFnQjtBQUU3QixPQUFPLE1BQU0sZ0JBQWdCO0FBRTdCLE9BQU8sTUFBTSxnQkFBZ0I7QUFFN0IsT0FBTyxNQUFNLGlCQUFpQjtDQUM1QjtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7Q0FDQTtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtDQUNBO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0NBQ0E7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7Q0FDQTtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0NBQ0E7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7QUFDRjtBQUVBLE9BQU8sTUFBTSxpQkFBaUI7Q0FDNUI7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0NBQ0E7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7Q0FDQTtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtDQUNBO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0NBQ0E7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtDQUNBO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0FBQ0Y7QUFFQSxPQUFPLE1BQU0saUJBQWlCO0NBQzVCO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtDQUNBO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7RUFDRjtDQUNGO0NBQ0E7RUFDRSxNQUFNO0VBQ04sT0FBTztFQUNQLFFBQVE7RUFDUixNQUFNO0VBQ04sVUFBVTtHQUNSO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7Q0FDQTtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtDQUNBO0VBQ0UsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsTUFBTTtFQUNOLFVBQVU7R0FDUjtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtFQUNGO0NBQ0Y7Q0FDQTtFQUNFLE1BQU07RUFDTixPQUFPO0VBQ1AsUUFBUTtFQUNSLE1BQU07RUFDTixVQUFVO0dBQ1I7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0dBQ0E7R0FDQTtHQUNBO0VBQ0Y7Q0FDRjtBQUNGIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbInByaWNpbmdQbGFucy5qcyJdLCJ2ZXJzaW9uIjozLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgcHJpY2luZ05vdGVSdSA9ICfQptC10L3RiyDRg9C60LDQt9Cw0L3RiyDQsiDRgdGD0LzQsNGFINC60LDQuiDQsdCw0LfQvtCy0YvQtSDQv9Cw0LrQtdGC0YsuINCY0YLQvtCz0L7QstCw0Y8g0YHRgtC+0LjQvNC+0YHRgtGMINC80L7QttC10YIg0YPRgtC+0YfQvdGP0YLRjNGB0Y8g0L/QvtGB0LvQtSDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC40Y8g0LfQsNC00LDRhywg0YHRgNC+0LrQvtCyLCDQuNC90YLQtdCz0YDQsNGG0LjQuSDQuCDRgtGA0LXQsdC+0LLQsNC90LjQuSDQuiDQuNC90YTRgNCw0YHRgtGA0YPQutGC0YPRgNC1LidcblxuZXhwb3J0IGNvbnN0IHByaWNpbmdOb3RlRW4gPSAnUHJpY2VzIGFyZSBsaXN0ZWQgaW4gVXpiZWtpc3Rhbmkgc291bXMgYXMgYmFzZSBwYWNrYWdlcy4gRmluYWwgY29zdCBtYXkgYmUgY2xhcmlmaWVkIGFmdGVyIHNjb3BlLCB0aW1lbGluZSwgaW50ZWdyYXRpb25zLCBhbmQgaW5mcmFzdHJ1Y3R1cmUgcmVxdWlyZW1lbnRzIGFyZSBhcHByb3ZlZC4nXG5cbmV4cG9ydCBjb25zdCBwcmljaW5nTm90ZVV6ID0gJ05hcnhsYXIgc2/igJhtZGEgYmF6YXZpeSBwYWtldGxhciBzaWZhdGlkYSBrb+KAmHJzYXRpbGdhbi4gWWFrdW5peSBxaXltYXQgdmF6aWZhLCBtdWRkYXQsIGludGVncmF0c2l5YWxhciB2YSBpbmZyYXR1emlsbWEgdGFsYWJsYXJpIGtlbGlzaGlsZ2FuZGFuIHNv4oCYbmcgYW5pcWxhc2h0aXJpbGlzaGkgbXVta2luLidcblxuZXhwb3J0IGNvbnN0IHByaWNpbmdQbGFuc1J1ID0gW1xuICB7XG4gICAgbmFtZTogJ1N0YXJ0JyxcbiAgICBwcmljZTogJzEyIDAwMCAwMDAg0YHRg9C8JyxcbiAgICBwZXJpb2Q6ICfQsdCw0LfQsCDQv9GA0L7QtNGD0LrRgtCwJyxcbiAgICB0ZXh0OiAn0KHRgtCw0YDRgtC+0LLQsNGPINGD0L/QsNC60L7QstC60LAg0LjQtNC10Lgg0LIg0LDQutC60YPRgNCw0YLQvdGL0Lkg0YHQsNC50YIg0LjQu9C4INC70LXQvdC00LjQvdCzINC00LvRjyDQv9C10YDQstGL0YUg0LfQsNGP0LLQvtC6LicsXG4gICAgZmVhdHVyZXM6IFtcbiAgICAgICfQntC00L3QvtGB0YLRgNCw0L3QuNGH0L3Ri9C5INC70LXQvdC00LjQvdCzJyxcbiAgICAgICfQkNC00LDQv9GC0LjQstC90LDRjyDQstC10YDRgdGC0LrQsCDQv9C+0LQgZGVza3RvcC9tb2JpbGUnLFxuICAgICAgJ9Ck0L7RgNC80LAg0LfQsNGP0LLQutC4INC4INC60L7QvdGC0LDQutGC0L3Ri9C5INCx0LvQvtC6JyxcbiAgICAgICfQkdCw0LfQvtCy0LDRjyBTRU8t0YDQsNC30LzQtdGC0LrQsCcsXG4gICAgICAn0J/QvtC00LPQvtGC0L7QstC60LAg0Log0L/Rg9Cx0LvQuNC60LDRhtC40LgnLFxuICAgIF0sXG4gIH0sXG4gIHtcbiAgICBuYW1lOiAnTGF1bmNoJyxcbiAgICBwcmljZTogJzE4IDAwMCAwMDAg0YHRg9C8JyxcbiAgICBwZXJpb2Q6ICfQt9Cw0L/Rg9GB0Log0YHQsNC50YLQsCcsXG4gICAgdGV4dDogJ9CR0L7Qu9GM0YjQtSDRgdGC0YDRg9C60YLRg9GA0YssINCy0LjQt9GD0LDQu9GM0L3Ri9GFINCx0LvQvtC60L7QsiDQuCDQtNC+0LLQtdGA0LjRjyDQtNC70Y8g0L/QvtC70L3QvtGG0LXQvdC90L7QuSDQv9GA0LXQt9C10L3RgtCw0YbQuNC4INGD0YHQu9GD0LPQuC4nLFxuICAgIGZlYXR1cmVzOiBbXG4gICAgICAn0JLRgdC1INC40Lcg0L/QsNC60LXRgtCwIFN0YXJ0JyxcbiAgICAgICfQlNC+IDMg0L7RgdC90L7QstC90YvRhSDRgdC10LrRhtC40Lkg0LjQu9C4INGB0YLRgNCw0L3QuNGGJyxcbiAgICAgICfQmtCw0YDRgtC+0YfQutC4INGD0YHQu9GD0LMg0LjQu9C4INC/0YDQtdC40LzRg9GJ0LXRgdGC0LInLFxuICAgICAgJ9CQ0L3QuNC80LDRhtC40Lgg0L/QvtGP0LLQu9C10L3QuNGPINCx0LvQvtC60L7QsicsXG4gICAgICAn0JHQsNC30L7QstCw0Y8g0LDQvdCw0LvQuNGC0LjQutCwINGB0L7QsdGL0YLQuNC5JyxcbiAgICAgICfQn9C+0LTQs9C+0YLQvtCy0LrQsCBmYXZpY29uINC4INC80LXRgtCwLdC00LDQvdC90YvRhScsXG4gICAgXSxcbiAgfSxcbiAge1xuICAgIG5hbWU6ICdHcm93dGgnLFxuICAgIHByaWNlOiAnMjQgMDAwIDAwMCDRgdGD0LwnLFxuICAgIHBlcmlvZDogJ9GA0L7RgdGCINC30LDRj9Cy0L7QuicsXG4gICAgdGV4dDogJ9Cc0L3QvtCz0L7RgdGC0YDQsNC90LjRh9C90LDRjyDQvtGB0L3QvtCy0LAg0LTQu9GPINC60L7QvNC/0LDQvdC40LgsINGD0YHQu9GD0LMsINC60LXQudGB0L7QsiDQuCDQutC+0L3RgtCw0LrRgtC90YvRhSDRgdGG0LXQvdCw0YDQuNC10LIuJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ9CS0YHQtSDQuNC3INC/0LDQutC10YLQsCBMYXVuY2gnLFxuICAgICAgJ9CU0L4gNSDRgdGC0YDQsNC90LjRhicsXG4gICAgICAn0KDQsNC30LTQtdC70Ysg0YPRgdC70YPQsywg0LrQtdC50YHQvtCyINC4INC+INC60L7QvNC/0LDQvdC40LgnLFxuICAgICAgJ9CU0LLRg9GP0LfRi9GH0L3QsNGPINGB0YLRgNGD0LrRgtGD0YDQsCBSVS9FTicsXG4gICAgICAn0KDQsNGB0YjQuNGA0LXQvdC90YvQtSDRhNC+0YDQvNGLINC30LDRj9Cy0L7QuicsXG4gICAgICAn0J7Qv9GC0LjQvNC40LfQsNGG0LjRjyDRgdC60L7RgNC+0YHRgtC4INC40L3RgtC10YDRhNC10LnRgdCwJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0F1dG9tYXRpb24nLFxuICAgIHByaWNlOiAnMzYgMDAwIDAwMCDRgdGD0LwnLFxuICAgIHBlcmlvZDogJ9Cw0LLRgtC+0LzQsNGC0LjQt9Cw0YbQuNGPJyxcbiAgICB0ZXh0OiAn0J/QvtC00LrQu9GO0YfQsNC10Lwg0YHQsNC50YIg0Log0YDQsNCx0L7Rh9C40Lwg0L/RgNC+0YbQtdGB0YHQsNC8OiDQt9Cw0Y/QstC60LgsINGD0LLQtdC00L7QvNC70LXQvdC40Y8sIENSTSDQuCDQstC90YPRgtGA0LXQvdC90LjQtSDQv9Cw0L3QtdC70LguJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ9CS0YHQtSDQuNC3INC/0LDQutC10YLQsCBHcm93dGgnLFxuICAgICAgJ9Ca0L7QvNC/0L7QvdC10L3RgtC90LDRjyDQtNC40LfQsNC50L0t0YHQuNGB0YLQtdC80LAnLFxuICAgICAgJ9Ca0LDRgtCw0LvQvtCzINGD0YHQu9GD0LMg0LjQu9C4INGC0LDRgNC40YTQvtCyJyxcbiAgICAgICfQodGG0LXQvdCw0YDQuNC4INC/0L7QutGD0L/QutC4INC40LvQuCDQt9Cw0Y/QstC60LgnLFxuICAgICAgJ9CY0L3RgtC10LPRgNCw0YbQuNGPINGBIENSTSDQuNC70Lgg0YLQsNCx0LvQuNGG0LDQvNC4JyxcbiAgICAgICdFbWFpbC9UZWxlZ3JhbS3Rg9Cy0LXQtNC+0LzQu9C10L3QuNGPJyxcbiAgICAgICfQodGC0LDRgtGD0YHRiyDQt9Cw0Y/QstC+0LonLFxuICAgICAgJ9CR0LDQt9C+0LLQsNGPINC30LDRidC40YLQsCDRhNC+0YDQvCDQvtGCINC+0YjQuNCx0L7QuicsXG4gICAgICAn0J/QvtC00LPQvtGC0L7QstC60LAgYmFja2VuZC1lbmRwb2ludHMnLFxuICAgIF0sXG4gIH0sXG4gIHtcbiAgICBuYW1lOiAnQUkgUGxhdGZvcm0nLFxuICAgIHByaWNlOiAnNDggMDAwIDAwMCDRgdGD0LwnLFxuICAgIHBlcmlvZDogJ0FJLdC/0LvQsNGC0YTQvtGA0LzQsCcsXG4gICAgdGV4dDogJ9Ce0YHQvdC+0LLQsCDQv9GA0L7QtNGD0LrRgtCwINGBIEFJLdC80L7QtNGD0LvQtdC8LCBBUEksINC00LDQvdC90YvQvNC4LCDRgNC+0LvRj9C80Lgg0Lgg0L3QsNCx0LvRjtC00LDQtdC80L7RgdGC0YzRji4nLFxuICAgIGZlYXR1cmVzOiBbXG4gICAgICAn0JLRgdC1INC40Lcg0L/QsNC60LXRgtCwIEF1dG9tYXRpb24nLFxuICAgICAgJ0FJLdGB0YbQtdC90LDRgNC40Lkg0L/QvtC0INC30LDQtNCw0YfRgycsXG4gICAgICAn0J/RgNC+0YLQvtGC0LjQvyDQsNGB0YHQuNGB0YLQtdC90YLQsCDQuNC70Lgg0LzQvtC00LXQu9C4JyxcbiAgICAgICfQkdCw0LfQsCDQt9C90LDQvdC40Lkg0LjQu9C4INC00LDRgtCw0YHQtdGCJyxcbiAgICAgICfQkNGA0YXQuNGC0LXQutGC0YPRgNCwIEFQSScsXG4gICAgICAn0KDQvtC70Lgg0L/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LknLFxuICAgICAgJ9Cf0LDQudC/0LvQsNC50L0g0L7QsdGA0LDQsdC+0YLQutC4INC00LDQvdC90YvRhScsXG4gICAgICAn0JvQvtCz0LjQutCwIHByb21wdC1mbG93JyxcbiAgICAgICfQnNC+0L3QuNGC0L7RgNC40L3QsyDQvtGI0LjQsdC+0LonLFxuICAgICAgJ9Cf0L7QtNCz0L7RgtC+0LLQutCwINC6IGNsb3VkLdC00LXQv9C70L7RjicsXG4gICAgXSxcbiAgfSxcbiAge1xuICAgIG5hbWU6ICdFbnRlcnByaXNlJyxcbiAgICBwcmljZTogJzYwIDAwMCAwMDAg0YHRg9C8JyxcbiAgICBwZXJpb2Q6ICfQv9C+0LvQvdGL0Lkg0LfQsNC/0YPRgdC6JyxcbiAgICB0ZXh0OiAn0JzQsNC60YHQuNC80LDQu9GM0L3QsNGPINC60L7QvNC/0LvQtdC60YLQsNGG0LjRjyDQtNC70Y8g0L/RgNC+0LTRg9C60YLQsDog0L7Qv9C70LDRgtCwLCDQuNC90YTRgNCw0YHRgtGA0YPQutGC0YPRgNCwLCDQsdC10LfQvtC/0LDRgdC90L7RgdGC0Ywg0Lgg0L/QvtC00LTQtdGA0LbQutCwLicsXG4gICAgZmVhdHVyZXM6IFtcbiAgICAgICfQktGB0LUg0LjQtyDQv9Cw0LrQtdGC0LAgQUkgUGxhdGZvcm0nLFxuICAgICAgJ0NoZWNrb3V0INC4INC/0LvQsNGC0LXQttC90YvQuSDRgdGG0LXQvdCw0YDQuNC5JyxcbiAgICAgICfQm9C40YfQvdGL0Lkg0LjQu9C4INCw0LTQvNC40L0t0YDQsNC30LTQtdC7JyxcbiAgICAgICfQmNC90YLQtdCz0YDQsNGG0LjQuCDRgSDQstC90LXRiNC90LjQvNC4INGB0LXRgNCy0LjRgdCw0LzQuCcsXG4gICAgICAn0JbRg9GA0L3QsNC7INC00LXQudGB0YLQstC40Lkg0Lgg0YHQvtCx0YvRgtC40LknLFxuICAgICAgJ9Cg0LDRgdGI0LjRgNC10L3QvdCw0Y8g0LHQtdC30L7Qv9Cw0YHQvdC+0YHRgtGMINGE0L7RgNC8JyxcbiAgICAgICdNTE9wcy9EZXZPcHMt0L/QvtC00LPQvtGC0L7QstC60LAnLFxuICAgICAgJ1Byb2R1Y3Rpb24t0LTQtdC/0LvQvtC5JyxcbiAgICAgICdSb2FkbWFwINGA0LDQt9Cy0LjRgtC40Y8g0L/RgNC+0LTRg9C60YLQsCcsXG4gICAgXSxcbiAgfSxcbl1cblxuZXhwb3J0IGNvbnN0IHByaWNpbmdQbGFuc0VuID0gW1xuICB7XG4gICAgbmFtZTogJ1N0YXJ0JyxcbiAgICBwcmljZTogJzEyIDAwMCAwMDAgVVpTJyxcbiAgICBwZXJpb2Q6ICdwcm9kdWN0IGJhc2UnLFxuICAgIHRleHQ6ICdJbml0aWFsIHBhY2thZ2luZyBvZiBhbiBpZGVhIGludG8gYSBjbGVhbiB3ZWJzaXRlIG9yIGxhbmRpbmcgcGFnZSBmb3IgZmlyc3QgbGVhZHMuJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ09uZS1wYWdlIGxhbmRpbmcnLFxuICAgICAgJ1Jlc3BvbnNpdmUgZGVza3RvcC9tb2JpbGUgbGF5b3V0JyxcbiAgICAgICdSZXF1ZXN0IGZvcm0gYW5kIGNvbnRhY3QgYmxvY2snLFxuICAgICAgJ0Jhc2ljIFNFTyBtYXJrdXAnLFxuICAgICAgJ1B1YmxpY2F0aW9uIHByZXBhcmF0aW9uJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0xhdW5jaCcsXG4gICAgcHJpY2U6ICcxOCAwMDAgMDAwIFVaUycsXG4gICAgcGVyaW9kOiAnc2l0ZSBsYXVuY2gnLFxuICAgIHRleHQ6ICdNb3JlIHN0cnVjdHVyZSwgdmlzdWFsIGJsb2NrcywgYW5kIHRydXN0IHNpZ25hbHMgZm9yIGEgc3Ryb25nZXIgc2VydmljZSBwcmVzZW50YXRpb24uJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ0V2ZXJ5dGhpbmcgaW4gU3RhcnQnLFxuICAgICAgJ1VwIHRvIDMgY29yZSBzZWN0aW9ucyBvciBwYWdlcycsXG4gICAgICAnU2VydmljZSBvciBiZW5lZml0IGNhcmRzJyxcbiAgICAgICdCbG9jayByZXZlYWwgYW5pbWF0aW9ucycsXG4gICAgICAnQmFzaWMgZXZlbnQgYW5hbHl0aWNzJyxcbiAgICAgICdGYXZpY29uIGFuZCBtZXRhZGF0YSBzZXR1cCcsXG4gICAgXSxcbiAgfSxcbiAge1xuICAgIG5hbWU6ICdHcm93dGgnLFxuICAgIHByaWNlOiAnMjQgMDAwIDAwMCBVWlMnLFxuICAgIHBlcmlvZDogJ2xlYWQgZ3Jvd3RoJyxcbiAgICB0ZXh0OiAnQSBtdWx0aS1wYWdlIGZvdW5kYXRpb24gZm9yIGEgY29tcGFueSwgc2VydmljZXMsIGNhc2VzLCBhbmQgY29udGFjdCBmbG93cy4nLFxuICAgIGZlYXR1cmVzOiBbXG4gICAgICAnRXZlcnl0aGluZyBpbiBMYXVuY2gnLFxuICAgICAgJ1VwIHRvIDUgcGFnZXMnLFxuICAgICAgJ1NlcnZpY2VzLCBjYXNlcywgYW5kIGFib3V0IHNlY3Rpb25zJyxcbiAgICAgICdSVS9FTiBiaWxpbmd1YWwgc3RydWN0dXJlJyxcbiAgICAgICdFeHRlbmRlZCByZXF1ZXN0IGZvcm1zJyxcbiAgICAgICdJbnRlcmZhY2Ugc3BlZWQgb3B0aW1pemF0aW9uJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0F1dG9tYXRpb24nLFxuICAgIHByaWNlOiAnMzYgMDAwIDAwMCBVWlMnLFxuICAgIHBlcmlvZDogJ2F1dG9tYXRpb24nLFxuICAgIHRleHQ6ICdDb25uZWN0IHRoZSBzaXRlIHRvIHdvcmtmbG93czogcmVxdWVzdHMsIG5vdGlmaWNhdGlvbnMsIENSTSwgYW5kIGludGVybmFsIHBhbmVscy4nLFxuICAgIGZlYXR1cmVzOiBbXG4gICAgICAnRXZlcnl0aGluZyBpbiBHcm93dGgnLFxuICAgICAgJ0NvbXBvbmVudCBkZXNpZ24gc3lzdGVtJyxcbiAgICAgICdTZXJ2aWNlIG9yIHByaWNpbmcgY2F0YWxvZycsXG4gICAgICAnUHVyY2hhc2Ugb3IgcmVxdWVzdCBmbG93cycsXG4gICAgICAnQ1JNIG9yIHNwcmVhZHNoZWV0IGludGVncmF0aW9uJyxcbiAgICAgICdFbWFpbC9UZWxlZ3JhbSBub3RpZmljYXRpb25zJyxcbiAgICAgICdSZXF1ZXN0IHN0YXR1c2VzJyxcbiAgICAgICdCYXNpYyBmb3JtIGVycm9yIHByb3RlY3Rpb24nLFxuICAgICAgJ0JhY2tlbmQgZW5kcG9pbnQgcHJlcGFyYXRpb24nLFxuICAgIF0sXG4gIH0sXG4gIHtcbiAgICBuYW1lOiAnQUkgUGxhdGZvcm0nLFxuICAgIHByaWNlOiAnNDggMDAwIDAwMCBVWlMnLFxuICAgIHBlcmlvZDogJ0FJIHBsYXRmb3JtJyxcbiAgICB0ZXh0OiAnUHJvZHVjdCBmb3VuZGF0aW9uIHdpdGggYW4gQUkgbW9kdWxlLCBBUEksIGRhdGEgd29ya2Zsb3dzLCByb2xlcywgYW5kIG9ic2VydmFiaWxpdHkuJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ0V2ZXJ5dGhpbmcgaW4gQXV0b21hdGlvbicsXG4gICAgICAnQUkgc2NlbmFyaW8gZm9yIHRoZSB0YXNrJyxcbiAgICAgICdBc3Npc3RhbnQgb3IgbW9kZWwgcHJvdG90eXBlJyxcbiAgICAgICdLbm93bGVkZ2UgYmFzZSBvciBkYXRhc2V0JyxcbiAgICAgICdBUEkgYXJjaGl0ZWN0dXJlJyxcbiAgICAgICdVc2VyIHJvbGVzJyxcbiAgICAgICdEYXRhIHByb2Nlc3NpbmcgcGlwZWxpbmUnLFxuICAgICAgJ1Byb21wdC1mbG93IGxvZ2ljJyxcbiAgICAgICdFcnJvciBtb25pdG9yaW5nJyxcbiAgICAgICdDbG91ZCBkZXBsb3ltZW50IHJlYWRpbmVzcycsXG4gICAgXSxcbiAgfSxcbiAge1xuICAgIG5hbWU6ICdFbnRlcnByaXNlJyxcbiAgICBwcmljZTogJzYwIDAwMCAwMDAgVVpTJyxcbiAgICBwZXJpb2Q6ICdmdWxsIGxhdW5jaCcsXG4gICAgdGV4dDogJ01heGltdW0gcGFja2FnZSBmb3IgYSBwcm9kdWN0OiBwYXltZW50cywgaW5mcmFzdHJ1Y3R1cmUsIHNlY3VyaXR5LCBhbmQgbGF1bmNoIHN1cHBvcnQuJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ0V2ZXJ5dGhpbmcgaW4gQUkgUGxhdGZvcm0nLFxuICAgICAgJ0NoZWNrb3V0IGFuZCBwYXltZW50IGZsb3cnLFxuICAgICAgJ1VzZXIgb3IgYWRtaW4gYXJlYScsXG4gICAgICAnRXh0ZXJuYWwgc2VydmljZSBpbnRlZ3JhdGlvbnMnLFxuICAgICAgJ0FjdGlvbiBhbmQgZXZlbnQgbG9nJyxcbiAgICAgICdBZHZhbmNlZCBmb3JtIHNlY3VyaXR5JyxcbiAgICAgICdNTE9wcy9EZXZPcHMgcHJlcGFyYXRpb24nLFxuICAgICAgJ1Byb2R1Y3Rpb24gZGVwbG95bWVudCcsXG4gICAgICAnUHJvZHVjdCBncm93dGggcm9hZG1hcCcsXG4gICAgXSxcbiAgfSxcbl1cblxuZXhwb3J0IGNvbnN0IHByaWNpbmdQbGFuc1V6ID0gW1xuICB7XG4gICAgbmFtZTogJ1N0YXJ0JyxcbiAgICBwcmljZTogJzEyIDAwMCAwMDAgc2/igJhtJyxcbiAgICBwZXJpb2Q6ICdtYWhzdWxvdCBiYXphc2knLFxuICAgIHRleHQ6ICdH4oCYb3lhbmkgYmlyaW5jaGkgbXVyb2phYXRsYXIgdWNodW4gaXhjaGFtIHNheXQgeW9raSBsYW5kaW5nZ2EgYXlsYW50aXJpc2guJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ0JpciBzYWhpZmFsaSBsYW5kaW5nJyxcbiAgICAgICdEZXNrdG9wL21vYmlsZSB1Y2h1biBtb3NsYXNodXZjaGFuIGRpemF5bicsXG4gICAgICAnTXVyb2phYXQgZm9ybWFzaSB2YSBrb250YWt0IGJsb2tpJyxcbiAgICAgICdCYXphdml5IFNFTy1iZWxnaWxhc2gnLFxuICAgICAgJ1B1Ymxpa2F0c2l5YWdhIHRheXlvcmxhc2gnLFxuICAgIF0sXG4gIH0sXG4gIHtcbiAgICBuYW1lOiAnTGF1bmNoJyxcbiAgICBwcmljZTogJzE4IDAwMCAwMDAgc2/igJhtJyxcbiAgICBwZXJpb2Q6ICdzYXl0bmkgaXNoZ2EgdHVzaGlyaXNoJyxcbiAgICB0ZXh0OiAnWGl6bWF0bmkgaXNob25jaGxpcm9xIHRhcWRpbSBldGlzaCB1Y2h1biBrb+KAmHByb3EgdHV6aWxtYSwgdml6dWFsIGJsb2tsYXIgdmEgaXNob25jaCBlbGVtZW50bGFyaS4nLFxuICAgIGZlYXR1cmVzOiBbXG4gICAgICAnU3RhcnQgcGFrZXRpZGFnaSBiYXJjaGEgaW1rb25peWF0bGFyJyxcbiAgICAgICczIHRhZ2FjaGEgYXNvc2l5IGJv4oCYbGltIHlva2kgc2FoaWZhJyxcbiAgICAgICdYaXptYXRsYXIgeW9raSBhZnphbGxpa2xhciBrYXJ0YWxhcmknLFxuICAgICAgJ0Jsb2tsYXJuaW5nIHBheWRvIGJv4oCYbGlzaCBhbmltYXRzaXlhbGFyaScsXG4gICAgICAnQmF6YXZpeSB2b3FlYWxhciBhbmFsaXRpa2FzaScsXG4gICAgICAnRmF2aWNvbiB2YSBtZXRhLW1h4oCZbHVtb3RsYXJuaSBzb3psYXNoJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0dyb3d0aCcsXG4gICAgcHJpY2U6ICcyNCAwMDAgMDAwIHNv4oCYbScsXG4gICAgcGVyaW9kOiAnbXVyb2phYXRsYXIgb+KAmHNpc2hpJyxcbiAgICB0ZXh0OiAnS29tcGFuaXlhLCB4aXptYXRsYXIsIGtleXNsYXIgdmEga29udGFrdCBzc2VuYXJpeWxhcmkgdWNodW4ga2/igJhwIHNhaGlmYWxpIGFzb3MuJyxcbiAgICBmZWF0dXJlczogW1xuICAgICAgJ0xhdW5jaCBwYWtldGlkYWdpIGJhcmNoYSBpbWtvbml5YXRsYXInLFxuICAgICAgJzUgdGFnYWNoYSBzYWhpZmEnLFxuICAgICAgJ1hpem1hdGxhciwga2V5c2xhciB2YSBrb21wYW5peWEgaGFxaWRhIGJv4oCYbGltbGFyJyxcbiAgICAgICdSVS9FTi9VWiBrb+KAmHAgdGlsbGkgdHV6aWxtYScsXG4gICAgICAnS2VuZ2F5dGlyaWxnYW4gbXVyb2phYXQgZm9ybWFsYXJpJyxcbiAgICAgICdJbnRlcmZleXMgdGV6bGlnaW5pIG9wdGltYWxsYXNodGlyaXNoJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0F1dG9tYXRpb24nLFxuICAgIHByaWNlOiAnMzYgMDAwIDAwMCBzb+KAmG0nLFxuICAgIHBlcmlvZDogJ2F2dG9tYXRsYXNodGlyaXNoJyxcbiAgICB0ZXh0OiAnU2F5dG5pIGlzaCBqYXJheW9ubGFyaWdhIHVsYXNoOiBtdXJvamFhdGxhciwgYmlsZGlyaXNobm9tYWxhciwgQ1JNIHZhIGljaGtpIHBhbmVsbGFyLicsXG4gICAgZmVhdHVyZXM6IFtcbiAgICAgICdHcm93dGggcGFrZXRpZGFnaSBiYXJjaGEgaW1rb25peWF0bGFyJyxcbiAgICAgICdLb21wb25lbnRsaSBkaXpheW4gdGl6aW1pJyxcbiAgICAgICdYaXptYXRsYXIgeW9raSB0YXJpZmxhciBrYXRhbG9naScsXG4gICAgICAnWGFyaWQgeW9raSBtdXJvamFhdCBzc2VuYXJpeWxhcmknLFxuICAgICAgJ0NSTSB5b2tpIGphZHZhbCBpbnRlZ3JhdHNpeWFzaScsXG4gICAgICAnRW1haWwvVGVsZWdyYW0gYmlsZGlyaXNobm9tYWxhcmknLFxuICAgICAgJ011cm9qYWF0IHN0YXR1c2xhcmknLFxuICAgICAgJ0Zvcm1hbGFyZGEgYmF6YXZpeSB4YXRvbGlrbGFyZGFuIGhpbW95YScsXG4gICAgICAnQmFja2VuZCBlbmRwb2ludCB0YXl5b3JsYXNoJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0FJIFBsYXRmb3JtJyxcbiAgICBwcmljZTogJzQ4IDAwMCAwMDAgc2/igJhtJyxcbiAgICBwZXJpb2Q6ICdBSSBwbGF0Zm9ybWEnLFxuICAgIHRleHQ6ICdBSSBtb2R1bGksIEFQSSwgbWHigJlsdW1vdGxhciBvcWltaSwgcm9sbGFyIHZhIGt1emF0dXZjaGFubGlra2EgZWdhIG1haHN1bG90IGFzb3NpLicsXG4gICAgZmVhdHVyZXM6IFtcbiAgICAgICdBdXRvbWF0aW9uIHBha2V0aWRhZ2kgYmFyY2hhIGlta29uaXlhdGxhcicsXG4gICAgICAnVmF6aWZhIHVjaHVuIEFJIHNzZW5hcml5c2knLFxuICAgICAgJ0Fzc2lzdGVudCB5b2tpIG1vZGVsIHByb3RvdGlwaScsXG4gICAgICAnQmlsaW1sYXIgYmF6YXNpIHlva2kgZGF0YXNldCcsXG4gICAgICAnQVBJIGFyeGl0ZWt0dXJhc2knLFxuICAgICAgJ0ZveWRhbGFudXZjaGkgcm9sbGFyaScsXG4gICAgICAnTWHigJlsdW1vdGxhcm5pIHFheXRhIGlzaGxhc2ggcGlwZWxpbmUnLFxuICAgICAgJ1Byb21wdC1mbG93IGxvZ2lrYXNpJyxcbiAgICAgICdYYXRvbGFyIG1vbml0b3JpbmdpJyxcbiAgICAgICdDbG91ZCBkZXBsb3lnYSB0YXl5b3JsYXNoJyxcbiAgICBdLFxuICB9LFxuICB7XG4gICAgbmFtZTogJ0VudGVycHJpc2UnLFxuICAgIHByaWNlOiAnNjAgMDAwIDAwMCBzb+KAmG0nLFxuICAgIHBlcmlvZDogJ3Rv4oCYbGlxIGlzaGdhIHR1c2hpcmlzaCcsXG4gICAgdGV4dDogJ01haHN1bG90IHVjaHVuIG1ha3NpbWFsIGtvbXBsZWt0OiB0b+KAmGxvdiwgaW5mcmF0dXppbG1hLCB4YXZmc2l6bGlrIHZhIHFv4oCYbGxhYi1xdXZ2YXRsYXNoLicsXG4gICAgZmVhdHVyZXM6IFtcbiAgICAgICdBSSBQbGF0Zm9ybSBwYWtldGlkYWdpIGJhcmNoYSBpbWtvbml5YXRsYXInLFxuICAgICAgJ0NoZWNrb3V0IHZhIHRv4oCYbG92IHNzZW5hcml5c2knLFxuICAgICAgJ1NoYXhzaXkgeW9raSBhZG1pbiBib+KAmGxpbScsXG4gICAgICAnVGFzaHFpIHNlcnZpc2xhciBiaWxhbiBpbnRlZ3JhdHNpeWFsYXInLFxuICAgICAgJ0hhcmFrYXRsYXIgdmEgdm9xZWFsYXIganVybmFsaScsXG4gICAgICAnRm9ybWFsYXJuaW5nIGtlbmdheXRpcmlsZ2FuIHhhdmZzaXpsaWdpJyxcbiAgICAgICdNTE9wcy9EZXZPcHMgdGF5eW9yZ2FybGlnaScsXG4gICAgICAnUHJvZHVjdGlvbiBkZXBsb3knLFxuICAgICAgJ01haHN1bG90IHJpdm9qbGFuaXNoIHJvYWRtYXAnLFxuICAgIF0sXG4gIH0sXG5dXG4iXX0=

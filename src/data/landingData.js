@@ -1,5 +1,6 @@
 import { checkoutOfferEn, checkoutOfferRu, checkoutOfferUz } from './offerTerms.js'
 import { checkoutBanks } from './checkoutBanks.js'
+import { paymentStatusesEn, paymentStatusesRu, paymentStatusesUz } from './paymentStatuses.js'
 import { pricingNoteEn, pricingNoteRu, pricingNoteUz, pricingPlansEn, pricingPlansRu, pricingPlansUz } from './pricingPlans.js'
 
 const companyEmail = 'Gemmaneuratech@gmail.com'
@@ -782,6 +783,7 @@ export const content = {
         closeLabel: 'Закрыть checkout',
         secureText: 'Платежная форма подготовлена под будущую токенизацию через платежный провайдер.',
         successText: 'Сценарий покупки готов. После подключения backend и платежного шлюза здесь будет создаваться реальный платеж.',
+        paymentStatuses: paymentStatusesRu,
         banks: checkoutBanks,
         fields: {
           name: 'Имя и фамилия',
@@ -1063,6 +1065,7 @@ export const content = {
         closeLabel: 'Close checkout',
         secureText: 'The payment form is prepared for future tokenization through a payment provider.',
         successText: 'The purchase flow is ready. After backend and payment gateway integration, this step will create a real payment.',
+        paymentStatuses: paymentStatusesEn,
         banks: checkoutBanks,
         fields: {
           name: 'Full name',
@@ -1341,6 +1344,7 @@ content.uz = {
       closeLabel: 'Checkoutni yopish',
       secureText: 'To‘lov formasi kelajakda to‘lov provayderi orqali tokenizatsiya qilish uchun tayyorlangan.',
       successText: 'Xarid ssenariysi tayyor. Backend va to‘lov shlyuzi ulangandan so‘ng bu bosqich real to‘lov yaratadi.',
+      paymentStatuses: paymentStatusesUz,
       banks: checkoutBanks,
       fields: {
         name: 'Ism va familiya',

@@ -2528,6 +2528,20 @@ main {
     align-self: end;
 }
 
+.payment-result-page .section-block {
+    width: calc(100% - 36px);
+    margin-inline: auto;
+}
+
+.payment-result-card {
+    max-width: 920px;
+    margin-inline: auto;
+}
+
+.payment-result-actions {
+    justify-content: flex-start;
+}
+
 .pricing-grid,
 .page-card-grid,
 .presentation-grid,
@@ -2764,6 +2778,7 @@ main {
 .checkout-summary,
 .checkout-terms,
 .checkout-form,
+.checkout-redirect,
 .checkout-success,
 .checkout-status {
     position: relative;
@@ -3028,6 +3043,13 @@ main {
     color: #9fb2b9;
     font-size: 12px;
     line-height: 1.65;
+}
+
+.checkout-step-note--error {
+    padding: 12px 14px;
+    color: #ffd4d9;
+    border: 1px solid rgba(255, 107, 122, 0.32);
+    background: rgba(255, 107, 122, 0.08);
 }
 
 .checkout-accept {
@@ -3382,6 +3404,15 @@ main {
     min-width: 174px;
 }
 
+.checkout-redirect {
+    display: grid;
+    gap: 14px;
+}
+
+.checkout-redirect .checkout-status__meta {
+    grid-template-columns: minmax(0, 360px);
+}
+
 .checkout-success {
     display: grid;
     justify-items: center;
@@ -3539,7 +3570,7 @@ main {
 
 .checkout-status__meta {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 10px;
 }
 

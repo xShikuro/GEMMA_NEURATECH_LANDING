@@ -10,17 +10,21 @@ export function PricingCards({ actionLabel, checkoutCopy, includedLabel, plans }
     <>
       <div className="pricing-grid">
         {plans.map((plan) => (
-          <article className="pricing-card" key={plan.name}>
+          <article className="pricing-card" key={plan.id || plan.name}>
             <span>{plan.period}</span>
             <h2>{plan.name}</h2>
             <strong>{plan.price}</strong>
             <p>{plan.text}</p>
-            <em className="pricing-card__included">{includedLabel}</em>
-            <ul>
-              {plan.features.map((feature) => (
-                <li key={feature}>{feature}</li>
-              ))}
-            </ul>
+            {plan.features?.length ? (
+              <>
+                <em className="pricing-card__included">{includedLabel}</em>
+                <ul>
+                  {plan.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
             <button className="pricing-card__link" type="button" onClick={() => setSelectedPlan(plan)}>
               {actionLabel}
               <SvgIcon id="i-arrow" />

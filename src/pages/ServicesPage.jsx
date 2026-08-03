@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom'
 import SvgIcon from '../components/icons/SvgIcon'
 import { PricingCards } from '../components/sections/Pricing'
 import SectionHead from '../components/ui/SectionHead'
+import { useServicesCatalog } from '../hooks/useServicesCatalog'
 
-export default function ServicesPage({ copy }) {
+export default function ServicesPage({ copy, language }) {
+  const catalog = useServicesCatalog(language, copy)
+
   return (
     <div className="route-page">
       <section className="page-hero tech-frame reveal">
@@ -24,7 +27,7 @@ export default function ServicesPage({ copy }) {
           actionLabel={copy.pricingAction}
           checkoutCopy={copy.checkout}
           includedLabel={copy.includedLabel}
-          plans={copy.pricing}
+          plans={catalog.pricing}
         />
         <p className="page-note">{copy.note}</p>
       </section>
@@ -32,8 +35,8 @@ export default function ServicesPage({ copy }) {
       <section className="section-block tech-frame reveal">
         <SectionHead title={copy.servicesTitle} />
         <div className="page-card-grid">
-          {copy.services.map((service) => (
-            <article className="page-card" key={service.title}>
+          {catalog.services.map((service) => (
+            <article className="page-card" key={service.id || service.title}>
               <SvgIcon id={service.icon} />
               <h2>{service.title}</h2>
               <p>{service.text}</p>

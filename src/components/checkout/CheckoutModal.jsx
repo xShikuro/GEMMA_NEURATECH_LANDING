@@ -1,23 +1,10 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { createPaymentLink } from '../../api/paymentsApi'
 import SvgIcon from '../icons/SvgIcon'
-
-function formatCardNumber(value) {
-  return value.replace(/\D/g, '').slice(0, 19).replace(/(.{4})/g, '$1 ').trim()
-}
 
 function formatDigits(value, maxLength) {
   return value.replace(/\D/g, '').slice(0, maxLength)
-}
-
-function formatExpiry(value) {
-  const digits = value.replace(/\D/g, '').slice(0, 4)
-
-  if (digits.length <= 2) {
-    return digits
-  }
-
-  return `${digits.slice(0, 2)}/${digits.slice(2)}`
 }
 
 function formatLetters(value) {
@@ -25,49 +12,64 @@ function formatLetters(value) {
 }
 
 const fallbackBanks = [
-  { id: 'hamkor', name: 'Hamkor Bank', shortName: 'HB', acquiringId: 'hamkor-bank-acquiring' },
-  { id: 'orient-finans', name: 'Orient Finans Bank', shortName: 'OF', acquiringId: 'orient-finans-bank-acquiring' },
-  { id: 'kapital', name: 'Kapital Bank', shortName: 'KB', acquiringId: 'kapital-bank-acquiring' },
-  { id: 'sqb', name: 'SQB', shortName: 'SQB', acquiringId: 'sqb-acquiring' },
+  {
+    id: 'hamkor',
+    name: 'Hamkor Bank',
+    shortName: 'HB',
+    acquiringId: 'hamkor-bank-acquiring',
+    paymentCreatePath: '/api/v1/payments/hamkorbank/create',
+  },
+  {
+    id: 'orient-finans',
+    name: 'Orient Finans Bank',
+    shortName: 'OF',
+    acquiringId: 'orient-finans-bank-acquiring',
+    paymentCreatePath: '/api/v1/payments/orientfinansbank/create',
+  },
+  {
+    id: 'kapital',
+    name: 'Kapital Bank',
+    shortName: 'KB',
+    acquiringId: 'kapital-bank-acquiring',
+    paymentCreatePath: '/api/v1/payments/kapitalbank/create',
+  },
+  {
+    id: 'sqb',
+    name: 'SQB',
+    shortName: 'SQB',
+    acquiringId: 'sqb-acquiring',
+    paymentCreatePath: '/api/v1/payments/sqb/create',
+  },
 ]
 
-const checkoutSteps = ['terms', 'details', 'bank', 'payment', 'confirm']
+const checkoutSteps = ['terms', 'details', 'bank', 'redirect']
 
 export default function CheckoutModal({ copy, onClose, plan }) {
   const [step, setStep] = useState('terms')
   const [accepted, setAccepted] = useState(false)
   const [draft, setDraft] = useState({})
-  const [paymentStatus, setPaymentStatus] = useState('success')
+  const [isCreatingPaymentLink, setIsCreatingPaymentLink] = useState(false)
+  const [paymentLinkError, setPaymentLinkError] = useState('')
   const titleId = useId()
   const closeButtonRef = useRef(null)
   const agreement = copy.agreement
   const fields = copy.fields || {}
+  const paymentLinkLoadingText = copy.paymentLinkLoading || 'Создаем платежную ссылку...'
+  const paymentLinkErrorText = copy.paymentLinkError || 'Не удалось создать платежную ссылку.'
+  const paymentLinkMissingUrlText = copy.paymentLinkMissingUrl || 'Backend ответил без платежной ссылки.'
   const banks = Array.isArray(copy.banks) && copy.banks.length ? copy.banks : fallbackBanks
-  const paymentStatuses = copy.paymentStatuses || {}
-  const activeStatus = paymentStatuses[paymentStatus] || {
-    tone: 'success',
-    icon: 'i-shield',
-    eyebrow: copy.eyebrow,
-    title: copy.successTitle,
-    text: copy.successText,
-    primaryLabel: copy.doneLabel,
-    action: 'close',
-  }
   const steps = [
     { id: 'terms', label: copy.stepTerms || 'Условия' },
     { id: 'details', label: copy.stepDetails || 'Заявка' },
     { id: 'bank', label: copy.stepBank || 'Банк' },
-    { id: 'payment', label: copy.stepPayment || 'Карта' },
-    { id: 'confirm', label: copy.stepConfirm || 'SMS' },
+    { id: 'redirect', label: copy.stepRedirect || 'Оплата' },
   ]
 
   const stepTitle = {
     terms: copy.termsTitle,
     details: copy.detailsTitle || copy.stepDetails || 'Данные заявки',
     bank: copy.bankTitle || copy.stepBank || 'Выбор банка',
-    payment: copy.paymentTitle,
-    confirm: copy.confirmTitle || copy.stepConfirm || 'SMS-подтверждение',
-    result: activeStatus.title || copy.successTitle,
+    redirect: copy.redirectTitle || copy.stepRedirect || 'Переход к оплате',
   }[step]
 
   useEffect(() => {
@@ -105,44 +107,50 @@ export default function CheckoutModal({ copy, onClose, plan }) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     setDraft((currentDraft) => ({ ...currentDraft, ...Object.fromEntries(formData.entries()) }))
+    setPaymentLinkError('')
     setStep('bank')
   }
 
-  const handleBankSubmit = (event) => {
+  const handleBankSubmit = async (event) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const bankId = formData.get('bankId')
     const selectedBank = banks.find((bank) => bank.id === bankId)
-
-    setDraft((currentDraft) => ({
-      ...currentDraft,
+    const nextDraft = {
+      ...draft,
       bankId,
       bankName: selectedBank?.name || '',
       acquiringId: selectedBank?.acquiringId || '',
-    }))
-    setStep('payment')
-  }
-
-  const handlePaymentSubmit = (event) => {
-    event.preventDefault()
-    setStep('confirm')
-  }
-
-  const handleConfirmSubmit = (event) => {
-    event.preventDefault()
-    event.currentTarget.reset()
-    // Temporary placeholder until the acquiring response is wired.
-    setPaymentStatus(copy.demoPaymentStatus || 'success')
-    setStep('result')
-  }
-
-  const handleStatusPrimaryAction = () => {
-    if (activeStatus.action === 'retry') {
-      setStep('payment')
-      return
+      paymentCreatePath: selectedBank?.paymentCreatePath || '',
     }
 
-    onClose()
+    setDraft(nextDraft)
+    setPaymentLinkError('')
+    setIsCreatingPaymentLink(true)
+    setStep('redirect')
+
+    try {
+      const { paymentUrl } = await createPaymentLink({
+        bank: selectedBank,
+        draft: nextDraft,
+        messages: {
+          bankUnavailable: copy.paymentLinkBankUnavailable,
+          error: paymentLinkErrorText,
+          missingAmount: copy.paymentLinkMissingAmount,
+          missingServiceId: copy.paymentLinkMissingServiceId,
+          missingUrl: paymentLinkMissingUrlText,
+          network: copy.paymentLinkNetworkError,
+        },
+        plan,
+      })
+
+      window.location.assign(paymentUrl)
+    } catch (error) {
+      setPaymentLinkError(error instanceof Error ? error.message : paymentLinkErrorText)
+      setStep('bank')
+    } finally {
+      setIsCreatingPaymentLink(false)
+    }
   }
 
   const modal = (
@@ -160,7 +168,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
 
         <div className="checkout-steps" aria-hidden="true">
           {steps.map((item, index) => {
-            const currentIndex = step === 'result' ? checkoutSteps.length : checkoutSteps.indexOf(step)
+            const currentIndex = checkoutSteps.indexOf(step)
             const itemIndex = checkoutSteps.indexOf(item.id)
             const className = [
               step === item.id ? 'is-active' : '',
@@ -300,6 +308,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
                 <div>
                   <span>{copy.bankAcquiringLabel || 'Acquiring'}</span>
                   {copy.bankIntro ? <p>{copy.bankIntro}</p> : null}
+                  {copy.paymentLinkIntro ? <p>{copy.paymentLinkIntro}</p> : null}
                 </div>
                 <strong>{banks.length}</strong>
               </div>
@@ -307,7 +316,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
               <div className="checkout-bank-grid">
                 {banks.map((bank) => (
                   <label className="checkout-bank-card" key={bank.id}>
-                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId === bank.id} />
+                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId ? draft.bankId === bank.id : bank.id === 'hamkor'} />
                     <div className="checkout-bank-card__mark">{bank.shortName || bank.name.slice(0, 2)}</div>
                     <div className="checkout-bank-card__content">
                       <strong>{bank.name}</strong>
@@ -317,194 +326,42 @@ export default function CheckoutModal({ copy, onClose, plan }) {
                   </label>
                 ))}
               </div>
-            </div>
 
-            <div className="checkout-actions">
-              <button className="btn btn--outline" type="button" onClick={() => setStep('details')}>
-                {copy.backLabel}
-              </button>
-              <button className="btn btn--primary" type="submit">
-                {copy.bankContinueLabel || copy.detailsContinueLabel}
-              </button>
-            </div>
-          </form>
-        ) : null}
-
-        {step === 'payment' ? (
-          <form className="checkout-form" onSubmit={handlePaymentSubmit}>
-            {draft.bankName ? (
-              <aside className="checkout-bank-summary">
-                <span>{copy.bankSelectedLabel || 'Selected bank'}</span>
-                <strong>{draft.bankName}</strong>
-                <em>{draft.acquiringId}</em>
-              </aside>
-            ) : null}
-            {copy.paymentIntro ? <p className="checkout-step-note">{copy.paymentIntro}</p> : null}
-
-            <label>
-              <span>{fields.cardName}</span>
-              <input
-                name="cardName"
-                type="text"
-                autoComplete="cc-name"
-                required
-                placeholder={fields.cardName}
-                onInput={(event) => {
-                  event.currentTarget.value = formatLetters(event.currentTarget.value)
-                }}
-              />
-            </label>
-
-            <label>
-              <span>{fields.cardNumber}</span>
-              <input
-                name="cardNumber"
-                type="text"
-                inputMode="numeric"
-                autoComplete="cc-number"
-                required
-                placeholder="0000 0000 0000 0000"
-                onInput={(event) => {
-                  event.currentTarget.value = formatCardNumber(event.currentTarget.value)
-                }}
-              />
-            </label>
-
-            <div className="form-row form-row--compact">
-              <label>
-                <span>{fields.expiry}</span>
-                <input
-                  name="cardExpiry"
-                  type="text"
-                  inputMode="numeric"
-                  autoComplete="cc-exp"
-                  required
-                  placeholder="MM/YY"
-                  onInput={(event) => {
-                    event.currentTarget.value = formatExpiry(event.currentTarget.value)
-                  }}
-                />
-              </label>
-              <label>
-                <span>{fields.cvc}</span>
-                <input
-                  name="cardCvc"
-                  type="password"
-                  inputMode="numeric"
-                  autoComplete="cc-csc"
-                  required
-                  maxLength="4"
-                  placeholder="CVC"
-                  onInput={(event) => {
-                    event.currentTarget.value = formatDigits(event.currentTarget.value, 4)
-                  }}
-                />
-              </label>
-            </div>
-
-            <p className="checkout-secure">{copy.secureText}</p>
-
-            <div className="checkout-actions">
-              <button className="btn btn--outline" type="button" onClick={() => setStep('bank')}>
-                {copy.backLabel}
-              </button>
-              <button className="btn btn--primary" type="submit">
-                {copy.cardContinueLabel}
-              </button>
-            </div>
-          </form>
-        ) : null}
-
-        {step === 'confirm' ? (
-          <form className="checkout-form checkout-form--confirm" onSubmit={handleConfirmSubmit}>
-            <div className="checkout-confirm-panel">
-              <SvgIcon id="i-shield" />
-              <div>
-                <h3>{copy.confirmTitle}</h3>
-                <p>{copy.confirmText}</p>
-                {draft.bankName ? <strong>{draft.bankName} · {draft.acquiringId}</strong> : null}
-                {draft.phone ? <strong>{draft.phone}</strong> : null}
-              </div>
-            </div>
-
-            <label>
-              <span>{fields.smsCode}</span>
-              <input
-                className="checkout-code-input"
-                name="smsCode"
-                type="text"
-                inputMode="numeric"
-                autoComplete="one-time-code"
-                required
-                maxLength="8"
-                placeholder="000000"
-                onInput={(event) => {
-                  event.currentTarget.value = formatDigits(event.currentTarget.value, 8)
-                }}
-              />
-            </label>
-
-            <p className="checkout-secure">{copy.smsHint}</p>
-
-            <div className="checkout-actions">
-              <button className="btn btn--outline" type="button" onClick={() => setStep('payment')}>
-                {copy.backLabel}
-              </button>
-              <button className="btn btn--primary" type="submit">
-                {copy.payLabel}
-              </button>
-            </div>
-          </form>
-        ) : null}
-
-        {step === 'result' ? (
-          <div className={`checkout-status checkout-status--${activeStatus.tone || paymentStatus}`}>
-            <div className="checkout-status__signal" aria-hidden="true">
-              <SvgIcon id={activeStatus.icon || 'i-shield'} />
-            </div>
-            <div className="checkout-status__content">
-              {activeStatus.eyebrow ? <span className="checkout-status__eyebrow">{activeStatus.eyebrow}</span> : null}
-              <h3>{activeStatus.title}</h3>
-              <p>{activeStatus.text}</p>
-
-              {activeStatus.details?.length ? (
-                <ul className="checkout-status__details">
-                  {activeStatus.details.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+              {paymentLinkError ? (
+                <p className="checkout-step-note checkout-step-note--error">{paymentLinkError}</p>
               ) : null}
+            </div>
 
-              <div className="checkout-status__meta">
-                <span>
-                  <em>{copy.summaryLabel}</em>
-                  <strong>{plan.name}</strong>
-                  <small>{plan.price}</small>
-                </span>
-                {draft.bankName ? (
-                  <span>
-                    <em>{copy.bankSelectedLabel}</em>
-                    <strong>{draft.bankName}</strong>
-                    <small>{draft.acquiringId}</small>
-                  </span>
-                ) : null}
-                {draft.email ? (
-                  <span>
-                    <em>{fields.email}</em>
-                    <strong>{draft.email}</strong>
-                  </span>
-                ) : null}
+            <div className="checkout-actions">
+              <button className="btn btn--outline" type="button" disabled={isCreatingPaymentLink} onClick={() => setStep('details')}>
+                {copy.backLabel}
+              </button>
+              <button className="btn btn--primary" type="submit" disabled={isCreatingPaymentLink}>
+                {isCreatingPaymentLink ? paymentLinkLoadingText : copy.paymentLinkContinueLabel || copy.bankContinueLabel}
+              </button>
+            </div>
+          </form>
+        ) : null}
+
+        {step === 'redirect' ? (
+          <div className="checkout-redirect">
+            <div className="checkout-status checkout-status--pending">
+              <div className="checkout-status__signal" aria-hidden="true">
+                <SvgIcon id="i-chip" />
               </div>
-
-              <div className="checkout-actions checkout-status__actions">
-                {activeStatus.secondaryLabel ? (
-                  <button className="btn btn--outline" type="button" onClick={onClose}>
-                    {activeStatus.secondaryLabel}
-                  </button>
+              <div className="checkout-status__content">
+                <span className="checkout-status__eyebrow">{copy.stepRedirect || 'Оплата'}</span>
+                <h3>{copy.redirectTitle}</h3>
+                <p>{paymentLinkLoadingText}</p>
+                {draft.bankName ? (
+                  <div className="checkout-status__meta">
+                    <span>
+                      <em>{copy.bankSelectedLabel}</em>
+                      <strong>{draft.bankName}</strong>
+                      <small>{draft.acquiringId}</small>
+                    </span>
+                  </div>
                 ) : null}
-                <button className="btn btn--primary" type="button" onClick={handleStatusPrimaryAction}>
-                  {activeStatus.primaryLabel || copy.doneLabel}
-                </button>
               </div>
             </div>
           </div>

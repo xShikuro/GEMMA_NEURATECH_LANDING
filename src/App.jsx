@@ -12,6 +12,7 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
+import PaymentResultPage from './pages/PaymentResultPage'
 import ServicesPage from './pages/ServicesPage'
 
 const languages = ['ru', 'en', 'uz']
@@ -77,9 +78,10 @@ function AppShell() {
         <main id="top">
           <Routes>
             <Route path="/" element={<HomePage copy={copy} />} />
-            <Route path="/services" element={<ServicesPage copy={pages.servicesPage} />} />
+            <Route path="/services" element={<ServicesPage copy={pages.servicesPage} language={language} />} />
             <Route path="/about" element={<AboutPage copy={pages.aboutPage} />} />
             <Route path="/contact" element={<ContactPage copy={pages.contactPage} />} />
+            <Route path="/payment/result" element={<PaymentResultPage copy={pages.paymentResultPage} language={language} />} />
             <Route path="*" element={<NotFoundPage copy={pages.notFound} />} />
           </Routes>
         </main>

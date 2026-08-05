@@ -50,6 +50,15 @@ export default function Footer({ copy, navLinks }) {
             ))}
           </div>
 
+          {copy.legalLinks?.length ? (
+            <div className="footer-col">
+              <h3>{copy.legalTitle}</h3>
+              {copy.legalLinks.map((link) => (
+                <Link key={link.to} to={link.to}>{link.label}</Link>
+              ))}
+            </div>
+          ) : null}
+
           <div className="footer-col footer-contacts">
             <h3>{copy.contactsTitle}</h3>
             {hasFooterEmails ? (

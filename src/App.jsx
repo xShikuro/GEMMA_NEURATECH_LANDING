@@ -6,16 +6,32 @@ import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import WelcomeScreen from './components/sections/WelcomeScreen'
 import { content } from './data/landingData'
+import { legalContent } from './data/legalData'
 import { pageContent } from './data/pageData'
 import { useLandingRuntime } from './hooks/useLandingRuntime'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
+import LegalPage from './pages/LegalPage'
 import NotFoundPage from './pages/NotFoundPage'
 import PaymentResultPage from './pages/PaymentResultPage'
 import ServicesPage from './pages/ServicesPage'
 
 const languages = ['ru', 'en', 'uz']
+const legalBackLabels = {
+  ru: 'К услугам',
+  en: 'Services',
+  uz: 'Xizmatlar',
+}
+
+function getInitialLanguage() {
+  try {
+    const savedLanguage = localStorage.getItem('gemma:language')
+    return languages.includes(savedLanguage) ? savedLanguage : 'ru'
+  } catch {
+    return 'ru'
+  }
+}
 
 function RouteEffects({ language }) {
   const location = useLocation()
@@ -44,14 +60,20 @@ function RouteEffects({ language }) {
 }
 
 function AppShell() {
-  const [language, setLanguage] = useState('ru')
+  const [language, setLanguage] = useState(getInitialLanguage)
   const copy = content[language]
   const pages = pageContent[language]
+  const legal = legalContent[language]
 
   useLandingRuntime()
 
   useEffect(() => {
     document.documentElement.lang = language
+    try {
+      localStorage.setItem('gemma:language', language)
+    } catch {
+      // Language persistence is optional.
+    }
   }, [language])
 
   const toggleLanguage = () => {
@@ -81,7 +103,20 @@ function AppShell() {
             <Route path="/services" element={<ServicesPage copy={pages.servicesPage} language={language} />} />
             <Route path="/about" element={<AboutPage copy={pages.aboutPage} />} />
             <Route path="/contact" element={<ContactPage copy={pages.contactPage} />} />
+            <Route path="/offer" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.offer} />} />
+            <Route path="/public-offer" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.offer} />} />
+            <Route path="/privacy-policy" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.privacy} />} />
+            <Route path="/privacy" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.privacy} />} />
+            <Route path="/refund-policy" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.refund} />} />
+            <Route path="/refund" element={<LegalPage backLabel={legalBackLabels[language]} documentContent={legal.refund} />} />
             <Route path="/payment/result" element={<PaymentResultPage copy={pages.paymentResultPage} language={language} />} />
+            <Route path="/payment/success" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="success" language={language} />} />
+            <Route path="/payment/failure" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="failed" language={language} />} />
+            <Route path="/payment/failed" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="failed" language={language} />} />
+            <Route path="/payment/cancel" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="failed" language={language} />} />
+            <Route path="/payment/canceled" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="failed" language={language} />} />
+            <Route path="/payment/pending" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="pending" language={language} />} />
+            <Route path="/payment/error" element={<PaymentResultPage copy={pages.paymentResultPage} defaultStatus="error" language={language} />} />
             <Route path="*" element={<NotFoundPage copy={pages.notFound} />} />
           </Routes>
         </main>

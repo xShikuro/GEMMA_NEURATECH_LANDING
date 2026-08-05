@@ -3069,6 +3069,32 @@ main {
     accent-color: var(--cyan);
 }
 
+.checkout-accept-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding-left: 30px;
+}
+
+.checkout-accept-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    color: #9ff9ff;
+    border: 1px solid rgba(52, 237, 240, 0.26);
+    border-radius: 4px;
+    background: rgba(52, 237, 240, 0.07);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.checkout-accept-links a:hover {
+    color: #ffffff;
+    border-color: rgba(52, 237, 240, 0.54);
+    background: rgba(52, 237, 240, 0.12);
+}
+
 .checkout-modal .btn:disabled {
     cursor: not-allowed;
     opacity: 0.42;
@@ -4597,11 +4623,12 @@ main {
 
 .contact {
     display: grid;
-    grid-template-columns: 43% 1fr;
-    gap: 42px;
+    grid-template-columns: minmax(300px, 0.38fr) minmax(420px, 0.62fr);
+    align-items: start;
+    gap: clamp(30px, 4vw, 64px);
     width: calc(100% - 36px);
     margin: 0 auto 36px;
-    padding: 36px 50px 36px;
+    padding: 36px clamp(34px, 3.8vw, 58px);
     overflow: hidden;
     background:
         radial-gradient(circle at 20% 40%, rgba(52, 237, 240, 0.14), transparent 30%),
@@ -4690,6 +4717,54 @@ main {
     z-index: 2;
     display: grid;
     gap: 12px;
+}
+
+.contact > .contact-form {
+    --cut-tl: 18px;
+    --cut-tr: 8px;
+    --cut-br: 24px;
+    --cut-bl: 8px;
+    align-self: start;
+    align-content: start;
+    grid-template-rows: auto auto auto;
+    row-gap: 12px;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    min-height: 0;
+    justify-self: end;
+    padding: 28px;
+    border: 1px solid rgba(52, 237, 240, 0.24);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(52, 237, 240, 0.1), transparent 40%),
+        rgba(2, 16, 20, 0.5);
+    box-shadow: inset 0 0 24px rgba(52, 237, 240, 0.06);
+    clip-path: polygon(
+        var(--cut-tl) 0,
+        calc(100% - var(--cut-tr)) 0,
+        100% var(--cut-tr),
+        100% calc(100% - var(--cut-br)),
+        calc(100% - var(--cut-br)) 100%,
+        var(--cut-bl) 100%,
+        0 calc(100% - var(--cut-bl)),
+        0 var(--cut-tl)
+    );
+}
+
+.contact > .contact-form .form-row,
+.contact > .contact-form label {
+    align-items: start;
+    min-height: 0;
+}
+
+.contact > .contact-form textarea {
+    height: 136px;
+    min-height: 136px;
+}
+
+.contact > .contact-form .btn {
+    justify-self: start;
+    width: 218px;
 }
 
 .form-row {
@@ -4862,8 +4937,8 @@ textarea:focus {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(160px, 1fr));
-    gap: clamp(24px, 4vw, 64px);
+    grid-template-columns: minmax(130px, 0.72fr) minmax(150px, 0.86fr) minmax(150px, 0.86fr) minmax(160px, 0.86fr) minmax(220px, 1.2fr);
+    gap: clamp(20px, 3vw, 48px);
     padding: 30px 0 28px;
 }
 
@@ -4962,6 +5037,167 @@ textarea:focus {
     border-top: 1px solid rgba(52, 237, 240, 0.12);
     color: #6f858c;
     font-size: 11px;
+}
+
+.legal-page {
+    max-width: 1760px;
+}
+
+.legal-hero .btn {
+    align-self: center;
+}
+
+.legal-document {
+    padding-top: 28px;
+}
+
+.legal-document__intro {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 12px;
+    max-width: 980px;
+    margin-bottom: 24px;
+    padding: 0 10px 20px;
+    border-bottom: 1px solid rgba(52, 237, 240, 0.16);
+}
+
+.legal-document__intro span {
+    color: var(--cyan);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.legal-document__intro p {
+    margin: 0;
+    color: #b6c9cf;
+    font-size: 14px;
+    line-height: 1.72;
+}
+
+.legal-meta-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.legal-meta-card,
+.legal-section-card,
+.legal-toc {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(52, 237, 240, 0.2);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(52, 237, 240, 0.12), transparent 42%),
+        linear-gradient(135deg, rgba(6, 29, 36, 0.82), rgba(2, 11, 15, 0.84));
+    clip-path: polygon(14px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 10px 100%, 0 calc(100% - 10px), 0 14px);
+}
+
+.legal-meta-card {
+    display: grid;
+    gap: 9px;
+    min-height: 108px;
+    padding: 18px;
+}
+
+.legal-meta-card span,
+.legal-toc a {
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.legal-meta-card strong {
+    color: #dce8ec;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.legal-layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.legal-toc {
+    position: sticky;
+    top: 110px;
+    display: grid;
+    gap: 7px;
+    max-height: calc(100vh - 140px);
+    padding: 16px;
+    overflow: auto;
+}
+
+.legal-toc a {
+    display: block;
+    padding: 9px 10px;
+    color: #91e7ec;
+    border: 1px solid rgba(52, 237, 240, 0.14);
+    background: rgba(52, 237, 240, 0.045);
+    line-height: 1.35;
+}
+
+.legal-toc a:hover {
+    color: #ffffff;
+    border-color: rgba(52, 237, 240, 0.38);
+    background: rgba(52, 237, 240, 0.09);
+}
+
+.legal-section-stack {
+    display: grid;
+    gap: 14px;
+}
+
+.legal-section-card {
+    padding: 24px 24px 22px;
+    scroll-margin-top: 120px;
+}
+
+.legal-section-card h2 {
+    margin: 0 0 14px;
+    color: #dce8ec;
+    font-size: 18px;
+}
+
+.legal-section-card ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.legal-section-card li {
+    position: relative;
+    padding-left: 18px;
+    color: #a9bdc4;
+    font-size: 13px;
+    line-height: 1.72;
+}
+
+.legal-section-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--cyan);
+    border-radius: 50%;
+    background: rgba(52, 237, 240, 0.16);
+    box-shadow: 0 0 10px rgba(52, 237, 240, 0.36);
 }
 
 .reveal {
@@ -5618,8 +5854,16 @@ textarea:focus {
     }
 
     .process-layout,
-    .lab-layout {
+    .lab-layout,
+    .legal-layout {
         grid-template-columns: 1fr;
+    }
+
+    .legal-toc {
+        position: relative;
+        top: auto;
+        max-height: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .process-intro {
@@ -5634,10 +5878,15 @@ textarea:focus {
 
     .page-hero,
     .page-hero--split,
+    .contact,
     .contact-page-grid,
     .contact-form-layout,
     .certificate-panel {
         grid-template-columns: 1fr;
+    }
+
+    .contact > .contact-form {
+        max-width: none;
     }
 
     .route-contact-form {
@@ -5652,6 +5901,7 @@ textarea:focus {
     }
 
     .pricing-grid,
+    .legal-meta-grid,
     .page-card-grid,
     .legal-grid,
     .corporate-email-grid,
@@ -5967,6 +6217,7 @@ textarea:focus {
     .pricing-grid,
     .page-card-grid,
     .legal-grid,
+    .legal-meta-grid,
     .corporate-email-grid,
     .presentation-grid,
     .review-grid,
@@ -5976,6 +6227,29 @@ textarea:focus {
         grid-template-columns: 1fr;
         width: 100%;
         justify-items: center;
+    }
+
+    .legal-toc {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 360px;
+        margin-inline: auto;
+    }
+
+    .legal-section-stack {
+        width: 100%;
+        justify-items: center;
+    }
+
+    .legal-section-card,
+    .legal-meta-card,
+    .legal-document__intro {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .legal-section-card {
+        padding: 22px 18px;
     }
 
     .pricing-card,
@@ -6202,6 +6476,11 @@ textarea:focus {
 
     .checkout-actions {
         flex-direction: column;
+    }
+
+    .checkout-accept-links {
+        display: grid;
+        padding-left: 0;
     }
 
     .checkout-actions .btn,

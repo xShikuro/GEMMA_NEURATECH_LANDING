@@ -226,6 +226,11 @@ export default function CheckoutModal({ copy, onClose, plan }) {
               <input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} />
               <span>{copy.acceptText}</span>
             </label>
+            <div className="checkout-accept-links">
+              <a href="/offer" target="_blank" rel="noreferrer">{copy.offerLinkLabel || 'Публичная оферта'}</a>
+              <a href="/privacy-policy" target="_blank" rel="noreferrer">{copy.privacyLinkLabel || 'Политика конфиденциальности'}</a>
+              <a href="/refund-policy" target="_blank" rel="noreferrer">{copy.refundLinkLabel || 'Возврат средств'}</a>
+            </div>
             <button className="btn btn--primary" type="button" disabled={!accepted} onClick={() => setStep('details')}>
               {copy.continueLabel}
             </button>

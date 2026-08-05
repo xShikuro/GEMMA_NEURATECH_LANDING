@@ -26,15 +26,26 @@ function getServiceId(plan) {
   )
 }
 
-function getAmount(plan) {
-  const amount = Number(plan.amount ?? plan.price_from ?? plan.priceFrom ?? plan.priceAmount ?? plan.price_value ?? plan.priceValue)
+function normalizeAmountValue(value) {
+  const normalizedValue = String(value ?? '')
+    .replace(',', '.')
+    .replace(/[^\d.]/g, '')
 
-  if (Number.isFinite(amount) && amount > 0) {
-    return amount
+  if (!normalizedValue) {
+    return ''
   }
 
-  const parsedAmount = Number(String(plan.price || '').replace(/\D/g, ''))
-  return Number.isFinite(parsedAmount) ? parsedAmount : 0
+  const numericAmount = Number(normalizedValue)
+
+  return Number.isFinite(numericAmount) && numericAmount > 0 ? normalizedValue : ''
+}
+
+function getAmount(plan) {
+  const amount = normalizeAmountValue(
+    plan.amount ?? plan.price_from ?? plan.priceFrom ?? plan.priceAmount ?? plan.price_value ?? plan.priceValue,
+  )
+
+  return amount || normalizeAmountValue(plan.price)
 }
 
 function getPaymentStatusUrl(externalId) {

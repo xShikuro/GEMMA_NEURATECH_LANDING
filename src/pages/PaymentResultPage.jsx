@@ -91,31 +91,33 @@ function formatDate(value) {
   }).format(date)
 }
 
-export default function PaymentResultPage({ copy, language = 'ru' }) {
+export default function PaymentResultPage({ copy, defaultStatus = '', language = 'ru' }) {
   const [searchParams] = useSearchParams()
   const labels = resultLabels[language] || resultLabels.ru
   const storedPayment = useMemo(() => readStoredPayment(), [])
   const [remotePayment, setRemotePayment] = useState(null)
   const [statusLookup, setStatusLookup] = useState({ externalId: '', state: 'idle', error: '' })
   const queryStatus = getFirstQueryValue(searchParams, ['status', 'state', 'payment_status'])
+  const queryExternalId = getFirstQueryValue(searchParams, ['external_id', 'externalId', 'ext_id', 'order_id', 'invoice_id'])
+  const storedPaymentForResult = defaultStatus && !queryExternalId ? null : storedPayment
   const externalId =
-    getFirstQueryValue(searchParams, ['external_id', 'externalId', 'ext_id', 'order_id', 'invoice_id']) ||
+    queryExternalId ||
     remotePayment?.external_id ||
-    storedPayment?.external_id ||
+    storedPaymentForResult?.external_id ||
     ''
   const paymentId =
     getFirstQueryValue(searchParams, ['payment_id', 'paymentId', 'pay_id', 'id']) ||
     remotePayment?.id ||
-    storedPayment?.id ||
+    storedPaymentForResult?.id ||
     ''
-  const statusValue = remotePayment?.status || queryStatus || storedPayment?.status
+  const statusValue = remotePayment?.status || queryStatus || defaultStatus || storedPaymentForResult?.status
   const lookupState = externalId && statusLookup.externalId !== externalId ? 'loading' : statusLookup.state
   const lookupError = statusLookup.externalId === externalId ? statusLookup.error : ''
   const statusKey = lookupState === 'loading' && !statusValue ? 'pending' : normalizeStatus(statusValue)
   const status = copy.statuses[statusKey] || copy.statuses.error
-  const amount = remotePayment?.amount || storedPayment?.amount || searchParams.get('amount')
-  const bank = storedPayment?.bank || searchParams.get('bank')
-  const createdAt = remotePayment?.created_at || storedPayment?.created_at || searchParams.get('created_at')
+  const amount = remotePayment?.amount || storedPaymentForResult?.amount || searchParams.get('amount')
+  const bank = storedPaymentForResult?.bank || searchParams.get('bank')
+  const createdAt = remotePayment?.created_at || storedPaymentForResult?.created_at || searchParams.get('created_at')
 
   useEffect(() => {
     if (!externalId) {
@@ -130,10 +132,10 @@ export default function PaymentResultPage({ copy, language = 'ru' }) {
         setStatusLookup({ externalId, state: 'success', error: '' })
 
         sessionStorage.setItem('gemma:lastPayment', JSON.stringify({
-          ...storedPayment,
+          ...storedPaymentForResult,
           ...payment,
           external_id: payment.external_id || externalId,
-          bank: storedPayment?.bank || 'hamkor',
+          bank: storedPaymentForResult?.bank || 'hamkor',
         }))
       })
       .catch((error) => {
@@ -149,7 +151,7 @@ export default function PaymentResultPage({ copy, language = 'ru' }) {
       })
 
     return () => controller.abort()
-  }, [externalId, labels.lookupError, storedPayment])
+  }, [externalId, labels.lookupError, storedPaymentForResult])
 
   return (
     <div className="route-page payment-result-page">

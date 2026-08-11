@@ -1,11 +1,8 @@
 const defaultServicesEndpoint = '/api/v1/services/'
-const defaultApiBaseUrl = 'https://api.gemmaneuratech.net'
 
 function getServicesEndpoint(language) {
   const endpoint = import.meta.env.VITE_SERVICES_ENDPOINT || defaultServicesEndpoint
-  const explicitBaseUrl = import.meta.env.VITE_SERVICES_API_BASE_URL || import.meta.env.VITE_API_BASE_URL
-  const baseUrl = explicitBaseUrl || (import.meta.env.DEV ? window.location.origin : defaultApiBaseUrl)
-  const url = new URL(endpoint, baseUrl)
+  const url = new URL(endpoint, window.location.origin)
 
   if (language && !url.searchParams.has('lang')) {
     url.searchParams.set('lang', language)

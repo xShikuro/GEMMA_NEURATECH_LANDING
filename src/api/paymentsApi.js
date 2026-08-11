@@ -5,7 +5,6 @@ const defaultPaymentPaths = {
   sqb: '/api/v1/payments/sqb/create',
 }
 
-const defaultApiBaseUrl = 'https://api.gemmaneuratech.net'
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const fallbackServiceIdsByName = {
   'ai platform': '2954a51c-3f7c-4e6c-926a-ae7ef13a1dbe',
@@ -17,13 +16,7 @@ const fallbackServiceIdsByName = {
 }
 
 function getApiBaseUrl() {
-  const explicitBaseUrl = import.meta.env.VITE_PAYMENT_API_BASE_URL || import.meta.env.VITE_API_BASE_URL
-
-  if (explicitBaseUrl) {
-    return explicitBaseUrl
-  }
-
-  return import.meta.env.DEV ? window.location.origin : defaultApiBaseUrl
+  return window.location.origin
 }
 
 function getPaymentCreateUrl(bank) {

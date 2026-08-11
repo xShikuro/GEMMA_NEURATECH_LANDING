@@ -5,8 +5,16 @@ const defaultPaymentPaths = {
   sqb: '/api/v1/payments/sqb/create',
 }
 
+const defaultApiBaseUrl = 'https://api.gemmaneuratech.net'
+
 function getApiBaseUrl() {
-  return import.meta.env.VITE_PAYMENT_API_BASE_URL || import.meta.env.VITE_API_BASE_URL || window.location.origin
+  const explicitBaseUrl = import.meta.env.VITE_PAYMENT_API_BASE_URL || import.meta.env.VITE_API_BASE_URL
+
+  if (explicitBaseUrl) {
+    return explicitBaseUrl
+  }
+
+  return import.meta.env.DEV ? window.location.origin : defaultApiBaseUrl
 }
 
 function getPaymentCreateUrl(bank) {

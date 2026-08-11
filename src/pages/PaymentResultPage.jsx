@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { fetchHamkorPaymentStatus } from '../api/paymentsApi'
+import { fetchPaymentStatus } from '../api/paymentsApi'
 import SvgIcon from '../components/icons/SvgIcon'
 
 const successAliases = new Set(['success', 'paid', 'payed', 'confirmed', '3', '14'])
@@ -100,10 +100,15 @@ export default function PaymentResultPage({ copy, defaultStatus = '', language =
   const queryStatus = getFirstQueryValue(searchParams, ['status', 'state', 'payment_status'])
   const queryExternalId = getFirstQueryValue(searchParams, ['external_id', 'externalId', 'ext_id', 'order_id', 'invoice_id'])
   const storedPaymentForResult = defaultStatus && !queryExternalId ? null : storedPayment
+  const bank = storedPaymentForResult?.bank || searchParams.get('bank') || 'hamkor'
   const externalId =
     queryExternalId ||
     remotePayment?.external_id ||
+    remotePayment?.invoice_id ||
+    remotePayment?.order_id ||
     storedPaymentForResult?.external_id ||
+    storedPaymentForResult?.invoice_id ||
+    storedPaymentForResult?.order_id ||
     ''
   const paymentId =
     getFirstQueryValue(searchParams, ['payment_id', 'paymentId', 'pay_id', 'id']) ||
@@ -116,7 +121,6 @@ export default function PaymentResultPage({ copy, defaultStatus = '', language =
   const statusKey = lookupState === 'loading' && !statusValue ? 'pending' : normalizeStatus(statusValue)
   const status = copy.statuses[statusKey] || copy.statuses.error
   const amount = remotePayment?.amount || storedPaymentForResult?.amount || searchParams.get('amount')
-  const bank = storedPaymentForResult?.bank || searchParams.get('bank')
   const createdAt = remotePayment?.created_at || storedPaymentForResult?.created_at || searchParams.get('created_at')
 
   useEffect(() => {
@@ -126,7 +130,7 @@ export default function PaymentResultPage({ copy, defaultStatus = '', language =
 
     const controller = new AbortController()
 
-    fetchHamkorPaymentStatus({ externalId, signal: controller.signal })
+    fetchPaymentStatus({ bank, externalId, signal: controller.signal })
       .then((payment) => {
         setRemotePayment(payment)
         setStatusLookup({ externalId, state: 'success', error: '' })
@@ -134,8 +138,10 @@ export default function PaymentResultPage({ copy, defaultStatus = '', language =
         sessionStorage.setItem('gemma:lastPayment', JSON.stringify({
           ...storedPaymentForResult,
           ...payment,
-          external_id: payment.external_id || externalId,
-          bank: storedPaymentForResult?.bank || 'hamkor',
+          external_id: payment.external_id || payment.invoice_id || payment.order_id || externalId,
+          invoice_id: payment.invoice_id || storedPaymentForResult?.invoice_id || '',
+          order_id: payment.order_id || storedPaymentForResult?.order_id || '',
+          bank,
         }))
       })
       .catch((error) => {
@@ -151,7 +157,7 @@ export default function PaymentResultPage({ copy, defaultStatus = '', language =
       })
 
     return () => controller.abort()
-  }, [externalId, labels.lookupError, storedPaymentForResult])
+  }, [bank, externalId, labels.lookupError, storedPaymentForResult])
 
   return (
     <div className="route-page payment-result-page">

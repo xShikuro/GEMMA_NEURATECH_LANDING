@@ -1,10 +1,11 @@
 const defaultPaymentPaths = {
   hamkor: '/api/v1/payments/hamkorbank/create',
   'orient-finans': '/api/v1/payments/orientfinansbank/create',
-  kapital: '/api/v1/payments/kapitalbank/create',
+  kapital: '/api/v1/payments/multicard/create',
   sqb: '/api/v1/payments/sqb/create',
 }
 
+const enabledPaymentBanks = new Set(['hamkor', 'kapital'])
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const fallbackServiceIdsByName = {
   'ai platform': '2954a51c-3f7c-4e6c-926a-ae7ef13a1dbe',
@@ -66,22 +67,44 @@ function getAmount(plan) {
   return amount || normalizeAmountValue(plan.price)
 }
 
-function getPaymentStatusUrl(externalId) {
-  return new URL(`/api/v1/payments/hamkorbank/status/${encodeURIComponent(externalId)}`, getApiBaseUrl()).toString()
+function getPaymentStatusUrl({ bank = 'hamkor', externalId }) {
+  const statusPaths = {
+    hamkor: `/api/v1/payments/hamkorbank/status/${encodeURIComponent(externalId)}`,
+    kapital: `/api/v1/payments/multicard/status/${encodeURIComponent(externalId)}`,
+  }
+
+  return new URL(statusPaths[bank] || statusPaths.hamkor, getApiBaseUrl()).toString()
 }
 
 function getPaymentUrl(responseBody) {
   return (
     responseBody?.payment_url ||
     responseBody?.paymentUrl ||
+    responseBody?.checkout_url ||
+    responseBody?.checkoutUrl ||
+    responseBody?.short_link ||
+    responseBody?.shortLink ||
     responseBody?.redirectUrl ||
     responseBody?.redirect_url ||
     responseBody?.url ||
     responseBody?.result?.payment_url ||
     responseBody?.result?.paymentUrl ||
+    responseBody?.result?.checkout_url ||
+    responseBody?.result?.checkoutUrl ||
+    responseBody?.result?.short_link ||
+    responseBody?.result?.shortLink ||
     responseBody?.result?.redirectUrl ||
     responseBody?.result?.redirect_url ||
-    responseBody?.result?.url
+    responseBody?.result?.url ||
+    responseBody?.data?.payment_url ||
+    responseBody?.data?.paymentUrl ||
+    responseBody?.data?.checkout_url ||
+    responseBody?.data?.checkoutUrl ||
+    responseBody?.data?.short_link ||
+    responseBody?.data?.shortLink ||
+    responseBody?.data?.redirectUrl ||
+    responseBody?.data?.redirect_url ||
+    responseBody?.data?.url
   )
 }
 
@@ -118,14 +141,35 @@ function buildDetails({ bank, draft, plan }) {
   ].filter((item) => !item.endsWith(': ') && !item.endsWith(': undefined')).join('\n')
 }
 
+function buildPaymentRequestBody({ amount, bank, draft, plan, serviceId }) {
+  const baseBody = {
+    service_id: serviceId || null,
+    amount,
+  }
+
+  if (bank?.id === 'kapital') {
+    return baseBody
+  }
+
+  return {
+    ...baseBody,
+    details: buildDetails({ bank, draft, plan }),
+    hold: false,
+  }
+}
+
 export async function createPaymentLink({ bank, draft, messages = {}, plan, signal }) {
-  if (bank?.id !== 'hamkor') {
-    throw new Error(messages.bankUnavailable || 'Real payment is currently connected only through Hamkor Bank.')
+  if (!enabledPaymentBanks.has(bank?.id)) {
+    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank and Kapital Bank.')
   }
 
   const serviceId = getServiceId(plan)
 
   const amount = getAmount(plan)
+
+  if (!serviceId) {
+    throw new Error(messages.missingServiceId || 'The selected service does not have a valid service_id.')
+  }
 
   if (!amount) {
     throw new Error(messages.missingAmount || 'The selected service does not have a valid amount.')
@@ -140,12 +184,7 @@ export async function createPaymentLink({ bank, draft, messages = {}, plan, sign
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        service_id: serviceId,
-        amount,
-        details: buildDetails({ bank, draft, plan }),
-        hold: false,
-      }),
+      body: JSON.stringify(buildPaymentRequestBody({ amount, bank, draft, plan, serviceId })),
       signal,
     })
   } catch {
@@ -167,7 +206,9 @@ export async function createPaymentLink({ bank, draft, messages = {}, plan, sign
 
   sessionStorage.setItem('gemma:lastPayment', JSON.stringify({
     id: payment.id || '',
-    external_id: payment.external_id || '',
+    external_id: payment.external_id || payment.invoice_id || payment.order_id || '',
+    invoice_id: payment.invoice_id || '',
+    order_id: payment.order_id || '',
     service_id: serviceId,
     amount,
     bank: bank?.id || '',
@@ -181,12 +222,12 @@ export async function createPaymentLink({ bank, draft, messages = {}, plan, sign
   }
 }
 
-export async function fetchHamkorPaymentStatus({ externalId, signal }) {
+export async function fetchPaymentStatus({ bank = 'hamkor', externalId, signal }) {
   if (!externalId) {
-    throw new Error('Missing external_id.')
+    throw new Error('Missing payment identifier.')
   }
 
-  const response = await fetch(getPaymentStatusUrl(externalId), {
+  const response = await fetch(getPaymentStatusUrl({ bank, externalId }), {
     headers: {
       Accept: 'application/json',
     },

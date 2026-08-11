@@ -17,8 +17,8 @@ export const checkoutBanks = [
     id: 'kapital',
     name: 'Kapital Bank',
     shortName: 'KB',
-    acquiringId: 'kapital-bank-acquiring',
-    paymentCreatePath: '/api/v1/payments/kapitalbank/create',
+    acquiringId: 'multicard-kapital-acquiring',
+    paymentCreatePath: '/api/v1/payments/multicard/create',
   },
   {
     id: 'sqb',

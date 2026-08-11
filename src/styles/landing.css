@@ -4786,6 +4786,18 @@ label span {
     clip: rect(0 0 0 0);
 }
 
+.checkout-accept span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    color: #d5e6eb;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
 .checkout-bank-card > .checkout-bank-card__mark,
 .checkout-bank-card > .checkout-bank-card__content,
 .checkout-bank-card > .checkout-bank-card__check {

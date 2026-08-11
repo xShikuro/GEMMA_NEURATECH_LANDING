@@ -6,6 +6,15 @@ const defaultPaymentPaths = {
 }
 
 const defaultApiBaseUrl = 'https://api.gemmaneuratech.net'
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const fallbackServiceIdsByName = {
+  'ai platform': '2954a51c-3f7c-4e6c-926a-ae7ef13a1dbe',
+  automation: 'f789b0d3-5337-4f92-88c4-0931742dbf23',
+  enterprise: 'bd516ba6-3c44-4c80-808f-a32338f8fd09',
+  growth: '6e144fa6-c97a-414a-9f6d-2364bf9e6aca',
+  launch: 'e2344218-f7de-4191-9e24-571460b24283',
+  start: '38ecd37c-6407-49a4-9b2a-7db42c371a5c',
+}
 
 function getApiBaseUrl() {
   const explicitBaseUrl = import.meta.env.VITE_PAYMENT_API_BASE_URL || import.meta.env.VITE_API_BASE_URL
@@ -22,15 +31,23 @@ function getPaymentCreateUrl(bank) {
   return new URL(path, getApiBaseUrl()).toString()
 }
 
+function getUuidCandidate(value) {
+  const normalizedValue = String(value ?? '').trim()
+  return uuidPattern.test(normalizedValue) ? normalizedValue : ''
+}
+
 function getServiceId(plan) {
+  const planName = String(plan.name || plan.title || '').trim().toLowerCase()
+
   return (
-    plan.service_id ||
-    plan.serviceId ||
-    plan.id ||
-    plan.slug ||
-    plan.code ||
-    import.meta.env.VITE_DEFAULT_SERVICE_ID ||
-    plan.name
+    getUuidCandidate(plan.service_id) ||
+    getUuidCandidate(plan.serviceId) ||
+    getUuidCandidate(plan.id) ||
+    getUuidCandidate(plan.slug) ||
+    getUuidCandidate(plan.code) ||
+    getUuidCandidate(import.meta.env.VITE_DEFAULT_SERVICE_ID) ||
+    fallbackServiceIdsByName[planName] ||
+    ''
   )
 }
 

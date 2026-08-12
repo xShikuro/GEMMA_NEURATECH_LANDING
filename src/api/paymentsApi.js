@@ -134,9 +134,6 @@ function buildDetails({ bank, draft, plan }) {
     `Customer: ${draft.name}`,
     `Email: ${draft.email}`,
     `Phone: ${draft.phone}`,
-    `Project: ${draft.projectName}`,
-    `Type: ${draft.projectType}`,
-    `Description: ${draft.description}`,
     `Bank: ${bank?.name || ''}`,
   ].filter((item) => !item.endsWith(': ') && !item.endsWith(': undefined')).join('\n')
 }

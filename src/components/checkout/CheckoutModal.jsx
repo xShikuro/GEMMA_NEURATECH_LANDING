@@ -279,21 +279,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
                   }}
                 />
               </label>
-              <label>
-                <span>{fields.projectName}</span>
-                <input name="projectName" type="text" required placeholder={fields.projectName} defaultValue={draft.projectName || ''} />
-              </label>
             </div>
-
-            <label>
-              <span>{fields.projectType}</span>
-              <input name="projectType" type="text" required placeholder={fields.projectType} defaultValue={draft.projectType || ''} />
-            </label>
-
-            <label>
-              <span>{fields.description}</span>
-              <textarea name="description" required placeholder={fields.description} defaultValue={draft.description || ''}></textarea>
-            </label>
 
             <div className="checkout-actions">
               <button className="btn btn--outline" type="button" onClick={() => setStep('terms')}>

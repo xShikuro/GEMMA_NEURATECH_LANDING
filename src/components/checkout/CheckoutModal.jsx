@@ -307,7 +307,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
               <div className="checkout-bank-grid">
                 {banks.map((bank) => (
                   <label className="checkout-bank-card" key={bank.id}>
-                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId ? draft.bankId === bank.id : bank.id === 'hamkor'} />
+                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId ? draft.bankId === bank.id : bank.id === 'kapital'} />
                     <div className="checkout-bank-card__mark">{bank.shortName || bank.name.slice(0, 2)}</div>
                     <div className="checkout-bank-card__content">
                       <strong>{bank.name}</strong>

@@ -38,7 +38,7 @@ const fallbackBanks = [
     name: 'SQB',
     shortName: 'SQB',
     acquiringId: 'sqb-acquiring',
-    paymentCreatePath: '/api/v1/payments/sqb/create',
+    paymentCreatePath: '/api/v1/payments/create',
   },
 ]
 

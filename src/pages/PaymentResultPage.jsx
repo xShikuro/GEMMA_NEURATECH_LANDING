@@ -13,21 +13,21 @@ const resultLabels = {
     bank: 'Банк',
     createdAt: 'Создан',
     checking: 'Проверяем финальный статус платежа через backend...',
-    lookupError: 'Не удалось получить актуальный статус платежа. Если деньги списались, поддержка проверит операцию по external_id.',
+    lookupError: 'Не удалось получить актуальный статус платежа. Если деньги списались, поддержка проверит операцию по external_id / order_id.',
   },
   en: {
     amount: 'Amount',
     bank: 'Bank',
     createdAt: 'Created',
     checking: 'Checking the final payment status through the backend...',
-    lookupError: 'Could not fetch the current payment status. If money was charged, support can check the operation by external_id.',
+    lookupError: 'Could not fetch the current payment status. If money was charged, support can check the operation by external_id / order_id.',
   },
   uz: {
     amount: 'Summa',
     bank: 'Bank',
     createdAt: 'Yaratilgan',
     checking: 'Backend orqali yakuniy to‘lov statusi tekshirilmoqda...',
-    lookupError: 'To‘lov statusini olib bo‘lmadi. Pul yechilgan bo‘lsa, support external_id orqali tekshiradi.',
+    lookupError: 'To‘lov statusini olib bo‘lmadi. Pul yechilgan bo‘lsa, support external_id / order_id orqali tekshiradi.',
   },
 }
 

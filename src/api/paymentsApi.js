@@ -2,10 +2,10 @@ const defaultPaymentPaths = {
   hamkor: '/api/v1/payments/hamkorbank/create',
   'orient-finans': '/api/v1/payments/orientfinansbank/create',
   kapital: '/api/v1/payments/multicard/create',
-  sqb: '/api/v1/payments/sqb/create',
+  sqb: '/api/v1/payments/create',
 }
 
-const enabledPaymentBanks = new Set(['hamkor', 'kapital'])
+const enabledPaymentBanks = new Set(['hamkor', 'kapital', 'sqb'])
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const fallbackServiceIdsByName = {
   'ai platform': '2954a51c-3f7c-4e6c-926a-ae7ef13a1dbe',
@@ -71,6 +71,7 @@ function getPaymentStatusUrl({ bank = 'hamkor', externalId }) {
   const statusPaths = {
     hamkor: `/api/v1/payments/hamkorbank/status/${encodeURIComponent(externalId)}`,
     kapital: `/api/v1/payments/multicard/status/${encodeURIComponent(externalId)}`,
+    sqb: `/api/v1/payments/status/${encodeURIComponent(externalId)}`,
   }
 
   return new URL(statusPaths[bank] || statusPaths.hamkor, getApiBaseUrl()).toString()
@@ -148,6 +149,16 @@ function buildPaymentRequestBody({ amount, bank, draft, plan, serviceId }) {
     return baseBody
   }
 
+  if (bank?.id === 'sqb') {
+    return {
+      ...baseBody,
+      details: buildDetails({ bank, draft, plan }),
+      email: draft.email || null,
+      currency: '860',
+      country: 'UZ',
+    }
+  }
+
   return {
     ...baseBody,
     details: buildDetails({ bank, draft, plan }),
@@ -157,7 +168,7 @@ function buildPaymentRequestBody({ amount, bank, draft, plan, serviceId }) {
 
 export async function createPaymentLink({ bank, draft, messages = {}, plan, signal }) {
   if (!enabledPaymentBanks.has(bank?.id)) {
-    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank and Kapital Bank.')
+    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank, Kapital Bank, and SQB.')
   }
 
   const serviceId = getServiceId(plan)

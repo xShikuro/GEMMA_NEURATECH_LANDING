@@ -28,8 +28,8 @@ const fallbackBanks = [
   },
   {
     id: 'kapital',
-    name: 'Kapital Bank',
-    shortName: 'KB',
+    name: 'Rahmat',
+    shortName: 'RA',
     acquiringId: 'multicard-kapital-acquiring',
     paymentCreatePath: '/api/v1/payments/multicard/create',
   },

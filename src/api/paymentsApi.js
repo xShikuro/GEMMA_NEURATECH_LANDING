@@ -168,7 +168,7 @@ function buildPaymentRequestBody({ amount, bank, draft, plan, serviceId }) {
 
 export async function createPaymentLink({ bank, draft, messages = {}, plan, signal }) {
   if (!enabledPaymentBanks.has(bank?.id)) {
-    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank, Kapital Bank, and SQB.')
+    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank, Rahmat, and SQB.')
   }
 
   const serviceId = getServiceId(plan)

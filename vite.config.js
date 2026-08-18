@@ -6,22 +6,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const apiProxyTarget = env.VITE_API_PROXY_TARGET || env.VITE_API_BASE_URL || 'https://api.gemmaneuratech.uz'
-  const createApiProxy = () => ({
-    target: apiProxyTarget,
-    changeOrigin: true,
-    secure: false,
-  })
 
   return {
     plugins: [react()],
     server: {
       proxy: {
-        '/api': createApiProxy(),
-      },
-    },
-    preview: {
-      proxy: {
-        '/api': createApiProxy(),
+        '/api': {
+          target: apiProxyTarget,
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
   }

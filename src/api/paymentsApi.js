@@ -5,7 +5,7 @@ const defaultPaymentPaths = {
   sqb: '/api/v1/payments/create',
 }
 
-const enabledPaymentBanks = new Set(['hamkor', 'kapital', 'sqb'])
+const enabledPaymentBanks = new Set(['kapital'])
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const fallbackServiceIdsByName = {
   'ai platform': '2954a51c-3f7c-4e6c-926a-ae7ef13a1dbe',
@@ -168,7 +168,7 @@ function buildPaymentRequestBody({ amount, bank, draft, plan, serviceId }) {
 
 export async function createPaymentLink({ bank, draft, messages = {}, plan, signal }) {
   if (!enabledPaymentBanks.has(bank?.id)) {
-    throw new Error(messages.bankUnavailable || 'Real payment is currently connected through Hamkor Bank, Rahmat, and SQB.')
+    throw new Error(messages.bankUnavailable || 'Real payment is temporarily available only through Rahmat.')
   }
 
   const serviceId = getServiceId(plan)

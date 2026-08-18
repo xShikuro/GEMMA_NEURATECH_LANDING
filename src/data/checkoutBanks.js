@@ -5,6 +5,7 @@ export const checkoutBanks = [
     shortName: 'HB',
     acquiringId: 'hamkor-bank-acquiring',
     paymentCreatePath: '/api/v1/payments/hamkorbank/create',
+    disabled: true,
   },
   {
     id: 'orient-finans',
@@ -12,6 +13,7 @@ export const checkoutBanks = [
     shortName: 'OF',
     acquiringId: 'orient-finans-bank-acquiring',
     paymentCreatePath: '/api/v1/payments/orientfinansbank/create',
+    disabled: true,
   },
   {
     id: 'kapital',
@@ -26,5 +28,6 @@ export const checkoutBanks = [
     shortName: 'SQB',
     acquiringId: 'sqb-acquiring',
     paymentCreatePath: '/api/v1/payments/create',
+    disabled: true,
   },
 ]

@@ -18,6 +18,7 @@ const fallbackBanks = [
     shortName: 'HB',
     acquiringId: 'hamkor-bank-acquiring',
     paymentCreatePath: '/api/v1/payments/hamkorbank/create',
+    disabled: true,
   },
   {
     id: 'orient-finans',
@@ -25,6 +26,7 @@ const fallbackBanks = [
     shortName: 'OF',
     acquiringId: 'orient-finans-bank-acquiring',
     paymentCreatePath: '/api/v1/payments/orientfinansbank/create',
+    disabled: true,
   },
   {
     id: 'kapital',
@@ -39,6 +41,7 @@ const fallbackBanks = [
     shortName: 'SQB',
     acquiringId: 'sqb-acquiring',
     paymentCreatePath: '/api/v1/payments/create',
+    disabled: true,
   },
 ]
 
@@ -58,6 +61,7 @@ export default function CheckoutModal({ copy, onClose, plan }) {
   const paymentLinkErrorText = copy.paymentLinkError || 'Не удалось создать платежную ссылку.'
   const paymentLinkMissingUrlText = copy.paymentLinkMissingUrl || 'Backend ответил без платежной ссылки.'
   const banks = Array.isArray(copy.banks) && copy.banks.length ? copy.banks : fallbackBanks
+  const availableBankCount = banks.filter((bank) => !bank.disabled).length
   const steps = [
     { id: 'terms', label: copy.stepTerms || 'Условия' },
     { id: 'details', label: copy.stepDetails || 'Заявка' },
@@ -116,6 +120,12 @@ export default function CheckoutModal({ copy, onClose, plan }) {
     const formData = new FormData(event.currentTarget)
     const bankId = formData.get('bankId')
     const selectedBank = banks.find((bank) => bank.id === bankId)
+
+    if (!selectedBank || selectedBank.disabled) {
+      setPaymentLinkError(copy.paymentLinkBankUnavailable || paymentLinkErrorText)
+      return
+    }
+
     const nextDraft = {
       ...draft,
       bankId,
@@ -301,21 +311,32 @@ export default function CheckoutModal({ copy, onClose, plan }) {
                   {copy.bankIntro ? <p>{copy.bankIntro}</p> : null}
                   {copy.paymentLinkIntro ? <p>{copy.paymentLinkIntro}</p> : null}
                 </div>
-                <strong>{banks.length}</strong>
+                <strong>{availableBankCount}</strong>
               </div>
 
               <div className="checkout-bank-grid">
-                {banks.map((bank) => (
-                  <label className="checkout-bank-card" key={bank.id}>
-                    <input name="bankId" type="radio" value={bank.id} required defaultChecked={draft.bankId ? draft.bankId === bank.id : bank.id === 'kapital'} />
-                    <div className="checkout-bank-card__mark">{bank.shortName || bank.name.slice(0, 2)}</div>
-                    <div className="checkout-bank-card__content">
-                      <strong>{bank.name}</strong>
-                      <small>{copy.bankNote}</small>
-                    </div>
-                    <div className="checkout-bank-card__check" aria-hidden="true"></div>
-                  </label>
-                ))}
+                {banks.map((bank) => {
+                  const isBankDisabled = Boolean(bank.disabled)
+
+                  return (
+                    <label className={`checkout-bank-card ${isBankDisabled ? 'is-disabled' : ''}`} key={bank.id} aria-disabled={isBankDisabled}>
+                      <input
+                        name="bankId"
+                        type="radio"
+                        value={bank.id}
+                        required
+                        disabled={isBankDisabled}
+                        defaultChecked={draft.bankId ? draft.bankId === bank.id : bank.id === 'kapital'}
+                      />
+                      <div className="checkout-bank-card__mark">{bank.shortName || bank.name.slice(0, 2)}</div>
+                      <div className="checkout-bank-card__content">
+                        <strong>{bank.name}</strong>
+                        <small>{isBankDisabled ? copy.bankMaintenanceNote || copy.paymentLinkBankUnavailable : copy.bankNote}</small>
+                      </div>
+                      <div className="checkout-bank-card__check" aria-hidden="true"></div>
+                    </label>
+                  )
+                })}
               </div>
 
               {paymentLinkError ? (

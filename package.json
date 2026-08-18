@@ -7,7 +7,9 @@
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort --open /",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "start": "node server.mjs",
+    "serve": "npm run build && npm start"
   },
   "dependencies": {
     "react": "^19.2.7",

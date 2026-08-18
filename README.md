@@ -57,3 +57,17 @@ src/
 ## Статус
 
 Проект находится в активной разработке. Публичные презентации проектов и отзывы будут добавлены после утверждения материалов компании.
+
+## Production API Proxy
+
+Production can run the same API proxy flow as local development:
+
+```bash
+npm install
+npm run build
+API_PROXY_TARGET=https://api.gemmaneuratech.uz HOST=127.0.0.1 PORT=4173 npm start
+```
+
+The `npm start` server serves `dist` and proxies `/api/*` to
+`https://api.gemmaneuratech.uz`. This keeps production behavior aligned with
+local `npm run dev`.
